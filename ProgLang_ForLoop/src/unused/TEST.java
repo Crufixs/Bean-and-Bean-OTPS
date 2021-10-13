@@ -18,5 +18,9 @@ public class TEST {
             System.out.println(Test.a.toString());
             break;
         }
+        for(String s = new String();true || true; s = new String()) {
+            System.out.println(Test.a.toString());
+            break;
+        }
     }
 }

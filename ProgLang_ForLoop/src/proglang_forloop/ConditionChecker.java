@@ -8,7 +8,7 @@ package proglang_forloop;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import javax.lang.model.SourceVersion;
 /**
  *
  * @author Carlo
@@ -20,6 +20,8 @@ public class ConditionChecker {
     }
 
     public static class Token {
+        SourceVersion sc = SourceVersion.RELEASE_8;
+       
         public final Type t;
         public final String c; // contents mainly for atom tokens
         // could have column and line number fields too, for reporting errors later
@@ -44,24 +46,24 @@ public class ConditionChecker {
         return s.substring(i, j);
     }
     
-    
     public static List<Token> lex(String input) {
         List<Token> result = new ArrayList<Token>();
         for(int i = 0; i < input.length(); ) {
             char current = input.charAt(i);
             if(current=='(') {
+                //OPEN CLOSE PARENTHESIS
                 result.add(new Token(Type.OPEN_PARENTHESIS, ""+current));
                 i++;
             } else if(current==')') {
+                // CLOSE PARENTHESIS
                 result.add(new Token(Type.CLOSE_PARENTHESIS, ""+current));
                 i++;
-            }
-            /*if(current=='+'||current=='*'||current=='/'||current=='-'||current=='^') {
-                if(current)
+            }else if(current=='+'||current=='*'||current=='/'||current=='-'||current=='^') {
+                // ARITHMETIC OPERATORS
                 result.add(new Token(Type.ARITHMETIC_OP, ""+current));
                 i++;
-            }*/
-            else if(current=='<'||current=='>'||current=='='||current=='!'||current=='&'||current=='|') {
+            } else if (current=='<'||current=='>'||current=='='||current=='!'||current=='&'||current=='|') {
+                // COMPARISON AND LOGICAL OPERATORS
                 char next = input.charAt(i+1);
                 String operator ="";
                 if(current=='!') { 
@@ -90,18 +92,23 @@ public class ConditionChecker {
                     }
                 }
                 i += operator.length();
-            } else if(Character.isWhitespace(current)) {
+            } else {
+                
+                
+            }
+            /*} else if(Character.isWhitespace(current)) {
                 i++;
             } else {
                 String atom = getAtom(input, i);
                 i += atom.length();
                 result.add(new Token(Type.ATOM, atom));
-            }
+            }*/
         }
+        //if()
         return result;
     }
    
-    public static void main(String args[]) {
+    public static void main(String args[]) { 
         Scanner in = new Scanner(System.in);
         System.out.println("TEST: ");
         String s = in.nextLine();
