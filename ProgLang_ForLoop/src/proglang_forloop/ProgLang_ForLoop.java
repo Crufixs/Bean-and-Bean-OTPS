@@ -13,6 +13,7 @@ public class ProgLang_ForLoop {
     //TITE
     //NI CARLUE
     //VOTE BBM
+    //MAMINKMINK
     /**
      * @param args the command line arguments
      */
