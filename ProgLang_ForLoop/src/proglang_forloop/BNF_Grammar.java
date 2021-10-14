@@ -15,9 +15,10 @@ import java.util.List;
 public class BNF_Grammar {
     List<Type> placeholder;
     private Production grammar[] = 
-        {new Production(new Token(Type.A), initList(Type.B, Type.A), initList(Type.a)),
+        {new Production(new Token(Type.S), initList(Type.A, Type.B), initList(Type.B, Type.C)),
+        new Production(new Token(Type.A), initList(Type.B, Type.A), initList(Type.a)),
         new Production(new Token(Type.B), initList(Type.C, Type.C), initList(Type.b)),
-        new Production(new Token(Type.C), initList(Type.C, Type.C), initList(Type.a))
+        new Production(new Token(Type.C), initList(Type.A, Type.B), initList(Type.a))
         }; 
         /*{"A", "BA", "a"}, 
         {"B", "CC", "b"}, 

@@ -162,7 +162,7 @@ public class SyntaxAnalyzer {
                         System.out.print(rule + ",");
                     }   
                 }
-                System.out.print("\t\t\t");
+                System.out.print("\t\t");
             }
             System.out.println();
         }
