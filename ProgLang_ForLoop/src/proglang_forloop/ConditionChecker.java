@@ -16,7 +16,8 @@ import javax.lang.model.SourceVersion;
 public class ConditionChecker {
     private static enum Type{
         //ETO YUNG MGA
-        OPEN_PARENTHESIS, CLOSE_PARENTHESIS, ATOM, ARITHMETIC_OP, LOGICAL_OP, LOGICAL_NOT, COMPARISON_OP;
+        OPEN_PARENTHESIS, CLOSE_PARENTHESIS, KEYWORD, NAME ,
+        ARITHMETIC_OP, LOGICAL_OP, LOGICAL_NOT, COMPARISON_OP;
     }
 
     public static class Token {
@@ -34,10 +35,10 @@ public class ConditionChecker {
         }
     }
     
-    public static String getAtom(String s, int i) {
+    public static String getIdentifier(String s, int i) {
         int j = i;
         for( ; j < s.length(); ) {
-            if(Character.isLetter(s.charAt(j))) {
+            if(Character.isJavaIdentifierPart(s.charAt(j))) {
                 j++;
             } else {
                 return s.substring(i, j);
@@ -91,18 +92,18 @@ public class ConditionChecker {
                     result.add(new Token(Type.LOGICAL_OP,operator));
                     }
                 }
-                i += operator.length();
-            } else {
-                
-                
-            }
-            /*} else if(Character.isWhitespace(current)) {
+                i += operator.length();            
+            } else if(Character.isWhitespace(current)) {
                 i++;
-            } else {
-                String atom = getAtom(input, i);
-                i += atom.length();
-                result.add(new Token(Type.ATOM, atom));
-            }*/
+            } else if (Character.isJavaIdentifierStart(current)){
+                String ident = getIdentifier(input, i);
+                i += ident.length();
+                if(SourceVersion.isName(ident)) {
+                    result.add(new Token(Type.KEYWORD, ident));
+                } else if (SourceVersion.isKeyword(ident)) {
+                    result.add(new Token(Type.NAME, ident));
+                }
+            }
         }
         //if()
         return result;
