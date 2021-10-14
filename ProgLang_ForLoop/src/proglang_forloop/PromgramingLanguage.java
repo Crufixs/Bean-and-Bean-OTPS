@@ -33,6 +33,8 @@ public class PromgramingLanguage {
     //Insert grammer here
     static String grammer[][] = {{"S", "AB", "BC"}, {"A", "BA", "a"}, {"B", "CC", "b"}, {"C", "AB", "a"}};
     
+    
+    
     //Checks if the passed string can be achieved for the grammer
     static String check(String a){
         String to_ret = "";

@@ -15,7 +15,7 @@ import javax.lang.model.SourceVersion;
  */
 public class ConditionChecker {
     private static enum Type{
-        //ETO YUNG MGA
+        //ETO YUNG MGA TOKENS
         OPEN_PARENTHESIS, CLOSE_PARENTHESIS, KEYWORD, NAME ,
         ARITHMETIC_OP, LOGICAL_OP, LOGICAL_NOT, COMPARISON_OP;
     }
@@ -32,6 +32,19 @@ public class ConditionChecker {
         }
         public String toString() {
             return c+"\t"+t;
+        }
+    }
+    
+    public static class Production{
+        public final Type t;
+        public final List<Token> rules;
+        
+        public Production (Type t, Token... token) {
+            this.t = t;
+            rules = new ArrayList();
+            for(Token test : token) {
+                rules.add(test);
+            }      
         }
     }
     
@@ -99,9 +112,9 @@ public class ConditionChecker {
                 String ident = getIdentifier(input, i);
                 i += ident.length();
                 if(SourceVersion.isName(ident)) {
-                    result.add(new Token(Type.KEYWORD, ident));
-                } else if (SourceVersion.isKeyword(ident)) {
                     result.add(new Token(Type.NAME, ident));
+                } else if (SourceVersion.isKeyword(ident)) {
+                    result.add(new Token(Type.KEYWORD, ident));
                 }
             }
         }
