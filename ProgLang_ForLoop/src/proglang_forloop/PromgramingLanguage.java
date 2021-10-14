@@ -16,11 +16,11 @@ package proglang_forloop;
     B->CC|b       {"B", "CC", "b"}
     C->AB|a       {"C", "AB", "a"}
 So, the grammer[][] is {
-                        {"S", "AB", "BC"}, 
-                        {"A", "BA", "a"}, 
-                        {"B", "CC", "b"}, 
-                        {"C", "AB", "a"}
-                       }
+    {"S", "AB", "BC"}, 
+    {"A", "BA", "a"}, 
+    {"B", "CC", "b"}, 
+    {"C", "AB", "a"}
+   }
 */
 
 import java.util.Scanner;
