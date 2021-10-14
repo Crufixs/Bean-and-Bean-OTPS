@@ -38,6 +38,16 @@ public class LexicalAnalyzer {
                 // CLOSE PARENTHESIS
                 result.add(new Token(Type.CLOSE_PARENTHESIS, ""+current));
                 i++;
+            }
+            else if(current==';') {
+                // SEMI COLON
+                result.add(new Token(Type.SEMI_COLON, ""+current));
+                i++;
+            }
+            else if(current==',') {
+                // COMMA
+                result.add(new Token(Type.COMMA, ""+current));
+                i++;
             }else if(current=='+'||current=='*'||current=='/'||current=='-'||current=='^') {
                 // ARITHMETIC OPERATORS
                 result.add(new Token(Type.ARITHMETIC_OP, ""+current));
@@ -78,7 +88,10 @@ public class LexicalAnalyzer {
             } else if (Character.isJavaIdentifierStart(current)){
                 String ident = getIdentifier(input, i);
                 i += ident.length();
-                if(SourceVersion.isName(ident)) {
+                if(ident.equals("true")||ident.equals("false")) {
+                    result.add(new Token(Type.BOOLEAN_VALUE, ident));
+                }
+                else if(SourceVersion.isName(ident)) {
                     result.add(new Token(Type.NAME, ident));
                 } else if (SourceVersion.isKeyword(ident)) {
                     result.add(new Token(Type.KEYWORD, ident));
