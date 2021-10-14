@@ -30,6 +30,6 @@ public class Token {
     }
     
     public String toString() {
-        return c;
+        return ""+ t;
     }
 }

@@ -50,6 +50,8 @@ public class SyntaxAnalyzer {
         ROARR.add(new Token(Type.a));
         SyntaxAnalyzer sanal = new SyntaxAnalyzer(ROARR);
         sanal.printAns();
+        sanal.analyzeSyntax();
+        sanal.printAns();
     }
     SyntaxAnalyzer(List<Token> sentence) {
         BNF_Grammar rawr = new BNF_Grammar();
@@ -57,6 +59,17 @@ public class SyntaxAnalyzer {
         this.sentence = sentence;
         ans_mat = new List[sentence.size()][sentence.size()];
         Token word;   
+        
+        for(int j=0; j < rules.length;j++) {
+            if(rules[j]==null) {
+                System.out.print("TITE ");
+            } else {
+                System.out.print(rules[j] + "" + j + ", "); 
+            }
+            System.out.print("\t");
+        }
+        System.out.println();
+        
         //Fill the diagnol of the matrix (first iteration of algorithm)
         for(int i = 0; i < sentence.size(); i++){
             word = sentence.get(i);
@@ -107,7 +120,7 @@ public class SyntaxAnalyzer {
         return combination;
     }
     
-    public boolean analyzeSyntax () {
+    public void analyzeSyntax () {
         //Fill the rest of the matrix
         List<Production> prod; 
         for(int i = 1; i < sentence.size(); i++){
@@ -119,7 +132,6 @@ public class SyntaxAnalyzer {
                 ans_mat[j - i][j] = prod;
             }
         }
-
         //The last column of first row should have the start symbol
         if(ans_mat[0][sentence.size() - 1].indexOf(start) >= 0){
             accept();
@@ -127,29 +139,30 @@ public class SyntaxAnalyzer {
         else{
             reject();
         }
-        return true;
     }
             
-    
     public static void accept(){
         System.out.println("String is accepted");
-        System.exit(0);
+
     }
     public static void reject(){
         System.out.println("String is rejected");
-        System.exit(0);
+ 
     }
 
     public void printAns() {
         System.out.println();
         for(int i=0; i < ans_mat.length; i++) {  
             for(int j=0; j < ans_mat[i].length;j++) {
-                System.out.println(ans_mat[i][j]);
-                for (Iterator<Production> iter = ans_mat[i][j].iterator(); iter.hasNext(); ) {
-                    Production rule = iter.next();
-                    System.out.print(rule + " " + i + " " + j);
-                }   
-                System.out.print("\t");
+                if(ans_mat[i][j]==null) {
+                    System.out.print("TITE ");
+                } else {
+                    for(Iterator<Production> iter = ans_mat[i][j].iterator(); iter.hasNext(); ) {
+                        Production rule = iter.next();
+                        System.out.print(rule + ",");
+                    }   
+                }
+                System.out.print("\t\t\t");
             }
             System.out.println();
         }
