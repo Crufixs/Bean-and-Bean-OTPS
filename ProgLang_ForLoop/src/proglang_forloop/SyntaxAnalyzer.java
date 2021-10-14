@@ -62,7 +62,7 @@ public class SyntaxAnalyzer {
         
         for(int j=0; j < rules.length;j++) {
             if(rules[j]==null) {
-                System.out.print("TITE ");
+                System.out.print("null ");
             } else {
                 System.out.print(rules[j] + "" + j + ", "); 
             }
@@ -155,7 +155,7 @@ public class SyntaxAnalyzer {
         for(int i=0; i < ans_mat.length; i++) {  
             for(int j=0; j < ans_mat[i].length;j++) {
                 if(ans_mat[i][j]==null) {
-                    System.out.print("TITE ");
+                    System.out.print("null ");
                 } else {
                     for(Iterator<Production> iter = ans_mat[i][j].iterator(); iter.hasNext(); ) {
                         Production rule = iter.next();
