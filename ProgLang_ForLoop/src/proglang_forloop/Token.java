@@ -28,6 +28,7 @@ public class Token {
     public Type getType() {
         return t;
     }
+    
     public String toString() {
         return c+"\t"+t;
     }

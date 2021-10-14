@@ -45,7 +45,7 @@ public class LexicalAnalyzer {
             } else if (current=='<'||current=='>'||current=='='||current=='!'||current=='&'||current=='|') {
                 // COMPARISON AND LOGICAL OPERATORS
                 char next = input.charAt(i+1);
-                String operator ="";
+                String operator = "";
                 if(current=='!') { 
                     if(next=='=') {
                         operator = ""+current+next;
@@ -59,6 +59,7 @@ public class LexicalAnalyzer {
                         operator = ""+current+next;
                         result.add(new Token(Type.COMPARISON_OP,operator));
                     } else {
+                        //=== ERROR TINATAMAD AKO
                         operator = ""+current;
                         result.add(new Token(Type.COMPARISON_OP,operator));
                     }
