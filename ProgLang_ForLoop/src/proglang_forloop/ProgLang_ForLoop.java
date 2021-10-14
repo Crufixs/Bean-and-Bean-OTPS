@@ -29,15 +29,15 @@ public class ProgLang_ForLoop {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        LexicalAnalyzer la = new LexicalAnalyzer();
-        //SyntaxAnalyzer sa = new SyntaxAnalyzer();
-
+        /*LexicalAnalyzer la = new LexicalAnalyzer();
+        //
         // TODO code application logic here
         Scanner in = new Scanner(System.in);
 
         //INPUT FILE NALANG DAPAT INSTEAD OF SYSTEM.IN
         System.out.println("TEST: ");
         String s = in.nextLine();
+        SyntaxAnalyzer sa = new SyntaxAnalyzer();
 
         System.out.println("Input path file: ");
         String textContent = in.nextLine(); //path example = C:\\Users\\user\\Desktop\\file.txt
@@ -47,6 +47,8 @@ public class ProgLang_ForLoop {
         for (int i = 0; i < rawr.size(); i++) {
             System.out.println(rawr.get(i).toString() + " ");
         }
+        */
+        
     }
 
     public static String fileRead(String path) throws FileNotFoundException, IOException {

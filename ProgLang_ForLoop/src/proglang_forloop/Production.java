@@ -13,8 +13,8 @@ import java.util.List;
  * @author Carlo
  */
 public class Production{
-    public final Token t;
-    public final List<List<Type>> rules;
+    private final Token t;
+    private List<List<Type>> rules;
     
     public Production (Token t) {
         this.t = t;
@@ -28,11 +28,22 @@ public class Production{
         }
     }
     
+    public void setRules (List<Type>... rule) {
+        rules = new ArrayList();
+        for(List<Type> rawr : rule) {
+            rules.add(rawr);
+        }
+    }
+    
     public List<List<Type>> getRules() {
         return rules;
     }
     
     public Token getToken() {
         return t;
+    }
+    
+    public String toString() {
+        return t.toString();
     }
 }
