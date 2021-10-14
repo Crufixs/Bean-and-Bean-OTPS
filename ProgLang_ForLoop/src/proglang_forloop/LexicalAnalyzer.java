@@ -13,50 +13,16 @@ import javax.lang.model.SourceVersion;
  *
  * @author Carlo
  */
-public class LexicalAnal {
-    private static enum Type{
-        //ETO YUNG MGA TOKENS
-        OPEN_PARENTHESIS, CLOSE_PARENTHESIS, KEYWORD, NAME ,
-        ARITHMETIC_OP, LOGICAL_OP, LOGICAL_NOT, COMPARISON_OP;
-    }
-
-    public static class Token {
-        SourceVersion sc = SourceVersion.RELEASE_8;
-       
-        public final Type t;
-        public final String c; // contents mainly for atom tokens
-        // could have column and line number fields too, for reporting errors later
-        public Token(Type t, String c) {
-            this.t = t;
-            this.c = c;
-        }
-        public String toString() {
-            return c+"\t"+t;
-        }
-    }
-    
-    public static class Production{
-        public final Type t;
-        public final List<Token> rules;
-        
-        public Production (Type t, Token... token) {
-            this.t = t;
-            rules = new ArrayList();
-            for(Token test : token) {
-                rules.add(test);
-            }      
-        }
-    }
-    
+public class LexicalAnalyzer {
     public static String getIdentifier(String s, int i) {
         int j = i;
-        for( ; j < s.length(); ) {
+        while(j < s.length()) {
             if(Character.isJavaIdentifierPart(s.charAt(j))) {
                 j++;
             } else {
                 return s.substring(i, j);
             }
-        }
+        };
         return s.substring(i, j);
     }
     
@@ -121,17 +87,4 @@ public class LexicalAnal {
         //if()
         return result;
     }
-   
-    public static void main(String args[]) { 
-        Scanner in = new Scanner(System.in);
-        System.out.println("TEST: ");
-        String s = in.nextLine();
-        List<Token> rawr = lex(s);
-        for(int i=0; i<rawr.size(); i++) {
-            System.out.println(rawr.get(i).toString()+" ");
-        }     
-    }
-    
-    
-    
 }

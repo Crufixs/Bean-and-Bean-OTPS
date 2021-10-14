@@ -23,16 +23,45 @@ So, the grammer[][] is {
    }
 */
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
-public class SyntaxAnal {  
-    private static enum Type{
-        a;
-    }
+public class SyntaxAnalyzer {  
     static int np = 0;
     //Insert grammer here
     static String grammer[][] = {{"S", "AB", "BC"}, {"A", "BA", "a"}, {"B", "CC", "b"}, {"C", "AB", "a"}};
-
+    private String start = "S";
+    private Production[] rules;
+    private List<Token> ans_mat[][];
+    private List<Token> sentence;
+    
+    SyntaxAnalyzer(List<Token> sentence) {
+        BNF_Grammar rawr = BNF_Grammar();
+        rules = rawr.getGrammar();
+        this.sentence = sentence;
+        ans_mat = new List[sentence.size()][sentence.size()];
+         Token word;   
+        //Fill the diagnol of the matrix (first iteration of algorithm)
+        for(int i = 0; i < sentence.size(); i++){
+            word = sentence.get(i);
+            List<Token> r = new ArrayList();
+            for(int j = 0; j < rules.length; j++){
+                List list = rules[j].getRules();
+                for (Iterator<List<Type>> iter = list.iterator(); iter.hasNext(); ) {
+                    List<Type> rule = iter.next();
+                    for (Iterator<Type> iter2 = list.iterator(); iter2.hasNext(); ) {
+                        Type ASDMKop = iter2.next();
+                        if(ASDMKop==word.getType()){
+                            r.add(rules[j].getToken());
+                        }
+                    }   
+                }   
+            }
+            ans_mat[i][i] = r;
+        }
+    }
     //Checks if the passed string can be achieved for the grammer
     static String check(String a){
         String to_ret = "";
@@ -59,34 +88,8 @@ public class SyntaxAnal {
             }
         return to_ret;
     }
-    public static void main(String[] args) {
-        String start;
-        int n = 0;
-        Scanner in = new Scanner(System.in);
-        //Start symbol is generally "S"
-        start = "S";
-        //np = no of productions
-        np = grammer.length;
-        String temp;
-        System.out.println("Enter the string to be checked >>");
-        String str = in.nextLine(), st = "", r = "";
-        int count;
-        String ans_mat[][] = new String[str.length()][str.length()];
-        
-        //Fill the diagnol of the matrix (first iteration of algorithm)
-        for(int i = 0; i < str.length(); i++){
-            r = "";
-            st = "" + str.charAt(i);
-            for(int j = 0; j < np; j++){
-                for(count = 1; count < grammer[j].length; count++){
-                    if(grammer[j][count].equals(st)){
-                        r += grammer[j][0];
-                    }
-                }      
-            }
-            ans_mat[i][i] = r;
-        }
-        
+    
+    public boolean analyzeSyntax () {
         //Fill the rest of the matrix
         for(int i = 1; i < str.length(); i++){
             for(int j = i; j < str.length(); j++){
@@ -105,8 +108,9 @@ public class SyntaxAnal {
         else{
             reject();
         }
-        
+        return true;
     }
+            
     
     public static void accept(){
         System.out.println("String is accepted");
@@ -125,5 +129,9 @@ public class SyntaxAnal {
             }
             System.out.println();
         }
+    }
+
+    private BNF_Grammar BNF_Grammar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
