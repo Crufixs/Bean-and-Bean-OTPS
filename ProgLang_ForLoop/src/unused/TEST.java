@@ -14,6 +14,9 @@ public class TEST {
         a;
     }
     public static void main (String args[]) {
+        String rawr = "rawr";
+        System.out.println(rawr);
+        /*
         for(int i = 0;true || true; i++) {
             System.out.println(Test.a.toString());
             break;
@@ -23,5 +26,7 @@ public class TEST {
             System.out.println(Test.a.toString());
             break;
         }
+        */
+        
     }
 }
