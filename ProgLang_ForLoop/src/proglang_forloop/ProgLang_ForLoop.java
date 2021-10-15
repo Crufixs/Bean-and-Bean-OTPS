@@ -19,12 +19,23 @@ import java.io.IOException;
  * @author Carlo
  */
 public class ProgLang_ForLoop {
-
-    //TITE
-    //NI CARLUE
-    //VOTE BBM
-    //MAMINKMINK
-    //123
+    
+    //Issues:://
+    //Does not recognize numbers
+    //Assignment operator = recognized as comparison operator
+    //
+    
+    //Working://
+    //comparison op
+    //logical op
+    //
+    
+    //Lexical (fix)://
+    //Numerical Values
+    //Bool
+    //Iteration ops??
+    //
+    
     /**
      * @param args the command line arguments
      */
