@@ -44,7 +44,7 @@ public class ProgLang_ForLoop {
         
         SyntaxAnalyzer sa = new SyntaxAnalyzer(rawr);
         sa.analyzeSyntax();
-        sa.printAns();
+        //sa.printAns();
         if(sa.isAccepted()) {
             System.out.println("SENTENCE IS ACCEPTED");
         } else {

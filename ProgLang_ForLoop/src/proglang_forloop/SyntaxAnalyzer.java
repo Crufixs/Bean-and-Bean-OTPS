@@ -103,7 +103,7 @@ public class SyntaxAnalyzer {
             for(Production second : b) {
                 temp.add(first.getToken().getType());
                 temp.add(second.getToken().getType());
-                System.out.println("PAIRING " + first + " AND " + second);
+                //System.out.println("PAIRING " + first + " AND " + second);
                 for(Production t : check(temp)){
                     if(!combination.contains(t)) {
                         combination.add(t);
