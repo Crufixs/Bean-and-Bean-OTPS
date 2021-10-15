@@ -89,10 +89,10 @@ public class LexicalAnalyzer {
                 String ident = getIdentifier(input, i);
                 i += ident.length();
                 if(ident.equals("true")||ident.equals("false")) {
-                    result.add(new Token(Type.BOOLEAN_VALUE, ident));
+                    result.add(new Token(Type.BOOL_VALUE, ident));
                 }
                 else if(SourceVersion.isName(ident)) {
-                    result.add(new Token(Type.NAME, ident));
+                    result.add(new Token(Type.BOOL_VAR, ident));
                 } else if (SourceVersion.isKeyword(ident)) {
                     result.add(new Token(Type.KEYWORD, ident));
                 }

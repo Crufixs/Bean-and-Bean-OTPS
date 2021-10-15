@@ -30,28 +30,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SyntaxAnalyzer {  
+    private Type start = Type.CONDITIONS;
     private Production[] rules;
     private List<Production> ans_mat[][];
     private List<Token> sentence;
-    
-    public static void main(String args[]) {
-        Scanner in = new Scanner(System.in);
 
-        //INPUT FILE NALANG DAPAT INSTEAD OF SYSTEM.IN
-        System.out.println("TEST: ");
-        String s = in.nextLine();
-        List<Token> ROARR = new ArrayList();
-        ROARR.add(new Token(Type.b));
-        ROARR.add(new Token(Type.a));
-        ROARR.add(new Token(Type.a));
-        ROARR.add(new Token(Type.b));
-        ROARR.add(new Token(Type.a));
-        SyntaxAnalyzer sanal = new SyntaxAnalyzer(ROARR);
-        sanal.printAns();
-        sanal.analyzeSyntax();
-        sanal.printAns();
-    }
-    
     SyntaxAnalyzer(List<Token> sentence) {
         BNF_Grammar rawr = new BNF_Grammar();
         rules = rawr.getGrammar();
@@ -63,9 +46,8 @@ public class SyntaxAnalyzer {
             if(rules[j]==null) {
                 System.out.print("null ");
             } else {
-                System.out.print(rules[j] + "" + j + ", "); 
+                System.out.print(rules[j] + ", "); 
             }
-            System.out.print("\t");
         }
         System.out.println();
         
@@ -149,15 +131,6 @@ public class SyntaxAnalyzer {
         }
         //The last column of first row should have the start symbol
     }
-            
-    public static void accept(){
-        System.out.println("String is accepted");
-
-    }
-    public static void reject(){
-        System.out.println("String is rejected");
- 
-    }
 
     public void printAns() {
         System.out.println();
@@ -175,5 +148,17 @@ public class SyntaxAnalyzer {
             }
             System.out.println();
         }
+    }
+    
+    public boolean isAccepted() {
+        List<Production> test = ans_mat[0][sentence.size() - 1];
+        for(Production prod : test) {
+            if(prod.getToken().getType()==start) {
+                return true;
+            } else {
+
+            }
+        }
+        return false;
     }
 }

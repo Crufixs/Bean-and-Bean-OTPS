@@ -29,7 +29,7 @@ public class ProgLang_ForLoop {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        /*LexicalAnalyzer la = new LexicalAnalyzer();
+        LexicalAnalyzer la = new LexicalAnalyzer();
         //
         // TODO code application logic here
         Scanner in = new Scanner(System.in);
@@ -37,18 +37,26 @@ public class ProgLang_ForLoop {
         //INPUT FILE NALANG DAPAT INSTEAD OF SYSTEM.IN
         System.out.println("TEST: ");
         String s = in.nextLine();
-        SyntaxAnalyzer sa = new SyntaxAnalyzer();
-
-        System.out.println("Input path file: ");
-        String textContent = in.nextLine(); //path example = C:\\Users\\user\\Desktop\\file.txt
-        fileRead(textContent);
-
         List<Token> rawr = la.lex(s);
         for (int i = 0; i < rawr.size(); i++) {
             System.out.println(rawr.get(i).toString() + " ");
         }
-        */
         
+        SyntaxAnalyzer sa = new SyntaxAnalyzer(rawr);
+        sa.analyzeSyntax();
+        sa.printAns();
+        if(sa.isAccepted()) {
+            System.out.println("SENTENCE IS ACCEPTED");
+        } else {
+            System.out.println("SENTENCE IS REJECTED");
+        }
+        /*
+        System.out.println("Input path file: ");
+        String textContent = in.nextLine(); //path example = C:\\Users\\user\\Desktop\\file.txt
+        fileRead(textContent);
+        
+        
+        */
     }
 
     public static String fileRead(String path) throws FileNotFoundException, IOException {
