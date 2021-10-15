@@ -21,9 +21,9 @@ import java.io.IOException;
 public class ProgLang_ForLoop {
     
     //Issues:://
-    //Does not recognize numbers
+    //Does not recognize numbers - lexical op
     //Assignment operator = recognized as comparison operator
-    //
+    //iteration to comparison op e.g: a+= b >= x
     
     //Working://
     //comparison op
