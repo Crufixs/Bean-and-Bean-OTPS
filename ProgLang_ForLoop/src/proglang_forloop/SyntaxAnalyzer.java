@@ -30,9 +30,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SyntaxAnalyzer {  
-    static int np = 0;
-    //Insert grammer here
-    private String start = "S";
     private Production[] rules;
     private List<Production> ans_mat[][];
     private List<Token> sentence;
@@ -44,6 +41,7 @@ public class SyntaxAnalyzer {
         System.out.println("TEST: ");
         String s = in.nextLine();
         List<Token> ROARR = new ArrayList();
+        ROARR.add(new Token(Type.b));
         ROARR.add(new Token(Type.a));
         ROARR.add(new Token(Type.a));
         ROARR.add(new Token(Type.b));
@@ -53,6 +51,7 @@ public class SyntaxAnalyzer {
         sanal.analyzeSyntax();
         sanal.printAns();
     }
+    
     SyntaxAnalyzer(List<Token> sentence) {
         BNF_Grammar rawr = new BNF_Grammar();
         rules = rawr.getGrammar();
@@ -103,9 +102,12 @@ public class SyntaxAnalyzer {
             */
             for (Iterator<List<Type>> iter = list.iterator(); iter.hasNext(); ) {
                 List<Type> rule = iter.next();
+                System.out.print("CHECKING " + a.get(0).toString() + " AND " + a.get(1).toString() + " WITH " + rules[i].getToken().getType().toString());
                 if(a.equals(rule)) {
                     to_ret.add(rules[i]);
+                    System.out.print(" : TRUE");
                 }
+                System.out.println();
             }   
         }
         return to_ret;
@@ -115,11 +117,18 @@ public class SyntaxAnalyzer {
     private List<Production> combinat(List<Production> a, List<Production> b){
         List<Production> combination = new ArrayList();
         List<Type> temp = new ArrayList();
-        for(int i = 0; i < a.size(); i++){
-            for(int j = 0; j < b.size(); j++){
-                temp.add(a.get(i).getToken().getType());
-                temp.add(b.get(j).getToken().getType());
-                combination.addAll(check(temp));
+        for(Production first : a) {
+            for(Production second : b) {
+                temp.add(first.getToken().getType());
+                temp.add(second.getToken().getType());
+                System.out.println("PAIRING " + first + " AND " + second);
+                for(Production t : check(temp)){
+                    if(!combination.contains(t)) {
+                        combination.add(t);
+                    }
+                }
+                //combination.addAll(check(temp));
+                temp.clear();
             }
         }
         return combination;
@@ -132,18 +141,13 @@ public class SyntaxAnalyzer {
             for(int j = i; j < sentence.size(); j++){
                 prod = new ArrayList();
                 for(int k = j - i; k < j; k++){
-                    prod.addAll(combinat(ans_mat[j - i][k], ans_mat[k + 1][j]));
+                    prod.addAll(combinat(ans_mat[j - i][k], ans_mat[k + 1][j])); 
                 }
+                System.out.println("DONE WITH " + "["+(j-i)+"]" +"["+j+"]");
                 ans_mat[j - i][j] = prod;
             }
         }
         //The last column of first row should have the start symbol
-        if(ans_mat[0][sentence.size() - 1].indexOf(start) >= 0){
-            accept();
-        }
-        else{
-            reject();
-        }
     }
             
     public static void accept(){
