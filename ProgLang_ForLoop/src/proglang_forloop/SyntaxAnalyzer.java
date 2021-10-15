@@ -92,9 +92,15 @@ public class SyntaxAnalyzer {
     //Checks if the passed string can be achieved for the grammer
     private List<Production> check(List<Type> a){
         List<Production> to_ret = new ArrayList();
-        int count = 0;
         for(int i = 0; i < rules.length; i++){
             List list = rules[i].getRules();
+            /*
+            List<Type> test = new ArrayList();
+            test.add(rules[i].getToken().getType());
+            if(test.equals(a)) {
+                to_ret.add(rules[i]);
+            }
+            */
             for (Iterator<List<Type>> iter = list.iterator(); iter.hasNext(); ) {
                 List<Type> rule = iter.next();
                 if(a.equals(rule)) {
@@ -103,7 +109,6 @@ public class SyntaxAnalyzer {
             }   
         }
         return to_ret;
-        
     }    
 
     //Makes all possible combinations out of the two string passed
