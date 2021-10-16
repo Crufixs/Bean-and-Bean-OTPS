@@ -68,16 +68,16 @@ public class SyntaxAnalyzer {
         List<Production> to_ret = new ArrayList();
         for(int i = 0; i < rules.length; i++){
             List list = rules[i].getRules();
-            System.out.print("CHECKING " + a.get(0).toString() + " AND " + a.get(1).toString() + " WITH " + rules[i].getType().toString());
+            //System.out.print("CHECKING " + a.get(0).toString() + " AND " + a.get(1).toString() + " WITH " + rules[i].getType().toString());
             for (Iterator<List<Type>> iter = list.iterator(); iter.hasNext(); ) {
                 List<Type> rule = iter.next();  
                 if(a.equals(rule)) {
                     to_ret.add(rules[i]);
-                    System.out.print(" : TRUE");
+                    //System.out.print(" : TRUE");
                 }
                 
             }
-            System.out.println();
+            //System.out.println();
         }
         return to_ret;
     }    
@@ -90,7 +90,7 @@ public class SyntaxAnalyzer {
             for(Production second : b) {
                 temp.add(first.getType());
                 temp.add(second.getType());
-                System.out.println("PAIRING " + first + " AND " + second);
+                //System.out.println("PAIRING " + first + " AND " + second);
                 for(Production t : check(temp)){
                     if(!combination.contains(t)) {
                         combination.add(t);
@@ -112,7 +112,7 @@ public class SyntaxAnalyzer {
                 for(int k = j - i; k < j; k++){
                     prod.addAll(combinat(ans_mat[j - i][k], ans_mat[k + 1][j])); 
                 }
-                System.out.println("DONE WITH " + "["+(j-i)+"]" +"["+j+"]");
+                //System.out.println("DONE WITH " + "["+(j-i)+"]" +"["+j+"]");
                 ans_mat[j - i][j] = prod;
             }
         }
@@ -120,7 +120,7 @@ public class SyntaxAnalyzer {
     }
 
     public void printAns() {
-        System.out.println();
+        System.out.println();      
         for(int i=0; i < ans_mat.length; i++) {  
             for(int j=0; j < ans_mat[i].length;j++) {
                 if(ans_mat[i][j]==null) {
@@ -131,7 +131,7 @@ public class SyntaxAnalyzer {
                         System.out.print(rule + ",");
                     }   
                 }
-                System.out.print("\t\t");
+                System.out.print("\t\t\t\t");
             }
             System.out.println();
         }

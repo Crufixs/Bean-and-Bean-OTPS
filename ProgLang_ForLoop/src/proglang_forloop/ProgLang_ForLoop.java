@@ -57,7 +57,7 @@ public class ProgLang_ForLoop {
         SyntaxAnalyzer sa = new SyntaxAnalyzer(rawr,grammarList.getConditionGrammar());
         sa.analyzeSyntax();
         sa.printGrammar();
-        //sa.printAns();
+        sa.printAns();
         if(sa.isAccepted()) {
             System.out.println("SENTENCE IS ACCEPTED");
         } else {
@@ -77,10 +77,8 @@ public class ProgLang_ForLoop {
         StringBuilder stringBuilder = new StringBuilder();
         String line = null;
         while ((line = reader.readLine()) != null) {
-
             stringBuilder.append(line);
             stringBuilder.append(" ");                
-
         }
 // delete the last new line separator
         stringBuilder.deleteCharAt(stringBuilder.length() - 1);
