@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Production extends Token{
     private List<List<Type>> rules;
-    
+
     public Production (Type t) {
         super(t);
         rules = new ArrayList();   

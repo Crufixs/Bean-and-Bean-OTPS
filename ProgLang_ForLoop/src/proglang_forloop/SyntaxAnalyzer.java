@@ -30,18 +30,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SyntaxAnalyzer {  
-    private Type start = Type.CONDITIONS;
-    private Production[] rules;
+    private Type start;
+    private Production rules[];
     private List<Production> ans_mat[][];
     private List<Token> sentence;
 
-    SyntaxAnalyzer(List<Token> sentence, Production[] rules) {
+    SyntaxAnalyzer(List<Token> sentence, Production[] rules, Type start) {
         BNF_Grammar rawr = new BNF_Grammar();
+        this.start = start;
         this.rules = rules;
         this.sentence = sentence;
         ans_mat = new List[sentence.size()][sentence.size()];
         Token word;   
-        
         printGrammar();
         
         //Fill the diagnol of the matrix (first iteration of algorithm)
@@ -63,6 +63,7 @@ public class SyntaxAnalyzer {
             ans_mat[i][i] = r;
         }
     }
+    
     //Checks if the passed string can be achieved for the grammer
     private List<Production> check(List<Type> a){
         List<Production> to_ret = new ArrayList();
@@ -75,7 +76,6 @@ public class SyntaxAnalyzer {
                     to_ret.add(rules[i]);
                     //System.out.print(" : TRUE");
                 }
-                
             }
             //System.out.println();
         }

@@ -54,7 +54,10 @@ public class ProgLang_ForLoop {
             System.out.println(rawr.get(i).toString() + " ");
         }
         
-        SyntaxAnalyzer sa = new SyntaxAnalyzer(rawr,grammarList.getConditionGrammar());
+        SyntaxAnalyzer sa = new SyntaxAnalyzer(rawr,grammarList.getConditionGrammar(),Type.CONDITIONS);
+        //SyntaxAnalyzer sa1 = new SyntaxAnalyzer(rawr,grammarList.getInitDeclare());
+        //SyntaxAnalyzer sa2 = new SyntaxAnalyzer(rawr,grammarList.getInc_Dec());
+
         sa.analyzeSyntax();
         sa.printGrammar();
         sa.printAns();
