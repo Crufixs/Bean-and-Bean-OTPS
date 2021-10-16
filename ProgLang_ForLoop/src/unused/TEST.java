@@ -41,7 +41,7 @@ public class TEST {
         b = 5.99f > 6;
         b = '3' == 3.52f;
         //b = true == 3.53f;
-        b = '3' > 3 == '3'<4 == "s"=="f";
+        //b = '3' > 3 == '3'<4 == "s"=="f";
         
         for(String s = new String();true || true; s = new String()) {
             System.out.println(Test.a.toString());
