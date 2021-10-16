@@ -12,16 +12,16 @@ import java.util.List;
  *
  * @author Carlo
  */
-public class Production{
-    private final Token t;
+public class Production extends Token{
     private List<List<Type>> rules;
     
-    public Production (Token t) {
-        this.t = t;
+    public Production (Type t) {
+        super(t);
         rules = new ArrayList();   
     }
-    public Production (Token t, List<Type>... rule) {
-        this.t = t;
+    
+    public Production (Type t, List<Type>... rule) {
+        super(t);
         rules = new ArrayList();
         for(List<Type> rawr : rule) {
             rules.add(rawr);
@@ -39,11 +39,7 @@ public class Production{
         return rules;
     }
     
-    public Token getToken() {
-        return t;
-    }
-    
     public String toString() {
-        return t.toString();
+        return super.toString();
     }
 }

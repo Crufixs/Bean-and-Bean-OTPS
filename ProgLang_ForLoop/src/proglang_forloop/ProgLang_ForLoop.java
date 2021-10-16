@@ -40,6 +40,7 @@ public class ProgLang_ForLoop {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
+        BNF_Grammar grammarList = new BNF_Grammar();
         LexicalAnalyzer la = new LexicalAnalyzer();
         //
         // TODO code application logic here
@@ -53,8 +54,9 @@ public class ProgLang_ForLoop {
             System.out.println(rawr.get(i).toString() + " ");
         }
         
-        SyntaxAnalyzer sa = new SyntaxAnalyzer(rawr);
+        SyntaxAnalyzer sa = new SyntaxAnalyzer(rawr,grammarList.getConditionGrammar());
         sa.analyzeSyntax();
+        sa.printGrammar();
         //sa.printAns();
         if(sa.isAccepted()) {
             System.out.println("SENTENCE IS ACCEPTED");

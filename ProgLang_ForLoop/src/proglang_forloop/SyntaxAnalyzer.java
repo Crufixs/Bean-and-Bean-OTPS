@@ -35,21 +35,14 @@ public class SyntaxAnalyzer {
     private List<Production> ans_mat[][];
     private List<Token> sentence;
 
-    SyntaxAnalyzer(List<Token> sentence) {
+    SyntaxAnalyzer(List<Token> sentence, Production[] rules) {
         BNF_Grammar rawr = new BNF_Grammar();
-        rules = rawr.getGrammar();
+        this.rules = rules;
         this.sentence = sentence;
         ans_mat = new List[sentence.size()][sentence.size()];
         Token word;   
         
-        for(int j=0; j < rules.length;j++) {
-            if(rules[j]==null) {
-                System.out.print("null ");
-            } else {
-                System.out.print(rules[j] + ", "); 
-            }
-        }
-        System.out.println();
+        printGrammar();
         
         //Fill the diagnol of the matrix (first iteration of algorithm)
         for(int i = 0; i < sentence.size(); i++){
@@ -75,22 +68,16 @@ public class SyntaxAnalyzer {
         List<Production> to_ret = new ArrayList();
         for(int i = 0; i < rules.length; i++){
             List list = rules[i].getRules();
-            /*
-            List<Type> test = new ArrayList();
-            test.add(rules[i].getToken().getType());
-            if(test.equals(a)) {
-                to_ret.add(rules[i]);
-            }
-            */
+            System.out.print("CHECKING " + a.get(0).toString() + " AND " + a.get(1).toString() + " WITH " + rules[i].getType().toString());
             for (Iterator<List<Type>> iter = list.iterator(); iter.hasNext(); ) {
-                List<Type> rule = iter.next();
-                System.out.print("CHECKING " + a.get(0).toString() + " AND " + a.get(1).toString() + " WITH " + rules[i].getToken().getType().toString());
+                List<Type> rule = iter.next();  
                 if(a.equals(rule)) {
                     to_ret.add(rules[i]);
                     System.out.print(" : TRUE");
                 }
-                System.out.println();
-            }   
+                
+            }
+            System.out.println();
         }
         return to_ret;
     }    
@@ -101,9 +88,9 @@ public class SyntaxAnalyzer {
         List<Type> temp = new ArrayList();
         for(Production first : a) {
             for(Production second : b) {
-                temp.add(first.getToken().getType());
-                temp.add(second.getToken().getType());
-                //System.out.println("PAIRING " + first + " AND " + second);
+                temp.add(first.getType());
+                temp.add(second.getType());
+                System.out.println("PAIRING " + first + " AND " + second);
                 for(Production t : check(temp)){
                     if(!combination.contains(t)) {
                         combination.add(t);
@@ -153,12 +140,28 @@ public class SyntaxAnalyzer {
     public boolean isAccepted() {
         List<Production> test = ans_mat[0][sentence.size() - 1];
         for(Production prod : test) {
-            if(prod.getToken().getType()==start) {
+            if(prod.getType()==start) {
                 return true;
             } else {
 
             }
         }
         return false;
+    }
+    
+    public String findError() {
+        String s = "";
+        
+        return s;
+    }
+    public void printGrammar() {
+        for(int j=0; j < rules.length;j++) {
+            if(rules[j]==null) {
+                System.out.print("null ");
+            } else {
+                System.out.print(rules[j] + ", "); 
+            }
+        }
+        System.out.println();
     }
 }
