@@ -30,7 +30,7 @@ public class BNF_Grammar {
         new Production(Type.H8, init(Type.LOGICAL_OP)),
         new Production(Type.H9, init(Type.IS_EQUAL_OP)),
         new Production(Type.H10, init(Type.OPEN_PARENTHESIS)),
-        new Production(Type.H11, init(Type.COMPARISON_OP))
+        new Production(Type.H11, init(Type.COMPARISON_OP), init(Type.IS_EQUAL_OP))
     };  
 
     private Production initDeclare[] = {
