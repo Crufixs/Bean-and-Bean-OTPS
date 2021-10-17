@@ -66,7 +66,8 @@ public class LexicalAnalyzer {
                 String operator = "";
                 if (current == '+' && next == '+' || current == '-' && next == '-' || current == '+' && next == '=' || current == '-' && next == '=') { //ADDED ITERATION OP UNCHECKED
                     result.add(new Token(Type.INCREMENTATION_OP, "" + operator));
-                    operator = "" + current + next; //ITERATION to line 67
+                    operator = "" + current + next;
+                    i += operator.length(); //ITERATION to line 67
                 } else {
                     result.add(new Token(Type.ARITHMETIC_OP, "" + current));
                     i++;
@@ -112,11 +113,27 @@ public class LexicalAnalyzer {
                 }
                 i += operator.length();
             } else if (current == 'x') {
-                //ASSIGNMENT NO.1
-                
-            } else if (Character.isDigit(current)) { //NUM OPERATOR LABYU
+                char next = input.charAt(i + 1);
+                char veryNext = input.charAt(i + 2);
+                String operator = "";
+                if (next == '=' && veryNext == '1') {
+                    operator = "" + current + next + veryNext;
+                    result.add(new Token(Type.ASSIGNMENT, operator));
+                }
+                i += operator.length();
+            } else if (current == '"') { //ASSIGNMENT xx1
+                char next = input.charAt(i + 1);
+                String operator = "";
+             for(int x = i; next !='"'; x++){
+                 next = input.charAt(x + 1);
+                 operator += next;
+             }
+             result.add(new Token(Type.STRING_VALUE, operator));
+             i += operator.length();
+            } //HANGGANG DITO xx1
+            else if (Character.isDigit(current)) { //NUM OPERATOR LABYU
                 String num = getDigits(input, i);
-                result.add(new Token(Type.NUM, num));
+                result.add(new Token(Type.NUM_VALUE, num));
                 i += num.length();
             } else if (Character.isWhitespace(current)) {
                 i++;
