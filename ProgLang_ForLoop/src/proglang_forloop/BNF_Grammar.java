@@ -43,13 +43,20 @@ public class BNF_Grammar {
     };
     private Production inc_dec[] = {
         //INC_DEC
+        new Production (Type.INC_DEC, init(Type.EMPTY_SET), init(Type.H0, Type.INCREMENTATION), init(Type.ASSIGNMENT), init(Type.H1, Type.H2), init(Type.H4, Type.H3), init(Type.H4, Type.H5)),
+        new Production (Type.INCREMENTATION, init(Type.H0, Type.INCREMENTATION), init(Type.ASSIGNMENT), init(Type.H1, Type.H2), init(Type.H4, Type.H3), init(Type.H4, Type.H5)),
+        new Production (Type.H0, init(Type.INCREMENTATION, Type.H6)),
+        new Production (Type.H1, init(Type.VAR)),
+        new Production (Type.H2, init(Type.INCREMENTATION_OP)),
+        new Production (Type.H3, init(Type.VAR)),
+        new Production (Type.H4, init(Type.H3, Type.H7)),
+        new Production (Type.H5, init(Type.NUM_VALUE)),
+        new Production (Type.H6, init(Type.COMMA)),
+        new Production (Type.H7, init(Type.ASSIGNMENT_OP)),
     };
     
     public Production[] getConditionGrammar() {
         return condition;
-    }
-    public Production[] getForLoopGrammar() {
-        return forLoop;
     }
     public Production[] getInitDeclare() {
         return initDeclare;
