@@ -23,7 +23,7 @@ public class BNF_Grammar {
         new Production(Type.H1, init(Type.BOOL_EXPR, Type.H9)),
         new Production(Type.H2, init(Type.LOGICAL_NOT)),
         new Production(Type.H3, init(Type.CLOSE_PARENTHESIS)),
-        new Production(Type.H4, init(Type.H10), init(Type.BOOL_TERM)),
+        new Production(Type.H4, init(Type.H10,Type.BOOL_TERM)),
         new Production(Type.H5, init(Type.STRING)),
         new Production(Type.H6, init(Type.STRING_COMPARISON, Type.H9)),
         new Production(Type.H7, init(Type.PRIMITIVE_COMPARISON,Type.H11)),

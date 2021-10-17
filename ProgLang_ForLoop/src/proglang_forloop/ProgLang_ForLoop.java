@@ -50,14 +50,14 @@ public class ProgLang_ForLoop {
         try {
             ss = separate(s);
         } catch (Exception e) {
-            System.out.println("shutacca");
+            System.out.println("FOR LOOP IS WRONG");
             System.exit(0);
         }
-        System.out.println();
+        /*System.out.println();
         List<Token> rawr = la.lex(ss[1]);
         for (int i = 0; i < rawr.size(); i++) {
             System.out.println("rawr: " + rawr.get(i).toString());
-        }
+        }*/
         System.out.println();
         SyntaxAnalyzer sa1 = new SyntaxAnalyzer(la.lex(ss[0]),grammarList.getInitDeclare(), Type.INIT_DECLARE);
         SyntaxAnalyzer sa2 = new SyntaxAnalyzer(la.lex(ss[1]), grammarList.getConditionGrammar(), Type.COND);
@@ -84,7 +84,6 @@ public class ProgLang_ForLoop {
         } else {
             System.out.println("INCREMENTATION IS REJECTED");
         }
-        sa2.printAns();
         /*
         
          System.out.println("Input path file: ");
