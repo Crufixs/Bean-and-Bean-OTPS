@@ -54,7 +54,7 @@ public class ProgLang_ForLoop {
         try {
             ss = separate(s);
         } catch (Exception e) {
-            System.out.println("=+=+=+=+ SYSTEM: THE FOR LOOP SYNTAX IS INCORRECT =+=+=+=+");
+            System.out.println("\n=+=+=+=+ SYSTEM: THE FOR LOOP SYNTAX IS INCORRECT =+=+=+=+");
             System.exit(0);
         }
         /*System.out.println();
