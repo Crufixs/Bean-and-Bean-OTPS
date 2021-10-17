@@ -46,29 +46,42 @@ public class ProgLang_ForLoop {
         //INPUT FILE NALANG DAPAT INSTEAD OF SYSTEM.IN
         System.out.println("TEST: ");
         String s = in.nextLine();
+        String ss[] = new String[3];
         try {
-
-            String ss[] = separate(s);
+            ss = separate(s);
         } catch (Exception e) {
             System.out.println("shutacca");
             System.exit(0);
         }
-        List<Token> rawr = la.lex(s);
+        List<Token> rawr = la.lex(ss[0]);
         for (int i = 0; i < rawr.size(); i++) {
-            System.out.println(rawr.get(i).toString() + " ");
+            System.out.println("rawr: " + rawr.get(i).toString());
         }
-
-        SyntaxAnalyzer sa = new SyntaxAnalyzer(rawr, grammarList.getConditionGrammar(), Type.CONDITIONS);
-        //SyntaxAnalyzer sa1 = new SyntaxAnalyzer(rawr,grammarList.getInitDeclare());
-        //SyntaxAnalyzer sa2 = new SyntaxAnalyzer(rawr,grammarList.getInc_Dec());
-
-        sa.analyzeSyntax();
-        sa.printGrammar();
-        sa.printAns();
-        if (sa.isAccepted()) {
-            System.out.println("SENTENCE IS ACCEPTED");
+        
+        SyntaxAnalyzer sa1 = new SyntaxAnalyzer(la.lex(ss[0]),grammarList.getInitDeclare(), Type.INIT_DECLARE);
+        SyntaxAnalyzer sa2 = new SyntaxAnalyzer(la.lex(ss[1]), grammarList.getConditionGrammar(), Type.CONDITIONS);
+        SyntaxAnalyzer sa3 = new SyntaxAnalyzer(la.lex(ss[2]),grammarList.getInc_Dec(), Type.INC_DEC);
+        
+        
+        sa1.analyzeSyntax(); 
+        //sa1.printGrammar();
+        //sa1.printAns();
+        if (sa1.isAccepted()) {
+            System.out.println("DECLARATION IS ACCEPTED");
         } else {
-            System.out.println("SENTENCE IS REJECTED");
+            System.out.println("DECLARATION IS REJECTED");
+        }
+        sa2.analyzeSyntax();  
+        if (sa2.isAccepted()) {
+            System.out.println("CONDITION IS ACCEPTED");
+        } else {
+            System.out.println("CONDITION IS REJECTED");
+        }
+        sa3.analyzeSyntax();  
+        if (sa3.isAccepted()) {
+            System.out.println("INCREMENTATION IS ACCEPTED");
+        } else {
+            System.out.println("INCREMENTATION IS REJECTED");
         }
         /*
          System.out.println("Input path file: ");
@@ -90,13 +103,13 @@ public class ProgLang_ForLoop {
             str[0] += ("" + s.charAt(x));
             x++;
         }
-        System.out.println("String 1: " + str[0]);
+        System.out.println("DECLARATION: " + str[0]);
         x++;
         while (s.charAt(x) != ';') {
             str[1] += ("" + s.charAt(x));
             x++;
         }
-        System.out.println("String 2: " + str[1]);
+        System.out.println("CONDITION: " + str[1]);
         x++;
         int val = 1;
         while (val != 0) {
@@ -111,7 +124,7 @@ public class ProgLang_ForLoop {
             str[2] += ("" + s.charAt(x));
             x++;
         }
-        System.out.println("String 3: " + str[2]);
+        System.out.println("INCREMENTATION: " + str[2]);
         boolean openB = false, closeB = false;
         while (openB == false || closeB == false) {
             if (s.charAt(x) == '{') {

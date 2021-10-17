@@ -51,6 +51,9 @@ public class LexicalAnalyzer {
 
     public static List<Token> lex(String input) {
         List<Token> result = new ArrayList<Token>();
+        if(input==""){
+            result.add(new Token(Type.EMPTY_SET, ""));
+        }
         for (int i = 0; i < input.length();) {
             char current = input.charAt(i);
             if (current == '(') {

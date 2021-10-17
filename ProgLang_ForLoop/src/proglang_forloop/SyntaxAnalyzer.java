@@ -42,7 +42,7 @@ public class SyntaxAnalyzer {
         this.sentence = sentence;
         ans_mat = new List[sentence.size()][sentence.size()];
         Token word;   
-        printGrammar();
+        //printGrammar();
         
         //Fill the diagnol of the matrix (first iteration of algorithm)
         for(int i = 0; i < sentence.size(); i++){
