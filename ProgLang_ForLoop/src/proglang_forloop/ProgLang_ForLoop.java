@@ -44,45 +44,54 @@ public class ProgLang_ForLoop {
         Scanner in = new Scanner(System.in);
 
         //INPUT FILE NALANG DAPAT INSTEAD OF SYSTEM.IN
-        System.out.println("TEST: ");
+        System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
+        System.out.println("=+=+=+=+=+=+=+=+ FOR LOOP SYNTAX CHECKER =+=+=+=+=+=+=+=+");
+        System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
+        System.out.print("\nINPUT: \t");
         String s = in.nextLine();
+        System.out.println("");
         String ss[] = new String[3];
         try {
             ss = separate(s);
         } catch (Exception e) {
-            System.out.println("FOR LOOP IS WRONG");
+            System.out.println("=+=+=+=+ SYSTEM: THE FOR LOOP SYNTAX IS INCORRECT =+=+=+=+");
             System.exit(0);
         }
         /*System.out.println();
-        List<Token> rawr = la.lex(ss[1]);
-        for (int i = 0; i < rawr.size(); i++) {
-            System.out.println("rawr: " + rawr.get(i).toString());
-        }*/
+         List<Token> rawr = la.lex(ss[1]);
+         for (int i = 0; i < rawr.size(); i++) {
+         System.out.println("rawr: " + rawr.get(i).toString());
+         }*/
         System.out.println();
-        SyntaxAnalyzer sa1 = new SyntaxAnalyzer(la.lex(ss[0]),grammarList.getInitDeclare(), Type.INIT_DECLARE);
+        SyntaxAnalyzer sa1 = new SyntaxAnalyzer(la.lex(ss[0]), grammarList.getInitDeclare(), Type.INIT_DECLARE);
         SyntaxAnalyzer sa2 = new SyntaxAnalyzer(la.lex(ss[1]), grammarList.getConditionGrammar(), Type.COND);
-        SyntaxAnalyzer sa3 = new SyntaxAnalyzer(la.lex(ss[2]),grammarList.getInc_Dec(), Type.INC_DEC);
-        
-        
-        sa1.analyzeSyntax(); 
-        
+        SyntaxAnalyzer sa3 = new SyntaxAnalyzer(la.lex(ss[2]), grammarList.getInc_Dec(), Type.INC_DEC);
+
+        sa1.analyzeSyntax();
+
         //sa1.printAns();
         if (sa1.isAccepted()) {
-            System.out.println("DECLARATION IS ACCEPTED");
+            System.out.println("DECLARATION:\t   ACCEPTED");
         } else {
-            System.out.println("DECLARATION IS REJECTED");
+            System.out.println("DECLARATION:\t   REJECTED");
         }
-        sa2.analyzeSyntax();  
+        sa2.analyzeSyntax();
         if (sa2.isAccepted()) {
-            System.out.println("CONDITION IS ACCEPTED");
+            System.out.println("CONDITION:\t   ACCEPTED");
         } else {
-            System.out.println("CONDITION IS REJECTED");
+            System.out.println("CONDITION:\t   REJECTED");
         }
-        sa3.analyzeSyntax();  
+        sa3.analyzeSyntax();
         if (sa3.isAccepted()) {
-            System.out.println("INCREMENTATION IS ACCEPTED");
+            System.out.println("INCREMENTATION:\t   ACCEPTED");
         } else {
-            System.out.println("INCREMENTATION IS REJECTED");
+            System.out.println("INCREMENTATION:\t   REJECTED");
+        }
+
+        if (sa1.isAccepted() && sa2.isAccepted() && sa3.isAccepted()) {
+            System.out.println("\n=+=+=+=+ SYSTEM: THE FOR LOOP SYNTAX IS CORRECT =+=+=+=+");
+        } else {
+            System.out.println("\n=+=+=+=+ SYSTEM: THE FOR LOOP SYNTAX IS INCORRECT =+=+=+=+");
         }
         /*
         
@@ -105,13 +114,13 @@ public class ProgLang_ForLoop {
             str[0] += ("" + s.charAt(x));
             x++;
         }
-        System.out.println("DECLARATION: " + str[0]);
+        System.out.println("Declaration:\t   " + str[0]);
         x++;
         while (s.charAt(x) != ';') {
             str[1] += ("" + s.charAt(x));
             x++;
         }
-        System.out.println("CONDITION: " + str[1]);
+        System.out.println("CONDITION:\t   " + str[1]);
         x++;
         int val = 1;
         while (val != 0) {
@@ -126,7 +135,7 @@ public class ProgLang_ForLoop {
             str[2] += ("" + s.charAt(x));
             x++;
         }
-        System.out.println("INCREMENTATION: " + str[2]);
+        System.out.println("INCREMENTATION:\t   " + str[2]);
         boolean openB = false, closeB = false;
         while (openB == false || closeB == false) {
             if (s.charAt(x) == '{') {
