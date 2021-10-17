@@ -43,8 +43,8 @@ public class BNF_Grammar {
     };
     private Production inc_dec[] = {
         //INC_DEC
-        new Production (Type.INC_DEC, init(Type.EMPTY_SET), init(Type.H0, Type.INCREMENTATION), init(Type.ASSIGNMENT), init(Type.H1, Type.H2), init(Type.H4, Type.H3), init(Type.H4, Type.H5)),
-        new Production (Type.INCREMENTATION, init(Type.H0, Type.INCREMENTATION), init(Type.ASSIGNMENT), init(Type.H1, Type.H2), init(Type.H4, Type.H3), init(Type.H4, Type.H5)),
+        new Production (Type.INC_DEC, init(Type.EMPTY_SET), init(Type.H0, Type.INCREMENTATION), init(Type.ASSIGNMENT), init(Type.H1, Type.H2), init(Type.H2, Type.H1), init(Type.H4, Type.H3), init(Type.H4, Type.H5)),
+        new Production (Type.INCREMENTATION, init(Type.H0, Type.INCREMENTATION), init(Type.ASSIGNMENT), init(Type.H1, Type.H2), init(Type.H2, Type.H1), init(Type.H4, Type.H3), init(Type.H4, Type.H3)),
         new Production (Type.H0, init(Type.INCREMENTATION, Type.H6)),
         new Production (Type.H1, init(Type.VAR)),
         new Production (Type.H2, init(Type.INCREMENTATION_OP)),
