@@ -42,7 +42,7 @@ public class TEST {
         b = '3' == 3.52f;
         //b = true == 3.53f;
         //b = '3' > 3 == '3'<4 == "s"=="f";
-        
+        System.out.println(Character.isBmpCodePoint('\n'));
         for(String s = new String();true || true; s = new String()) {
             System.out.println(Test.a.toString());
             break;
