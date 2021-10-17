@@ -28,6 +28,15 @@ public class LexicalAnalyzer {
         return s.substring(i, j);
     }
 
+    public static boolean checkAssign(String s, int i) {
+        int j = i;
+        String boolbool = "";
+        for (; j < s.length() && j < i + 3; j++) {
+            boolbool += "" + s.charAt(j);
+        }
+        return boolbool.compareTo("x=1") == 0;
+    }
+
     public static String getDigits(String s, int i) {
         int j = i;
         while (j < s.length()) {
@@ -52,6 +61,14 @@ public class LexicalAnalyzer {
                 // CLOSE PARENTHESIS
                 result.add(new Token(Type.CLOSE_PARENTHESIS, "" + current));
                 i++;
+            } else if (current == '{') {
+                // OPEN BRACKET
+                result.add(new Token(Type.OPEN_BRACKET, "" + current));
+                i++;
+            } else if (current == '}') {
+                // CLOSE BRACKET
+                result.add(new Token(Type.CLOSE_BRACKET, "" + current));
+                i++;
             } else if (current == ';') {
                 // SEMI COLON
                 result.add(new Token(Type.SEMI_COLON, "" + current));
@@ -64,10 +81,14 @@ public class LexicalAnalyzer {
                 // ARITHMETIC OPERATORS AND ITERATION OPERATORS
                 char next = input.charAt(i + 1);
                 String operator = "";
-                if (current == '+' && next == '+' || current == '-' && next == '-' || current == '+' && next == '=' || current == '-' && next == '=') { //ADDED ITERATION OP UNCHECKED
+                if (current == '+' && next == '+' || current == '-' && next == '-') { //ADDED ITERATION OP UNCHECKED
                     result.add(new Token(Type.INCREMENTATION_OP, "" + operator));
                     operator = "" + current + next;
-                    i += operator.length(); //ITERATION to line 67
+                    i += operator.length();
+                } else if (current == '+' && next == '=' || current == '-' && next == '=') {
+                    result.add(new Token(Type.ASSIGNMENT_OP, "" + operator));
+                    operator = "" + current + next;
+                    i += operator.length();
                 } else {
                     result.add(new Token(Type.ARITHMETIC_OP, "" + current));
                     i++;
@@ -113,23 +134,41 @@ public class LexicalAnalyzer {
                 }
                 i += operator.length();
             } else if (current == 'x') {
-                char next = input.charAt(i + 1);
-                char veryNext = input.charAt(i + 2);
-                String operator = "";
-                if (next == '=' && veryNext == '1') {
-                    operator = "" + current + next + veryNext;
-                    result.add(new Token(Type.ASSIGNMENT, operator));
+                //ASSIGNMENT
+                if (checkAssign(input, i)) {
+                    result.add(new Token(Type.ASSIGNMENT, "x=1"));
+                    i += 3;
+                } else {
+                    String ident = getIdentifier(input, i);
+                    result.add(new Token(Type.VAR, ident));
+                    i += ident.length();
                 }
-                i += operator.length();
+
             } else if (current == '"') { //ASSIGNMENT xx1
                 char next = input.charAt(i + 1);
-                String operator = "";
-             for(int x = i; next !='"'; x++){
-                 next = input.charAt(x + 1);
-                 operator += next;
-             }
-             result.add(new Token(Type.STRING_VALUE, operator));
-             i += operator.length();
+                String operator = "" + current;
+                int x = i + 1;
+                while (next != '"') {
+                    x++;
+                    operator += next;
+                    next = input.charAt(x);
+                }
+                operator += next;
+                i += operator.length();
+                result.add(new Token(Type.STRING_VALUE, operator));
+            } //HANGGANG DITO xx1
+            else if (current == '\'') { //ASSIGNMENT xx1
+                char next = input.charAt(i + 1);
+                String operator = "" + current;
+                int x = i + 1;
+                while (next != '\'') {
+                    x++;
+                    operator += next;
+                    next = input.charAt(x);
+                }
+                operator += next;
+                i += operator.length();
+                result.add(new Token(Type.CHAR_VALUE, operator));
             } //HANGGANG DITO xx1
             else if (Character.isDigit(current)) { //NUM OPERATOR LABYU
                 String num = getDigits(input, i);
@@ -145,7 +184,7 @@ public class LexicalAnalyzer {
                 } else if (ident.equals("int") || ident.equals("double") || ident.equals("float") || ident.equals("char") || ident.equals("boolean") || ident.equals("short") || ident.equals("long")) {
                     result.add(new Token(Type.DATA_TYPE, ident));
                 } else if (SourceVersion.isName(ident)) {
-                    result.add(new Token(Type.BOOL_VAR, ident));
+                    result.add(new Token(Type.VAR, ident));
                 } else if (SourceVersion.isKeyword(ident)) {
                     result.add(new Token(Type.KEYWORD, ident));
                 }
