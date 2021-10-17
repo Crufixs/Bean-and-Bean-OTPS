@@ -53,18 +53,19 @@ public class ProgLang_ForLoop {
             System.out.println("shutacca");
             System.exit(0);
         }
-        List<Token> rawr = la.lex(ss[0]);
+        System.out.println();
+        List<Token> rawr = la.lex(ss[1]);
         for (int i = 0; i < rawr.size(); i++) {
             System.out.println("rawr: " + rawr.get(i).toString());
         }
-        
+        System.out.println();
         SyntaxAnalyzer sa1 = new SyntaxAnalyzer(la.lex(ss[0]),grammarList.getInitDeclare(), Type.INIT_DECLARE);
-        SyntaxAnalyzer sa2 = new SyntaxAnalyzer(la.lex(ss[1]), grammarList.getConditionGrammar(), Type.CONDITIONS);
+        SyntaxAnalyzer sa2 = new SyntaxAnalyzer(la.lex(ss[1]), grammarList.getConditionGrammar(), Type.COND);
         SyntaxAnalyzer sa3 = new SyntaxAnalyzer(la.lex(ss[2]),grammarList.getInc_Dec(), Type.INC_DEC);
         
         
         sa1.analyzeSyntax(); 
-        //sa1.printGrammar();
+        
         //sa1.printAns();
         if (sa1.isAccepted()) {
             System.out.println("DECLARATION IS ACCEPTED");
@@ -83,7 +84,9 @@ public class ProgLang_ForLoop {
         } else {
             System.out.println("INCREMENTATION IS REJECTED");
         }
+        sa2.printAns();
         /*
+        
          System.out.println("Input path file: ");
          String textContent = in.nextLine(); //path example = C:\\Users\\user\\Desktop\\file.txt
          fileRead(textContent);
