@@ -1,0 +1,22 @@
+
+.accent-color {
+    background-color: #C19A6B;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #F0E7DE;
+}
+
+.dropdown-menu {
+    background-color: #C19A6B;
+}
+
+#about-us-dropdown-menu a:hover {
+    background-color: #F0E7DE;
+}
+

@@ -1,0 +1,164 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 11, 2021, 3:05:57 PM
+    Author     : Carlo
+*/
+
+h1, h2, h3, h4, h5, p, label {
+    color: #212121;
+}
+.cn {
+    min-height: 300px;
+    position: relative;
+}
+
+.inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 350px;
+}
+.center-text {
+    z-index:2;
+    position: absolute;
+    left:50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.selectable {
+    -webkit-filter: brightness(100%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.selectable:hover {
+    -webkit-filter: brightness(70%);
+    
+}
+
+/*.notif {
+    position:absolute;
+    font-size:12px;
+    border-radius:100%;
+    width:18px;
+    height:18px;
+    background-color: red;
+}*/
+
+.visibleOnHover {
+    opacity:0;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.visibleOnHover:hover {
+    opacity:1;
+}
+.softEdge {
+    border-radius: 25px;
+}
+.bigPadding {
+    padding:50px;
+}
+.dark-primary-color {
+    background-color: #FBC02D;
+    foreground-color: #FBC02D;
+}
+
+.light-primary-color {
+    background-color: #FFF9C4;
+    foreground-color: #FFF9C4;
+}
+
+.white-color {
+    background-color: white;
+}
+.primary-color {
+    background-color: #FFEB3B;
+    foreground-color: #FFEB3B;
+}
+
+.primary-text {
+    foreground-color: #212121;
+}
+
+.accent-color {
+    background-color: #C19A6B;
+}
+.background-img{
+    position:abolute;
+}
+
+.divider-color {
+    background-color: #BDBDBD;
+    foreground-color: #BDBDBD;
+}
+
+.secondary-text {
+    foreground-color: #757575;
+}
+
+.icon {
+    min-height: 50px;
+    min-width: 50px;
+}
+
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.carousel-caption > h1 {
+    color: white;
+}
+
+.carousel-caption > p {
+    color: white;
+}
+
+.lead {
+    text-align: center;
+}
+
+.featurette-heading {
+    text-align: center;
+    margin-top: 150px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #F0E7DE;
+}
+
+.dropdown-menu {
+    background-color: #C19A6B;
+}
+
+/*a:focus {
+    color: white;
+    background-color: white
+}*/
+
+#about-us-dropdown-menu a:hover {
+    background-color: #F0E7DE;
+}
+

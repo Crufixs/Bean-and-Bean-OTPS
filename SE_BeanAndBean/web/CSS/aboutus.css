@@ -1,0 +1,37 @@
+/* 
+    Created on : 05 21, 21, 9:34:38 PM
+    Author     : Marylaine Lumacad
+*/
+.accordion-button {
+	background-color: beige;
+}
+.accordion-body {
+	background-color: beige;
+}
+
+.accordion-button:not(.collapsed) {
+	color: brown;
+}
+
+.accent-color {
+    background-color: #C19A6B;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #F0E7DE;
+}
+
+.dropdown-menu {
+    background-color: #C19A6B;
+}
+
+#about-us-dropdown-menu a:hover {
+    background-color: #F0E7DE;
+}
+
+
