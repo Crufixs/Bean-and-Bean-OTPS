@@ -25,7 +25,6 @@
                 response.sendRedirect("home.jsp");
                 return;
             }
-
         %>
     </head>
     <body style="background-color: #F0E7DE;">
@@ -50,7 +49,6 @@
                         <label for="floatingInput">Email Address</label>
                         <p style="color: red"><i>${errors.emailTaken}</i></p>
                     </div>
-
                     <div class="row row-cols-1 g-4 row-cols-sm-2">
                         <div class="col">
                             <div class="form-floating mb-3">
