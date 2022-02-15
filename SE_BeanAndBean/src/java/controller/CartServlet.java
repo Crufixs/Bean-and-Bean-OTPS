@@ -37,11 +37,8 @@ public class CartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String id = request.getParameter("id");
         System.out.println(id);
-       
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         Cart c = (Cart) session.getAttribute("cart");
-        
-        c.addToCart(id, quantity);
         session.setAttribute("cart", c);
         response.sendRedirect("shop.jsp");
         return;

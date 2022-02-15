@@ -48,7 +48,6 @@
                         <ul class="list-group mb-3">
                             <%
                                 for (CartItem c : cart) {
-                                    for (int i = c.getQuantity(); i > 0; i--) {
                             %>
                             <li class="list-group-item justify-content-between lh-sm">
                                 <div>
@@ -61,7 +60,6 @@
                                 </form>
                             </li>
                             <%
-                                    }
                                 }
                             %>
                             <li class="list-group-item d-flex justify-content-between">

@@ -134,7 +134,7 @@ public class Cart {
                 
                 insert.setString(1, product_id);
                 insert.setString(2, this.cart_id+"");
-                insert.setString(3, 1+"");
+                insert.setString(3, cartItemQuantity+"");
 
                 int affectedRows = insert.executeUpdate();
                 
@@ -148,9 +148,8 @@ public class Cart {
                 int cart_item_id = Integer.parseInt(rsSelect.getString("cart_item_id"));
                 
                 Product productToCart = new Product(product_id, name, price, type);
-                c = new CartItem(cart_item_id, productToCart, 1);
+                c = new CartItem(cart_item_id, productToCart, cartItemQuantity);
                 cart.add(c);
-                cartItemQuantity = 1;
                 
             } catch (SQLException ex) {
                 Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);
