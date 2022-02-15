@@ -95,19 +95,18 @@ public class Cart {
     }
     
     //add to cart
-    public void addToCart(String product_id){
+    public void addToCart(String product_id, int cartItemQuantity){
         
         Product p = productList.findProduct(product_id);     
         String name = p.getName();
         double price = p.getPrice();
         String type = p.getType();
-        int cartItemQuantity = 0;
         
         CartItem c = findCartItem(product_id);
         
         if(c != null){ //the product is already in the cart
             c.addQuantity();
-            cartItemQuantity = c.getQuantity();
+            cartItemQuantity += c.getQuantity();
             
             try {
                 PreparedStatement select = con.prepareStatement("SELECT * FROM cart_item WHERE cart_id=? AND product_id=?");

@@ -23,6 +23,33 @@
                 return;
             }
         %>
+        <script>
+            function incrementQuantity(id) {
+                var quantityElement = document.getElementById('quantity'+id);
+                if (quantityElement.value < 9) {
+                    quantityElement.value++;
+                    var priceElement = document.getElementById('price'+id);
+                    
+                    console.log(priceElement.value +" "+ quantityElement.value);
+                    priceElement.value = (priceElement.value / (quantityElement.value - 1)) * quantityElement.value;
+                }
+            }
+            function decrementQuantity(id) {
+                var quantityElement = document.getElementById('quantity'+id);
+                console.log('quantity'+id);
+                if (quantityElement.value > 1) {
+                    quantityElement.value--;
+                    var priceElement = document.getElementById('price'+id);
+                    priceElement.value = (priceElement.value / (quantityElement.value-(-1))) * quantityElement.value;
+                }
+            }
+            function resetQuantity(id) {
+                var quantityElement = document.getElementById('quantity'+id);
+                var priceElement = document.getElementById('price'+id);
+                priceElement.value = priceElement.value / quantityElement.value;
+                quantityElement.value=1;
+            }
+        </script>
     </head>
     <body style="background-color: #F0E7DE;">
         <!-- HEADER -->
@@ -67,7 +94,42 @@
                                 <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                 <form method="POST" action="cart">
                                     <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                    <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary">Add to Cart</button>
+                                    <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal<%=p.getId()%>">
+                                        Add to Cart
+                                    </button>
+                                    <div class="modal fade" id="exampleModal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
+                                                    <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="Images/<%=p.getId()%>.jpg" class="card-img-top img-thumbnail">
+                                                    <div class="btn-group" style="width:100%; position: relative">
+                                                        <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                            </svg></button>
+                                                        <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                            </svg></button>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="row" style="width:100%">
+                                                        <p class="col-sm align-middle me-auto">
+                                                            Quantity: <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantity<%=p.getId()%>" 
+                                                                             name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
+                                                        </p><p class=" col-sm align-middle me-auto" >
+                                                            Price: &#8369;<input type="text" align="middle" class="form-control-plaintext form-inline" id="price<%=p.getId()%>"
+                                                                                 name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
+                                                        </p>
+                                                    </div>
+                                                    <button type="submit" name="action" value="add" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>

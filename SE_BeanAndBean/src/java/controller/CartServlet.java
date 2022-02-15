@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,9 +36,12 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String id = request.getParameter("id");
-        
+        System.out.println(id);
+       
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
         Cart c = (Cart) session.getAttribute("cart");
-        c.addToCart(id);
+        
+        c.addToCart(id, quantity);
         session.setAttribute("cart", c);
         response.sendRedirect("shop.jsp");
         return;
