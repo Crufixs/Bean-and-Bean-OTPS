@@ -33,10 +33,10 @@ public class CheckoutServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         
         //invalid access; accessed through url
-        if(street == null || barangay  == null){
+        if(street == null || barangay  == null) {
             response.sendRedirect("error404.jsp");
             return;
-        } else if(c.getQuantityInCart() == 0){
+        } else if(c.getQuantityInCart() == 0) {
             response.sendRedirect("shop.jsp");
             return;
         }

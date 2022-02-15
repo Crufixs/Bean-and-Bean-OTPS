@@ -99,7 +99,7 @@ public class Cart {
         
         Product p = productList.findProduct(product_id);     
         String name = p.getName();
-        double price = p.getPrice();
+        double price = p.getPrice()*cartItemQuantity;
         String type = p.getType();
         
         CartItem c = findCartItem(product_id);

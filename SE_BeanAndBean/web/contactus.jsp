@@ -60,7 +60,6 @@
                             </div>
                             <button class=" btn btn-outline-secondary btn-lg" type="submit">Send</button>
                         </form>
-
                     </div>
 
                 </div>

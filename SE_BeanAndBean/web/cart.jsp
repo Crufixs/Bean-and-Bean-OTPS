@@ -52,7 +52,7 @@
                             %>
                             <li class="list-group-item justify-content-between lh-sm">
                                 <div>
-                                    <h6 class="my-0"><%=c.getProduct().getName()%></h6>
+                                    <h6 class="my-0"><%=c.getQuantity()%> <%=c.getProduct().getName()%></h6>
                                 </div>
                                 <span class="text-muted">&#8369;<%=c.getProduct().getPrice()%></span>
                                 <form method="POST" action="cart" class="text-end">
