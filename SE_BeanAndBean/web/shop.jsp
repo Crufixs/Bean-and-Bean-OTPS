@@ -26,17 +26,16 @@
         <script>
             function incrementQuantity(id) {
                 var quantityElement = document.getElementById('quantity' + id);
+                console.log("INCREMENT");
                 if (quantityElement.value < 9) {
                     quantityElement.value++;
                     var priceElement = document.getElementById('price' + id);
-
-                    console.log(priceElement.value + " " + quantityElement.value);
                     priceElement.value = (priceElement.value / (quantityElement.value - 1)) * quantityElement.value;
                 }
             }
             function decrementQuantity(id) {
                 var quantityElement = document.getElementById('quantity' + id);
-                console.log('quantity' + id);
+                console.log('DECREMENT');
                 if (quantityElement.value > 1) {
                     quantityElement.value--;
                     var priceElement = document.getElementById('price' + id);
@@ -44,6 +43,7 @@
                 }
             }
             function resetQuantity(id) {
+                console.log("RESET");
                 var quantityElement = document.getElementById('quantity' + id);
                 var priceElement = document.getElementById('price' + id);
                 priceElement.value = priceElement.value / quantityElement.value;
@@ -95,11 +95,13 @@
                                 <form method="POST" action="cart">
                                     <input type="hidden" name="id" value="<%=p.getId()%>"/>
                                     <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
-                                        if (c.findCartItem(p.getId())==null) {
+                                        if (u.getCustomerID() == -1) {
+                                            out.print("loginError");
+                                        } else if (c.findCartItem(p.getId()) == null) {
                                             out.print("modal" + p.getId());
                                         } else {
                                             out.print("error" + p.getId());
-                                        }
+                                        } 
                                             %>">
                                         Add to Cart
                                     </button>
@@ -140,11 +142,27 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Error</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     Product is already in Cart!
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="loginError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Please Log-in first before buying any of our products
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

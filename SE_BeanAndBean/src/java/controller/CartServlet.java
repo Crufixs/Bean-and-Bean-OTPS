@@ -19,12 +19,13 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
+        System.out.println("RAWR");
         
         if(action == null){
             response.sendRedirect("error404.jsp");
             return;
         }
-        
+
         if(action.equals("add")){
             addToCart(request, response);
         } else if(action.equals("remove")){
@@ -39,6 +40,7 @@ public class CartServlet extends HttpServlet {
         System.out.println(id);
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         Cart c = (Cart) session.getAttribute("cart");
+        c.addToCart(id, quantity);
         session.setAttribute("cart", c);
         response.sendRedirect("shop.jsp");
         return;
@@ -53,9 +55,6 @@ public class CartServlet extends HttpServlet {
         Cart c = (Cart) session.getAttribute("cart");
         c.removeFromCart(cart_item_id);
         session.setAttribute("cart", c);
-        
-        session.setAttribute("cart", c);
-        
         response.sendRedirect("cart.jsp");
         return;
     }

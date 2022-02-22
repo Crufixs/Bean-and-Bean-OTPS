@@ -21,10 +21,6 @@
             response.setDateHeader("Expires", 0);
 
             User u = (User) session.getAttribute("user");
-            if (u == null || u.getCustomerID() != -1) {
-                response.sendRedirect("home.jsp");
-                return;
-            }
         %>
     </head>
     <body style="background-color: #F0E7DE;">
@@ -32,7 +28,7 @@
         <%@include file="header.jsp" %>
         <div class="container">
             <div class="py-4">
-                <h1 class="fs-3 fw-bold form-label primary-text">Create Account</h1>
+                <h1 class="fs-3 fw-bold form-label primary-text"><%= u.getCustomerID()==-1 ? "Create Account" : "Edit Account"%></h1>
                 <hr>
             </div>
             <div class="container mb-5">
