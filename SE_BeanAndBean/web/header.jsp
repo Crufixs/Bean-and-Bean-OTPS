@@ -26,6 +26,7 @@
                         <ul id="about-us-dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="aboutus.jsp#faqs">FAQs</a></li>
                             <li><a class="dropdown-item" href="aboutus.jsp#gallery">Gallery</a></li>
+                            <li><a class="dropdown-item" href="aboutus.jsp#reviews">Reviews</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

@@ -40,39 +40,57 @@
                     <hr>
                 </div>
                 <div class="row g-5">
-                    <div class="col-md-5 col-lg-4 order-md-last">
+
+                    <div class="col-md-6 col-lg-5 h-50"  style="background-color: #C19A6B; border-radius: 1vw; margin-bottom: 2vh;">
+                        <br>
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="text-secondary">Your cart</span>
+                            <span class="text" >Your cart</span>
                             <span class="badge bg-secondary rounded-pill"><%=myCart.getQuantityInCart()%></span>
                         </h4>
-                        <ul class="list-group mb-3">
+                        <ul class="list-group mb-3 d-flex flex-row flex-wrap">
                             <%
                                 for (CartItem c : cart) {
                             %>
-                            <li class="list-group-item justify-content-between lh-sm">
-                                <div>
+                            <li class="list-group-item w-50 justify-content-between lh-md">
+                                <img src="Images/f22.jpg" class="card-img-top" alt="...">
+                                <div style="margin-top:1.4vh;">
                                     <h6 class="my-0"><%=c.getQuantity()%> <%=c.getProduct().getName()%></h6>
                                 </div>
-                                <span class="text-muted">&#8369;<%=c.getProduct().getPrice()%></span>
-                                <form method="POST" action="cart" class="text-end">
-                                    <input type="hidden" name="id" value="<%=c.getCartItemID()%>"/>
-                                    <button type="submit" name="action" value="remove" class="btn btn-danger">Remove</button>
-                                </form>
+                                <span class="text-muted" >&#8369;<%=c.getProduct().getPrice()%></span>
+                                <br>
+                                <div style="float: right;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                    </svg>
+                                </div>
+
+                                <!--                                    REMOVE BUTTON-->
+                                <!--                                <form method="POST" action="cart" class="text" style="padding-top: 0.6vmax">
+                                                                    <input type="hidden" name="id" value="<%=c.getCartItemID()%>"/>
+                                                                    <button type="submit" name="action" value="remove" class="btn btn-danger">Remove</button>
+                                                                </form>-->
                             </li>
                             <%
                                 }
                             %>
-                            <li class="list-group-item d-flex justify-content-between">
+                            <li class="list-group-item d-flex justify-content-between w-100" style="background-color: #ffdb3d;">
                                 <span>Total</span>
                                 <strong>&#8369;<%=myCart.getTotalPrice()%></strong>
                             </li>
                         </ul>
+                            
                         <!--<br>-->
                         <p><i>Note: Shipping fee is shouldered by the buyer.</i></p>
                         <!--<input class="form-control" type="text" pattern="^[0-9]*$" placeholder="Change for (PHP):">-->
-                        <br>
-
-                        <!--        <br>-->
+                        <!--<br>-->
                         <!--<br>-->
                         <% if (request.getSession().getAttribute("order") != null) {%>
                         <form method="POST" action="PDFServlet" target="_blank">
@@ -80,9 +98,11 @@
                             <input type="hidden" name="type" value="receipt">
                         </form>
                         <% }%>
+                        <div style="min-height: 3vh;"></div>
 
                     </div>
-                    <div class="col-md-7 col-lg-8">
+                    <div class="col-md-6 col-lg-7">
+                        <br>
                         <h4 class="mb-3">Shipping address</h4>
                         <form method="POST" action="Checkout" class="needs-validation">
                             <div class="row g-3">
