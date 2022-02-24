@@ -25,14 +25,16 @@
             List<Product> products = (List) getServletContext().getAttribute("products");
 
             User u = (User) session.getAttribute("user");
-            if (u == null) {
-                u = new User();
-                Cart c = new Cart();
-                session.setAttribute("user", u);
-                session.setAttribute("cart", c);
-//                response.sendRedirect("Login");
-//                return;
-            }
+//            out.print("TESTING LANG");
+//            if (u == null) {
+////                System.out.print("HUYYYUYUYUYUYUYUYU");
+////                u = new User();
+////                Cart c = new Cart();
+////                session.setAttribute("user", u);
+////                session.setAttribute("cart", c);
+////                response.sendRedirect("Login");
+////                return;
+//            }
         %>
     </head> 
     <body style="background-color: #F0E7DE;">
@@ -119,7 +121,12 @@
                         <div class="inner">
                             <h2 style="text-align:center;">Keep beans airtight and cool</h2>
                             <p class="lead" style="text-align:center;">Your beans' greatest enemies are air, moisture, heat, and light.<br><br>
-                                <% if (u.getCustomerID() == -1) {%>
+                                <% 
+                                    //if (u.getCustomerID() == -1)
+                                    System.out.print("HAAAAAAAAY");
+                                    if(u == null){
+                                        System.out.print("HELOOOOOOO");
+                                %>
                                 <a class="btn btn-secondary btn-md" style="text-align:center;" href="register.jsp">Sign Up Now</a>
                                 <% } else {%>
                                 <a class="btn btn-secondary btn-md" style="text-align:center;" href="success.jsp">My Account</a>

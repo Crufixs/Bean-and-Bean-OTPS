@@ -21,6 +21,7 @@ public class JDBCContextListener implements ServletContextListener{
     public void contextInitialized(ServletContextEvent sce) {
         context = sce.getServletContext();
         try{
+//            System.out.print("HELLo");
             Class.forName(context.getInitParameter("jdbcClassName"));
             
             String dbUsername = context.getInitParameter("dbUsername");

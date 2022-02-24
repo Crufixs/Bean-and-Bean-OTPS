@@ -25,11 +25,11 @@ public class Cart {
         generateCart();
     }
 
-    public Cart() { //no account
-        this.quantityInCart = 0;
-        this.totalPrice = 0;
-        createNewCart();
-    }
+//    public Cart() { //no account
+//        this.quantityInCart = 0;
+//        this.totalPrice = 0;
+//        createNewCart();
+//    }
 
     public CartItem findCartItem(String product_id) {
         for (CartItem c : cart) {
@@ -256,27 +256,27 @@ public class Cart {
         }
     }
 
-    private void createNewCart() {
-        try {
-            PreparedStatement create = con.prepareStatement("INSERT INTO cart(total_price, quantity) VALUES (?,?)");
-            create.setString(1, this.totalPrice + "");
-            create.setString(2, this.quantityInCart + "0");
-            int affectedRows = create.executeUpdate();
-
-            PreparedStatement select = con.prepareStatement("SELECT * FROM cart WHERE cart_id=(SELECT max(cart_id) FROM cart)");
-            ResultSet rs = select.executeQuery();
-            rs.next();
-
-            int cart_id = Integer.parseInt(rs.getString("cart_id"));
-            this.cart_id = cart_id;
-            this.cart = new ArrayList<>();
-            this.customer_id = -1;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
+//    private void createNewCart() {
+//        try {
+//            PreparedStatement create = con.prepareStatement("INSERT INTO cart(total_price, quantity) VALUES (?,?)");
+//            create.setString(1, this.totalPrice + "");
+//            create.setString(2, this.quantityInCart + "0");
+//            int affectedRows = create.executeUpdate();
+//
+//            PreparedStatement select = con.prepareStatement("SELECT * FROM cart WHERE cart_id=(SELECT max(cart_id) FROM cart)");
+//            ResultSet rs = select.executeQuery();
+//            rs.next();
+//
+//            int cart_id = Integer.parseInt(rs.getString("cart_id"));
+//            this.cart_id = cart_id;
+//            this.cart = new ArrayList<>();
+//            this.customer_id = -1;
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//    }
 
     public List<CartItem> getCart() {
         return cart;

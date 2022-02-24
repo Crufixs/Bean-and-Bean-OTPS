@@ -19,8 +19,9 @@
             Cart c = (Cart) session.getAttribute("cart");
             User u = (User) session.getAttribute("user");
             if (u == null) {
-                response.sendRedirect("home.jsp");
-                return;
+                System.out.print("ANG ASIM MO!!!!!!!!!!!!!!!!!!!");
+//                response.sendRedirect("home.jsp");
+//                return;
             }
         %>
         <script>
@@ -95,7 +96,8 @@
                                 <form method="POST" action="cart">
                                     <input type="hidden" name="id" value="<%=p.getId()%>"/>
                                     <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
-                                        if (u.getCustomerID() == -1) {
+                                        //if (u.getCustomerID() == -1) {
+                                        if(u == null || c == null){
                                             out.print("loginError");
                                         } else if (c.findCartItem(p.getId()) == null) {
                                             out.print("modal" + p.getId());

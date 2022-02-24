@@ -8,21 +8,21 @@ public class User
     private int customerID;
     private String fullAddress;
 
-    public User() { //guest, no account
-        this.username = "";
-        this.password = "";
-        this.role = "guest";
-        this.firstName = "";
-        this.lastName = "";
-        this.email = "";
-        this.phoneNumber = "";
-        this.street = "";
-        this.barangay = "";
-        this.city = "";
-        this.region = "NCR";
-        this.customerID = -1;
-        this.fullAddress = "";
-    }
+//    public User() { //guest, no account
+//        this.username = "";
+//        this.password = "";
+//        this.role = "guest";
+//        this.firstName = "";
+//        this.lastName = "";
+//        this.email = "";
+//        this.phoneNumber = "";
+//        this.street = "";
+//        this.barangay = "";
+//        this.city = "";
+//        this.region = "NCR";
+//        this.customerID = -1;
+//        this.fullAddress = "";
+//    }
     
     public User(int customerID, String username, String password, String role, String firstName, String lastName, String email, String phoneNumber, 
             String street, String barangay, String city, String region) { //with account

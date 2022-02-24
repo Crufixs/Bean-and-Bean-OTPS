@@ -20,13 +20,16 @@
 
         User u = (User) session.getAttribute("user");
         if (u == null) {
-            response.sendRedirect("home.jsp");
-            return;
-
-        } else if (u.getCustomerID() == -1) {
+//            response.sendRedirect("home.jsp");
+//            return;
             response.sendRedirect("login.jsp");
             return;
-        }
+
+        } 
+//        else if (u.getCustomerID() == -1) {
+//            response.sendRedirect("login.jsp");
+//            return;
+//        }
 
     %>  
 

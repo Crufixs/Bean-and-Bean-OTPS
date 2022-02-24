@@ -22,7 +22,7 @@
             response.setDateHeader("Expires", 0);
 
             User u = (User) session.getAttribute("user");
-            if (u == null || u.getCustomerID() != -1) {
+            if (u != null) {
                 response.sendRedirect("home.jsp");
                 return;
             }
