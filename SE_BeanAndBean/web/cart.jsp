@@ -51,7 +51,7 @@
                             <%
                                 for (CartItem c : cart) {
                             %>
-                            <li class="list-group-item w-50 justify-content-between lh-md">
+                            <li class="list-group-item w-50 justify-content-between lh-md" style="border-radius: 0;">
                                 <img src="Images/f22.jpg" class="card-img-top" alt="...">
                                 <div style="margin-top:1.4vh;">
                                     <h6 class="my-0"><%=c.getQuantity()%> <%=c.getProduct().getName()%></h6>
