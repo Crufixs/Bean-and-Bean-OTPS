@@ -47,7 +47,7 @@
                             <span class="text" >Your cart</span>
                             <span class="badge bg-secondary rounded-pill"><%=myCart.getQuantityInCart()%></span>
                         </h4>
-                        <ul class="list-group mb-3 d-flex flex-row flex-wrap">
+                        <ul class="list-group mb-3 d-flex flex-row flex-wrap" style="background-color:white">
                             <%
                                 for (CartItem c : cart) {
                             %>
