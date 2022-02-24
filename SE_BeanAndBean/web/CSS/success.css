@@ -18,3 +18,15 @@ a:hover {
 #about-us-dropdown-menu a:hover {
     background-color: #F0E7DE;
 }
+
+#list-group-border {
+    max-height: 300px;
+    margin-bottom: 10px;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.list-group-item {
+    background-color: burlywood;
+}
+

@@ -1,3 +1,9 @@
+<%-- 
+    Document   : success
+    Created on : 02 24, 22, 7:01:10 PM
+    Author     : Marylaine Lumacad
+--%>
+
 <%@page import="model.User"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,35 +37,140 @@
 
     <div class="container">
         <main>
-            <br>
-            <div>
-                <h2>My Account</h2>
-                <p>Welcome, <%= u.getUsername()%>!</p>
-            </div>
-            <br>
             <!-- account details -->
             <div class="row g-5">
-                <div class="col-md-5 col-lg-5 order-md-last">
-                    <h4 class="justify-content-between align-items-center">Account details 
-                        <a class="btn" href="register.jsp">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                            </svg>
-                        </a>
-                        
-                    </h4>
+                <div class="col-md-7 col-lg-7 order-md-last">
+                    <h2 style="text-align: center;">Orders</h2>
                     <hr>
-                    <p><b>Name:</b> <%= u.getFirstName() + " " + u.getLastName()%></p>
+                    <div class="row align-items-center" style="font-weight: bold; text-align: center; margin-bottom: 12px;">
+                        <div class="col">
+                            PENDING
+                            <span class="badge rounded-pill bg-danger">0</span>
+                        </div>
+                        <div class="col">
+                            PROCESSING
+                            <span class="badge rounded-pill bg-warning">0</span>
+                        </div>
+                        <div class="col">
+                            COMPLETED
+                            <span class="badge rounded-pill bg-success">0</span>
+                        </div>
+                    </div>  
+                    <div class="row" style="text-align: center; margin-bottom: 12px;">
+                        <div class="col overflow-auto" id="list-group-border">
+                            <!-- <i>No pending orders.</i> -->
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <b>Order 234</b>
+                                    <div>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                            </svg></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <b>Order 234</b>
+                                    <div>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                            </svg></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <b>Order 234</b>
+                                    <div>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                            </svg></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <b>Order 234</b>
+                                    <div>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                            </svg></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <b>Order 234</b>
+                                    <div>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                            </svg></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <b>Order 234</b>
+                                    <div>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                            </svg></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <b>Order 234</b>
+                                    <div>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                            </svg></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col overflow-auto" id="list-group-border">
+                            <i>No processing orders.</i>
+                            <!-- <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <b>Order 234</b>
+                                    <div>
+                                        <button type="button" class="btn btn-success btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Completed">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                                        </svg></button>
+                                    </div>
+                                 </li>
+                            </ul> -->
+                        </div>
+                        <div class="col overflow-auto" id="list-group-border">
+                            <!-- <i>No completed orders.</i> -->
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <b>Order 512</b>
+                                    <span class="badge bg-secondary rounded-pill">14 hrs ago</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <b>Order 512</b>
+                                    <span class="badge bg-secondary rounded-pill">2 days ago</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <b>Order 512</b>
+                                    <span class="badge bg-secondary rounded-pill">1 day ago</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>  
+                    <!-- <hr>-->                    
+<!--                <p><b>Name:</b> <%= u.getFirstName() + " " + u.getLastName()%></p>
                     <p><b>Email:</b> <%= u.getEmail()%></p>
                     <p><b>Phone:</b> <%= u.getPhoneNumber()%></p>
                     <p><b>Address:</b> <%= u.getFullAddress()%></p>
-                    <form method="POST" action="Logout">
-                        <button class="btn btn-outline-secondary btn-md" type="submit">LOGOUT</button>
-                        <input type="hidden" name="access" value="valid">
-                    </form>
+                    -->
                 </div>
-                <div class="col-md-7 col-lg-7">
+                <div class="col-md-5 col-lg-5">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h2>My Account</h2>
+                            <p>Welcome, <%= u.getUsername()%>!</p>
+                        </div>
+                        <div class="col">
+                            <form method="POST" action="Logout" style="float: right;">
+                                <button class="btn btn-outline-secondary btn-md" type="submit">LOGOUT</button>
+                                <input type="hidden" name="access" value="valid">
+                            </form>
+                        </div>
+                    </div> 
+                    <br><br>
                     <% if (u.getRole().equalsIgnoreCase("admin")) {%>
                     <div class="mb-3">
                         <h5>Bean&Bean Transaction History</h5>
@@ -70,6 +181,7 @@
                         </form>
                     </div>
                     <%}%>
+                    <br>
                     <div class="mb-3">
                         <h5>Order History</h5>
                         <hr>

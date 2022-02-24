@@ -33,41 +33,45 @@
         <!-- HEADER -->
         <%@include file="header.jsp" %>
 
-        <div class="container">     
-            <div class="modal-dialog">
+        <!--        <div class="container">     
+                    <div class="modal-dialog">
+        
+                        <div class="modal-content">-->
+        <div>
+            <form method="POST" action="Login" class="divider-color softEdge" style="
+                  width: 500px;
+                  margin: 20px 20px;">
+<!--                <div class="container softEdge">-->
+                    <div class="modal-header text-center">
+                        <h1 class="modal-title primary-text fw-bold ">Login</h1>
+                    </div>
+                    <div class="modal-body">
+                        <label class="fs-5 form-label primary-text">Username</label>
+                        <input type="text" name="uname" value="${input.username}" class="form-control primary-text" required>
+                        <span style="color:red;"><i>${errors.username}</i></span>
+                        <br>
+                        <label class="fs-5 form-label primary-text">Password</label>
+                        <input type="password" name="psw" value="${input.password}" class="form-control primary-text" required>
+                        <span style="color:red;"><i>${errors.password}</i></span>
+                        <br>
 
-                <div class="modal-content">
-                    <form method="POST" action="Login" class="divider-color">
-                        <div class="container softEdge">
-                            <div class="modal-header text-center">
-                                <h1 class="modal-title primary-text fw-bold ">Login</h1>
-                            </div>
-                            <div class="modal-body">
-                                <label class="fs-5 form-label primary-text">Username</label>
-                                <input type="text" name="uname" value="${input.username}" class="form-control primary-text" required>
-                                <span style="color:red;"><i>${errors.username}</i></span>
-                                <br>
-                                <label class="fs-5 form-label primary-text">Password</label>
-                                <input type="password" name="psw" value="${input.password}" class="form-control primary-text" required>
-                                <span style="color:red;"><i>${errors.password}</i></span>
-                                <br>
-
-                            </div>  
-                            <div class="modal-body text-center">
-                                <div>
-                                    <button type="submit" class="btn btn-secondary w-100">Login</button>
-                                </div>
-                                <br>
-                                <div>
-                                    Need an account? <a href="register.jsp" style="text-decoration: underline;">Sign up</a>
-                                </div>
-                            </div>
+                    </div>  
+                    <div class="modal-body text-center">
+                        <div>
+                            <button type="submit" class="btn btn-secondary w-100">Login</button>
                         </div>
-                    </form>
+                        <br>
+                        <div>
+                            Need an account? <a href="register.jsp" style="text-decoration: underline;">Sign up</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
+            </form>
         </div>
+        <!--                </div>
+                    </div>
+        
+                </div>-->
 
         <!-- Footer -->
         <%@include file="footer.jsp" %>
