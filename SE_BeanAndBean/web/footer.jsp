@@ -67,7 +67,7 @@
     <!-- Footer Links -->
     <!-- Copyright -->
     <div class="footer-copyright py-3 text-center">
-        Copyright &copy; 2021 Bean&Bean<br>Powered by Gaite, Lumacad, Mi&#241;ano, Reodica
+        Copyright &copy; 2021 Bean&Bean<br>Powered by TechNion
     </div>
     <!-- Copyright -->
 </footer>
@@ -81,4 +81,9 @@
         $('#about-us-dropdown-menu').removeClass('show')
     });
 
+    $('#shop-dropdown').hover(function () {
+        $('#shop-dropdown-menu').addClass('show')
+    }, function () {
+        $('#shop-dropdown-menu').removeClass('show')
+    });
 </script>

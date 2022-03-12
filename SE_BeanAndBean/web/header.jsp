@@ -17,9 +17,21 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="home.jsp">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="shop.jsp">Shop</a>
+                    <li id="shop-dropdown" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="shop.jsp" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul id="shop-dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="shop.jsp#premiumc">Premium Coffee</a></li>
+                            <li><a class="dropdown-item" href="shop.jsp#hots">Hot Series</a></li>
+                            <li><a class="dropdown-item" href="shop.jsp#colds">Cold Series</a></li>
+                            <li><a class="dropdown-item" href="shop.jsp#csyrup">Coffee Syrups</a></li>
+                            <li><a class="dropdown-item" href="shop.jsp#csauces">Coffee Sauces</a></li>
+                        </ul>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="shop.jsp">Shop</a>
+                    </li> -->
                     <li id="about-us-dropdown" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="aboutus.jsp" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
                             About Us

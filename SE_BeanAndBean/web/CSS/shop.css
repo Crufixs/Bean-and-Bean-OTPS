@@ -15,6 +15,18 @@ a:hover {
     background-color: #C19A6B;
 }
 
-#about-us-dropdown-menu a:hover {
+#shop-dropdown-menu a:hover {
     background-color: #F0E7DE;
+}
+
+.nav-link {
+    color: #212529;
+}
+
+.nav-tabs .nav-link.active {
+    color: #c19a6b;
+}
+
+.nav-link:hover {
+    color: #c19a6b;
 }

@@ -16,16 +16,16 @@
         </style>
     </head>
     <body class="jumbotron vertical-center" style="background-color: #F0E7DE">
-        <div class="container align-middle row" style="margin:auto;">
+        <div class="container align-middle" style="margin:auto;">
             <div class="col text-center flex-row-reverse">
                 <img src="Images/404img.png">
             </div>
-            <div class="col text-center" style="display:flex;align-items:center;">
+            <div class="col text-center">
                 <div class="d-flex flex-column">
-                    <div class="p-2">
+                    <div class="p-2" style="margin-top: 10px;">
                         <h1 class="fw-bold">Oops, I think you went the wrong way.</h1> 
                     </div>
-                    <div class="p-2">
+                    <div>
                         <p>Click here to go back home</p>
                     </div>
                     <div class="p-2">

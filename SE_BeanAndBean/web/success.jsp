@@ -60,7 +60,7 @@
                         </div>
                     </div>  
                     <div class="row" style="text-align: center; margin-bottom: 12px;">
-                        <div class="col overflow-auto" id="list-group-border">
+                        <div class="col overflow-auto" id="list-group-border" style="padding-right: 0px; padding-left: 0px; margin-right: 20px;">
                             <!-- <i>No pending orders.</i> -->
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -121,7 +121,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col overflow-auto" id="list-group-border">
+                        <div class="col overflow-auto" id="list-group-border" style="padding-right: 0px; padding-left: 0px; margin-right: 20px;">
                             <i>No processing orders.</i>
                             <!-- <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -135,7 +135,7 @@
                                  </li>
                             </ul> -->
                         </div>
-                        <div class="col overflow-auto" id="list-group-border">
+                        <div class="col overflow-auto" id="list-group-border" style="padding-right: 0px; padding-left: 0px; margin-right: 20px;">
                             <!-- <i>No completed orders.</i> -->
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">

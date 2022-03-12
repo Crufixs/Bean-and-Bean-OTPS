@@ -24,14 +24,11 @@
 
         <div class="container">
             <main>
-                <!-- <div class="py-4 text-center">
-                    
-                </div> -->
                 <div class="row g-5">
-                    <div class="col-md-5 col-lg-5 order-md-last">
+                    <div class="col-md-6 col-lg-6 order-md-last">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.8583146067535!2d121.06152661415166!3d14.55009378221479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c88eeab5cd07%3A0x66ba5671ce7dcf72!2s11%20J.P.%20Rizal%20Ext%2C%20Makati%2C%201217%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1645670681559!5m2!1sen!2sph" width="550" height="450" style="border:0; margin-top: 50px;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
-                    <div class="col-md-7 col-lg-7" style="margin-top: 75px;">
+                    <div class="col-md-6 col-lg-6" style="margin-top: 75px;">
                         <h2>GET IN TOUCH!</h2>
                         <hr class="my-4">
                         <form action="shop.jsp">

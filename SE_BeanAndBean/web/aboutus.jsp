@@ -31,7 +31,7 @@
             <div style="margin-top: 10px;">
                 <h1 class="mb-3 h2" style="color:white;">BEAN & BEAN</h1>
                 <div style="border-color:white;border-top-width:1px;margin-left: auto;margin-right: auto;margin-top:10px;margin-bottom:10px;width:100%;max-width:170px;"><hr style="height: 3px;"></div>
-                <p style="color:white;">COFFEE BEANS</p>
+                <p style="color:white;">From our local farmers to your cup!</p>
             </div>
         </div>
         <!-- Jumbotron -->
@@ -60,14 +60,13 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            How can I store these cold brewed coffee?
+                            What coffee beans do you use? 
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <ul>
-                                <li>Two weeks for original cold brew and original cold brew concentrate.</li>
-                                <li>Four days for flavored cold brew coffee because it contains milk.</li>
+                                <li>We use Arabica x Robusta from Sultan Kudarat and Bukidnon.</li>
                             </ul>
                         </div>
                     </div>
@@ -76,13 +75,13 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            What coffee beans do you use?
+                            What milk do you use?
                         </button>
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <ul>
-                                <li>We use Robusta from Kalinga, Arabica Benguet from Buguiasm, Bakun, Mankayan, and parts of Kabayan same as flavored coffees.</li>
+                                <li>We use full cream milk.</li>
                             </ul>
                         </div>
                     </div>
@@ -91,93 +90,31 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            What type of bottle do you use?
+                            Where are you located?
                         </button>
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body"><ul>
-                                <li>We use 350mL GLASS BOTTLES so it is reusable and eco-friendly.</li>
+                                <li>We are homebased, DTI-registered business and located in Comembo, Makati.</li>
                             </ul></div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFour">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                            Where are you located?
-                        </button>
-                    </h2>
-                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <ul>
-                                <li>We are homebased, DTI-registered business and located in Comembo, Makati City.</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingFive">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                            What is the difference between cold brew and iced coffee?
+                            How much is the shipping fee?
                         </button>
                     </h2>
                     <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <ul>
-                                <li>Cold brew is brewed by soaking coffee beans cold or room temperature water at 12 hours minimum to extract its sugars, oils and caffeine.</li>
-                                <li>Iced coffee uses hot water to extract flavor (resulting in a hot cup of coffee) which is then poured over ice.</li>
+                                <li>For the coffee sauces and syrups, we ship it through Shopee, Grab Express, Lalamove or Toktok.</li>
+                                <li>For our cold series, we ship it via Grab Express, Mr. Speedy, Lalamove or Toktok.<br><br>Note: shipping fee will be shouldered by the buyer.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSix">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                            What is your cold brew brewing time?
-                        </button>
-                    </h2>
-                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <ul>
-                                <li>16-18 hours.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSeven">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
-                            Can I request level of sugar?
-                        </button>
-                    </h2>
-                    <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <ul>
-                                <li>Yes, it is up to you. You can have it with no sugar (0%), 25%, 50%, 75%, 100%.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingEight">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
-                            How much is shipping fee?
-                        </button>
-                    </h2>
-                    <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <ul>
-                                <li>For cold brewed coffee, we ship via Lalamove, Angkas, GrabExpress or Mr. Speedy.</li>
-                                <li>For the coffee essentials, premium coffee, we also offer same delivery couriers stated above and for cheaper rates but 1-3 days within Metro Manila, we can ship via J&T Express.<br><br>Note: shipping fee will be shouldered by the buyer.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
         <!-- Gallery -->
@@ -191,7 +128,7 @@
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         <div class="col">
                             <div class="card shadow-sm">
-                                <img src="Images/bg.jpg">
+                                <img src="Images/g1.jpg">
                             </div>
                         </div>
                         <div class="col">
@@ -228,15 +165,15 @@
             </div>
         </div>
         <br>
-        <div>
-            <h2 id="reviews">Reviews</h2>
-            <hr>
-            <div class="row justify-content-between align-middle align-items-center">
+        <div style="margin-bottom: 50px;">
+            <h2 id="reviews" style="margin-top: 10px;">Reviews</h2>
+            <hr style="margin-top: 0px; margin-bottom: 20px;">
+            <div class="row justify-content-between align-middle align-items-center" style="margin-bottom: 20px;">
                 <div class="col-6">
-                    <h4>Comments : <%=totalComments%></h4>
+                    <h4>Comments: <%=totalComments%></h4>
                 </div>
                 <div style="white-space: nowrap;" class="col-6 text-end">
-                    <h4 style="display: inline-block;">Sort by:&nbsp;</h4>
+                    <h5 style="display: inline-block;">Sort by:&nbsp;</h5>
                     <select style="display: inline-block;" id="ddlModel">
                         <option value="AllComments">Most Relevant</option>
                         <option value="Iphone">Ratings</option>
@@ -244,7 +181,6 @@
                     </select>
                 </div>
             </div>
-            <br>
             <ul class="" style="align-content: center; padding: 0; margin: 0">
                 <%for (int y = 1; y <= 5; y++) {%>
                 <li class="row w-100 justify-content-between" style="background-color: white; margin: 0; margin-bottom: 2vh; padding: 2vh;">
