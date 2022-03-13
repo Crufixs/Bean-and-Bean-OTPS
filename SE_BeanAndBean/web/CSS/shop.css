@@ -24,7 +24,8 @@ a:hover {
 }
 
 .nav-tabs .nav-link.active {
-    color: #c19a6b;
+    color: #fff;
+    background-color: #c19a6b;
 }
 
 .nav-link:hover {

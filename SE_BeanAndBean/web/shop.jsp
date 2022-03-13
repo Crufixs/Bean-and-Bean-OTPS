@@ -62,7 +62,7 @@
                 style="background-image: url('Images/bg.jpg'); height: 200px;"
                 >
                 <br>
-                <h1 class="mb-3 h2">All Products</h1>
+                <h2 class="mb-3" style="color: white;">Bean&Bean Products</h2>
             </div>
             <div class="row">
                 <div class="col-3">
