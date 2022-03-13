@@ -177,9 +177,28 @@
                     <select style="display: inline-block;" id="ddlModel">
                         <option value="AllComments">Most Relevant</option>
                         <option value="Iphone">Ratings</option>
-                        <option value="Samsung">Date</option>
+                        <option value="Samsung">Most Recent</option>
+                    </select>
+                    <select style="display: inline-block;" id="ddlModel">
+                        <option value="AllComments">All</option>
+                        <option value="Iphone">10</option>
+                        <option value="Samsung">25</option>
+                        <option value="Samsung">50</option>
+                        <option value="Samsung">100</option>
                     </select>
                 </div>
+            </div>
+            <div class="row justify-content-between align-middle align-items-center" style="margin-top: 5vh; margin-bottom: 5vh;">
+                <form class=" row align-middle align-items-center" style="margin: 0;">
+                    <textarea id="" name="" rows="4" cols="50" maxlength="500" style="border-radius: 20px; width: 80%; margin-left: 10%;" placeholder="Say something about Bean&Bean"></textarea><br>
+                    <div style="align-items: center; text-align: center;">
+                        <div class="slidecontainer" style="margin-top: 1vh; width: 100%;">
+                            <input type="range" min="1" max="5" value="3" class="slider" id="myRange" style="width: 25%;">
+                        </div>
+                        <p>My Rating: <span id="demo"></span> <span> Star(s)</span></p>
+                    </div>
+                    <input class="align-middle w-50" style="display:inline-block; margin-left: 25%; margin-top: 1vh; border-radius: 20px; height: 6vh; background-color: #FFEB3B; font-weight: bold; " type="submit" value="POST COMMENT">
+                </form>
             </div>
             <ul class="" style="align-content: center; padding: 0; margin: 0">
                 <%for (int y = 1; y <= 5; y++) {%>
@@ -214,5 +233,14 @@
     <!-- Footer -->
     <%@include file="footer.jsp" %>
     <!-- Footer -->
+    <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function () {
+            output.innerHTML = this.value;
+        }
+    </script>
 </body>
 </html>
