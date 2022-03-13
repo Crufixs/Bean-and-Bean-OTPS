@@ -75,83 +75,84 @@
                         >
                         <a
                             class="nav-link active"
-                            id="v-tabs-home-tab"
+                            id="v-tabs-ap-tab"
                             data-mdb-toggle="tab"
-                            href="#v-tabs-home"
+                            href="#v-tabs-ap"
                             role="tab"
-                            aria-controls="v-tabs-home"
+                            aria-controls="v-tabs-ap"
                             aria-selected="true"
                             >All Products</a
                         >
                         <a
                             class="nav-link"
-                            id="v-tabs-profile-tab"
+                            id="v-tabs-pc-tab"
                             data-mdb-toggle="tab"
-                            href="#v-tabs-profile"
+                            href="#v-tabs-pc"
                             role="tab"
-                            aria-controls="v-tabs-profile"
+                            aria-controls="v-tabs-pc"
                             aria-selected="false"
                             >Premium Coffee</a
                         >
                         <a
                             class="nav-link"
-                            id="v-tabs-messages-tab"
+                            id="v-tabs-hs-tab"
                             data-mdb-toggle="tab"
-                            href="#v-tabs-messages"
+                            href="#v-tabs-hs"
                             role="tab"
-                            aria-controls="v-tabs-messages"
+                            aria-controls="v-tabs-hs"
                             aria-selected="false"
                             >Hot Series</a
                         >
                         <a
                             class="nav-link"
-                            id="v-tabs-messages-tab"
+                            id="v-tabs-cs-tab"
                             data-mdb-toggle="tab"
-                            href="#v-tabs-messages"
+                            href="#v-tabs-cs"
                             role="tab"
-                            aria-controls="v-tabs-messages"
+                            aria-controls="v-tabs-cs"
                             aria-selected="false"
                             >Cold Series</a
                         >
                         <a
                             class="nav-link"
-                            id="v-tabs-messages-tab"
+                            id="v-tabs-sy-tab"
                             data-mdb-toggle="tab"
-                            href="#v-tabs-messages"
+                            href="#v-tabs-sy"
                             role="tab"
-                            aria-controls="v-tabs-messages"
+                            aria-controls="v-tabs-sy"
                             aria-selected="false"
                             >Coffee Syrups</a
                         >
                         <a
                             class="nav-link"
-                            id="v-tabs-messages-tab"
+                            id="v-tabs-sa-tab"
                             data-mdb-toggle="tab"
-                            href="#v-tabs-messages"
+                            href="#v-tabs-sa"
                             role="tab"
-                            aria-controls="v-tabs-messages"
+                            aria-controls="v-tabs-sa"
                             aria-selected="false"
                             >Coffee Sauces</a
                         >
                     </div>
                     <!-- Tab navs -->
                 </div>
+
                 <div class="col-9">
                     <!-- Tab content -->
                     <div class="tab-content" id="v-tabs-tabContent">
                         <div
                             class="tab-pane fade show active"
-                            id="v-tabs-home"
+                            id="v-tabs-ap"
                             role="tabpanel"
-                            aria-labelledby="v-tabs-home-tab"
+                            aria-labelledby="v-tabs-ap-tab"
                             >
                             <!-- Premium Coffee Section -->
                             <div>
-                                <h5 id="pc">Premium Coffee (125g)</h5>
+                                <h5 id="pc">Premium Coffee (250g)</h5>
                                 <hr>
                                 <%                    for (int i = 0; i < products.size();) {
                                 %>
-                                <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
+                                <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center; margin-bottom: 10px;">
                                     <%
                                         int counter = 0;
                                         while (counter < 3) {
@@ -169,7 +170,7 @@
                                         <div class="card mb-3">
                                             <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
                                             <div class="card-body">
-                                                <h5 class="card-title"><%=p.getName()%></h5>
+                                                <h6 class="card-title"><%=p.getName()%></h6>
                                                 <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                                 <form method="POST" action="cart">
                                                     <input type="hidden" name="id" value="<%=p.getId()%>"/>
@@ -183,7 +184,9 @@
                                                             out.print("error" + p.getId());
                                                         }
                                                             %>">
-                                                        Add to Cart
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg> Add to Cart
                                                     </button>
                                                     <div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
@@ -264,7 +267,7 @@
                                 <!-- end of premium coffee -->
                                 <!-- cold brew, 1st row cold brew -->
                                 <div>
-                                    <h5 style="margin-top: 20px;" id="cb">Cold Brew (350ml)</h5>
+                                    <h5 style="margin-top: 20px;" id="hs">Hot Series (8 oz.)</h5>
                                     <hr>
                                     <!-- 1st row cold brew -->
                                     <%
@@ -280,7 +283,7 @@
                                                 }
                                                 Product p = products.get(i);
                                                 i++;
-                                                if (!p.getType().equals("cb")) {
+                                                if (!p.getType().equals("hs")) {
                                                     continue;
                                                 }
                                                 counter++;
@@ -289,11 +292,13 @@
                                             <div class="card mb-3">
                                                 <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
                                                 <div class="card-body">
-                                                    <h5 class="card-title"><%=p.getName()%></h5>
+                                                    <h6 class="card-title"><%=p.getName()%></h6>
                                                     <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                                     <form method="POST" action="cart">
                                                         <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                                        <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary">Add to Cart</button>
+                                                        <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg> Add to Cart</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -307,24 +312,25 @@
                                     %>
                                     <!-- end of cold brew section -->
                                     <!-- iced coffee section -->
+                                    <br>
                                     <div>
-                                        <h5 style="margin-top: 20px;" id="ic">Iced Coffee (500ml)</h5>
+                                        <h5 style="margin-top: 20px;" id="cs">Cold Series (12 oz.)</h5>
                                         <hr>
                                         <!-- 1st row iced coffee -->
                                         <%
                                             for (int i = 0; i < products.size();) {
                                         %>
-                                        <div class="row row-cols-1 row-cols-md-4 g-4" style="text-align: center;">
+                                        <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
                                             <!-- orig -->
                                             <%
                                                 int counter = 0;
-                                                while (counter < 4) {
+                                                while (counter < 3) {
                                                     if (i >= products.size()) {
                                                         break;
                                                     }
                                                     Product p = products.get(i);
                                                     i++;
-                                                    if (!p.getType().equals("ic")) {
+                                                    if (!p.getType().equals("cs")) {
                                                         continue;
                                                     }
                                                     counter++;
@@ -333,16 +339,17 @@
                                                 <div class="card mb-3">
                                                     <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
                                                     <div class="card-body">
-                                                        <h5 class="card-title"><%=p.getName()%></h5>
+                                                        <h6 class="card-title"><%=p.getName()%></h6>
                                                         <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                                         <form method="POST" action="cart">
                                                             <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                                            <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary">Add to Cart</button>
+                                                            <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg> Add to Cart</button>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- end of mocha -->
                                             <%
                                                 }
                                             %>           
@@ -355,57 +362,109 @@
                                     <!-- end of iced coffee -->
                                     <!-- essentials -->
                                     <div>
-                                        <h5 style="margin-top: 20px;" id="ce">Coffee Essentials</h5>
+                                        <h5 style="margin-top: 20px;" id="sy">Coffee Syrups (100 ml)</h5>
                                         <hr>
-                                        <div class="container">
-                                            <!-- group -->
+                                        <!-- 1st row iced coffee -->
+                                        <%
+                                            for (int i = 0; i < products.size();) {
+                                        %>
+                                        <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
+                                            <!-- orig -->
                                             <%
-                                                for (int i = 0; i < products.size();) {
-                                            %>
-                                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                                                <%
-                                                    int counter = 0;
-                                                    while (counter < 4) {
-                                                        if (i >= products.size()) {
-                                                            break;
-                                                        }
-                                                        Product p = products.get(i);
-                                                        i++;
-                                                        if (!p.getType().equals("ce")) {
-                                                            continue;
-                                                        }
-                                                        counter++;
-                                                %> 
-                                                <div class="col"><div class="card border-dark mb-3" style="max-width: 18rem; text-align: center;">
-                                                        <div class="card-header"><b><%=p.getName()%></b></div>
+                                                int counter = 0;
+                                                while (counter < 3) {
+                                                    if (i >= products.size()) {
+                                                        break;
+                                                    }
+                                                    Product p = products.get(i);
+                                                    i++;
+                                                    if (!p.getType().equals("sy")) {
+                                                        continue;
+                                                    }
+                                                    counter++;
+                                            %>    
+                                            <div class="col">
+                                                <div class="card mb-3">
+                                                    <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title"><%=p.getName()%></h6>
                                                         <p class="card-text">&#8369;<%=p.getPrice()%></p>
-                                                        <form method="POST" action="cart" class="d-inline-block">
+                                                        <form method="POST" action="cart">
                                                             <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                                            <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary">Add to Cart</button>
+                                                            <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg> Add to Cart</button>
                                                         </form>
-                                                    </div></div>
-                                                    <%
-                                                        }
-                                                    %>           
+                                                    </div>
+                                                </div>
                                             </div>
                                             <%
                                                 }
-                                            %>
-                                            <!-- end of group  -->
+                                            %>           
+                                        </div>
+                                        <%
+                                            }
+                                        %>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <h5 style="margin-top: 20px;" id="sa">Coffee Sauces (100 ml)</h5>
+                            <hr>
+                            <!-- 1st row iced coffee -->
+                            <%
+                                for (int i = 0; i < products.size();) {
+                            %>
+                            <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
+                                <!-- orig -->
+                                <%
+                                    int counter = 0;
+                                    while (counter < 3) {
+                                        if (i >= products.size()) {
+                                            break;
+                                        }
+                                        Product p = products.get(i);
+                                        i++;
+                                        if (!p.getType().equals("sa")) {
+                                            continue;
+                                        }
+                                        counter++;
+                                %>    
+                                <div class="col">
+                                    <div class="card mb-3">
+                                        <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
+                                        <div class="card-body">
+                                            <h6 class="card-title"><%=p.getName()%></h6>
+                                            <p class="card-text">&#8369;<%=p.getPrice()%></p>
+                                            <form method="POST" action="cart">
+                                                <input type="hidden" name="id" value="<%=p.getId()%>"/>
+                                                <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg> Add to Cart</button>
+                                            </form>
                                         </div>
                                     </div>
+                                </div>
+                                <%
+                                    }
+                                %>           
+                            </div>
+                            <%
+                                }
+                            %>
+                            <br><br>
+                                    </div>
                                     <!-- end of essentials -->
-                                    <br><br>
                                 </div>
                             </div>
                         </div>
+
                         <div
                             class="tab-pane fade"
-                            id="v-tabs-profile"
+                            id="v-tabs-pc"
                             role="tabpanel"
-                            aria-labelledby="v-tabs-profile-tab"
+                            aria-labelledby="v-tabs-pc-tab"
                             >
-                            <h5 id="pc">Premium Coffee (125g)</h5>
+                            <h5 id="pc">Premium Coffee (250g)</h5>
                             <hr>
                             <%                    for (int i = 0; i < products.size();) {
                             %>
@@ -441,7 +500,9 @@
                                                         out.print("error" + p.getId());
                                                     }
                                                         %>">
-                                                    Add to Cart
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg> Add to Cart
                                                 </button>
                                                 <div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
@@ -519,15 +580,16 @@
                             <%
                                 }
                             %>
+                            <br>
                         </div>
                         <div
                             class="tab-pane fade"
-                            id="v-tabs-messages"
+                            id="v-tabs-hs"
                             role="tabpanel"
-                            aria-labelledby="v-tabs-messages-tab"
+                            aria-labelledby="v-tabs-hs-tab"
                             >
                             <div>
-                                <h5 style="margin-top: 20px;" id="cb">Hot Series (12 oz)</h5>
+                                <h5 id="hs">Hot Series (8 oz.)</h5>
                                 <hr>
                                 <!-- 1st row cold brew -->
                                 <%
@@ -543,7 +605,7 @@
                                             }
                                             Product p = products.get(i);
                                             i++;
-                                            if (!p.getType().equals("cb")) {
+                                            if (!p.getType().equals("hs")) {
                                                 continue;
                                             }
                                             counter++;
@@ -552,11 +614,13 @@
                                         <div class="card mb-3">
                                             <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
                                             <div class="card-body">
-                                                <h5 class="card-title"><%=p.getName()%></h5>
+                                                <h6 class="card-title"><%=p.getName()%></h6>
                                                 <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                                 <form method="POST" action="cart">
                                                     <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                                    <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary">Add to Cart</button>
+                                                    <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg> Add to Cart</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -568,63 +632,161 @@
                                 <%
                                     }
                                 %>
-                                <!-- end of cold brew section -->
-                                <br><br>
                             </div>
+                            <br><br>
                         </div>
                         <div
                             class="tab-pane fade"
-                            id="v-tabs-profile"
+                            id="v-tabs-cs"
                             role="tabpanel"
-                            aria-labelledby="v-tabs-profile-tab"
+                            aria-labelledby="v-tabs-cs-tab"
                             >
-                            <!-- iced coffee section -->
-                            <div>
-                                <h5 style="margin-top: 20px;" id="ic">Iced Coffee (500ml)</h5>
-                                <hr>
-                                <!-- 1st row iced coffee -->
+                            <h5 id="cs">Cold Series (12 oz.)</h5>
+                            <hr>
+                            <!-- 1st row iced coffee -->
+                            <%
+                                for (int i = 0; i < products.size();) {
+                            %>
+                            <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
+                                <!-- orig -->
                                 <%
-                                    for (int i = 0; i < products.size();) {
-                                %>
-                                <div class="row row-cols-1 row-cols-md-4 g-4" style="text-align: center;">
-                                    <!-- orig -->
-                                    <%
-                                        int counter = 0;
-                                        while (counter < 4) {
-                                            if (i >= products.size()) {
-                                                break;
-                                            }
-                                            Product p = products.get(i);
-                                            i++;
-                                            if (!p.getType().equals("ic")) {
-                                                continue;
-                                            }
-                                            counter++;
-                                    %>    
-                                    <div class="col">
-                                        <div class="card mb-3">
-                                            <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><%=p.getName()%></h5>
-                                                <p class="card-text">&#8369;<%=p.getPrice()%></p>
-                                                <form method="POST" action="cart">
-                                                    <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                                    <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary">Add to Cart</button>
-                                                </form>
-                                            </div>
+                                    int counter = 0;
+                                    while (counter < 3) {
+                                        if (i >= products.size()) {
+                                            break;
+                                        }
+                                        Product p = products.get(i);
+                                        i++;
+                                        if (!p.getType().equals("cs")) {
+                                            continue;
+                                        }
+                                        counter++;
+                                %>    
+                                <div class="col">
+                                    <div class="card mb-3">
+                                        <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
+                                        <div class="card-body">
+                                            <h6 class="card-title"><%=p.getName()%></h6>
+                                            <p class="card-text">&#8369;<%=p.getPrice()%></p>
+                                            <form method="POST" action="cart">
+                                                <input type="hidden" name="id" value="<%=p.getId()%>"/>
+                                                <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg> Add to Cart</button>
+                                            </form>
                                         </div>
                                     </div>
-                                    <!-- end of mocha -->
-                                    <%
-                                        }
-                                    %>           
                                 </div>
                                 <%
                                     }
-                                %>
+                                %>           
                             </div>
-                            <br>
-                            <!-- end of iced coffee -->
+                            <%
+                                }
+                            %>
+                            <br><br>
+                        </div>
+                        <div
+                            class="tab-pane fade"
+                            id="v-tabs-sy"
+                            role="tabpanel"
+                            aria-labelledby="v-tabs-sy-tab"
+                            >
+                            <h5 id="sy">Coffee Syrups (100 ml)</h5>
+                            <hr>
+                            <!-- 1st row iced coffee -->
+                            <%
+                                for (int i = 0; i < products.size();) {
+                            %>
+                            <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
+                                <!-- orig -->
+                                <%
+                                    int counter = 0;
+                                    while (counter < 3) {
+                                        if (i >= products.size()) {
+                                            break;
+                                        }
+                                        Product p = products.get(i);
+                                        i++;
+                                        if (!p.getType().equals("sy")) {
+                                            continue;
+                                        }
+                                        counter++;
+                                %>    
+                                <div class="col">
+                                    <div class="card mb-3">
+                                        <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
+                                        <div class="card-body">
+                                            <h6 class="card-title"><%=p.getName()%></h6>
+                                            <p class="card-text">&#8369;<%=p.getPrice()%></p>
+                                            <form method="POST" action="cart">
+                                                <input type="hidden" name="id" value="<%=p.getId()%>"/>
+                                                <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg> Add to Cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%
+                                    }
+                                %>           
+                            </div>
+                            <%
+                                }
+                            %>
+                            <br><br>
+                        </div>
+                        <div
+                            class="tab-pane fade"
+                            id="v-tabs-sa"
+                            role="tabpanel"
+                            aria-labelledby="v-tabs-sa-tab"
+                            >
+                            <h5 style="margin-top: 20px;" id="sa">Coffee Sauces (100 ml)</h5>
+                            <hr>
+                            <!-- 1st row iced coffee -->
+                            <%
+                                for (int i = 0; i < products.size();) {
+                            %>
+                            <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
+                                <!-- orig -->
+                                <%
+                                    int counter = 0;
+                                    while (counter < 3) {
+                                        if (i >= products.size()) {
+                                            break;
+                                        }
+                                        Product p = products.get(i);
+                                        i++;
+                                        if (!p.getType().equals("sa")) {
+                                            continue;
+                                        }
+                                        counter++;
+                                %>    
+                                <div class="col">
+                                    <div class="card mb-3">
+                                        <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
+                                        <div class="card-body">
+                                            <h6 class="card-title"><%=p.getName()%></h6>
+                                            <p class="card-text">&#8369;<%=p.getPrice()%></p>
+                                            <form method="POST" action="cart">
+                                                <input type="hidden" name="id" value="<%=p.getId()%>"/>
+                                                <button type="submit" name="action" value="add" class="w-100 btn btn-outline-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg> Add to Cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%
+                                    }
+                                %>           
+                            </div>
+                            <%
+                                }
+                            %>
+                            <br><br>
                         </div>
                     </div>
                     <!-- Tab content -->

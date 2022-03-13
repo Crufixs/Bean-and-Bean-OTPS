@@ -22,11 +22,11 @@
                             Shop
                         </a>
                         <ul id="shop-dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="shop.jsp#premiumc">Premium Coffee</a></li>
-                            <li><a class="dropdown-item" href="shop.jsp#hots">Hot Series</a></li>
-                            <li><a class="dropdown-item" href="shop.jsp#colds">Cold Series</a></li>
-                            <li><a class="dropdown-item" href="shop.jsp#csyrup">Coffee Syrups</a></li>
-                            <li><a class="dropdown-item" href="shop.jsp#csauces">Coffee Sauces</a></li>
+                            <li><a class="dropdown-item" href="shop.jsp#pc">Premium Coffee</a></li>
+                            <li><a class="dropdown-item" href="shop.jsp#hs">Hot Series</a></li>
+                            <li><a class="dropdown-item" href="shop.jsp#cs">Cold Series</a></li>
+                            <li><a class="dropdown-item" href="shop.jsp#sy">Coffee Syrups</a></li>
+                            <li><a class="dropdown-item" href="shop.jsp#sa">Coffee Sauces</a></li>
                         </ul>
                     </li>
                     <!-- <li class="nav-item">
