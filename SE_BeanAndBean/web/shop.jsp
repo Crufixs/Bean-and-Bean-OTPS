@@ -19,7 +19,6 @@
             Cart c = (Cart) session.getAttribute("cart");
             User u = (User) session.getAttribute("user");
             if (u == null) {
-                System.out.print("ANG ASIM MO!!!!!!!!!!!!!!!!!!!");
 //                response.sendRedirect("home.jsp");
 //                return;
             }

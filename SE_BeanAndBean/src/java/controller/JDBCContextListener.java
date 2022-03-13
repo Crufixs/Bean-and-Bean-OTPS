@@ -46,8 +46,10 @@ public class JDBCContextListener implements ServletContextListener{
             context.setAttribute("products", products);
             
 //            User u = new User();
+
             Cart.setCon(con);
             Cart.setProductList(pm);
+            
 //            Cart c = new Cart();
             
 //            context.setAttribute("guestUser", u);

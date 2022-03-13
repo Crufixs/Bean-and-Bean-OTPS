@@ -59,6 +59,10 @@
         <servlet-name>PDFServlet</servlet-name>
         <servlet-class>controller.PDFServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReviewServlet</servlet-name>
+        <servlet-class>controller.FeedbackServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/Logout</url-pattern>
@@ -87,6 +91,10 @@
         <servlet-name>PDFServlet</servlet-name>
         <url-pattern>/PDFServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReviewServlet</servlet-name>
+        <url-pattern>/ReviewServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -95,7 +103,7 @@
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>
-<!--    <error-page>
+    <!--    <error-page>
         <exception-type>model.NullValueException</exception-type>
         <location>/noLoginCredentials.jsp</location>
     </error-page>

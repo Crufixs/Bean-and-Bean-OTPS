@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
                 
         HttpSession session = request.getSession();
-        ProductList pm = new ProductList(con);
+//        ProductList pm = new ProductList(con);
         
         //Input from the Log in form
         String inputUsername=request.getParameter("uname");
@@ -109,7 +109,11 @@ public class LoginServlet extends HttpServlet {
                        
                        session.setAttribute("cart", c);
                        session.setAttribute("user", user); //We set the User object we created as a Session Attribute (To print the Username & Role)
-                       response.sendRedirect("success.jsp"); //success page
+                       if(role.equals("guest"))
+                            response.sendRedirect("success.jsp"); //success page
+                       else if(role.equals("admin"))
+                           response.sendRedirect("admin.jsp");
+                       
                        return;
                    }
                    else{

@@ -4,6 +4,7 @@
     Author     : Marylaine Lumacad
 --%>
 
+<%@page import="model.Cart"%>
 <%@page import="model.User"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,10 @@
             response.sendRedirect("login.jsp");
             return;
 
-        } 
+        } else if(!u.getRole().equals("admin")){
+            response.sendRedirect("success.jsp");
+            return;
+        }
 //        else if (u.getCustomerID() == -1) {
 //            response.sendRedirect("login.jsp");
 //            return;
@@ -36,13 +40,36 @@
 </head>
 <body style="background-color: #F0E7DE;">
     <!-- HEADER -->
-    <%@include file="header.jsp" %>
+    <%--<%@include file="header.jsp" %>--%>
+    
+    <header class="flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-3 accent-color">
+        <link rel="stylesheet" type="text/css" href = "CSS/webcss.css"/>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a href="admin.jsp" class="d-flex align-items-center col-md-5 mb-2 mb-md-0 text-dark text-decoration-none">
+                    <img src="Images/Bean.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
+                        <b style="padding: 10px;">Bean&Bean</b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                    <!-- ICONS -->
+                    <div class="text-end">
+                        <a class="btn" href="admin.jsp" style="color: black;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <div class="container">
         <main>
             <!-- account details -->
             <div class="row g-5">
-<!--                <div class="col-md-7 col-lg-7 order-md-last">
+                <div class="col-md-7 col-lg-7 order-md-last">
                     <h2 style="text-align: center;">Orders</h2>
                     <hr>
                     <div class="row align-items-center" style="font-weight: bold; text-align: center; margin-bottom: 12px;">
@@ -60,8 +87,8 @@
                         </div>
                     </div>  
                     <div class="row" style="text-align: center; margin-bottom: 12px;">
-                        <div class="col overflow-auto" id="list-group-border" style="padding-right: 0px; padding-left: 0px; margin-right: 20px;">
-                             <i>No pending orders.</i> 
+                        <div class="col overflow-auto" id="list-group-border">
+                            <!-- <i>No pending orders.</i> -->
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <b>Order 234</b>
@@ -121,9 +148,9 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col overflow-auto" id="list-group-border" style="padding-right: 0px; padding-left: 0px; margin-right: 20px;">
+                        <div class="col overflow-auto" id="list-group-border">
                             <i>No processing orders.</i>
-                             <ul class="list-group">
+                            <!-- <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <b>Order 234</b>
                                     <div>
@@ -133,10 +160,10 @@
                                         </svg></button>
                                     </div>
                                  </li>
-                            </ul> 
+                            </ul> -->
                         </div>
-                        <div class="col overflow-auto" id="list-group-border" style="padding-right: 0px; padding-left: 0px; margin-right: 20px;">
-                             <i>No completed orders.</i> 
+                        <div class="col overflow-auto" id="list-group-border">
+                            <!-- <i>No completed orders.</i> -->
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <b>Order 512</b>
@@ -153,13 +180,13 @@
                             </ul>
                         </div>
                     </div>  
-                     <hr>                    
-                <p><b>Name:</b> <%= u.getFirstName() + " " + u.getLastName()%></p>
+                    <!-- <hr>-->                    
+<!--                <p><b>Name:</b> <%= u.getFirstName() + " " + u.getLastName()%></p>
                     <p><b>Email:</b> <%= u.getEmail()%></p>
                     <p><b>Phone:</b> <%= u.getPhoneNumber()%></p>
                     <p><b>Address:</b> <%= u.getFullAddress()%></p>
-                    
-                </div>-->
+                    -->
+                </div>
                 <div class="col-md-5 col-lg-5">
                     <div class="row align-items-center">
                         <div class="col">
@@ -200,7 +227,7 @@
         </main>
     </div>
     <!-- Footer -->
-    <%@include file="footer.jsp" %>
+    <%--<%@include file="footer.jsp" %>--%>
     <!-- Footer -->
 </body>
 </html>
