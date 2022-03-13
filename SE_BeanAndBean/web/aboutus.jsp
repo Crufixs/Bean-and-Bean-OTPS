@@ -189,11 +189,11 @@
                 </div>
             </div>
             <div class="row justify-content-between align-middle align-items-center" style="margin-top: 5vh; margin-bottom: 5vh;">
-                <form class=" row align-middle align-items-center" style="margin: 0;">
-                    <textarea id="" name="" rows="4" cols="50" maxlength="500" style="border-radius: 20px; width: 80%; margin-left: 10%;" placeholder="Say something about Bean&Bean"></textarea><br>
+                <form method="POST" action="Review" class=" row align-middle align-items-center" style="margin: 0;">
+                    <textarea id="" name="comment" rows="4" cols="50" maxlength="500" style="border-radius: 20px; width: 80%; margin-left: 10%;" placeholder="Say something about Bean&Bean"></textarea><br>
                     <div style="align-items: center; text-align: center;">
                         <div class="slidecontainer" style="margin-top: 1vh; width: 100%;">
-                            <input type="range" min="1" max="5" value="3" class="slider" id="myRange" style="width: 25%;">
+                            <input type="range" name="starRating" min="1" max="5" value="3" class="slider" id="myRange" style="width: 25%;">
                         </div>
                         <p>My Rating: <span id="demo"></span> <span> Star(s)</span></p>
                     </div>

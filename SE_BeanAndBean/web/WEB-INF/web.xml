@@ -93,7 +93,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReviewServlet</servlet-name>
-        <url-pattern>/ReviewServlet</url-pattern>
+        <url-pattern>/Review</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

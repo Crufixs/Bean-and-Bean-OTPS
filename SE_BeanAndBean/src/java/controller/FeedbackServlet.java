@@ -8,6 +8,10 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,13 +42,42 @@ public class FeedbackServlet extends HttpServlet {
         HttpSession session = request.getSession();
         
         User u = (User) session.getAttribute("user");
+        
+        if(u == null){
+            response.sendRedirect("login.jsp");
+            return;
+        }
+        
         String comment = (String) request.getParameter("comment");
         int starRating = Integer.parseInt(request.getParameter("starRating"));
         
-        Feedback.setCon(con);
+        if(starRating < 1)
+            starRating = 1;
+        else if(starRating > 5)
+            starRating = 5;
+        
+//        System.out.println("Comment: " + comment + "\n");
+//        System.out.println("Star Rating: " + starRating);
+
+//        Feedback.setCon(con);
         Feedback feedback = new Feedback(u.getCustomerID(), comment, starRating);
         
+        try{
+            PreparedStatement insert = 
+                    con.prepareStatement("INSERT INTO feedback(customer_id, comment, star_rating) VALUES (?, ?, ?)");
+            
+            insert.setString(1, feedback.getCustomerID()+"");
+            insert.setString(2, feedback.getComment());
+            insert.setString(3, feedback.getStarRating()+"");
+            
+            int affectedRows = insert.executeUpdate();
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FeedbackServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        response.sendRedirect("aboutus.jsp");
         
     }
 

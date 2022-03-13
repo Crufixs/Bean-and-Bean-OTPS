@@ -211,7 +211,7 @@
                         </form>
                     </div>
                     <%}%>
-                    <br>
+<!--                    <br>
                     <div class="mb-3">
                         <h5>Order History</h5>
                         <hr>
@@ -219,7 +219,7 @@
                             <button class="btn btn-outline-secondary btn-md" type="submit">Get Records</button>
                             <input type="hidden" name="type" value="guest">
                         </form>
-                    </div>
+                    </div>-->
                 </div>
                 <!-- end of pdf -->
             </div>

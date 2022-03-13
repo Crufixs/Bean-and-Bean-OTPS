@@ -3,7 +3,7 @@
     Author     : Marylaine Lumacad
 */
 .slider {
-  -webkit-appearance: none;
+  /*-webkit-appearance: none;*/
   width: 100%;
   height: 10px;
   border-radius: 5px;
