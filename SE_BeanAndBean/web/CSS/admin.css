@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03 13, 22, 6:25:06 PM
+    Author     : Marylaine Lumacad
+*/
+
+.accent-color {
+    background-color: #C19A6B;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #F0E7DE;
+}
+
+.dropdown-menu {
+    background-color: #C19A6B;
+}
+
+#about-us-dropdown-menu a:hover {
+    background-color: #F0E7DE;
+}
+
+#list-group-border {
+    max-height: 300px;
+    margin-bottom: 10px;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 0px;
+}
+
+.list-group-item {
+    background-color: burlywood;
+}
