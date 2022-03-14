@@ -64,7 +64,7 @@
                 <br>
                 <h2 class="mb-3" style="color: white;">Bean&Bean Products</h2>
             </div>
-            <div class="row">
+            <div class="row" style="margin-bottom: 50px">
                 <div class="col-3">
                     <!-- Tab navs -->
                     <div
@@ -451,7 +451,6 @@
                             <%
                                 }
                             %>
-                            <br><br>
                                     </div>
                                     <!-- end of essentials -->
                                 </div>
@@ -580,7 +579,6 @@
                             <%
                                 }
                             %>
-                            <br>
                         </div>
                         <div
                             class="tab-pane fade"
@@ -633,7 +631,6 @@
                                     }
                                 %>
                             </div>
-                            <br><br>
                         </div>
                         <div
                             class="tab-pane fade"
@@ -684,7 +681,6 @@
                             <%
                                 }
                             %>
-                            <br><br>
                         </div>
                         <div
                             class="tab-pane fade"
@@ -735,7 +731,6 @@
                             <%
                                 }
                             %>
-                            <br><br>
                         </div>
                         <div
                             class="tab-pane fade"
@@ -743,7 +738,7 @@
                             role="tabpanel"
                             aria-labelledby="v-tabs-sa-tab"
                             >
-                            <h5 style="margin-top: 20px;" id="sa">Coffee Sauces (100 ml)</h5>
+                            <h5 id="sa">Coffee Sauces (100 ml)</h5>
                             <hr>
                             <!-- 1st row iced coffee -->
                             <%
@@ -786,7 +781,6 @@
                             <%
                                 }
                             %>
-                            <br><br>
                         </div>
                     </div>
                     <!-- Tab content -->
