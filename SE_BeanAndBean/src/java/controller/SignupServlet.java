@@ -145,7 +145,7 @@ public class SignupServlet extends HttpServlet {
                }
                
                if(errorPresent){
-                   request.setAttribute("errors", errors);
+                    request.setAttribute("errors", errors);
                     request.setAttribute("input", previousInput);
                     request.getRequestDispatcher("register.jsp").forward(request,response);
                     return;
