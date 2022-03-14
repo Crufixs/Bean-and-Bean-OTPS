@@ -31,3 +31,8 @@ a:hover {
 .nav-link:hover {
     color: #c19a6b;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #c19a6b;
+}

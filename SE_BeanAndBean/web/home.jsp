@@ -40,7 +40,7 @@
     <body style="background-color: #F0E7DE;">
         <!-- HEADER -->
         <%@include file="header.jsp" %>
-        <div class="container-fluid">
+        <main>
             <!-- CAROUSEL -->
             <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -80,7 +80,7 @@
             </div>
             <br><br>
 
-        </div>
+        <!-- </div> -->
         <div class="container marketing">
             <!-- Three columns of text below the carousel -->
             <div class="row" style="text-align: center">
@@ -94,15 +94,15 @@
                 <div class="col-lg-4">
                     <img class="rounded-circle" width="140" height="140" src="Images/brew2.jpg">
                     <div style="border-color:white;border-top-width:1px;margin-left: auto;margin-right: auto;margin-top:10px;margin-bottom:10px;width:100%;max-width:170px;"><hr style="height: 3px;"></div>
-                    <h2>Cold Brew</h2>
+                    <h2>Cold Series</h2>
                     <p>Made from ground coffee with cold water.</p>
                     <p><a class="btn btn-secondary" href="shop.jsp#cb">See More &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
                     <img class="rounded-circle" width="140" height="140" src="Images/g3.jpg">
                     <div style="border-color:white;border-top-width:1px;margin-left: auto;margin-right: auto;margin-top:10px;margin-bottom:10px;width:100%;max-width:170px;"><hr style="height: 3px;"></div>
-                    <h2>Iced Coffee</h2>
-                    <p>Prepared using coffee, ice, dairy or plant-based milk.</p>
+                    <h2>Coffee Syrups</h2>
+                    <p>Flavoring that can be added to hot or cold coffee.</p>
                     <p><a class="btn btn-secondary" href="shop.jsp#ic">See More &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
@@ -148,8 +148,8 @@
                     </div>
                 </div>
             </div>
-        </div><!-- /.container -->
-
+        </div>
+    </main>
         <!-- Footer -->
         <%@include file="footer.jsp" %>
         <!-- Footer -->
