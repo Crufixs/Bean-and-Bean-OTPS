@@ -35,7 +35,7 @@
 
         <div class="container">
             <main>
-                <div class="py-5 text-center">
+                <div class="py-5 text-center" style="margin-top: 100px;">
                     <h2>CHECKOUT FORM</h2>
                     <hr>
                 </div>

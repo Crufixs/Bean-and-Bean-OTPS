@@ -32,12 +32,11 @@
     <body style="background-color: #F0E7DE;">
         <!-- HEADER -->
         <%@include file="header.jsp" %>
-
         <!--        <div class="container">     
                     <div class="modal-dialog">
         
                         <div class="modal-content">-->
-        <div>
+        <div style="margin-top: 100px;">
             <form method="POST" action="Login" class="divider-color softEdge" style="
                   width: 500px;
                   margin: 20px 20px;">
