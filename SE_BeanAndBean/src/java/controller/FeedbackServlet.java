@@ -10,8 +10,10 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -76,6 +78,11 @@ public class FeedbackServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(FeedbackServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        ServletContext context = getServletContext();
+        List<Feedback> feedbacks = (List) context.getAttribute("feedbackList");
+        feedbacks.add(feedback);
+        context.setAttribute("feedbacks", feedbacks);
         
         response.sendRedirect("aboutus.jsp");
         

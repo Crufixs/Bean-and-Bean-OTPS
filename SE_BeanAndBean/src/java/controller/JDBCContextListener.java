@@ -94,14 +94,14 @@ public class JDBCContextListener implements ServletContextListener{
                 comment = rs.getString("comment");
                 starRating = rs.getInt("star_rating");
                 
-                PreparedStatement prep = con.prepareStatement("SELECT * FROM customer WHERE customer_id=?");
-                prep.setString(1, customerID + "");
-
-                ResultSet res = prep.executeQuery();
-                res.next();
-                String username = res.getString("username");
+//                PreparedStatement prep = con.prepareStatement("SELECT * FROM customer WHERE customer_id=?");
+//                prep.setString(1, customerID + "");
+//
+//                ResultSet res = prep.executeQuery();
+//                res.next();
+//                 customerUsername = res.getString("username");
                 
-                Feedback feedback = new Feedback(customerID, comment, starRating, username);
+                Feedback feedback = new Feedback(customerID, comment, starRating);
                 
                 feedbackList.add(feedback);
             }

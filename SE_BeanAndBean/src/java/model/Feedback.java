@@ -26,19 +26,19 @@ public class Feedback {
     private static Connection con;
 //    private static ArrayList<Feedback> feedbackList;
 
-    public Feedback(int customerID, String comment, int starRating, String customerUsername) {
-        this.customerID = customerID;
-        this.comment = comment;
-        this.starRating = starRating;
-        this.customerUsername = customerUsername;
-//        this.customerUsername = getCustomerUsernameFromDB();
-    }
+//    public Feedback(int customerID, String comment, int starRating, String customerUsername) {
+//        this.customerID = customerID;
+//        this.comment = comment;
+//        this.starRating = starRating;
+//        this.customerUsername = customerUsername;
+////        this.customerUsername = getCustomerUsernameFromDB();
+//    }
     
     public Feedback(int customerID, String comment, int starRating) {
         this.customerID = customerID;
         this.comment = comment;
         this.starRating = starRating;
-        this.customerUsername = customerUsername;
+//        this.customerUsername = customerUsername;
         this.customerUsername = getCustomerUsernameFromDB();
     }
     
