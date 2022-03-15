@@ -68,7 +68,7 @@
     <div class="container">
         <main>
             <!-- account details -->
-            <div class="row g-5">
+            <div class="row g-5" style="margin-bottom: 20px;">
                 <div class="col-md-7 col-lg-7 order-md-last">
                     <h2 style="text-align: center;">Orders</h2>
                     <hr>
@@ -223,7 +223,6 @@
                 </div>
                 <!-- end of pdf -->
             </div>
-            <br><br>
         </main>
     </div>
     <!-- Footer -->

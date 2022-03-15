@@ -69,7 +69,7 @@
         <!-- HEADER -->
         <%@include file="header.jsp" %>
 
-        <div class="container">
+        <div class="container" style="margin-top: 100px;">
             <!-- PhotoCover Codes -->
             <div
                 class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white mt-4"
@@ -90,7 +90,7 @@
                 <div class="tab-content" id="v-pills-tabContent" style="margin-bottom: 50px;">
                     <div class="tab-pane fade show active" id="v-pills-ap" role="tabpanel" aria-labelledby="v-pills-ap-tab"><!-- Premium Coffee Section -->
                         <div>
-                            <h6 id="pc">Premium Coffee (250g)</h6>
+                            <h5 id="pc">Premium Coffee (250g)</h5>
                             <hr>
                             <%                                    for (int i = 0; i < products.size();) {
                             %>
@@ -729,7 +729,7 @@
                                 <div class="card mb-3">
                                     <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
                                     <div class="card-body">
-                                        <h5 class="card-title"><%=p.getName()%></h5>
+                                        <h6 class="card-title"><%=p.getName()%></h6>
                                         <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                         <form method="POST" action="cart">
                                             <input type="hidden" name="id" value="<%=p.getId()%>"/>

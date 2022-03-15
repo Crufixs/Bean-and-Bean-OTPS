@@ -2,19 +2,7 @@
 <%@page import="model.User"%>
 <%@page import="model.Cart"%>
 <header>
-    <style>
-    .bg-dark {
-        background-color: #c19a6b!important;
-    }
-    </style>
-    <!-- <style>
-      .banner-image {
-        background-image: url('img/banner-img.jpg');
-        background-size: cover;
-      }
-    </style> -->
-    <!-- Navbar  -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+    <nav class="navbar fixed-top navbar-expand-lg accent-color p-md-3">
         <div class="container">
             <!-- <a class="navbar-brand" href="home.jsp">
             <img src="Images/Bean.png" alt="logo" width="30" height="24" class="d-inline-block align-text-top"><span class="fs-4 text-white">Bean&Bean</span></a> -->
@@ -102,26 +90,4 @@
             </div>
         </div>
     </nav>
-
-    <!-- Banner Image  -->
-    <!--     <div
-          class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center"
-        >
-          <div class="content text-center">
-            <h1 class="text-white">WEB ZONE</h1>
-          </div>
-        </div> -->
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
-        var nav = document.querySelector('nav');
-
-        window.addEventListener('scroll', function () {
-            if (window.pageYOffset > 100) {
-                nav.classList.add('bg-dark', 'shadow');
-            } else {
-                nav.classList.remove('bg-dark', 'shadow');
-            }
-        });
-    </script>
 </header>

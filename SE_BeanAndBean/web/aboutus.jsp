@@ -23,7 +23,7 @@
     <!-- HEADER -->
     <%@include file="header.jsp" %>
 
-    <div class="container">
+    <div class="container" style="margin-top: 100px;">
         <!-- Jumbotron -->
         <div
             class="bg-image p-5 text-center shadow-1-strong rounded mb-4 text-white mt-4"
