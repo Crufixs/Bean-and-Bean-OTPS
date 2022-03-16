@@ -15,7 +15,15 @@ a:hover {
     background-color: #C19A6B;
 }
 
+#about-us-dropdown-menu a:hover {
+    background-color: #F0E7DE;
+}
+
 #shop-dropdown-menu a:hover {
+    background-color: #F0E7DE;
+}
+
+#login-dropdown-menu a:hover {
     background-color: #F0E7DE;
 }
 

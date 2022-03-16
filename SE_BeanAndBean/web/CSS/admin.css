@@ -21,13 +21,14 @@ a:hover {
     color: #F0E7DE;
 }
 
-.dropdown-menu {
+/*.dropdown-menu {
     background-color: #C19A6B;
 }
 
 #about-us-dropdown-menu a:hover {
     background-color: #F0E7DE;
 }
+*/
 
 #list-group-border {
     max-height: 300px;

@@ -17,16 +17,19 @@
                 <h5 class="text-uppercase">PRODUCTS</h5>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="shop.jsp#cp">Coffee Premium</a>
+                        <a href="shop.jsp">Premium Coffee</a>
                     </li>
                     <li>
-                        <a href="shop.jsp#cb">Cold Brew</a>
+                        <a href="shop.jsp">Hot Series</a>
                     </li>
                     <li>
-                        <a href="shop.jsp#ic">Iced Coffee</a>
+                        <a href="shop.jsp">Cold Series</a>
                     </li>
                     <li>
-                        <a href="shop.jsp#ce">Coffee Essentials</a>
+                        <a href="shop.jsp">Coffee Syrups</a>
+                    </li>
+                    <li>
+                        <a href="shop.jsp">Coffee Sauces</a>
                     </li>
                 </ul>
             </div>
@@ -85,5 +88,11 @@
         $('#shop-dropdown-menu').addClass('show')
     }, function () {
         $('#shop-dropdown-menu').removeClass('show')
+    });
+
+    $('#login-dropdown').hover(function () {
+        $('#login-dropdown-menu').addClass('show')
+    }, function () {
+        $('#login-dropdown-menu').removeClass('show')
     });
 </script>

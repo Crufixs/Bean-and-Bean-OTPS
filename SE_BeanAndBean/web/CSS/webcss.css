@@ -153,18 +153,22 @@ a:hover {
     background-color: #C19A6B;
 }
 
-/*a:focus {
-    color: white;
-    background-color: white
-}*/
-
 #about-us-dropdown-menu a:hover {
+    background-color: #F0E7DE;
+}
+
+#shop-dropdown-menu a:hover {
+    background-color: #F0E7DE;
+}
+
+#login-dropdown-menu a:hover {
     background-color: #F0E7DE;
 }
 
 #cartItemIndicatorContainer {
     position: relative;
 }
+
 #cartItemIndicator {
     background-color: red;
     position: absolute;
@@ -175,3 +179,16 @@ a:hover {
     background: red;
     color: white;
 }
+
+.bg-dark {
+    background-color: #c19a6b!important;
+}
+
+#login-dropdown .dropdown-toggle::after {
+    content: none;
+}
+
+/*a:focus {
+    color: white;
+    background-color: white
+}*/

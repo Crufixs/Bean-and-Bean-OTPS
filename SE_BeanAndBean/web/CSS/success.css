@@ -19,6 +19,14 @@ a:hover {
     background-color: #F0E7DE;
 }
 
+#shop-dropdown-menu a:hover {
+    background-color: #F0E7DE;
+}
+
+#login-dropdown-menu a:hover {
+    background-color: #F0E7DE;
+}
+
 #list-group-border {
     max-height: 300px;
     margin-bottom: 10px;
