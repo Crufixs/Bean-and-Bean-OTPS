@@ -4,7 +4,7 @@
         <!-- Grid row -->
         <div class="row">
             <!-- Grid column -->
-            <div class="col-md-5 mt-md-0 mt-3">
+            <div class="col-md-4 mt-md-0 mt-3">
                 <!-- Content -->
                 <a href="home.jsp"><img src="Images/Bean.png" alt="logo" width="100" height="100"></a>
                 <h5 style="padding: 10px;">Bean&Bean</h5>
@@ -12,7 +12,7 @@
             <!-- Grid column -->
             <hr class="clearfix w-100 d-md-none">
             <!-- Grid column -->
-            <div class="col-md-3 mb-md-0 mb-3">
+            <div class="col-md-4 mb-md-0 mb-3">
                 <!-- Links -->
                 <h5 class="text-uppercase">PRODUCTS</h5>
                 <ul class="list-unstyled">
@@ -35,7 +35,7 @@
             </div>
             <!-- Grid column -->
             <!-- Grid column -->
-            <div class="col-md-3 mb-md-0 mb-3">
+            <div class="col-md-4 mb-md-0 mb-3">
                 <!-- Links -->
                 <h5 class="text-uppercase">QUICK LINKS</h5>
                 <ul class="list-unstyled">
@@ -69,8 +69,8 @@
     </div>
     <!-- Footer Links -->
     <!-- Copyright -->
-    <div class="footer-copyright py-3 text-center">
-        Copyright &copy; 2021 Bean&Bean<br>Powered by TechNion
+    <div class="footer-copyright py-3 text-center" style="font-size:  12px;">
+        Copyright &copy; 2022 Bean&Bean<br>Powered by TechNion
     </div>
     <!-- Copyright -->
 </footer>

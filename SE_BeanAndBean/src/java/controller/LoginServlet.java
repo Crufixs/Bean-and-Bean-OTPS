@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet {
         //Boolean values for the validity of username and password
         boolean unameMatch = false;
         boolean passMatch = false;
-
+        
         try{
             if(con != null){
                

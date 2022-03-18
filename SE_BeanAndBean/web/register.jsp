@@ -62,29 +62,26 @@
                     </div>
 
                     <label class="fs-3 fw-bold form-label primary-text">Full Name</label>
-                    <div class="row row-cols-1 g-2">
-                        <div class="row row-cols-1 g-2 row-cols-sm-2">
-                            <div class="col">
-                                <div class="form-floating mb-3">
-                                    <input type="text" name="firstName" value="${input.firstName}" class="form-control primary-text" id="floatingInput" placeholder="First Name" required>
-                                    <label for="floatingInput">First Name</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-floating mb-3">
-                                    <input type="text" name="lastName" value="${input.lastName}" class="form-control primary-text" id="floatingInput" placeholder="Last Name" required>
-                                    <label for="floatingInput">Last Name</label>
-                                </div>
+                    <div class="row row-cols-1 g-4 row-cols-sm-2">
+                        <div class="col">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="firstName" value="${input.firstName}" class="form-control primary-text" id="floatingInput" placeholder="First Name" required>
+                                <label for="floatingInput">First Name</label>
                             </div>
                         </div>
-
-                        <label class="fs-3 fw-bold form-label primary-text">Contact No.</label>
-                        <div class="form-floating mb-3">
-                            <input type="tel" name="phoneNumber" value="${input.phoneNumber}" class="form-control primary-text" id="phone" name="phone" placeholder="Phone Number" data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. 09123456789" pattern="^(09)\d{9}$" required>
-                            <label for="floatingInput">Phone Number</label>
+                        <div class="col">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="lastName" value="${input.lastName}" class="form-control primary-text" id="floatingInput" placeholder="Last Name" required>
+                                <label for="floatingInput">Last Name</label>
+                            </div>
                         </div>
                     </div>
 
+                    <label class="fs-3 fw-bold form-label primary-text">Contact No.</label>
+                    <div class="form-floating mb-3">
+                        <input type="tel" name="phoneNumber" value="${input.phoneNumber}" class="form-control primary-text" id="phone" name="phone" placeholder="Phone Number" data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. 09123456789" pattern="^(09)\d{9}$" required>
+                        <label for="floatingInput">Phone Number</label>
+                    </div>
                     <div>  
                         <label class="fs-3 fw-bold form-label primary-text">Permanent Address</label>
                         <div class="row row-cols-1 row-cols-sm-2">
