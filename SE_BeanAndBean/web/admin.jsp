@@ -26,7 +26,7 @@
             response.sendRedirect("login.jsp");
             return;
 
-        } else if(!u.getRole().equals("admin")){
+        } else if (!u.getRole().equals("admin")) {
             response.sendRedirect("success.jsp");
             return;
         }
@@ -41,26 +41,26 @@
 <body style="background-color: #F0E7DE;">
     <!-- HEADER -->
     <%--<%@include file="header.jsp" %>--%>
-    
+
     <header class="flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-3 accent-color">
         <link rel="stylesheet" type="text/css" href = "CSS/webcss.css"/>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 <a href="admin.jsp" class="d-flex align-items-center col-md-5 mb-2 mb-md-0 text-dark text-decoration-none">
                     <img src="Images/Bean.png" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
-                        <b style="padding: 10px;">Bean&Bean</b></a>
+                    <b style="padding: 10px;">Bean&Bean</b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                    <!-- ICONS -->
-                    <div class="text-end">
-                        <a class="btn" href="admin.jsp" style="color: black;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                            </svg>
-                        </a>
-                    </div>
+                <!-- ICONS -->
+                <div class="text-end">
+                    <a class="btn" href="admin.jsp" style="color: black;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                        </svg>
+                    </a>
                 </div>
+            </div>
             </div>
         </nav>
     </header>
@@ -89,59 +89,80 @@
                     <div class="row" style="text-align: center; margin-bottom: 12px;">
                         <div class="col overflow-auto" id="list-group-border">
                             <!-- <i>No pending orders.</i> -->
-                            <ul class="list-group">
+                            <ul class="list-group" style="width: 200px;">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <b>Order 234</b>
+                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 234">
                                     <div>
-                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                        <button type="button" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                            </svg></button>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                                             </svg></button>
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <b>Order 234</b>
+                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 234">
                                     <div>
-                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                        <button type="button" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                            </svg></button>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                                             </svg></button>
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <b>Order 234</b>
+                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 234">
                                     <div>
-                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                        <button type="button" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                            </svg></button>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                                             </svg></button>
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <b>Order 234</b>
+                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 234">
                                     <div>
-                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                        <button type="button" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                            </svg></button>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                                             </svg></button>
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <b>Order 234</b>
+                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 234">
                                     <div>
-                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                        <button type="button" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                            </svg></button>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                                             </svg></button>
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <b>Order 234</b>
+                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 234">
                                     <div>
-                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                        <button type="button" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                            </svg></button>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                                             </svg></button>
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <b>Order 234</b>
+                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 234">
                                     <div>
-                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                        <button type="button" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                            </svg></button>
+                                        <button type="button" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                                             </svg></button>
                                     </div>
@@ -152,9 +173,9 @@
                             <i>No processing orders.</i>
                             <!-- <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <b>Order 234</b>
+                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 234">
                                     <div>
-                                        <button type="button" class="btn btn-success btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Completed">
+                                        <button type="button" class="btn btn-success btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                                             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                                         </svg></button>
@@ -166,15 +187,15 @@
                             <!-- <i>No completed orders.</i> -->
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <b>Order 512</b>
+                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 512">
                                     <span class="badge bg-secondary rounded-pill">14 hrs ago</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <b>Order 512</b>
+                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 512">
                                     <span class="badge bg-secondary rounded-pill">2 days ago</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <b>Order 512</b>
+                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 512">
                                     <span class="badge bg-secondary rounded-pill">1 day ago</span>
                                 </li>
                             </ul>
@@ -211,15 +232,15 @@
                         </form>
                     </div>
                     <%}%>
-<!--                    <br>
-                    <div class="mb-3">
-                        <h5>Order History</h5>
-                        <hr>
-                        <form method="POST" action="PDFServlet" target="_blank">
-                            <button class="btn btn-outline-secondary btn-md" type="submit">Get Records</button>
-                            <input type="hidden" name="type" value="guest">
-                        </form>
-                    </div>-->
+                    <!--                    <br>
+                                        <div class="mb-3">
+                                            <h5>Order History</h5>
+                                            <hr>
+                                            <form method="POST" action="PDFServlet" target="_blank">
+                                                <button class="btn btn-outline-secondary btn-md" type="submit">Get Records</button>
+                                                <input type="hidden" name="type" value="guest">
+                                            </form>
+                                        </div>-->
                 </div>
                 <!-- end of pdf -->
             </div>
