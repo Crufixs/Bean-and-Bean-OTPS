@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -37,11 +39,6 @@ public class SignupServlet extends HttpServlet {
         
         String inputUsername = request.getParameter("uname");
         String inputPassword = request.getParameter("psw");
-        
-        
-        
-        
-        
         
         //---------------------------------------------------------------------
         
@@ -87,12 +84,39 @@ public class SignupServlet extends HttpServlet {
         
         
         boolean errorPresent = false;
-        
-
-    
-        
+       
         // -------------------------------------------- ERROR TYPES ------------------------------------------------
         //valid access
+        
+        //wrong format password
+        String regexPw = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
+        Pattern patternPw = Pattern.compile(regexPw, Pattern.CASE_INSENSITIVE);
+        Matcher matcherPw = patternPw.matcher(inputPassword);
+        if(!matcherPw.matches()) {
+            errorPresent = true;
+            errors.put("passwordWrongFormat", "Password must contain at least 8 characters, at least one letter and number.");
+            previousInput.put("psw", "");
+            previousInput.put("confirmPsw", "");
+        }
+        
+        //wrong format email
+        String regexEm = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,6}$";
+        Pattern patternEm = Pattern.compile(regexEm, Pattern.CASE_INSENSITIVE);
+        Matcher matcherEm = patternEm.matcher(inputEmail);
+        if(!matcherEm.matches()) {
+            System.out.println (inputEmail + " is NOT a valid email");
+            errorPresent = true;
+            errors.put("emailWrongFormat", "e.g. usermail@gmail.com");
+        } 
+        
+        //wrong format username
+        String regexUn = "^[a-zA-Z0-9._-]{6,}$";
+        Pattern patternUn = Pattern.compile(regexUn);
+        Matcher matcherUn = patternUn.matcher(inputUsername);
+        if(!matcherUn.matches()) {
+            errorPresent = true;
+            errors.put("usernameWrongFormat", "Username must contain at least 6 characters (Letters, Numbers, Symbols e.g. period, dashes, underscore)");
+        }
         
         //invalid captcha
         if(!inputCaptcha.equals(generatedCaptcha)){ 
@@ -107,19 +131,10 @@ public class SignupServlet extends HttpServlet {
             previousInput.put("confirmPsw", "");
         } 
         
-        
-        if(errorPresent){
-            request.setAttribute("errors", errors);
-            request.setAttribute("input", previousInput);
-            request.getRequestDispatcher("register.jsp").forward(request,response);
-            return;
-        }
-        
-        // -------------------------------------------- END OF ERROR TYPES ------------------------------------------------
+        // -------------------------------------------- ERROR TYPES BUT WITH CONN ------------------------------------------------
         
         Security s = new Security();
         String encryptedPsw = s.encrypt(inputPassword);
-        
         try{
             if(con != null){
                //Finding Similar Username
@@ -175,6 +190,12 @@ public class SignupServlet extends HttpServlet {
             }
         } catch(SQLException e){
             e.printStackTrace();
+        }
+        if(errorPresent){
+            request.setAttribute("errors", errors);
+            request.setAttribute("input", previousInput);
+            request.getRequestDispatcher("register.jsp").forward(request,response);
+            return;
         }
         
     }

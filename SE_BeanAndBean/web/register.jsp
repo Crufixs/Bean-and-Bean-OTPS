@@ -4,6 +4,7 @@
     Author     : Carlo
 --%>
 
+<%@page import="java.util.Map"%>
 <%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,8 +20,9 @@
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma", "no-cache");
             response.setDateHeader("Expires", 0);
-
             User u = (User) session.getAttribute("user");
+            Map<String, String> e = (Map) request.getAttribute("errors");
+
         %>
     </head>
     <body style="background-color: #F0E7DE;">
@@ -35,22 +37,52 @@
                 <form method="post" action="Signup" class="rounded divider-color py-3 px-4 mx-lg-5">
                     <label class="fs-3 fw-bold form-label primary-text">Credentials</label>
                     <div class="form-floating mb-3">
-                        <input type="text" name="uname" value="${input.uname}" class="form-control primary-text" id="floatingInput" placeholder="Username" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Username must contain at least 6 characters (Letters, Numbers, Symbols e.g. period, dashes, underscore)" pattern="^[a-zA-Z0-9._-]{6,}$" required>
+                        <input type="text" name="uname" value="${input.uname}" class="form-control primary-text" id="floatingInput" placeholder="Username" data-bs-toggle="tooltip" data-bs-placement="bottom" required>
                         <label for="floatingInput">Username</label>
-                        <p style="color: red"><i>${errors.usernameTaken}</i></p>
+                        <p style="color: red"><i>
+                                <%
+                                    if (e != null) {
+                                        if (e.get("usernameWrongFormat") != null) {
+                                            out.println("usernameWrongFormat");
+                                            out.println(e.get("usernameWrongFormat"));
+                                        } else if (e.get("usernameTaken") != null) {
+                                            out.println("usernameTaken");
+                                            out.println(e.get("usernameTaken"));
+                                        }
+                                    }
+                                %>
+                            </i>
+                        </p>
                     </div>
 
                     <div class="form-floating mb-3">
                         <input type="email" name="email" value="${input.email}" class="form-control primary-text" id="floatingInput" placeholder="Email Address" data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. usermail@gmail.com" required>
                         <label for="floatingInput">Email Address</label>
-                        <p style="color: red"><i>${errors.emailTaken}</i></p>
+                        <p style="color: red"><i><%
+                                    if (e != null) {
+                                        if (e.get("emailWrongFormat") != null) {
+                                            out.println(e.get("emailWrongFormat"));
+                                        } else if (e.get("emailTaken") != null) {
+                                            out.println(e.get("emailTaken"));
+                                        }
+                                    }
+                                %>
+                            </i></p>
                     </div>
                     <div class="row row-cols-1 g-4 row-cols-sm-2">
                         <div class="col">
                             <div class="form-floating mb-3">
-                                <input type="password" name="psw" value="${input.psw}" class="form-control primary-text" id="floatingInput" placeholder="Password" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Password must contain at least 8 characters, at least one letter and number." pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required>
+                                <input type="password" name="psw" value="${input.psw}" class="form-control primary-text" id="floatingInput" placeholder="Password" data-bs-toggle="tooltip" data-bs-placement="bottom" required>
                                 <label for="floatingInput">Password</label>
-                                <p style="color: red"><i>${errors.pwMismatch}</i></p>
+                                <p style="color: red"><i><%
+                                    if (e != null) {
+                                        if (e.get("passwordWrongFormat") != null) {
+                                            out.println(e.get("passwordWrongFormat"));
+                                        } else if (e.get("pwMismatch") != null) {
+                                            out.println(e.get("pwMismatch"));
+                                        }
+                                    }
+                                %></i></p>
                             </div>
                         </div>
                         <div class="col">
