@@ -63,6 +63,10 @@
         <servlet-name>ReviewServlet</servlet-name>
         <servlet-class>controller.FeedbackServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EmailServlet</servlet-name>
+        <servlet-class>controller.EmailServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/Logout</url-pattern>
@@ -94,6 +98,10 @@
     <servlet-mapping>
         <servlet-name>ReviewServlet</servlet-name>
         <url-pattern>/Review</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmailServlet</servlet-name>
+        <url-pattern>/EmailServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

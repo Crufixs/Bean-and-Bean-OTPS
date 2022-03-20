@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="email" name="email" value="${input.email}" class="form-control primary-text" id="floatingInput" placeholder="Email Address" data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. usermail@gmail.com" required>
+                        <input type="text" name="email" value="${input.email}" class="form-control primary-text" id="floatingInput" placeholder="Email Address" data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. usermail@gmail.com" required>
                         <label for="floatingInput">Email Address</label>
                         <p style="color: red"><i><%
                                     if (e != null) {

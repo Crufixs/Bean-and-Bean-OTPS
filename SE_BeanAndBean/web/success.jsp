@@ -25,14 +25,28 @@
             response.sendRedirect("login.jsp");
             return;
 
-        } 
+        }
 //        else if (u.getCustomerID() == -1) {
 //            response.sendRedirect("login.jsp");
 //            return;
 //        }
 
     %>  
-
+    <script>
+        function toggleEditAccount() {
+            document.getElementById("firstName").disabled = !document.getElementById("firstName").disabled;
+            document.getElementById("lastName").disabled = !document.getElementById("lastName").disabled;
+            document.getElementById("uname").disabled = !document.getElementById("uname").disabled;
+            document.getElementById("psw").disabled = !document.getElementById("psw").disabled;
+            document.getElementById("email").disabled = !document.getElementById("email").disabled;
+            document.getElementById("phoneNumber").disabled = !document.getElementById("phoneNumber").disabled;
+            document.getElementById("city").disabled = !document.getElementById("city").disabled;
+            document.getElementById("barangay").disabled = !document.getElementById("barangay").disabled;
+            document.getElementById("street").disabled = !document.getElementById("street").disabled;
+         
+        }
+    </script>
+   
 </head>
 <body style="background-color: #F0E7DE;">
     <!-- HEADER -->
@@ -43,14 +57,75 @@
             <!-- account details -->
             <div class="row g-5" style="margin-top: 100px; margin-bottom: 50px;">
                 <div class="col-md-7 col-lg-7 order-md-last">
-                    <h4 class="justify-content-between align-items-center" style="float: right;">Account Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    
+                    <h4 class="justify-content-between align-items-center" style="float: right;">Account Details 
+                        <button style="all:unset;cursor:pointer;" onclick="toggleEditAccount()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                        </svg></h4><br><hr>
-                    <p><b>Name:</b> <%= u.getFirstName() + " " + u.getLastName()%></p>
-                    <p><b>Email:</b> <%= u.getEmail()%></p>
-                    <p><b>Phone:</b> <%= u.getPhoneNumber()%></p>
-                    <p><b>Address:</b> <%= u.getFullAddress()%></p>
+                        </svg>
+                    </button>
+                    </h4><br><hr>
+                    <forms>
+                        <div class="row gy-3">
+                            <div class="col-3 text-end">
+                                <p><b>Name</b></p>
+                            </div>
+                            <div class="col-9">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" name="firstName" value="<%= u.getFirstName()%>" class="form-control form-control-sm primary-text" id="firstName" placeholder="First Name" disabled required>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="lastName" value="<%=u.getLastName()%>" class="form-control form-control-sm primary-text" id="lastName" placeholder="Last Name" disabled required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 text-end">
+                                <p><b>Username</b></p>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name="uname" value="<%= u.getUsername()%>" class="form-control form-control-sm primary-text" id="uname" placeholder="Username" data-bs-toggle="tooltip" disabled required>
+                            </div>
+                            <div class="col-3 text-end">
+                                <p><b>Password</b></p>
+                            </div>
+                            <div class="col-9 ">
+                                <input type="password" name="psw" value="<%= u.getPassword()%>" class="form-control form-control-sm primary-text" id="psw" placeholder="Password" data-bs-toggle="tooltip" disabled required>
+                            </div>
+                            <div class="col-3 text-end">
+                                <p><b>Email</b></p>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name="email" value="<%= u.getEmail()%>" class="form-control form-control-sm primary-text" id="email" placeholder="Email Address" data-bs-toggle="tooltip" title="e.g. usermail@gmail.com" disabled required>
+                            </div>
+                            <div class="col-3 text-end">
+                                <p><b>Phone</b></p>
+                            </div>
+                            <div class="col-9">
+                                <input type="tel" name="phoneNumber" value="<%= u.getPhoneNumber()%>" class="form-control form-control-sm primary-text" id="phoneNumber"  placeholder="Phone Number" data-bs-toggle="tooltip" pattern="^(09)\d{9}$" disabled required>
+                            </div>
+                            <div class="col-3 text-end">
+                                <p><b>Address</b></p>
+                            </div>
+                            <div class="col-9">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" name="city" value="<%= u.getCity()%>" class="form-control form-control-sm primary-text" id="city" placeholder="City"
+                                               data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. Quezon City" required disabled>                                    
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="barangay" value="<%= u.getBarangay()%>" class="form-control form-control-sm primary-text" id="barangay" placeholder="Barangay" data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. Barangay Quirino 2-A" disabled required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 text-end">
+                                <p><b>Landmark</b></p>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name="street" value="<%= u.getStreet()%>" class="form-control form-control-sm primary-text" id="street" placeholder="Street/Landmark" data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. 67 Anonas St., near St. Joseph Church" disabled required>
+                            </div>
+                        </div>
+                    </forms>
                 </div>
                 <!-- end of account details -->
                 <div class="col-md-5 col-lg-5">
