@@ -10,9 +10,13 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,54 +41,65 @@ public class FeedbackServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    public void init(ServletConfig config) throws ServletException {  
+        super.init(config);
+        //Your code  
+    }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         Connection con = (Connection) getServletContext().getAttribute("connection");
         HttpSession session = request.getSession();
         
-        User u = (User) session.getAttribute("user");
+        ServletContext context = getServletContext();
+        List<Feedback> feedbacks = (List) context.getAttribute("feedbackList");
+        String requestType = request.getParameter("requestType");
         
-        if(u == null){
-            response.sendRedirect("login.jsp");
+        if(requestType.equals("sort")){
+            int sort = Integer.parseInt(request.getParameter("sort"));
+            request.setAttribute("selectedID", sort);
+
+            if(sort == 2){
+                Collections.sort(feedbacks, Feedback.RatingComparator);
+                System.out.println("IN RATINGS SORT");
+            }
+            else if(sort == 1){
+                Collections.sort(feedbacks, Feedback.RecencyComparator);
+                System.out.println("IN RECENCY SORT");
+                
+            }
+            context.setAttribute("feedbacks", feedbacks);
+            RequestDispatcher rd = request.getRequestDispatcher("aboutus.jsp");  
+            rd.forward(request,response);
+            return;
+        } else if(requestType.equals("comment")){
+            User u = (User) session.getAttribute("user");
+        
+            if(u == null){
+                response.sendRedirect("login.jsp");
+                return;
+            }
+
+            String comment = (String) request.getParameter("comment");
+            int starRating = Integer.parseInt(request.getParameter("starRating"));
+
+            if(starRating < 1)
+                starRating = 1;
+            else if(starRating > 5)
+                starRating = 5;
+
+            Feedback.addFeedbackToDB(u.getCustomerID(), comment, starRating);
+            feedbacks = Feedback.getFeedbackListFromDB();
+
+            context.setAttribute("feedbacks", feedbacks);
+
+            response.sendRedirect("aboutus.jsp");
             return;
         }
         
-        String comment = (String) request.getParameter("comment");
-        int starRating = Integer.parseInt(request.getParameter("starRating"));
-        
-        if(starRating < 1)
-            starRating = 1;
-        else if(starRating > 5)
-            starRating = 5;
-        
-//        System.out.println("Comment: " + comment + "\n");
-//        System.out.println("Star Rating: " + starRating);
-
-//        Feedback.setCon(con);
-        Feedback feedback = new Feedback(u.getCustomerID(), comment, starRating);
-        
-        try{
-            PreparedStatement insert = 
-                    con.prepareStatement("INSERT INTO feedback(customer_id, comment, star_rating) VALUES (?, ?, ?)");
-            
-            insert.setString(1, feedback.getCustomerID()+"");
-            insert.setString(2, feedback.getComment());
-            insert.setString(3, feedback.getStarRating()+"");
-            
-            int affectedRows = insert.executeUpdate();
-
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(FeedbackServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        ServletContext context = getServletContext();
-        List<Feedback> feedbacks = (List) context.getAttribute("feedbackList");
-        feedbacks.add(feedback);
-        context.setAttribute("feedbacks", feedbacks);
-        
-        response.sendRedirect("aboutus.jsp");
+        response.sendRedirect("home.jsp");
         
     }
 

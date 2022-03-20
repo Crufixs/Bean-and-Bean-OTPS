@@ -56,7 +56,7 @@ public class JDBCContextListener implements ServletContextListener{
             
             
             Feedback.setCon(con);
-            ArrayList<Feedback> feedbackList = getFeedbackListFromDB();
+            ArrayList<Feedback> feedbackList = Feedback.getFeedbackListFromDB();
 //            ArrayList<Feedback> feedbackList = new ArrayList<>();
 
 //            FeedbackList fm = new FeedbackList(con);
@@ -78,39 +78,39 @@ public class JDBCContextListener implements ServletContextListener{
         }
     }
     
-    public ArrayList<Feedback> getFeedbackListFromDB(){
-        int customerID;
-        String comment;
-        int starRating;
-        String customerUsername;
-        ArrayList<Feedback> feedbackList = new ArrayList<>();
-        
-        try {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM feedback");
-            ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
-                customerID = rs.getInt("customer_id");
-                comment = rs.getString("comment");
-                starRating = rs.getInt("star_rating");
-                
-//                PreparedStatement prep = con.prepareStatement("SELECT * FROM customer WHERE customer_id=?");
-//                prep.setString(1, customerID + "");
-//
-//                ResultSet res = prep.executeQuery();
-//                res.next();
-//                 customerUsername = res.getString("username");
-                
-                Feedback feedback = new Feedback(customerID, comment, starRating);
-                
-                feedbackList.add(feedback);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductList.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return feedbackList;
-    }
+//    public ArrayList<Feedback> getFeedbackListFromDB(){
+//        int customerID;
+//        String comment;
+//        int starRating;
+//        String customerUsername;
+//        ArrayList<Feedback> feedbackList = new ArrayList<>();
+//        
+//        try {
+//            PreparedStatement ps = con.prepareStatement("SELECT * FROM feedback");
+//            ResultSet rs = ps.executeQuery();
+//            
+//            while(rs.next()){
+//                customerID = rs.getInt("customer_id");
+//                comment = rs.getString("comment");
+//                starRating = rs.getInt("star_rating");
+//                
+////                PreparedStatement prep = con.prepareStatement("SELECT * FROM customer WHERE customer_id=?");
+////                prep.setString(1, customerID + "");
+////
+////                ResultSet res = prep.executeQuery();
+////                res.next();
+////                 customerUsername = res.getString("username");
+//                
+//                Feedback feedback = new Feedback(customerID, comment, starRating);
+//                
+//                feedbackList.add(feedback);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ProductList.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        return feedbackList;
+//    }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {

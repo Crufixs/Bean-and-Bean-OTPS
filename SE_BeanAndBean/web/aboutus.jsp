@@ -4,6 +4,10 @@
     Author     : Marylaine Lumacad
 --%>
 
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Collections"%>
 <%@page import="model.Feedback"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,7 +25,11 @@
         
         List<Feedback> feedbacks = (List) getServletContext().getAttribute("feedbackList");
         int totalComments = feedbacks.size();
+//        Map sortDetail = new HashMap();
+//        sortDetail.put(1, "Most Recent");
+//        sortDetail.put(2, "Ratings");
     %>
+     
 </head>
 <body style="background-color: #F0E7DE;">
     <!-- HEADER -->
@@ -178,22 +186,26 @@
                 </div>
                 <div style="white-space: nowrap;" class="col-6 text-end">
                     <h5 style="display: inline-block;">Sort by:&nbsp;</h5>
-                    <select style="display: inline-block;" id="ddlModel">
-                        <option value="AllComments">Most Relevant</option>
-                        <option value="Iphone">Ratings</option>
-                        <option value="Samsung">Most Recent</option>
-                    </select>
-                    <select style="display: inline-block;" id="ddlModel">
-                        <option value="AllComments">All</option>
-                        <option value="Iphone">10</option>
-                        <option value="Samsung">25</option>
-                        <option value="Samsung">50</option>
-                        <option value="Samsung">100</option>
-                    </select>
+                    <form action="Review" method="POST">
+                        <input type="hidden" name="requestType" value="sort"/>
+                        <select name="sort" style="display: inline-block;" id="ddlModel" onchange="this.form.submit()">
+                            <!--<option value="AllComments">Most Relevant</option>-->
+                            <option value="1" ${1 == selectedID ? 'selected' : ''}>Most Recent</option>
+                            <option value="2" ${2 == selectedID ? 'selected' : ''}>Ratings</option>
+                        </select>
+<!--                        <select name="quantity" style="display: inline-block;" id="ddlModel">
+                            <option value="AllComments">All</option>
+                            <option value="Iphone">10</option>
+                            <option value="Samsung">25</option>
+                            <option value="Samsung">50</option>
+                            <option value="Samsung">100</option>
+                        </select>-->
+                    </form>
                 </div>
             </div>
             <div class="row justify-content-between align-middle align-items-center" style="margin-top: 5vh; margin-bottom: 5vh;">
                 <form method="POST" action="Review" class=" row align-middle align-items-center" style="margin: 0;">
+                    <input type="hidden" name="requestType" value="comment"/>
                     <textarea id="" name="comment" rows="4" cols="50" maxlength="500" style="border-radius: 20px; width: 80%; margin-left: 10%;" placeholder="Say something about Bean&Bean"></textarea><br>
                     <div style="align-items: center; text-align: center;">
                         <div class="slidecontainer" style="margin-top: 1vh; width: 100%;">
