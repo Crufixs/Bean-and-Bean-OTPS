@@ -72,6 +72,6 @@ a:hover {
     background-color: #808080;
 }
 
-#login-dropdown-menu a:hover {
+#login-dropdown-menu :hover {
     background-color: #808080;
 }

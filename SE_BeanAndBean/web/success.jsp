@@ -134,12 +134,12 @@
                             <h2>My Account</h2>
                             <p>Welcome, <%= u.getUsername()%>!</p>
                         </div>
-                        <div class="col">
+<!--                         <div class="col">
                             <form method="POST" action="Logout" style="float: right;">
                                 <button class="btn btn-outline-secondary btn-md" type="submit">LOGOUT</button>
                                 <input type="hidden" name="access" value="valid">
                             </form>
-                        </div>
+                        </div> -->
                     </div> 
                     <% if (u.getRole().equalsIgnoreCase("admin")) {%>
                     <div class="mb-3">

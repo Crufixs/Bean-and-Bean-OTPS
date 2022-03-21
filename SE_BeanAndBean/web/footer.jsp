@@ -104,4 +104,9 @@
     }, function () {
         $('#login-dropdown-menu').removeClass('show')
     });
+
+    $("button").click(function(){
+    $("button").removeClass("active");
+    $(this).addClass("active");
+    });
 </script>

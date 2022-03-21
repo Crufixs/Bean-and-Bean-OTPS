@@ -41,3 +41,7 @@ a:hover {
 .list-group-item {
     background-color: burlywood;
 }
+
+button.nav-link.dropdown-toggle {
+    background-color: #6f4e37;
+}
