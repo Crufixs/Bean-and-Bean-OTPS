@@ -75,7 +75,7 @@
     </header>
 
     <div class="container">
-        <main>
+        <main style="margin-top: 100px;">
             <!-- account details -->
             <div class="row g-5" style="margin-bottom: 20px;">
                 <div class="col-md-7 col-lg-7 order-md-last">
@@ -207,12 +207,12 @@
                             <h2>My Account</h2>
                             <p>Welcome, <%= u.getUsername()%>!</p>
                         </div>
-                        <div class="col">
+                        <!-- <div class="col">
                             <form method="POST" action="Logout" style="float: right;">
                                 <button class="btn btn-outline-secondary btn-md" type="submit">LOGOUT</button>
                                 <input type="hidden" name="access" value="valid">
                             </form>
-                        </div>
+                        </div> -->
                     </div> 
                     <br><br>
                     <% if (u.getRole().equalsIgnoreCase("admin")) {%>
