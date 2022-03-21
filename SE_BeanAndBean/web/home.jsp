@@ -75,19 +75,19 @@
                             <li class="nav-item dropdown" id="shop-dropdown">
                                 <a class="nav-link text-white dropdown-toggle" href="shop.jsp" id="navbarDropdownMenuLink" role="button">Shop</a>
                                 <ul id="shop-dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="shop.jsp#pc">Premium Coffee</a></li>
-                                    <li><a class="dropdown-item" href="shop.jsp#hs">Hot Series</a></li>
-                                    <li><a class="dropdown-item" href="shop.jsp#cs">Cold Series</a></li>
-                                    <li><a class="dropdown-item" href="shop.jsp#sy">Coffee Syrups</a></li>
-                                    <li><a class="dropdown-item" href="shop.jsp#sa">Coffee Sauces</a></li></ul>
+                                    <li><a class="dropdown-item text-white" href="shop.jsp#pc">Premium Coffee</a></li>
+                                    <li><a class="dropdown-item text-white" href="shop.jsp#hs">Hot Series</a></li>
+                                    <li><a class="dropdown-item text-white" href="shop.jsp#cs">Cold Series</a></li>
+                                    <li><a class="dropdown-item text-white" href="shop.jsp#sy">Coffee Syrups</a></li>
+                                    <li><a class="dropdown-item text-white" href="shop.jsp#sa">Coffee Sauces</a></li></ul>
                             </li>
                             <li id="about-us-dropdown" class="nav-item dropdown">
                                 <a class="nav-link text-white dropdown-toggle" href="aboutus.jsp" id="navbarDropdownMenuLink" role="button">About Us
                                 </a>
                                 <ul id="about-us-dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="aboutus.jsp#faqs">FAQs</a></li>
-                                    <li><a class="dropdown-item" href="aboutus.jsp#gallery">Gallery</a></li>
-                                    <li><a class="dropdown-item" href="aboutus.jsp#reviews">Reviews</a></li>
+                                    <li><a class="dropdown-item text-white" href="aboutus.jsp#faqs">FAQs</a></li>
+                                    <li><a class="dropdown-item text-white" href="aboutus.jsp#gallery">Gallery</a></li>
+                                    <li><a class="dropdown-item text-white" href="aboutus.jsp#reviews">Reviews</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
@@ -104,7 +104,7 @@
                                     </svg>
                                 </a>
                                 <ul id="login-dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="success.jsp#faqs">Login/Register</a></li>
+                                    <li><a class="dropdown-item text-white" href="success.jsp#faqs">Login/Register</a></li>
                                 </ul>
                             </li>
                             <%

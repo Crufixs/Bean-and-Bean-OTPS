@@ -94,7 +94,7 @@ h1, h2, h3, h4, h5, p, label {
 }
 
 .accent-color {
-    background-color: #C19A6B;
+    background-color: #6f4e37;
 }
 .background-img{
     position:abolute;
@@ -146,23 +146,23 @@ a {
 }
 
 a:hover {
-    color: #F0E7DE;
+    color: black;
 }
 
 .dropdown-menu {
-    background-color: #C19A6B;
+    background-color: #6f4e37;
 }
 
 #about-us-dropdown-menu a:hover {
-    background-color: #F0E7DE;
+    background-color: #808080;
 }
 
 #shop-dropdown-menu a:hover {
-    background-color: #F0E7DE;
+    background-color: #808080;
 }
 
 #login-dropdown-menu a:hover {
-    background-color: #F0E7DE;
+    background-color: #808080;
 }
 
 #cartItemIndicatorContainer {
@@ -181,7 +181,7 @@ a:hover {
 }
 
 .bg-dark {
-    background-color: #c19a6b!important;
+    background-color: #6f4e37!important;
 }
 
 #login-dropdown .dropdown-toggle::after {

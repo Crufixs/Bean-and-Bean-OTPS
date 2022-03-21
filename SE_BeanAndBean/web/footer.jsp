@@ -1,4 +1,13 @@
-<footer class="page-footer font-small blue pt-4 accent-color mt-auto">
+<footer class="page-footer font-small blue pt-4 accent-color mt-auto text-white">
+    <style>
+        a {
+            color: white;
+        }
+
+        a:hover {
+            color: black;
+        }
+    </style>
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
         <!-- Grid row -->
@@ -7,14 +16,14 @@
             <div class="col-md-4 mt-md-0 mt-3">
                 <!-- Content -->
                 <a href="home.jsp"><img src="Images/Bean.png" alt="logo" width="100" height="100"></a>
-                <h5 style="padding: 10px;">Bean&Bean</h5>
+                <h5 class="text-white" style="padding: 10px;">Bean&Bean</h5>
             </div>
             <!-- Grid column -->
             <hr class="clearfix w-100 d-md-none">
             <!-- Grid column -->
             <div class="col-md-4 mb-md-0 mb-3">
                 <!-- Links -->
-                <h5 class="text-uppercase">PRODUCTS</h5>
+                <h5 class="text-uppercase text-white">PRODUCTS</h5>
                 <ul class="list-unstyled">
                     <li>
                         <a href="shop.jsp">Premium Coffee</a>
@@ -37,7 +46,7 @@
             <!-- Grid column -->
             <div class="col-md-4 mb-md-0 mb-3">
                 <!-- Links -->
-                <h5 class="text-uppercase">QUICK LINKS</h5>
+                <h5 class="text-uppercase text-white">QUICK LINKS</h5>
                 <ul class="list-unstyled">
                     <li>
                         <a href="aboutus.jsp#faqs">FAQs</a>
