@@ -43,10 +43,8 @@
                                 <%
                                     if (e != null) {
                                         if (e.get("usernameWrongFormat") != null) {
-                                            out.println("usernameWrongFormat");
                                             out.println(e.get("usernameWrongFormat"));
                                         } else if (e.get("usernameTaken") != null) {
-                                            out.println("usernameTaken");
                                             out.println(e.get("usernameTaken"));
                                         }
                                     }
@@ -111,8 +109,16 @@
 
                     <label class="fs-3 fw-bold form-label primary-text">Contact No.</label>
                     <div class="form-floating mb-3">
-                        <input type="tel" name="phoneNumber" value="${input.phoneNumber}" class="form-control primary-text" id="phone" name="phone" placeholder="Phone Number" data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. 09123456789" pattern="^(09)\d{9}$" required>
+                        <input type="text" name="phoneNumber" value="${input.phoneNumber}" class="form-control primary-text" id="phone" name="phone" placeholder="Phone Number" data-bs-toggle="tooltip" data-bs-placement="bottom" required>
                         <label for="floatingInput">Phone Number</label>
+                        <p style="color: red"><i><%
+                                if (e != null) {
+                                    if (e.get("phoneNumberWrongFormat") != null) {
+                                        out.println(e.get("phoneNumberWrongFormat"));
+                                    }
+                                }
+                                    %>
+                                </i></p>
                     </div>
                     <div>  
                         <label class="fs-3 fw-bold form-label primary-text">Permanent Address</label>
@@ -167,7 +173,7 @@
                             <input type="text" name="captcha" class="form-control primary-text" id="captcha" name="captcha" placeholder="Captcha" required>
                             <p style="color: red"><i>${errors.captcha}</i></p>
                         </div>
-
+                        <input type="hidden" name="state" value="signup">
                         <div class="col">
                             <div>
                                 <button type="submit" class="w-100 btn btn-secondary">Sign Up</button>

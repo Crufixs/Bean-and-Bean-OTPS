@@ -23,7 +23,7 @@
 
             User u = (User) session.getAttribute("user");
             if (u != null) {
-                response.sendRedirect("home.jsp");
+                response.sendRedirect("success.jsp");
                 return;
             }
 

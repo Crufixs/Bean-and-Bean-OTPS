@@ -4,6 +4,8 @@
     Author     : Marylaine Lumacad
 --%>
 
+<%@page import="model.Security"%>
+<%@page import="java.util.Map"%>
 <%@page import="model.User"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +32,7 @@
 //            response.sendRedirect("login.jsp");
 //            return;
 //        }
+        Map<String, String> e = (Map) request.getAttribute("errors");
 
     %>  
     <script>
@@ -43,10 +46,10 @@
             document.getElementById("city").disabled = !document.getElementById("city").disabled;
             document.getElementById("barangay").disabled = !document.getElementById("barangay").disabled;
             document.getElementById("street").disabled = !document.getElementById("street").disabled;
-         
+            document.getElementById("editAccountButton").disabled = !document.getElementById("editAccountButton").disabled;
         }
     </script>
-   
+
 </head>
 <body style="background-color: #F0E7DE;">
     <!-- HEADER -->
@@ -57,16 +60,15 @@
             <!-- account details -->
             <div class="row g-5" style="margin-top: 100px; margin-bottom: 50px;">
                 <div class="col-md-7 col-lg-7 order-md-last">
-                    
                     <h4 class="justify-content-between align-items-center" style="float: right;">Account Details 
                         <button style="all:unset;cursor:pointer;" onclick="toggleEditAccount()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                        </svg>
-                    </button>
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                        </button>
                     </h4><br><hr>
-                    <forms>
-                        <div class="row gy-3">
+                    <form method="post" action="Signup">
+                        <div class="row gy-1">
                             <div class="col-3 text-end">
                                 <p><b>Name</b></p>
                             </div>
@@ -80,33 +82,65 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3 text-end">
-                                <p><b>Username</b></p>
-                            </div>
+                            <p class="col-3 text-end"><b>Username</b></p>
                             <div class="col-9">
                                 <input type="text" name="uname" value="<%= u.getUsername()%>" class="form-control form-control-sm primary-text" id="uname" placeholder="Username" data-bs-toggle="tooltip" disabled required>
                             </div>
-                            <div class="col-3 text-end">
-                                <p><b>Password</b></p>
-                            </div>
+
+                            <div style="display:<%=e != null && (e.get("usernameWrongFormat") != null || e.get("usernameTaken") != null) ? "block" : "none"%>" class="col-3"></div>
+                            <p style="color: red; display:<%=e != null && (e.get("usernameWrongFormat") != null || e.get("usernameTaken") != null) ? "block" : "none"%>;" class="col-9"><i><%
+                                if (e != null) {
+                                    if (e.get("usernameWrongFormat") != null) {
+                                        out.println(e.get("usernameWrongFormat"));
+                                    } else if (e.get("usernameTaken") != null) {
+                                        out.println(e.get("usernameTaken"));
+                                    }
+                                }
+                                    %></i></p>
+                            <p class="col-3 text-end"><b>Password</b></p>
                             <div class="col-9 ">
-                                <input type="password" name="psw" value="<%= u.getPassword()%>" class="form-control form-control-sm primary-text" id="psw" placeholder="Password" data-bs-toggle="tooltip" disabled required>
+                                <input type="password" name="psw" value="<% 
+                                    Security s = new Security();
+                                    out.println(s.decrypt(u.getPassword()));
+                                %>" class="form-control form-control-sm primary-text" id="psw" placeholder="Password" data-bs-toggle="tooltip" disabled required>
                             </div>
-                            <div class="col-3 text-end">
-                                <p><b>Email</b></p>
-                            </div>
+                            <div style="display:<%=e != null && (e.get("passwordWrongFormat") != null || e.get("pwMismatch") != null) ? "block" : "none"%>"class="col-3"></div>
+                            <p style="color: red; display:<%=e != null && (e.get("passwordWrongFormat") != null || e.get("pwMismatch") != null) ? "block" : "none"%>;" class="col-9">a<i><%
+                                if (e != null) {
+                                    if (e.get("passwordWrongFormat") != null) {
+                                        out.println(e.get("passwordWrongFormat"));
+                                    } else if (e.get("pwMismatch") != null) {
+                                        out.println(e.get("pwMismatch"));
+                                    }
+                                }
+                                    %></i></p>
+                            <p class="col-3 text-end"><b>Email</b></p>
                             <div class="col-9">
                                 <input type="text" name="email" value="<%= u.getEmail()%>" class="form-control form-control-sm primary-text" id="email" placeholder="Email Address" data-bs-toggle="tooltip" title="e.g. usermail@gmail.com" disabled required>
                             </div>
-                            <div class="col-3 text-end">
-                                <p><b>Phone</b></p>
-                            </div>
+                            <div style="display:<%=e != null && (e.get("emailWrongFormat") != null || e.get("emailTaken") != null) ? "block" : "none"%>"class="col-3"></div>
+                            <p style="color: red; display:<%=e != null && (e.get("emailWrongFormat") != null || e.get("emailTaken") != null) ? "block" : "none"%>;" class="col-9">a<i><%
+                                if (e != null) {
+                                    if (e.get("emailWrongFormat") != null) {
+                                        out.println(e.get("emailWrongFormat"));
+                                    } else if (e.get("emailTaken") != null) {
+                                        out.println(e.get("emailTaken"));
+                                    }
+                                }
+                                    %></i></p>
+                            <p class="col-3 text-end"><b>Phone</b></p>
                             <div class="col-9">
                                 <input type="tel" name="phoneNumber" value="<%= u.getPhoneNumber()%>" class="form-control form-control-sm primary-text" id="phoneNumber"  placeholder="Phone Number" data-bs-toggle="tooltip" pattern="^(09)\d{9}$" disabled required>
                             </div>
-                            <div class="col-3 text-end">
-                                <p><b>Address</b></p>
-                            </div>
+                            <div style="display:<%=e != null && (e.get("phoneNumberWrongFormat") != null) ? "block" : "none"%>"class="col-3"></div>
+                            <p style="color: red; display:<%=e != null && (e.get("phoneNumberWrongFormat") != null) ? "block" : "none"%>;" class="col-9"><i><%
+                                if (e != null) {
+                                    if (e.get("phoneNumberWrongFormat") != null) {
+                                        out.println(e.get("phoneNumberWrongFormat"));
+                                    }
+                                }
+                                    %></i></p>
+                            <p class="col-3 text-end"><b>Address</b></p>
                             <div class="col-9">
                                 <div class="row">
                                     <div class="col">
@@ -118,14 +152,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3 text-end">
-                                <p><b>Landmark</b></p>
-                            </div>
+
+                            <p class="col-3 text-end"><b>Landmark</b></p>
                             <div class="col-9">
-                                <input type="text" name="street" value="<%= u.getStreet()%>" class="form-control form-control-sm primary-text" id="street" placeholder="Street/Landmark" data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. 67 Anonas St., near St. Joseph Church" disabled required>
+                                <input type="text" name="street" value="<%= u.getStreet()%>" class="form-control form-control-sm primary-text col-9" id="street" placeholder="Street/Landmark" data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. 67 Anonas St., near St. Joseph Church" disabled required>
                             </div>
+                            <input type="hidden" name="state" value="edit">
+                            <div class="col-3"></div>
+                            <div class="col-9"> <button id="editAccountButton"class="btn btn-outline-secondary btn-md" type="submit" disabled>Save Changes</button></div>
                         </div>
-                    </forms>
+                    </form>
                 </div>
                 <!-- end of account details -->
                 <div class="col-md-5 col-lg-5">
