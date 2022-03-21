@@ -240,7 +240,7 @@
         </main>
     </div>
     <!-- Footer -->
-    <%@include file="footer.jsp" %>
+    <%--<%@include file="footer.jsp" %>--%>
     <!-- Footer -->
 </body>
 </html>
