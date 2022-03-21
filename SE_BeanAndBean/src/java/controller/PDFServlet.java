@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
@@ -64,29 +65,52 @@ public class PDFServlet extends HttpServlet {
         //Current user in the session
         HttpSession session = request.getSession();
         u = (User) session.getAttribute("user");
+        String userType = u.getRole();
         
-        String choice = request.getParameter("type");
+        String accountRecord = request.getParameter("type");
+        String admin = request.getParameter("view");
         
         //invalid access
-        if(session.getAttribute("user") == null){
+        if(u == null){
+            System.out.println("User Null");
             response.sendRedirect("");
             return;
-        } else if(choice == null){
+        } else if(accountRecord == null && admin == null){
             response.sendRedirect("error404.jsp");
             return;
         }
         
         //valid
-        if(choice.equalsIgnoreCase("guest")){
-            getCustomerOrders(request, response);
-        } else if(choice.equalsIgnoreCase("admin") && u.getRole().equalsIgnoreCase("admin")){
-            getAllOrders(request, response);
-        } else if(choice.equalsIgnoreCase("receipt")){
-            getReceipt(request, response);
+        if(accountRecord != null){ //from getting records
+            if(accountRecord.equalsIgnoreCase("guest") && userType.equals("guest")){
+                getCustomerOrders(request, response);
+                return;
+            } else if(accountRecord.equalsIgnoreCase("admin") && u.getRole().equalsIgnoreCase("admin")){
+                getAllOrders(request, response);
+                return;
+            } else if(accountRecord.equalsIgnoreCase("receipt")){
+                Order o = (Order) request.getSession().getAttribute("order");
+                getReceipt(o, request, response);
+                return;
+            }
+        } else if(admin != null){ //viewing order
+            try{
+                List<Order> orderList = (List) request.getSession().getAttribute("orderList");
+                System.out.println("+"+admin+"+");
+                int orderID = Integer.parseInt(admin);
+                Order order = orderList.get(orderID);
+                getReceipt(order, request, response);
+                return;
+            } catch(NumberFormatException e){
+                System.out.println("NFE");
+                response.sendRedirect("");
+                return;
+            }  
         }
+        response.sendRedirect("");
     }
     
-    protected void getReceipt(HttpServletRequest request, HttpServletResponse response)
+    protected void getReceipt(Order order, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss"); 
         DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"); 
@@ -94,10 +118,11 @@ public class PDFServlet extends HttpServlet {
         dateTime = dtf2.format(now);
         String txtFileName = "receipt"+dtf.format(now) + ".pdf";
         
-        Order o = (Order) request.getSession().getAttribute("order");
+        Order o = order;
+        
         if(o==null){
             System.out.println("NO ORDER");
-            response.sendRedirect("shop.jsp");
+            response.sendRedirect("");
             return;
         }
         
@@ -158,14 +183,14 @@ public class PDFServlet extends HttpServlet {
             if(valid){
                 PreparedStatement getDetails = con.prepareStatement("SELECT * FROM orders WHERE order_id=?");
                 getDetails.setString(1, orderID+"");
-                ResultSet order = getDetails.executeQuery();
-                order.next();
-                double totalPrice = order.getDouble("total_price");
-                String datePlaced = order.getString("placed_at");
-                String name = order.getString("first_name") + " " + order.getString("last_name");
-                String address = order.getString("street") + ", " + order.getString("barangay") + ", " + order.getString("city") + ", " + order.getString("region");
-                String phoneNumber = order.getString("phone_number");
-                String email = order.getString("email");
+                ResultSet orders = getDetails.executeQuery();
+                orders.next();
+                double totalPrice = orders.getDouble("total_price");
+                String datePlaced = orders.getString("placed_at");
+                String name = orders.getString("first_name") + " " + orders.getString("last_name");
+                String address = orders.getString("street") + ", " + orders.getString("barangay") + ", " + orders.getString("city") + ", " + orders.getString("region");
+                String phoneNumber = orders.getString("phone_number");
+                String email = orders.getString("email");
 
                 document.add(new Paragraph(("Name: " + name), bfBold12));
                 document.add(new Paragraph(("Address: " + address), bfBold12));
@@ -245,8 +270,8 @@ public class PDFServlet extends HttpServlet {
             document.close();
             
             response.setContentType("application/pdf");
-             response.setHeader("Content-Type", "application/pdf");
-             response.setHeader("Content-disposition", "inline; filename="+txtFileName);
+            response.setHeader("Content-Type", "application/pdf");
+            response.setHeader("Content-disposition", "inline; filename="+txtFileName);
             
             OutputStream sos = response.getOutputStream();
 
