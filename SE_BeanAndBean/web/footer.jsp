@@ -1,4 +1,4 @@
-<footer class="page-footer font-small blue pt-4 accent-color">
+<footer class="page-footer font-small blue pt-4 accent-color mt-auto">
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
         <!-- Grid row -->

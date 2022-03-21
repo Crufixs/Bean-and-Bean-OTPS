@@ -65,7 +65,7 @@
             }
         </script>
     </head>
-    <body style="background-color: #F0E7DE;">
+    <body class="d-flex flex-column min-vh-100" style="background-color: #F0E7DE;">
         <!-- HEADER -->
         <%@include file="header.jsp" %>
 
@@ -116,7 +116,7 @@
                                             <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                             <form method="POST" action="cart">
                                                 <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                                <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
+                                                <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                     //if (u.getCustomerID() == -1) {
                                                     if (u == null || c == null) {
                                                         out.print("loginError");
@@ -239,7 +239,7 @@
                                             <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                             <form method="POST" action="cart">
                                                 <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                                <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
+                                                <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                     //if (u.getCustomerID() == -1) {
                                                     if (u == null || c == null) {
                                                         out.print("loginError");
@@ -366,7 +366,7 @@
                                             <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                             <form method="POST" action="cart">
                                                 <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                                <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
+                                                <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                     //if (u.getCustomerID() == -1) {
                                                     if (u == null || c == null) {
                                                         out.print("loginError");
@@ -491,7 +491,7 @@
                                             <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                             <form method="POST" action="cart">
                                                 <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                                <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
+                                                <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                     //if (u.getCustomerID() == -1) {
                                                     if (u == null || c == null) {
                                                         out.print("loginError2");
@@ -615,7 +615,7 @@
                                             <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                             <form method="POST" action="cart">
                                                 <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                                <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
+                                                <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                     //if (u.getCustomerID() == -1) {
                                                     if (u == null || c == null) {
                                                         out.print("loginError");
@@ -733,7 +733,7 @@
                                         <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                         <form method="POST" action="cart">
                                             <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                            <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
+                                            <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                 //if (u.getCustomerID() == -1) {
                                                 if (u == null || c == null) {
                                                     out.print("loginErrorAgain");
@@ -853,7 +853,7 @@
                                             <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                             <form method="POST" action="cart">
                                                 <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                                <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
+                                                <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                     //if (u.getCustomerID() == -1) {
                                                     if (u == null || c == null) {
                                                         out.print("loginErrorAgain");
@@ -973,7 +973,7 @@
                                         <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                         <form method="POST" action="cart">
                                             <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                            <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
+                                            <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                 //if (u.getCustomerID() == -1) {
                                                 if (u == null || c == null) {
                                                     out.print("loginErrorAgain");
@@ -1092,7 +1092,7 @@
                                         <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                         <form method="POST" action="cart">
                                             <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                            <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
+                                            <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                 //if (u.getCustomerID() == -1) {
                                                 if (u == null || c == null) {
                                                     out.print("loginErrorAgain");
@@ -1211,7 +1211,7 @@
                                         <p class="card-text">&#8369;<%=p.getPrice()%></p>
                                         <form method="POST" action="cart">
                                             <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                            <button type="button" class="w-100 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<%
+                                            <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                 //if (u.getCustomerID() == -1) {
                                                 if (u == null || c == null) {
                                                     out.print("loginErrorAgain");

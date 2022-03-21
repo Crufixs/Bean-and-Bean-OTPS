@@ -37,7 +37,7 @@
 //            }
         %>
     </head> 
-    <body style="background-color: #F0E7DE;">
+    <body class="d-flex flex-column min-vh-100" style="background-color: #F0E7DE;">
         <!-- HEADER -->
         <header>
             <!-- <style>
