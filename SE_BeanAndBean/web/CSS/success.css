@@ -1,5 +1,5 @@
 .accent-color {
-    background-color: #C19A6B;
+    background-color: #6f4e37;
 }
 
 a {
@@ -12,19 +12,19 @@ a:hover {
 }
 
 .dropdown-menu {
-    background-color: #C19A6B;
+    background-color: #6f4e37;
 }
 
 #about-us-dropdown-menu a:hover {
-    background-color: #F0E7DE;
+    background-color: #808080;
 }
 
 #shop-dropdown-menu a:hover {
-    background-color: #F0E7DE;
+    background-color: #808080;
 }
 
-#login-dropdown-menu a:hover {
-    background-color: #F0E7DE;
+#login-dropdown-menu :hover {
+    background-color: #808080;
 }
 
 #list-group-border {
