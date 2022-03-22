@@ -188,10 +188,20 @@ public class Cart {
                 PreparedStatement delete = con.prepareStatement("DELETE FROM cart_item WHERE cart_item_id=?");
                 delete.setString(1, c.getCartItemID() + "");
                 int affectedRows = delete.executeUpdate();
+                System.out.println("ROWS AFFECTED (DELETE): " + affectedRows);
             } catch (SQLException ex) {
                 Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            try { //updating the cart database after removing the cartItem
+                PreparedStatement ps2 = con.prepareStatement("UPDATE cart SET total_price=?, quantity=? WHERE cart_id=?");
+                ps2.setString(1, this.totalPrice + "");
+                ps2.setString(2, this.quantityInCart + "");
+                ps2.setString(3, this.cart_id + "");
+                int affectedRows = ps2.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }
@@ -237,13 +247,7 @@ public class Cart {
 
         }
     }
-    
-//    public void deductFromCart(int cart_item_id){
-//        CartItem c = findCartItem(cart_item_id);
-//        
-//        
-//        
-//    }
+
 
     private void generateCart() {
         try {
