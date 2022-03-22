@@ -15,8 +15,8 @@
             <!-- Grid column -->
             <div class="col-md-4 mt-md-0 mt-3">
                 <!-- Content -->
-                <a href="home.jsp"><img src="Images/Bean.png" alt="logo" width="100" height="100"></a>
-                <h5 class="text-white" style="padding: 10px;">Bean&Bean</h5>
+                <a href="home.jsp"><img src="Images/logo-plain.png" alt="logo" width="100" height="100"></a>
+                <h5 class="text-white" style="padding: 10px;">Bean & Bean</h5>
             </div>
             <!-- Grid column -->
             <hr class="clearfix w-100 d-md-none">
@@ -79,7 +79,7 @@
     <!-- Footer Links -->
     <!-- Copyright -->
     <div class="footer-copyright py-3 text-center" style="font-size:  12px;">
-        Copyright &copy; 2022 Bean&Bean<br>Powered by TechNion
+        Copyright &copy; 2022 Bean & Bean<br>Powered by TechNion
     </div>
     <!-- Copyright -->
 </footer>

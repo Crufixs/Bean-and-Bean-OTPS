@@ -11,11 +11,12 @@
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <link rel="shortcut icon" type="image/png" href="Images/logo-black.png"/>
         <link rel="stylesheet" type="text/css" href = "CSS/webcss.css"/>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-        <title>Login | Bean&Bean</title>
+        <title>Login | Bean & Bean</title>
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma", "no-cache");
@@ -29,7 +30,7 @@
 
         %>
     </head> 
-    <body class="d-flex flex-column min-vh-100" style="background-image: url('Images/img-bg.jpg');">
+    <body class="d-flex flex-column min-vh-100" style="background-image: url('Images/newBG.png');">
         <!-- HEADER -->
         <%@include file="header.jsp" %>
         <!--        <div class="container">     
@@ -64,15 +65,15 @@
 
                   <div class="form-outline mb-3">
                     <label class="form-label" for="form2Example17">Username</label>
-                    <input type="text" name="uname" value="${input.username}" id="form2Example17" class="form-control form-control-lg" required/>
-                    <span style="color:red;"><i>${errors.username}</i></span>
+                    <input type="text" name="uname" value="${input.username}" id="form2Example17" class="form-control" required/>
+                    <p style="color:red;"><small><i>${errors.username}</small></i></p>
                   </div>
 
 
                   <div class="form-outline mb-3">
                     <label class="form-label" for="form2Example27">Password</label>
-                    <input type="password" id="form2Example27" name="psw" value="${input.password}" class="form-control form-control-lg" required/>
-                    <span style="color:red;"><i>${errors.password}</i></span>
+                    <input type="password" id="form2Example27" name="psw" value="${input.password}" class="form-control" required/>
+                    <p style="color:red;"><small><i>${errors.password}</small></i></p>
                   </div>
 
                   <div class="pt-1 mb-3">

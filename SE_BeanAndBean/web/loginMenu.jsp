@@ -11,7 +11,7 @@
         <%
             if ((User) session.getAttribute("user") != null) {
         %>
-        <li><a class="dropdown-item text-white" href="success.jsp#faqs">My Account</a></li>
+        <li><a class="dropdown-item text-white" href="success.jsp">My Account</a></li>
         <li>
             <form id="logout-form" method="POST" action="Logout"><!-- 
                 <a class="dropdown-item text-white" href="javascript:;" onclick="document.getElementById('logout-form').submit();">Logout</a> -->
@@ -22,7 +22,7 @@
         <%
         } else {
         %>
-        <li><a class="dropdown-item text-white" href="success.jsp#faqs">Login/Register</a></li>                        
+        <li><a class="dropdown-item text-white" href="success.jsp">Login/Register</a></li>                        
             <%
                 }
             %>

@@ -12,11 +12,12 @@
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <link rel="shortcut icon" type="image/png" href="Images/logo-black.png"/>
         <link rel="stylesheet" type="text/css" href = "CSS/webcss.css"/>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-        <title>Home | Bean&Bean</title>
+        <title>Home | Bean & Bean</title>
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma", "no-cache");
@@ -38,7 +39,7 @@
 //            }
         %>
     </head> 
-    <body class="d-flex flex-column min-vh-100" style="background-color: #F0E7DE;">
+    <body class="d-flex flex-column min-vh-100" style="background-image: url('Images/newBG.png');">
         <!-- HEADER -->
         <header>
             <!-- <style>
@@ -51,10 +52,10 @@
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
                 <div class="container">
                     <!-- <a class="navbar-brand" href="home.jsp">
-                    <img src="Images/Bean.png" alt="logo" width="30" height="24" class="d-inline-block align-text-top"><span class="fs-4 text-white">Bean&Bean</span></a> -->
+                    <img src="Images/logo-plain.png" alt="logo" width="30" height="24" class="d-inline-block align-text-top"><span class="fs-4 text-white">Bean&Bean</span></a> -->
                     <a href="home.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                        <img src="Images/Bean.png" width="50" height="50">
-                        &nbsp;<span class="fs-4 text-white">Bean&Bean</span></a>
+                        <img src="Images/logo-plain.png" width="50" height="50">
+                        &nbsp;<span class="fs-4 text-white">Bean & Bean</span></a>
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -137,8 +138,8 @@
                     <div class="carousel-item active" style="background: url(Images/s3.jpg);min-height:500px;background-repeat: no-repeat;background-size: cover;background-position: center;">
                         <div class="container">
                             <div class="carousel-caption text-start">
-                                <img src="Images/Bean.png" style="height:100px;width:100px;">
-                                <h1>Bean&Bean</h1>
+                                <img src="Images/logo-plain.png" style="height: 150px; width: 150px;">
+                                <h1>Bean & Bean</h1>
                                 <p>Locally sourced coffee. PH</p>
                                 <p><a class="btn btn-lg btn-outline-light" href="aboutus.jsp">Read More</a></p>
                             </div>

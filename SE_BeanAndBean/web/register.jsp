@@ -11,11 +11,12 @@
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <link rel="shortcut icon" type="image/png" href="Images/logo-black.png"/>
         <link rel="stylesheet" type="text/css" href = "CSS/webcss.css"/>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-        <title>Sign Up | Bean&Bean</title>
+        <title>Sign Up | Bean & Bean</title>
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma", "no-cache");
@@ -25,7 +26,7 @@
 
         %>
     </head>
-    <body class="d-flex flex-column min-vh-100" style="background-color: #F0E7DE;">
+    <body class="d-flex flex-column min-vh-100" style="background-image: url('Images/newBG.png');">
         <!-- HEADER -->
         <%@include file="header.jsp" %>
         <div class="container">

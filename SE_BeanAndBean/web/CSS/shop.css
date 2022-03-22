@@ -45,6 +45,18 @@ a:hover {
     background-color: #6f4e37;
 }
 
+/*.inner {
+    overflow:  hidden;
+}
+
+.inner img {
+    transition: all 1.5s ease;
+}
+
+.inner: hover img {
+    transform: scale(1.5);
+}
+*/
 .card {
     overflow: hidden;
 }
@@ -54,7 +66,7 @@ a:hover {
 }
 
 .card:hover img{
-    transform:  scale(1.2);
+    transform:  scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
