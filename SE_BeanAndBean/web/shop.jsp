@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Shop | Bean&Bean</title>
+        <title>Shop | Bean & Bean</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
@@ -65,7 +65,7 @@
             }
         </script>
     </head>
-    <body class="d-flex flex-column min-vh-100" style="background-color: #F0E7DE;">
+    <body class="d-flex flex-column min-vh-100" style="background-image: url('Images/newBG.png');">
         <!-- HEADER -->
         <%@include file="header.jsp" %>
 
@@ -76,7 +76,7 @@
                 style="background-image: url('Images/bg.jpg'); height: 200px;"
                 >
                 <br>
-                <h2 class="mb-3" style="color: white;">Bean&Bean Products</h2>
+                <h2 class="mb-3" style="color: white;">Bean & Bean Products</h2>
             </div>
             <div class="d-flex align-items-start">
                 <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -167,14 +167,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 Product is already in Cart!
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -183,14 +183,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Please Log-in first before buying any of our products
+                                                                Please login first before buying any of our products. &#9786;
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -290,14 +290,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 Product is already in Cart!
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -306,14 +306,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Please Log-in first before buying any of our products
+                                                                Please login first before buying any of our products. &#9786; 
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -417,14 +417,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 Product is already in Cart!
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -433,14 +433,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Please Log-in first before buying any of our products
+                                                                Please login first before buying any of our products. &#9786; 
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -542,14 +542,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 Product is already in Cart!
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -558,14 +558,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Please Log-in first before buying any of our products
+                                                                Please login first before buying any of our products. &#9786; 
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -666,14 +666,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 Product is already in Cart!
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -682,14 +682,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Please Log-in first before buying any of our products
+                                                                Please login first before buying any of our products. &#9786; 
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -785,13 +785,13 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             Product is already in Cart!
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -801,13 +801,13 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Please Log-in first before buying any of our products
-                                                        </div>
+                                                            Please login first before buying any of our products
+ .                                                        </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -904,14 +904,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 Product is already in Cart!
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -920,14 +920,14 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Please Log-in first before buying any of our products
+                                                                Please login first before buying any of our products. &#9786; 
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1025,13 +1025,13 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             Product is already in Cart!
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1041,13 +1041,13 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Please Log-in first before buying any of our products
-                                                        </div>
+                                                            Please login first before buying any of our products
+ .                                                        </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1144,13 +1144,13 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             Product is already in Cart!
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1160,13 +1160,13 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Please Log-in first before buying any of our products
-                                                        </div>
+                                                            Please login first before buying any of our products
+ .                                                        </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1263,13 +1263,13 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             Product is already in Cart!
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1279,13 +1279,13 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Please Log-in first before buying any of our products
-                                                        </div>
+                                                            Please login first before buying any of our products
+ .                                                        </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
                                                 </div>

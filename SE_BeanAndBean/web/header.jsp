@@ -12,8 +12,8 @@
             <!-- <a class="navbar-brand" href="home.jsp">
             <img src="Images/Bean.png" alt="logo" width="30" height="24" class="d-inline-block align-text-top"><span class="fs-4">Bean&Bean</span></a> -->
             <a href="home.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <img src="Images/Bean.png" width="50" height="50">
-                &nbsp;<span class="fs-4">Bean&Bean</span></a>
+                <img src="Images/logo-plain.png" width="50" height="50">
+                &nbsp;<span class="fs-4">Bean & Bean</span></a>
             <button
                 class="navbar-toggler"
                 type="button"

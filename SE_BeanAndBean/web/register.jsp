@@ -15,7 +15,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-        <title>Sign Up | Bean&Bean</title>
+        <title>Sign Up | Bean & Bean</title>
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma", "no-cache");
@@ -25,7 +25,7 @@
 
         %>
     </head>
-    <body class="d-flex flex-column min-vh-100" style="background-color: #F0E7DE;">
+    <body class="d-flex flex-column min-vh-100" style="background-image: url('Images/newBG.png');">
         <!-- HEADER -->
         <%@include file="header.jsp" %>
         <div class="container">
