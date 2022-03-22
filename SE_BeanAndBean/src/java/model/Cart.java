@@ -99,14 +99,18 @@ public class Cart {
 
         Product p = productList.findProduct(product_id);
         String name = p.getName();
-        double price = p.getPrice() * cartItemQuantity;
+        double price = p.getPrice();
+//        System.out.println(price);
         String type = p.getType();
 
         CartItem c = findCartItem(product_id);
+        
 
         if (c != null) { //the product is already in the cart
-            c.addQuantity();
-            cartItemQuantity += c.getQuantity();
+            c.addQuantity(cartItemQuantity);
+//            c.setCartItemPrice(price*cartItemQuantity);
+//            cartItemQuantity += c.getQuantity();
+            
 
             try {
                 PreparedStatement select = con.prepareStatement("SELECT * FROM cart_item WHERE cart_id=? AND product_id=?");
@@ -119,7 +123,7 @@ public class Cart {
                 String cart_item_id = rsSelect.getString("cart_item_id");
 
                 PreparedStatement update = con.prepareStatement("UPDATE cart_item SET quantity=? WHERE cart_item_id=?");
-                update.setString(1, cartItemQuantity + "");
+                update.setString(1, c.getQuantity() + "");
                 update.setString(2, cart_item_id + "");
                 int affectedRows = update.executeUpdate();
 
@@ -150,6 +154,8 @@ public class Cart {
                 Product productToCart = new Product(product_id, name, price, type);
                 c = new CartItem(cart_item_id, productToCart, cartItemQuantity);
                 cart.add(c);
+                
+                this.quantityInCart++;
 
             } catch (SQLException ex) {
                 Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);
@@ -157,8 +163,8 @@ public class Cart {
 
         }
 
-        this.quantityInCart++; //another product is added
-        this.totalPrice += price; //total price of the cart increases
+         //another product is added
+        this.totalPrice += price*cartItemQuantity; //total price of the cart increases
 
         try { //updating the cart database after adding the cartItem
             PreparedStatement ps2 = con.prepareStatement("UPDATE cart SET total_price=?, quantity=? WHERE cart_id=?");
@@ -171,16 +177,42 @@ public class Cart {
         }
 
     }
+    
+    public void removeFromCart(CartItem c){
+        if(c != null){
+            try {
+                this.quantityInCart--;
+                cart.remove(c);
+                this.totalPrice -= c.getCartItemPrice();
+                
+                PreparedStatement delete = con.prepareStatement("DELETE FROM cart_item WHERE cart_item_id=?");
+                delete.setString(1, c.getCartItemID() + "");
+                int affectedRows = delete.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+    }
 
-    public void removeFromCart(int cart_item_id) {
-        CartItem c = findCartItem(cart_item_id);
+    public void deductFromCart(CartItem c) {
+//        CartItem c = findCartItem(cart_item_id);
+
+        int cart_item_id = c.getCartItemID();      
+
         if (c != null) { //this if is not needed actually, for verification lang na nahanap talaga yung cartItem
-            c.subtractQuantity();
-            this.quantityInCart--;
+            
+            c.subtractQuantity(1);
+//            c.setCartItemPrice(-c.getCartItemPrice());
+//            this.quantityInCart--;
+//            cart.remove(c);
+
+            
             this.totalPrice -= c.getProduct().getPrice();
 
             //ubos na yung cart item na yun sa cart
-            cart.remove(c);
+            
 
             try {
                 PreparedStatement select = con.prepareStatement("SELECT * FROM cart_item WHERE cart_item_id=?");
@@ -205,6 +237,13 @@ public class Cart {
 
         }
     }
+    
+//    public void deductFromCart(int cart_item_id){
+//        CartItem c = findCartItem(cart_item_id);
+//        
+//        
+//        
+//    }
 
     private void generateCart() {
         try {
