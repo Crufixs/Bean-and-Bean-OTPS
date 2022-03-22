@@ -31,17 +31,17 @@
         <%@include file="header.jsp" %>
         <div class="container">
             <div class="py-4" style="margin-top: 100px; text-align: center;">
-                <h1 class="fs-3 fw-bold form-label primary-text"><%= u == null ? "Create Account" : "Edit Account"%></h1>
+                <h1 class="fs-4 fw-bold form-label primary-text"><%= u == null ? "Create Account" : "Edit Account"%></h1>
                 <hr>
             </div>
-            <div class="row rounded divider-color py-3 px-4 mx-lg-5 mb-5" style="padding:0!important;">
+            <div class="row rounded py-3 px-4 mx-lg-5 mb-5" style="padding:0!important; background-color: white">
                 <div class="col-lg-6" style="padding:25px;">
                     <form method="post" action="Signup" >
-                        <label class="fs-3 fw-bold form-label primary-text">Credentials</label>
+                        <label class="fs-4 fw-bold form-label primary-text">Credentials</label>
                         <div class="form-floating mb-3">
                             <input type="text" name="uname" value="${input.uname}" class="form-control primary-text" id="floatingInput" placeholder="Username" data-bs-toggle="tooltip" data-bs-placement="bottom" required>
                             <label for="floatingInput">Username</label>
-                            <p style="color: red"><i>
+                            <p style="color: red"><small><i>
                                     <%
                                         if (e != null) {
                                             if (e.get("usernameWrongFormat") != null) {
@@ -51,14 +51,14 @@
                                             }
                                         }
                                     %>
-                                </i>
+                                </i></small>
                             </p>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input type="text" name="email" value="${input.email}" class="form-control primary-text" id="floatingInput" placeholder="Email Address" data-bs-toggle="tooltip" data-bs-placement="bottom" title="e.g. usermail@gmail.com" required>
                             <label for="floatingInput">Email Address</label>
-                            <p style="color: red"><i><%
+                            <p style="color: red"><small><i><%
                                 if (e != null) {
                                     if (e.get("emailWrongFormat") != null) {
                                         out.println(e.get("emailWrongFormat"));
@@ -67,14 +67,14 @@
                                     }
                                 }
                                     %>
-                                </i></p>
+                                </i></small></p>
                         </div>
                         <div class="row row-cols-1 g-4 row-cols-sm-2">
                             <div class="col">
                                 <div class="form-floating mb-3">
                                     <input type="password" name="psw" value="${input.psw}" class="form-control primary-text" id="floatingInput" placeholder="Password" data-bs-toggle="tooltip" data-bs-placement="bottom" required>
                                     <label for="floatingInput">Password</label>
-                                    <p style="color: red"><i><%
+                                    <p style="color: red"><small><i><%
                                         if (e != null) {
                                             if (e.get("passwordWrongFormat") != null) {
                                                 out.println(e.get("passwordWrongFormat"));
@@ -82,7 +82,7 @@
                                                 out.println(e.get("pwMismatch"));
                                             }
                                         }
-                                            %></i></p>
+                                            %></i></small></p>
                                 </div>
                             </div>
                             <div class="col">
@@ -93,7 +93,7 @@
                             </div>
                         </div>
 
-                        <label class="fs-3 fw-bold form-label primary-text">Full Name</label>
+                        <label class="fs-4 fw-bold form-label primary-text">Full Name</label>
                         <div class="row row-cols-1 g-4 row-cols-sm-2">
                             <div class="col">
                                 <div class="form-floating mb-3">
@@ -109,21 +109,21 @@
                             </div>
                         </div>
 
-                        <label class="fs-3 fw-bold form-label primary-text">Contact No.</label>
+                        <label class="fs-4 fw-bold form-label primary-text">Contact No.</label>
                         <div class="form-floating mb-3">
                             <input type="text" name="phoneNumber" value="${input.phoneNumber}" class="form-control primary-text" id="phone" name="phone" placeholder="Phone Number" data-bs-toggle="tooltip" data-bs-placement="bottom" required>
                             <label for="floatingInput">Phone Number</label>
-                            <p style="color: red"><i><%
+                            <p style="color: red"><small><i><%
                                 if (e != null) {
                                     if (e.get("phoneNumberWrongFormat") != null) {
                                         out.println(e.get("phoneNumberWrongFormat"));
                                     }
                                 }
                                     %>
-                                </i></p>
+                                </i></small></p>
                         </div>
                         <div>  
-                            <label class="fs-3 fw-bold form-label primary-text">Permanent Address</label>
+                            <label class="fs-4 fw-bold form-label primary-text">Permanent Address</label>
                             <div class="row row-cols-1 row-cols-sm-2">
                                 <div class="col">
                                     <div class="form-floating mb-3">
@@ -165,15 +165,15 @@
                         </div>
                         <!--<input type="text" name="street" class="form-control primary-text" placeholder="Street/Landmark" aria-describedby="emailHelp" required>-->
                         <!--<br>-->
-                        <!-- <label class="fs-3 fw-bold form-label primary-text">Mobile Number</label> -->
+                        <!-- <label class="fs-4 fw-bold form-label primary-text">Mobile Number</label> -->
                         <div class="text-center">     
                             <div class="col">
-                                <label class="fs-3 fw-bold form-label primary-text">What can you see?</label>
+                                <label class="fs-4 fw-bold form-label primary-text">What can you see?</label>
                                 <br>
                                 <img src="CaptchaGenerator" alt="None">
                                 <br><br>
                                 <input type="text" name="captcha" class="form-control primary-text" id="captcha" name="captcha" placeholder="Captcha" required>
-                                <p style="color: red"><i>${errors.captcha}</i></p>
+                                <p style="color: red"><small><i>${errors.captcha}</i></small></p>
                             </div>
                             <input type="hidden" name="state" value="signup">
                             <div class="col-6" style="margin-left: 25%;">

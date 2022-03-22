@@ -49,7 +49,7 @@
               }
             </style> -->
             <!-- Navbar  -->
-            <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3" style="background-color: #00000020; box-shadow: 5px 5px 8px 5px #00000020;">
                 <div class="container">
                     <!-- <a class="navbar-brand" href="home.jsp">
                     <img src="Images/logo-plain.png" alt="logo" width="30" height="24" class="d-inline-block align-text-top"><span class="fs-4 text-white">Bean&Bean</span></a> -->
@@ -135,7 +135,7 @@
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active" style="background: url(Images/s3.jpg);min-height:500px;background-repeat: no-repeat;background-size: cover;background-position: center;">
+                    <div class="carousel-item active" style="background: url(Images/s3.jpg);min-height:73vh;background-repeat: no-repeat;background-size: cover;background-position: center;">
                         <div class="container">
                             <div class="carousel-caption text-start">
                                 <img src="Images/logo-plain.png" style="height: 150px; width: 150px;">
@@ -145,7 +145,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item" style="background: url(Images/o1.jpg);min-height:500px;background-repeat: no-repeat;background-size: cover;background-position: center;">
+                    <div class="carousel-item" style="background: url(Images/o1.jpg);min-height:73vh;background-repeat: no-repeat;background-size: cover;background-position: center;">
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1>DELIVERY</h1>

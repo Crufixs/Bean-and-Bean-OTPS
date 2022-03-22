@@ -81,23 +81,640 @@
             </div>
             <!-- <div class="d-flex align-items-start"> -->
             <div class="row g-5">
-                <div class="col-md-3 col-lg-3"  style="padding-right: 0px;">
-                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <button class="nav-link active" id="v-pills-ap-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ap" type="button" role="tab" aria-controls="v-pills-ap" aria-selected="true">All Products</button>
-                    <button class="nav-link" id="v-pills-pc-tab" data-bs-toggle="pill" data-bs-target="#v-pills-pc" type="button" role="tab" aria-controls="v-pills-pc" aria-selected="false">Premium Coffee</button>
-                    <button class="nav-link" id="v-pills-hs-tab" data-bs-toggle="pill" data-bs-target="#v-pills-hs" type="button" role="tab" aria-controls="v-pills-hs" aria-selected="false">Hot Series</button>
-                    <button class="nav-link" id="v-pills-cs-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cs" type="button" role="tab" aria-controls="v-pills-cs" aria-selected="false">Cold Series</button>
-                    <button class="nav-link" id="v-pills-sy-tab" data-bs-toggle="pill" data-bs-target="#v-pills-sy" type="button" role="tab" aria-controls="v-pills-sy" aria-selected="false">Coffee Syrups</button>
-                    <button class="nav-link" id="v-pills-sa-tab" data-bs-toggle="pill" data-bs-target="#v-pills-sa" type="button" role="tab" aria-controls="v-pills-sa" aria-selected="false">Coffee Sauces</button>
+                <div class="col-md-2 col-lg-2"  style="padding-right: 0px;">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active" id="v-pills-ap-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ap" type="button" role="tab" aria-controls="v-pills-ap" aria-selected="true">All Products</button>
+                        <button class="nav-link" id="v-pills-pc-tab" data-bs-toggle="pill" data-bs-target="#v-pills-pc" type="button" role="tab" aria-controls="v-pills-pc" aria-selected="false">Premium Coffee</button>
+                        <button class="nav-link" id="v-pills-hs-tab" data-bs-toggle="pill" data-bs-target="#v-pills-hs" type="button" role="tab" aria-controls="v-pills-hs" aria-selected="false">Hot Series</button>
+                        <button class="nav-link" id="v-pills-cs-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cs" type="button" role="tab" aria-controls="v-pills-cs" aria-selected="false">Cold Series</button>
+                        <button class="nav-link" id="v-pills-sy-tab" data-bs-toggle="pill" data-bs-target="#v-pills-sy" type="button" role="tab" aria-controls="v-pills-sy" aria-selected="false">Coffee Syrups</button>
+                        <button class="nav-link" id="v-pills-sa-tab" data-bs-toggle="pill" data-bs-target="#v-pills-sa" type="button" role="tab" aria-controls="v-pills-sa" aria-selected="false">Coffee Sauces</button>
+                    </div>
                 </div>
-            </div>
-                <div class="col-md-9 col-lg-9" style="padding-left: 0px;">
-                <div class="tab-content" id="v-pills-tabContent" style="margin-bottom: 50px;">
-                    <div class="tab-pane fade show active" id="v-pills-ap" role="tabpanel" aria-labelledby="v-pills-ap-tab" style="padding-left: 24px;"><!-- Premium Coffee Section -->
-                        <div>
+                <div class="col-md-10 col-lg-10" style="padding-left: 0px;">
+                    <div class="tab-content" id="v-pills-tabContent" style="margin-bottom: 50px;">
+                        <div class="tab-pane fade show active" id="v-pills-ap" role="tabpanel" aria-labelledby="v-pills-ap-tab" style="padding-left: 24px;"><!-- Premium Coffee Section -->
+                            <div>
+                                <h5 id="pc">Premium Coffee (250g)</h5>
+                                <hr>
+                                <%                                    for (int i = 0; i < products.size();) {
+                                %>
+                                <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
+                                    <%
+                                        int counter = 0;
+                                        while (counter < 3) {
+                                            if (i >= products.size()) {
+                                                break;
+                                            }
+                                            Product p = products.get(i);
+                                            i++;
+                                            if (!p.getType().equals("pc")) {
+                                                continue;
+                                            }
+                                            counter++;
+                                    %>
+                                    <div class="col">
+                                        <div class="card mb-3">
+                                            <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
+                                            <div class="card-body">
+                                                <h6 class="card-title"><%=p.getName()%></h6>
+                                                <p class="card-text">&#8369;<%=p.getPrice()%></p>
+                                                <form method="POST" action="cart">
+                                                    <input type="hidden" name="id" value="<%=p.getId()%>"/>
+                                                    <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
+                                                        //if (u.getCustomerID() == -1) {
+                                                        if (u == null || c == null) {
+                                                            out.print("loginError");
+                                                        } else if (c.findCartItem(p.getId()) == null) {
+                                                            out.print("modal" + p.getId());
+                                                        } else {
+                                                            out.print("error" + p.getId());
+                                                        }
+                                                            %>">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                                        </svg> Add to Cart
+                                                    </button>
+                                                    <div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" style="width:80%; margin-left: 10%;">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
+                                                                    <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <img src="Images/<%=p.getId()%>.jpg" style="padding:0; margin:0; width:80%; box-shadow: none;">
+                                                                    <div class="btn-group" style="width:100%; margin-top: 18px;">
+                                                                        <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                                            </svg></button>
+                                                                        <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                                            </svg></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <div class="row" style="width:100%">
+                                                                        <p class="col-sm align-middle me-auto">
+                                                                            <strong>Quantity:</strong> <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantity<%=p.getId()%>" 
+                                                                                                              name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
+                                                                        </p><p class=" col-sm align-middle me-auto" >
+                                                                            <strong>Price(&#8369;): </strong><input type="text" align="middle" class="form-control-plaintext form-inline" id="price<%=p.getId()%>"
+                                                                                                                    name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
+                                                                        </p>
+                                                                    </div>
+                                                                    <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="error<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Product is already in Cart!
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="loginError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Please login first before buying any of our products. &#9786;
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%
+                                        }
+                                    %>           
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </div>
+                            <!-- end of premium coffee -->
+                            <!-- Hot Series Section -->
+                            <div>
+                                <h5 style="margin-top: 10px;" id="hs">Hot Series (8 oz.)</h5>
+                                <hr>
+                                <!-- 1st row cold brew -->
+                                <%
+                                    for (int i = 0; i < products.size();) {
+                                %>
+                                <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
+                                    <!-- original b -->
+                                    <%
+                                        int counter = 0;
+                                        while (counter < 3) {
+                                            if (i >= products.size()) {
+                                                break;
+                                            }
+                                            Product p = products.get(i);
+                                            i++;
+                                            if (!p.getType().equals("hs")) {
+                                                continue;
+                                            }
+                                            counter++;
+                                    %>
+                                    <div class="col">
+                                        <div class="card mb-3">
+                                            <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
+                                            <div class="card-body">
+                                                <h6 class="card-title"><%=p.getName()%></h6>
+                                                <p class="card-text">&#8369;<%=p.getPrice()%></p>
+                                                <form method="POST" action="cart">
+                                                    <input type="hidden" name="id" value="<%=p.getId()%>"/>
+                                                    <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
+                                                        //if (u.getCustomerID() == -1) {
+                                                        if (u == null || c == null) {
+                                                            out.print("loginError");
+                                                        } else if (c.findCartItem(p.getId()) == null) {
+                                                            out.print("modal" + p.getId());
+                                                        } else {
+                                                            out.print("error" + p.getId());
+                                                        }
+                                                            %>">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                                        </svg> Add to Cart
+                                                    </button>
+                                                     <div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" style="width:80%; margin-left: 10%;">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
+                                                                    <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <img src="Images/<%=p.getId()%>.jpg" style="padding:0; margin:0; width:80%; box-shadow: none;">
+                                                                    <div class="btn-group" style="width:100%; margin-top: 18px;">
+                                                                        <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                                            </svg></button>
+                                                                        <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                                            </svg></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <div class="row" style="width:100%">
+                                                                        <p class="col-sm align-middle me-auto">
+                                                                            <strong>Quantity:</strong> <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantity<%=p.getId()%>" 
+                                                                                                              name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
+                                                                        </p><p class=" col-sm align-middle me-auto" >
+                                                                            <strong>Price(&#8369;): </strong><input type="text" align="middle" class="form-control-plaintext form-inline" id="price<%=p.getId()%>"
+                                                                                                                    name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
+                                                                        </p>
+                                                                    </div>
+                                                                    <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="error<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Product is already in Cart!
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="loginError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Please login first before buying any of our products. &#9786; 
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%
+                                        }
+                                    %>           
+                                </div>
+                                <%
+                                    }
+                                %>
+                                <!-- end of cold brew section -->
+                                <!-- iced coffee section -->
+                                <br>
+                            </div>
+                            <!-- end of hot series -->
+                            <!-- cold series section -->
+                            <div>
+                                <h5 style="margin-top: 10px;" id="cs">Cold Series (12 oz.)</h5>
+                                <hr>
+                                <!-- 1st row iced coffee -->
+                                <%
+                                    for (int i = 0; i < products.size();) {
+                                %>
+                                <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
+                                    <!-- orig -->
+                                    <%
+                                        int counter = 0;
+                                        while (counter < 3) {
+                                            if (i >= products.size()) {
+                                                break;
+                                            }
+                                            Product p = products.get(i);
+                                            i++;
+                                            if (!p.getType().equals("cs")) {
+                                                continue;
+                                            }
+                                            counter++;
+                                    %>    
+                                    <div class="col">
+                                        <div class="card mb-3">
+                                            <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
+                                            <div class="card-body">
+                                                <h6 class="card-title"><%=p.getName()%></h6>
+                                                <p class="card-text">&#8369;<%=p.getPrice()%></p>
+                                                <form method="POST" action="cart">
+                                                    <input type="hidden" name="id" value="<%=p.getId()%>"/>
+                                                    <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
+                                                        //if (u.getCustomerID() == -1) {
+                                                        if (u == null || c == null) {
+                                                            out.print("loginError");
+                                                        } else if (c.findCartItem(p.getId()) == null) {
+                                                            out.print("modal" + p.getId());
+                                                        } else {
+                                                            out.print("error" + p.getId());
+                                                        }
+                                                            %>">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                                        </svg> Add to Cart
+                                                    </button>
+                                                    <div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" style="width:80%; margin-left: 10%;">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
+                                                                    <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <img src="Images/<%=p.getId()%>.jpg" style="padding:0; margin:0; width:80%; box-shadow: none;">
+                                                                    <div class="btn-group" style="width:100%; margin-top: 18px;">
+                                                                        <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                                            </svg></button>
+                                                                        <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                                            </svg></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <div class="row" style="width:100%">
+                                                                        <p class="col-sm align-middle me-auto">
+                                                                            <strong>Quantity:</strong> <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantity<%=p.getId()%>" 
+                                                                                                              name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
+                                                                        </p><p class=" col-sm align-middle me-auto" >
+                                                                            <strong>Price(&#8369;): </strong><input type="text" align="middle" class="form-control-plaintext form-inline" id="price<%=p.getId()%>"
+                                                                                                                    name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
+                                                                        </p>
+                                                                    </div>
+                                                                    <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="error<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Product is already in Cart!
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="loginError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Please login first before buying any of our products. &#9786; 
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%
+                                        }
+                                    %>           
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </div>
+                            <!-- end of cold series -->
+                            <br>
+                            <!-- end of cold coffee -->
+                            <!-- coffee syrup section -->
+                            <div>
+                                <h5 style="margin-top: 10px;" id="sy">Coffee Syrups (100 ml)</h5>
+                                <hr>
+                                <!-- 1st row iced coffee -->
+                                <%
+                                    for (int i = 0; i < products.size();) {
+                                %>
+                                <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
+                                    <!-- orig -->
+                                    <%
+                                        int counter = 0;
+                                        while (counter < 3) {
+                                            if (i >= products.size()) {
+                                                break;
+                                            }
+                                            Product p = products.get(i);
+                                            i++;
+                                            if (!p.getType().equals("sy")) {
+                                                continue;
+                                            }
+                                            counter++;
+                                    %>    
+                                    <div class="col">
+                                        <div class="card mb-3">
+                                            <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
+                                            <div class="card-body">
+                                                <h6 class="card-title"><%=p.getName()%></h6>
+                                                <p class="card-text">&#8369;<%=p.getPrice()%></p>
+                                                <form method="POST" action="cart">
+                                                    <input type="hidden" name="id" value="<%=p.getId()%>"/>
+                                                    <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
+                                                        //if (u.getCustomerID() == -1) {
+                                                        if (u == null || c == null) {
+                                                            out.print("loginError2");
+                                                        } else if (c.findCartItem(p.getId()) == null) {
+                                                            out.print("modal2" + p.getId());
+                                                        } else {
+                                                            out.print("error2" + p.getId());
+                                                        }
+                                                            %>">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                                        </svg> Add to Cart
+                                                    </button>
+                                                    <div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" style="width:80%; margin-left: 10%;">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
+                                                                    <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <img src="Images/<%=p.getId()%>.jpg" style="padding:0; margin:0; width:80%; box-shadow: none;">
+                                                                    <div class="btn-group" style="width:100%; margin-top: 18px;">
+                                                                        <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                                            </svg></button>
+                                                                        <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                                            </svg></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <div class="row" style="width:100%">
+                                                                        <p class="col-sm align-middle me-auto">
+                                                                            <strong>Quantity:</strong> <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantity<%=p.getId()%>" 
+                                                                                                              name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
+                                                                        </p><p class=" col-sm align-middle me-auto" >
+                                                                            <strong>Price(&#8369;): </strong><input type="text" align="middle" class="form-control-plaintext form-inline" id="price<%=p.getId()%>"
+                                                                                                                    name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
+                                                                        </p>
+                                                                    </div>
+                                                                    <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="error2<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Product is already in Cart!
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="loginError2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Please login first before buying any of our products. &#9786; 
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%
+                                        }
+                                    %>           
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </div>
+                            <!-- end of coffee syrup -->
+                            <br>
+                            <!-- coffee sauces section-->
+                            <div>
+                                <h5 style="margin-top: 10px;" id="sa">Coffee Sauces (100 ml)</h5>
+                                <hr>
+                                <!-- 1st row iced coffee -->
+                                <%
+                                    for (int i = 0; i < products.size();) {
+                                %>
+                                <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
+                                    <!-- orig -->
+                                    <%
+                                        int counter = 0;
+                                        while (counter < 3) {
+                                            if (i >= products.size()) {
+                                                break;
+                                            }
+                                            Product p = products.get(i);
+                                            i++;
+                                            if (!p.getType().equals("sa")) {
+                                                continue;
+                                            }
+                                            counter++;
+                                    %>    
+                                    <div class="col">
+                                        <div class="card mb-3">
+                                            <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
+                                            <div class="card-body">
+                                                <h6 class="card-title"><%=p.getName()%></h6>
+                                                <p class="card-text">&#8369;<%=p.getPrice()%></p>
+                                                <form method="POST" action="cart">
+                                                    <input type="hidden" name="id" value="<%=p.getId()%>"/>
+                                                    <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
+                                                        //if (u.getCustomerID() == -1) {
+                                                        if (u == null || c == null) {
+                                                            out.print("loginError");
+                                                        } else if (c.findCartItem(p.getId()) == null) {
+                                                            out.print("modal" + p.getId());
+                                                        } else {
+                                                            out.print("error" + p.getId());
+                                                        }
+                                                            %>">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                                        </svg> Add to Cart
+                                                    </button>
+                                                     <div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" style="width:80%; margin-left: 10%;">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
+                                                                    <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <img src="Images/<%=p.getId()%>.jpg" style="padding:0; margin:0; width:80%; box-shadow: none;">
+                                                                    <div class="btn-group" style="width:100%; margin-top: 18px;">
+                                                                        <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                                            </svg></button>
+                                                                        <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                                            </svg></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <div class="row" style="width:100%">
+                                                                        <p class="col-sm align-middle me-auto">
+                                                                            <strong>Quantity:</strong> <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantity<%=p.getId()%>" 
+                                                                                                              name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
+                                                                        </p><p class=" col-sm align-middle me-auto" >
+                                                                            <strong>Price(&#8369;): </strong><input type="text" align="middle" class="form-control-plaintext form-inline" id="price<%=p.getId()%>"
+                                                                                                                    name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
+                                                                        </p>
+                                                                    </div>
+                                                                    <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="error<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Product is already in Cart!
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="loginError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Please login first before buying any of our products. &#9786; 
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%
+                                        }
+                                    %>           
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </div>
+                            <!-- end of coffee sauces --></div>
+                        <div class="tab-pane fade" id="v-pills-pc" role="tabpanel" aria-labelledby="v-pills-pc-tab" style="padding-left: 24px;">
                             <h5 id="pc">Premium Coffee (250g)</h5>
                             <hr>
-                            <%                                    for (int i = 0; i < products.size();) {
+                            <%                    for (int i = 0; i < products.size();) {
                             %>
                             <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
                                 <%
@@ -124,56 +741,56 @@
                                                 <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                     //if (u.getCustomerID() == -1) {
                                                     if (u == null || c == null) {
-                                                        out.print("loginError");
+                                                        out.print("loginErrorAgain" + p.getId());
                                                     } else if (c.findCartItem(p.getId()) == null) {
-                                                        out.print("modal" + p.getId());
+                                                        out.print("modalAgain" + p.getId());
                                                     } else {
-                                                        out.print("error" + p.getId());
+                                                        out.print("errorAgain" + p.getId());
                                                     }
                                                         %>">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                                                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                                                     </svg> Add to Cart
                                                 </button>
-                                                <div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
-                                                                <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <img src="Images/<%=p.getId()%>.jpg" class="card-img-top img-thumbnail">
-                                                                <div class="btn-group" style="width:100%; position: relative">
-                                                                    <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                                        </svg></button>
-                                                                    <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                                                        </svg></button>
+                                                        <div class="modal fade" id="modalAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="width:80%; margin-left: 10%;">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
+                                                                        <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <img src="Images/<%=p.getId()%>.jpg" style="padding:0; margin:0; width:80%; box-shadow: none;">
+                                                                        <div class="btn-group" style="width:100%; margin-top: 18px;">
+                                                                            <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                                                </svg></button>
+                                                                            <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                                                </svg></button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <div class="row" style="width:100%">
+                                                                            <p class="col-sm align-middle me-auto">
+                                                                                <strong>Quantity:</strong> <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantityAgain<%=p.getId()%>" 
+                                                                                                                  name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
+                                                                            </p><p class=" col-sm align-middle me-auto" >
+                                                                                <strong>Price(&#8369;): </strong><input type="text" align="middle" class="form-control-plaintext form-inline" id="priceAgain<%=p.getId()%>"
+                                                                                                                        name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <div class="row" style="width:100%">
-                                                                    <p class="col-sm align-middle me-auto">
-                                                                        Quantity: <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantity<%=p.getId()%>" 
-                                                                                         name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
-                                                                    </p><p class=" col-sm align-middle me-auto" >
-                                                                        Price: &#8369;<input type="text" align="middle" class="form-control-plaintext form-inline" id="price<%=p.getId()%>"
-                                                                                             name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
-                                                                    </p>
-                                                                </div>
-                                                                <button type="submit" name="action" value="add" class="btn btn-primary">Submit</button>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal fade" id="error<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="errorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                                Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 Product is already in Cart!
@@ -184,15 +801,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal fade" id="loginError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="loginErrorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                Please login first before buying any of our products. &#9786;
+                                                            <div class="modal-body">Please login first before buying any of our products. &#9786;
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -210,12 +826,9 @@
                             </div>
                             <%
                                 }
-                            %>
-                        </div>
-                        <!-- end of premium coffee -->
-                        <!-- Hot Series Section -->
-                        <div>
-                            <h5 style="margin-top: 10px;" id="hs">Hot Series (8 oz.)</h5>
+                            %></div>
+                        <div class="tab-pane fade" id="v-pills-hs" role="tabpanel" aria-labelledby="v-pills-hs-tab" style="padding-left: 24px;">
+                            <h5 id="hs">Hot Series (8 oz.)</h5>
                             <hr>
                             <!-- 1st row cold brew -->
                             <%
@@ -247,51 +860,51 @@
                                                 <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                     //if (u.getCustomerID() == -1) {
                                                     if (u == null || c == null) {
-                                                        out.print("loginError");
+                                                        out.print("loginErrorAgain" + p.getId());
                                                     } else if (c.findCartItem(p.getId()) == null) {
-                                                        out.print("modal" + p.getId());
+                                                        out.print("modalAgain" + p.getId());
                                                     } else {
-                                                        out.print("error" + p.getId());
+                                                        out.print("errorAgain" + p.getId());
                                                     }
                                                         %>">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                                                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                                                     </svg> Add to Cart
                                                 </button>
-                                                <div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
-                                                                <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <img src="Images/<%=p.getId()%>.jpg" class="card-img-top img-thumbnail">
-                                                                <div class="btn-group" style="width:100%; position: relative">
-                                                                    <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                                        </svg></button>
-                                                                    <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                                                        </svg></button>
+                                                <div class="modal fade" id="modalAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="width:80%; margin-left: 10%;">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
+                                                                        <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <img src="Images/<%=p.getId()%>.jpg" style="padding:0; margin:0; width:80%; box-shadow: none;">
+                                                                        <div class="btn-group" style="width:100%; margin-top: 18px;">
+                                                                            <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                                                </svg></button>
+                                                                            <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                                                </svg></button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <div class="row" style="width:100%">
+                                                                            <p class="col-sm align-middle me-auto">
+                                                                                <strong>Quantity:</strong> <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantityAgain<%=p.getId()%>" 
+                                                                                                                  name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
+                                                                            </p><p class=" col-sm align-middle me-auto" >
+                                                                                <strong>Price(&#8369;): </strong><input type="text" align="middle" class="form-control-plaintext form-inline" id="priceAgain<%=p.getId()%>"
+                                                                                                                        name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <div class="row" style="width:100%">
-                                                                    <p class="col-sm align-middle me-auto">
-                                                                        Quantity: <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantity<%=p.getId()%>" 
-                                                                                         name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
-                                                                    </p><p class=" col-sm align-middle me-auto" >
-                                                                        Price: &#8369;<input type="text" align="middle" class="form-control-plaintext form-inline" id="price<%=p.getId()%>"
-                                                                                             name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
-                                                                    </p>
-                                                                </div>
-                                                                <button type="submit" name="action" value="add" class="btn btn-primary">Submit</button>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal fade" id="error<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="errorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -307,16 +920,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal fade" id="loginError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="loginErrorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                Please login first before buying any of our products. &#9786; 
-                                                            </div>
+                                                            <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
@@ -334,14 +945,10 @@
                             <%
                                 }
                             %>
-                            <!-- end of cold brew section -->
-                            <!-- iced coffee section -->
                             <br>
                         </div>
-                        <!-- end of hot series -->
-                        <!-- cold series section -->
-                        <div>
-                            <h5 style="margin-top: 10px;" id="cs">Cold Series (12 oz.)</h5>
+                        <div class="tab-pane fade" id="v-pills-cs" role="tabpanel" aria-labelledby="v-pills-cs-tab" style="padding-left: 24px;">
+                            <h5 id="cs">Cold Series (12 oz.)</h5>
                             <hr>
                             <!-- 1st row iced coffee -->
                             <%
@@ -373,51 +980,51 @@
                                                 <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                     //if (u.getCustomerID() == -1) {
                                                     if (u == null || c == null) {
-                                                        out.print("loginError");
+                                                        out.print("loginErrorAgain" + p.getId());
                                                     } else if (c.findCartItem(p.getId()) == null) {
-                                                        out.print("modal" + p.getId());
+                                                        out.print("modalAgain" + p.getId());
                                                     } else {
-                                                        out.print("error" + p.getId());
+                                                        out.print("errorAgain" + p.getId());
                                                     }
                                                         %>">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                                                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                                                     </svg> Add to Cart
                                                 </button>
-                                                <div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
-                                                                <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <img src="Images/<%=p.getId()%>.jpg" class="card-img-top img-thumbnail">
-                                                                <div class="btn-group" style="width:100%; position: relative">
-                                                                    <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                                        </svg></button>
-                                                                    <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                                                        </svg></button>
+                                                 <div class="modal fade" id="modalAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="width:80%; margin-left: 10%;">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
+                                                                        <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <img src="Images/<%=p.getId()%>.jpg" style="padding:0; margin:0; width:80%; box-shadow: none;">
+                                                                        <div class="btn-group" style="width:100%; margin-top: 18px;">
+                                                                            <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                                                </svg></button>
+                                                                            <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                                                </svg></button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <div class="row" style="width:100%">
+                                                                            <p class="col-sm align-middle me-auto">
+                                                                                <strong>Quantity:</strong> <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantityAgain<%=p.getId()%>" 
+                                                                                                                  name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
+                                                                            </p><p class=" col-sm align-middle me-auto" >
+                                                                                <strong>Price(&#8369;): </strong><input type="text" align="middle" class="form-control-plaintext form-inline" id="priceAgain<%=p.getId()%>"
+                                                                                                                        name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <div class="row" style="width:100%">
-                                                                    <p class="col-sm align-middle me-auto">
-                                                                        Quantity: <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantity<%=p.getId()%>" 
-                                                                                         name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
-                                                                    </p><p class=" col-sm align-middle me-auto" >
-                                                                        Price: &#8369;<input type="text" align="middle" class="form-control-plaintext form-inline" id="price<%=p.getId()%>"
-                                                                                             name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
-                                                                    </p>
-                                                                </div>
-                                                                <button type="submit" name="action" value="add" class="btn btn-primary">Submit</button>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal fade" id="error<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="errorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -433,16 +1040,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal fade" id="loginError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="loginErrorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                Please login first before buying any of our products. &#9786; 
-                                                            </div>
+                                                            <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
@@ -460,13 +1065,10 @@
                             <%
                                 }
                             %>
+                            <br>
                         </div>
-                        <!-- end of cold series -->
-                        <br>
-                        <!-- end of cold coffee -->
-                        <!-- coffee syrup section -->
-                        <div>
-                            <h5 style="margin-top: 10px;" id="sy">Coffee Syrups (100 ml)</h5>
+                        <div class="tab-pane fade" id="v-pills-sy" role="tabpanel" aria-labelledby="v-pills-sy-tab" style="padding-left: 24px;">
+                            <h5 id="sy">Coffee Syrups (100 ml)</h5>
                             <hr>
                             <!-- 1st row iced coffee -->
                             <%
@@ -498,51 +1100,51 @@
                                                 <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                     //if (u.getCustomerID() == -1) {
                                                     if (u == null || c == null) {
-                                                        out.print("loginError2");
+                                                        out.print("loginErrorAgain" + p.getId());
                                                     } else if (c.findCartItem(p.getId()) == null) {
-                                                        out.print("modal2" + p.getId());
+                                                        out.print("modalAgain" + p.getId());
                                                     } else {
-                                                        out.print("error2" + p.getId());
+                                                        out.print("errorAgain" + p.getId());
                                                     }
                                                         %>">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                                                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                                                     </svg> Add to Cart
                                                 </button>
-                                                <div class="modal fade" id="modal2<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
-                                                                <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <img src="Images/<%=p.getId()%>.jpg" class="card-img-top img-thumbnail">
-                                                                <div class="btn-group" style="width:100%; position: relative">
-                                                                    <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                                        </svg></button>
-                                                                    <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                                                        </svg></button>
+                                                <div class="modal fade" id="modalAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="width:80%; margin-left: 10%;">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
+                                                                        <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <img src="Images/<%=p.getId()%>.jpg" style="padding:0; margin:0; width:80%; box-shadow: none;">
+                                                                        <div class="btn-group" style="width:100%; margin-top: 18px;">
+                                                                            <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                                                </svg></button>
+                                                                            <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                                                </svg></button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <div class="row" style="width:100%">
+                                                                            <p class="col-sm align-middle me-auto">
+                                                                                <strong>Quantity:</strong> <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantityAgain<%=p.getId()%>" 
+                                                                                                                  name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
+                                                                            </p><p class=" col-sm align-middle me-auto" >
+                                                                                <strong>Price(&#8369;): </strong><input type="text" align="middle" class="form-control-plaintext form-inline" id="priceAgain<%=p.getId()%>"
+                                                                                                                        name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <div class="row" style="width:100%">
-                                                                    <p class="col-sm align-middle me-auto">
-                                                                        Quantity: <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantity<%=p.getId()%>" 
-                                                                                         name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
-                                                                    </p><p class=" col-sm align-middle me-auto" >
-                                                                        Price: &#8369;<input type="text" align="middle" class="form-control-plaintext form-inline" id="price<%=p.getId()%>"
-                                                                                             name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
-                                                                    </p>
-                                                                </div>
-                                                                <button type="submit" name="action" value="add" class="btn btn-primary">Submit</button>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal fade" id="error2<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="errorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -558,16 +1160,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal fade" id="loginError2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="loginErrorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                                Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                Please login first before buying any of our products. &#9786; 
-                                                            </div>
+                                                            <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
@@ -585,12 +1185,10 @@
                             <%
                                 }
                             %>
+                            <br>
                         </div>
-                        <!-- end of coffee syrup -->
-                        <br>
-                        <!-- coffee sauces section-->
-                        <div>
-                            <h5 style="margin-top: 10px;" id="sa">Coffee Sauces (100 ml)</h5>
+                        <div class="tab-pane fade" id="v-pills-sa" role="tabpanel" aria-labelledby="v-pills-sa-tab" style="padding-left: 24px;">
+                            <h5 id="sa">Coffee Sauces (100 ml)</h5>
                             <hr>
                             <!-- 1st row iced coffee -->
                             <%
@@ -622,51 +1220,51 @@
                                                 <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                     //if (u.getCustomerID() == -1) {
                                                     if (u == null || c == null) {
-                                                        out.print("loginError");
+                                                        out.print("loginErrorAgain" + p.getId());
                                                     } else if (c.findCartItem(p.getId()) == null) {
-                                                        out.print("modal" + p.getId());
+                                                        out.print("modalAgain" + p.getId());
                                                     } else {
-                                                        out.print("error" + p.getId());
+                                                        out.print("errorAgain" + p.getId());
                                                     }
                                                         %>">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                                                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                                                     </svg> Add to Cart
                                                 </button>
-                                                <div class="modal fade" id="modal<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
-                                                                <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <img src="Images/<%=p.getId()%>.jpg" class="card-img-top img-thumbnail">
-                                                                <div class="btn-group" style="width:100%; position: relative">
-                                                                    <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                                        </svg></button>
-                                                                    <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                                                        </svg></button>
+                                                 <div class="modal fade" id="modalAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content" style="width:80%; margin-left: 10%;">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
+                                                                        <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <img src="Images/<%=p.getId()%>.jpg" style="padding:0; margin:0; width:80%; box-shadow: none;">
+                                                                        <div class="btn-group" style="width:100%; margin-top: 18px;">
+                                                                            <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                                                </svg></button>
+                                                                            <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                                                </svg></button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <div class="row" style="width:100%">
+                                                                            <p class="col-sm align-middle me-auto">
+                                                                                <strong>Quantity:</strong> <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantityAgain<%=p.getId()%>" 
+                                                                                                                  name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
+                                                                            </p><p class=" col-sm align-middle me-auto" >
+                                                                                <strong>Price(&#8369;): </strong><input type="text" align="middle" class="form-control-plaintext form-inline" id="priceAgain<%=p.getId()%>"
+                                                                                                                        name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
+                                                                            </p>
+                                                                        </div>
+                                                                        <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <div class="row" style="width:100%">
-                                                                    <p class="col-sm align-middle me-auto">
-                                                                        Quantity: <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantity<%=p.getId()%>" 
-                                                                                         name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
-                                                                    </p><p class=" col-sm align-middle me-auto" >
-                                                                        Price: &#8369;<input type="text" align="middle" class="form-control-plaintext form-inline" id="price<%=p.getId()%>"
-                                                                                             name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
-                                                                    </p>
-                                                                </div>
-                                                                <button type="submit" name="action" value="add" class="btn btn-primary">Submit</button>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal fade" id="error<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="errorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -682,16 +1280,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal fade" id="loginError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="loginErrorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                                Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                Please login first before buying any of our products. &#9786; 
-                                                            </div>
+                                                            <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                             </div>
@@ -708,603 +1304,7 @@
                             </div>
                             <%
                                 }
-                            %>
-                        </div>
-                        <!-- end of coffee sauces --></div>
-                    <div class="tab-pane fade" id="v-pills-pc" role="tabpanel" aria-labelledby="v-pills-pc-tab" style="padding-left: 24px;">
-                        <h5 id="pc">Premium Coffee (250g)</h5>
-                        <hr>
-                        <%                    for (int i = 0; i < products.size();) {
-                        %>
-                        <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
-                            <%
-                                int counter = 0;
-                                while (counter < 3) {
-                                    if (i >= products.size()) {
-                                        break;
-                                    }
-                                    Product p = products.get(i);
-                                    i++;
-                                    if (!p.getType().equals("pc")) {
-                                        continue;
-                                    }
-                                    counter++;
-                            %>
-                            <div class="col">
-                                <div class="card mb-3">
-                                    <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
-                                    <div class="card-body">
-                                        <h6 class="card-title"><%=p.getName()%></h6>
-                                        <p class="card-text">&#8369;<%=p.getPrice()%></p>
-                                        <form method="POST" action="cart">
-                                            <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                            <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
-                                                //if (u.getCustomerID() == -1) {
-                                                if (u == null || c == null) {
-                                                    out.print("loginErrorAgain" + p.getId());
-                                                } else if (c.findCartItem(p.getId()) == null) {
-                                                    out.print("modalAgain" + p.getId());
-                                                } else {
-                                                    out.print("errorAgain" + p.getId());
-                                                }
-                                                    %>">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                                </svg> Add to Cart
-                                            </button>
-                                            <div class="modal fade" id="modalAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
-                                                            <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="Images/<%=p.getId()%>.jpg" class="card-img-top img-thumbnail">
-                                                            <div class="btn-group" style="width:100%; position: relative">
-                                                                <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                                    </svg></button>
-                                                                <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                                                    </svg></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <div class="row" style="width:100%">
-                                                                <p class="col-sm align-middle me-auto">
-                                                                    Quantity: <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantityAgain<%=p.getId()%>" 
-                                                                                     name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
-                                                                </p><p class=" col-sm align-middle me-auto" >
-                                                                    Price: &#8369;<input type="text" align="middle" class="form-control-plaintext form-inline" id="priceAgain<%=p.getId()%>"
-                                                                                         name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
-                                                                </p>
-                                                            </div>
-                                                            <button type="submit" name="action" value="add" class="btn btn-primary">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="errorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                            Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Product is already in Cart!
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="loginErrorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">Please login first before buying any of our products. &#9786;
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <%
-                                }
-                            %>           
-                        </div>
-                        <%
-                            }
-                        %></div>
-                    <div class="tab-pane fade" id="v-pills-hs" role="tabpanel" aria-labelledby="v-pills-hs-tab" style="padding-left: 24px;">
-                        <h5 id="hs">Hot Series (8 oz.)</h5>
-                        <hr>
-                        <!-- 1st row cold brew -->
-                        <%
-                            for (int i = 0; i < products.size();) {
-                        %>
-                        <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
-                            <!-- original b -->
-                            <%
-                                int counter = 0;
-                                while (counter < 3) {
-                                    if (i >= products.size()) {
-                                        break;
-                                    }
-                                    Product p = products.get(i);
-                                    i++;
-                                    if (!p.getType().equals("hs")) {
-                                        continue;
-                                    }
-                                    counter++;
-                            %>
-                            <div class="col">
-                                <div class="card mb-3">
-                                    <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
-                                    <div class="card-body">
-                                        <h6 class="card-title"><%=p.getName()%></h6>
-                                        <p class="card-text">&#8369;<%=p.getPrice()%></p>
-                                        <form method="POST" action="cart">
-                                            <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                            <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
-                                                //if (u.getCustomerID() == -1) {
-                                                if (u == null || c == null) {
-                                                    out.print("loginErrorAgain" + p.getId());
-                                                } else if (c.findCartItem(p.getId()) == null) {
-                                                    out.print("modalAgain" + p.getId());
-                                                } else {
-                                                    out.print("errorAgain" + p.getId());
-                                                }
-                                                    %>">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                                </svg> Add to Cart
-                                            </button>
-                                            <div class="modal fade" id="modalAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
-                                                            <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="Images/<%=p.getId()%>.jpg" class="card-img-top img-thumbnail">
-                                                            <div class="btn-group" style="width:100%; position: relative">
-                                                                <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                                    </svg></button>
-                                                                <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                                                    </svg></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <div class="row" style="width:100%">
-                                                                <p class="col-sm align-middle me-auto">
-                                                                    Quantity: <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantityAgain<%=p.getId()%>" 
-                                                                                     name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
-                                                                </p><p class=" col-sm align-middle me-auto" >
-                                                                    Price: &#8369;<input type="text" align="middle" class="form-control-plaintext form-inline" id="priceAgain<%=p.getId()%>"
-                                                                                         name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
-                                                                </p>
-                                                            </div>
-                                                            <button type="submit" name="action" value="add" class="btn btn-primary">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="errorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Product is already in Cart!
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="loginErrorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <%
-                                }
-                            %>           
-                        </div>
-                        <%
-                            }
-                        %>
-                        <br>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-cs" role="tabpanel" aria-labelledby="v-pills-cs-tab" style="padding-left: 24px;">
-                        <h5 id="cs">Cold Series (12 oz.)</h5>
-                        <hr>
-                        <!-- 1st row iced coffee -->
-                        <%
-                            for (int i = 0; i < products.size();) {
-                        %>
-                        <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
-                            <!-- orig -->
-                            <%
-                                int counter = 0;
-                                while (counter < 3) {
-                                    if (i >= products.size()) {
-                                        break;
-                                    }
-                                    Product p = products.get(i);
-                                    i++;
-                                    if (!p.getType().equals("cs")) {
-                                        continue;
-                                    }
-                                    counter++;
-                            %>    
-                            <div class="col">
-                                <div class="card mb-3">
-                                    <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
-                                    <div class="card-body">
-                                        <h6 class="card-title"><%=p.getName()%></h6>
-                                        <p class="card-text">&#8369;<%=p.getPrice()%></p>
-                                        <form method="POST" action="cart">
-                                            <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                            <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
-                                                //if (u.getCustomerID() == -1) {
-                                                if (u == null || c == null) {
-                                                    out.print("loginErrorAgain" + p.getId());
-                                                } else if (c.findCartItem(p.getId()) == null) {
-                                                    out.print("modalAgain" + p.getId());
-                                                } else {
-                                                    out.print("errorAgain" + p.getId());
-                                                }
-                                                    %>">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                                </svg> Add to Cart
-                                            </button>
-                                            <div class="modal fade" id="modalAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
-                                                            <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="Images/<%=p.getId()%>.jpg" class="card-img-top img-thumbnail">
-                                                            <div class="btn-group" style="width:100%; position: relative">
-                                                                <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                                    </svg></button>
-                                                                <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                                                    </svg></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <div class="row" style="width:100%">
-                                                                <p class="col-sm align-middle me-auto">
-                                                                    Quantity: <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantityAgain<%=p.getId()%>" 
-                                                                                     name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
-                                                                </p><p class=" col-sm align-middle me-auto" >
-                                                                    Price: &#8369;<input type="text" align="middle" class="form-control-plaintext form-inline" id="priceAgain<%=p.getId()%>"
-                                                                                         name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
-                                                                </p>
-                                                            </div>
-                                                            <button type="submit" name="action" value="add" class="btn btn-primary">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="errorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Product is already in Cart!
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="loginErrorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <%
-                                }
-                            %>           
-                        </div>
-                        <%
-                            }
-                        %>
-                        <br>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-sy" role="tabpanel" aria-labelledby="v-pills-sy-tab" style="padding-left: 24px;">
-                        <h5 id="sy">Coffee Syrups (100 ml)</h5>
-                        <hr>
-                        <!-- 1st row iced coffee -->
-                        <%
-                            for (int i = 0; i < products.size();) {
-                        %>
-                        <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
-                            <!-- orig -->
-                            <%
-                                int counter = 0;
-                                while (counter < 3) {
-                                    if (i >= products.size()) {
-                                        break;
-                                    }
-                                    Product p = products.get(i);
-                                    i++;
-                                    if (!p.getType().equals("sy")) {
-                                        continue;
-                                    }
-                                    counter++;
-                            %>    
-                            <div class="col">
-                                <div class="card mb-3">
-                                    <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
-                                    <div class="card-body">
-                                        <h6 class="card-title"><%=p.getName()%></h6>
-                                        <p class="card-text">&#8369;<%=p.getPrice()%></p>
-                                        <form method="POST" action="cart">
-                                            <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                            <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
-                                                //if (u.getCustomerID() == -1) {
-                                                if (u == null || c == null) {
-                                                    out.print("loginErrorAgain" + p.getId());
-                                                } else if (c.findCartItem(p.getId()) == null) {
-                                                    out.print("modalAgain" + p.getId());
-                                                } else {
-                                                    out.print("errorAgain" + p.getId());
-                                                }
-                                                    %>">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                                </svg> Add to Cart
-                                            </button>
-                                            <div class="modal fade" id="modalAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
-                                                            <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="Images/<%=p.getId()%>.jpg" class="card-img-top img-thumbnail">
-                                                            <div class="btn-group" style="width:100%; position: relative">
-                                                                <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                                    </svg></button>
-                                                                <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                                                    </svg></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <div class="row" style="width:100%">
-                                                                <p class="col-sm align-middle me-auto">
-                                                                    Quantity: <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantityAgain<%=p.getId()%>" 
-                                                                                     name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
-                                                                </p><p class=" col-sm align-middle me-auto" >
-                                                                    Price: &#8369;<input type="text" align="middle" class="form-control-plaintext form-inline" id="priceAgain<%=p.getId()%>"
-                                                                                         name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
-                                                                </p>
-                                                            </div>
-                                                            <button type="submit" name="action" value="add" class="btn btn-primary">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="errorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Product is already in Cart!
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="loginErrorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                            Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <%
-                                }
-                            %>           
-                        </div>
-                        <%
-                            }
-                        %>
-                        <br>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-sa" role="tabpanel" aria-labelledby="v-pills-sa-tab" style="padding-left: 24px;">
-                        <h5 id="sa">Coffee Sauces (100 ml)</h5>
-                        <hr>
-                        <!-- 1st row iced coffee -->
-                        <%
-                            for (int i = 0; i < products.size();) {
-                        %>
-                        <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
-                            <!-- orig -->
-                            <%
-                                int counter = 0;
-                                while (counter < 3) {
-                                    if (i >= products.size()) {
-                                        break;
-                                    }
-                                    Product p = products.get(i);
-                                    i++;
-                                    if (!p.getType().equals("sa")) {
-                                        continue;
-                                    }
-                                    counter++;
-                            %>    
-                            <div class="col">
-                                <div class="card mb-3">
-                                    <img src="Images/<%=p.getId()%>.jpg" class="card-img-top">
-                                    <div class="card-body">
-                                        <h6 class="card-title"><%=p.getName()%></h6>
-                                        <p class="card-text">&#8369;<%=p.getPrice()%></p>
-                                        <form method="POST" action="cart">
-                                            <input type="hidden" name="id" value="<%=p.getId()%>"/>
-                                            <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
-                                                //if (u.getCustomerID() == -1) {
-                                                if (u == null || c == null) {
-                                                    out.print("loginErrorAgain" + p.getId());
-                                                } else if (c.findCartItem(p.getId()) == null) {
-                                                    out.print("modalAgain" + p.getId());
-                                                } else {
-                                                    out.print("errorAgain" + p.getId());
-                                                }
-                                                    %>">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                                </svg> Add to Cart
-                                            </button>
-                                            <div class="modal fade" id="modalAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Add <%=p.getName()%> to your Cart?</h5>
-                                                            <button onclick="resetQuantity(<%=p.getId()%>)"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="Images/<%=p.getId()%>.jpg" class="card-img-top img-thumbnail">
-                                                            <div class="btn-group" style="width:100%; position: relative">
-                                                                <button onclick="incrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                                    </svg></button>
-                                                                <button onclick="decrementQuantity(<%=p.getId()%>)" type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                                                    </svg></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <div class="row" style="width:100%">
-                                                                <p class="col-sm align-middle me-auto">
-                                                                    Quantity: <input type="text" align="middle" class="form-control-plaintext form-inline" id="quantityAgain<%=p.getId()%>" 
-                                                                                     name="quantity" value="1" style="text-align: center; pointer-events:none;"/>
-                                                                </p><p class=" col-sm align-middle me-auto" >
-                                                                    Price: &#8369;<input type="text" align="middle" class="form-control-plaintext form-inline" id="priceAgain<%=p.getId()%>"
-                                                                                         name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
-                                                                </p>
-                                                            </div>
-                                                            <button type="submit" name="action" value="add" class="btn btn-primary">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="errorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Product is already in Cart!
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="loginErrorAgain<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                            Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <%
-                                }
-                            %>           
-                        </div>
-                        <%
-                            }
-                        %></div>
+                            %></div>
                     </div>
                 </div>
             </div>
