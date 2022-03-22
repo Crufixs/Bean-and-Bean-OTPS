@@ -52,7 +52,7 @@
               />
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center" style="height: 385px;">
-              <div class="card-body p-4 p-lg-5 text-black">
+              <div class="card-body p-4 p-lg-5 text-black" style="margin-top: 10px;">
 
                 <form method="POST" action="Login">
 
@@ -63,20 +63,20 @@
  -->
                   <h5 class="fw-normal mt-4 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
-                  <div class="form-outline mb-3">
+                  <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example17">Username</label>
                     <input type="text" name="uname" value="${input.username}" id="form2Example17" class="form-control" required/>
                     <p style="color:red;"><small><i>${errors.username}</small></i></p>
                   </div>
 
 
-                  <div class="form-outline mb-3">
+                  <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example27">Password</label>
                     <input type="password" id="form2Example27" name="psw" value="${input.password}" class="form-control" required/>
                     <p style="color:red;"><small><i>${errors.password}</small></i></p>
                   </div>
 
-                  <div class="pt-1 mb-3">
+                  <div class="pt-1 mb-4">
                     <button class="btn btn-dark btn-md btn-block" type="submit">Login</button>
                   </div>
 

@@ -60,6 +60,40 @@
         <main>
             <!-- account details -->
             <div class="row g-5" style="margin-top: 100px; margin-bottom: 50px;">
+                <div class="col-md-5 col-lg-5">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h2>My Account</h2>
+                            <p>Welcome, <%= u.getUsername()%>!</p>
+                        </div>
+<!--                         <div class="col">
+                            <form method="POST" action="Logout" style="float: right;">
+                                <button class="btn btn-outline-secondary btn-md" type="submit">LOGOUT</button>
+                                <input type="hidden" name="access" value="valid">
+                            </form>
+                        </div> -->
+                    </div> 
+                    <% if (u.getRole().equalsIgnoreCase("admin")) {%>
+                    <div class="mb-3">
+                        <h5>Bean&Bean Transaction History</h5>
+                        <hr>
+                        <form method="POST" action="PDFServlet" target="_blank">
+                            <button class="btn btn-outline-secondary btn-md" type="submit">Get Records</button>
+                            <input type="hidden" name="type" value="admin">
+                        </form>
+                    </div>
+                    <%}%>
+                    <br>
+                    <div class="mb-3">
+                        <h5>Order History</h5>
+                        <hr>
+                        <form method="POST" action="PDFServlet" target="_blank">
+                            <button class="btn btn-outline-secondary btn-md" type="submit">Get Records</button>
+                            <input type="hidden" name="type" value="guest">
+                        </form>
+                    </div>
+                </div>
+                <!-- end of pdf -->
                 <div class="col-md-7 col-lg-7 order-md-last">
                     <h4 class="justify-content-between align-items-center" style="float: right;">Account Details 
                         <button style="all:unset;cursor:pointer;" onclick="toggleEditAccount()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -160,45 +194,12 @@
                             </div>
                             <input type="hidden" name="state" value="edit">
                             <div class="col-3"></div>
-                            <div class="col-9"> <button id="editAccountButton"class="btn btn-outline-secondary btn-md" type="submit" disabled>Save Changes</button></div>
+                            <div class="col-9">
+                            <button id="editAccountButton"class="btn btn-outline-secondary btn-md" type="submit" style="margin-top: 10px; float: right;" disabled>Save Changes</button></div>
                         </div>
                     </form>
                 </div>
                 <!-- end of account details -->
-                <div class="col-md-5 col-lg-5">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h2>My Account</h2>
-                            <p>Welcome, <%= u.getUsername()%>!</p>
-                        </div>
-<!--                         <div class="col">
-                            <form method="POST" action="Logout" style="float: right;">
-                                <button class="btn btn-outline-secondary btn-md" type="submit">LOGOUT</button>
-                                <input type="hidden" name="access" value="valid">
-                            </form>
-                        </div> -->
-                    </div> 
-                    <% if (u.getRole().equalsIgnoreCase("admin")) {%>
-                    <div class="mb-3">
-                        <h5>Bean&Bean Transaction History</h5>
-                        <hr>
-                        <form method="POST" action="PDFServlet" target="_blank">
-                            <button class="btn btn-outline-secondary btn-md" type="submit">Get Records</button>
-                            <input type="hidden" name="type" value="admin">
-                        </form>
-                    </div>
-                    <%}%>
-                    <br>
-                    <div class="mb-3">
-                        <h5>Order History</h5>
-                        <hr>
-                        <form method="POST" action="PDFServlet" target="_blank">
-                            <button class="btn btn-outline-secondary btn-md" type="submit">Get Records</button>
-                            <input type="hidden" name="type" value="guest">
-                        </form>
-                    </div>
-                </div>
-                <!-- end of pdf -->
             </div>
             <br><br>
         </main>

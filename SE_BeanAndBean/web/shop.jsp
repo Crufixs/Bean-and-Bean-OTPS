@@ -79,7 +79,9 @@
                 <br>
                 <h2 class="mb-3" style="color: white;">Bean & Bean Products</h2>
             </div>
-            <div class="d-flex align-items-start">
+            <!-- <div class="d-flex align-items-start"> -->
+            <div class="row g-5">
+                <div class="col-md-3 col-lg-3"  style="padding-right: 0px;">
                 <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="nav-link active" id="v-pills-ap-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ap" type="button" role="tab" aria-controls="v-pills-ap" aria-selected="true">All Products</button>
                     <button class="nav-link" id="v-pills-pc-tab" data-bs-toggle="pill" data-bs-target="#v-pills-pc" type="button" role="tab" aria-controls="v-pills-pc" aria-selected="false">Premium Coffee</button>
@@ -88,14 +90,16 @@
                     <button class="nav-link" id="v-pills-sy-tab" data-bs-toggle="pill" data-bs-target="#v-pills-sy" type="button" role="tab" aria-controls="v-pills-sy" aria-selected="false">Coffee Syrups</button>
                     <button class="nav-link" id="v-pills-sa-tab" data-bs-toggle="pill" data-bs-target="#v-pills-sa" type="button" role="tab" aria-controls="v-pills-sa" aria-selected="false">Coffee Sauces</button>
                 </div>
+            </div>
+                <div class="col-md-9 col-lg-9" style="padding-left: 0px;">
                 <div class="tab-content" id="v-pills-tabContent" style="margin-bottom: 50px;">
-                    <div class="tab-pane fade show active" id="v-pills-ap" role="tabpanel" aria-labelledby="v-pills-ap-tab"><!-- Premium Coffee Section -->
+                    <div class="tab-pane fade show active" id="v-pills-ap" role="tabpanel" aria-labelledby="v-pills-ap-tab" style="padding-left: 24px;"><!-- Premium Coffee Section -->
                         <div>
                             <h5 id="pc">Premium Coffee (250g)</h5>
                             <hr>
                             <%                                    for (int i = 0; i < products.size();) {
                             %>
-                            <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center; margin-bottom: 10px;">
+                            <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align: center;">
                                 <%
                                     int counter = 0;
                                     while (counter < 3) {
@@ -211,7 +215,7 @@
                         <!-- end of premium coffee -->
                         <!-- Hot Series Section -->
                         <div>
-                            <h5 style="margin-top: 20px;" id="hs">Hot Series (8 oz.)</h5>
+                            <h5 style="margin-top: 10px;" id="hs">Hot Series (8 oz.)</h5>
                             <hr>
                             <!-- 1st row cold brew -->
                             <%
@@ -335,10 +339,9 @@
                             <br>
                         </div>
                         <!-- end of hot series -->
-                        <br>
                         <!-- cold series section -->
                         <div>
-                            <h5 style="margin-top: 20px;" id="cs">Cold Series (12 oz.)</h5>
+                            <h5 style="margin-top: 10px;" id="cs">Cold Series (12 oz.)</h5>
                             <hr>
                             <!-- 1st row iced coffee -->
                             <%
@@ -463,7 +466,7 @@
                         <!-- end of cold coffee -->
                         <!-- coffee syrup section -->
                         <div>
-                            <h5 style="margin-top: 20px;" id="sy">Coffee Syrups (100 ml)</h5>
+                            <h5 style="margin-top: 10px;" id="sy">Coffee Syrups (100 ml)</h5>
                             <hr>
                             <!-- 1st row iced coffee -->
                             <%
@@ -587,7 +590,7 @@
                         <br>
                         <!-- coffee sauces section-->
                         <div>
-                            <h5 style="margin-top: 20px;" id="sa">Coffee Sauces (100 ml)</h5>
+                            <h5 style="margin-top: 10px;" id="sa">Coffee Sauces (100 ml)</h5>
                             <hr>
                             <!-- 1st row iced coffee -->
                             <%
@@ -708,7 +711,8 @@
                             %>
                         </div>
                         <!-- end of coffee sauces --></div>
-                    <div class="tab-pane fade" id="v-pills-pc" role="tabpanel" aria-labelledby="v-pills-pc-tab"><h5 id="pc">Premium Coffee (250g)</h5>
+                    <div class="tab-pane fade" id="v-pills-pc" role="tabpanel" aria-labelledby="v-pills-pc-tab" style="padding-left: 24px;">
+                        <h5 id="pc">Premium Coffee (250g)</h5>
                         <hr>
                         <%                    for (int i = 0; i < products.size();) {
                         %>
@@ -801,12 +805,11 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                            Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            Please login first before buying any of our products
-                                                            .                                                        </div>
+                                                        <div class="modal-body">Please login first before buying any of our products. &#9786;
+                                                        </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
@@ -824,7 +827,7 @@
                         <%
                             }
                         %></div>
-                    <div class="tab-pane fade" id="v-pills-hs" role="tabpanel" aria-labelledby="v-pills-hs-tab">
+                    <div class="tab-pane fade" id="v-pills-hs" role="tabpanel" aria-labelledby="v-pills-hs-tab" style="padding-left: 24px;">
                         <h5 id="hs">Hot Series (8 oz.)</h5>
                         <hr>
                         <!-- 1st row cold brew -->
@@ -905,8 +908,8 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                            Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             Product is already in Cart!
@@ -921,12 +924,10 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                            Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            Please login first before buying any of our products
-                                                            .                                                        </div>
+                                                        <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
@@ -944,9 +945,9 @@
                         <%
                             }
                         %>
-
+                        <br>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-cs" role="tabpanel" aria-labelledby="v-pills-cs-tab">
+                    <div class="tab-pane fade" id="v-pills-cs" role="tabpanel" aria-labelledby="v-pills-cs-tab" style="padding-left: 24px;">
                         <h5 id="cs">Cold Series (12 oz.)</h5>
                         <hr>
                         <!-- 1st row iced coffee -->
@@ -1027,8 +1028,8 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                            Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             Product is already in Cart!
@@ -1043,12 +1044,10 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                            Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            Please login first before buying any of our products
-                                                            .                                                        </div>
+                                                        <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
@@ -1065,8 +1064,11 @@
                         </div>
                         <%
                             }
-                        %></div>
-                    <div class="tab-pane fade" id="v-pills-sy" role="tabpanel" aria-labelledby="v-pills-sy-tab"><h5 id="sy">Coffee Syrups (100 ml)</h5>
+                        %>
+                        <br>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-sy" role="tabpanel" aria-labelledby="v-pills-sy-tab" style="padding-left: 24px;">
+                        <h5 id="sy">Coffee Syrups (100 ml)</h5>
                         <hr>
                         <!-- 1st row iced coffee -->
                         <%
@@ -1146,8 +1148,8 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                            Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             Product is already in Cart!
@@ -1165,9 +1167,7 @@
                                                             <h5 class="modal-title" id="exampleModalLabel"></h5>
                                                             Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            Please login first before buying any of our products
-                                                            .                                                        </div>
+                                                        <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
@@ -1184,8 +1184,11 @@
                         </div>
                         <%
                             }
-                        %></div>
-                    <div class="tab-pane fade" id="v-pills-sa" role="tabpanel" aria-labelledby="v-pills-sa-tab"><h5 id="sa">Coffee Sauces (100 ml)</h5>
+                        %>
+                        <br>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-sa" role="tabpanel" aria-labelledby="v-pills-sa-tab" style="padding-left: 24px;">
+                        <h5 id="sa">Coffee Sauces (100 ml)</h5>
                         <hr>
                         <!-- 1st row iced coffee -->
                         <%
@@ -1265,8 +1268,8 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                            Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             Product is already in Cart!
@@ -1284,9 +1287,7 @@
                                                             <h5 class="modal-title" id="exampleModalLabel"></h5>
                                                             Oops!                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            Please login first before buying any of our products
-                                                            .                                                        </div>
+                                                        <div class="modal-body">Please login first before buying any of our products. &#9786;</div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                         </div>
@@ -1304,6 +1305,7 @@
                         <%
                             }
                         %></div>
+                    </div>
                 </div>
             </div>
         </div>

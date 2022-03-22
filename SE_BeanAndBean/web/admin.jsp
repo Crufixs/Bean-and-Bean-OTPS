@@ -205,7 +205,7 @@
                     <br><br>
                     <% if (u.getRole().equalsIgnoreCase("admin")) {%>
                     <div class="mb-3">
-                        <h5>Bean&Bean Transaction History</h5>
+                        <h5>Bean & Bean Transaction History</h5>
                         <hr>
                         <form method="POST" action="PDFServlet" target="_blank">
                             <button class="btn btn-outline-secondary btn-md" type="submit">Get Records</button>
