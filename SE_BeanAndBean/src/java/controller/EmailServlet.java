@@ -11,6 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
 
 /**
  *
@@ -30,21 +36,52 @@ public class EmailServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EmailServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EmailServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+        Properties properties = new Properties();
+
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+
+        //BUSINESS EMAIL
+        String myAccountEmail = "beanandbean.business@gmail.com";
+        String password = "beanNbean1";
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(myAccountEmail, password);
+            }
+        });
+        
+        //LAGAY DITO HOST EMAIL
+        Message message = prepareMessage(session, myAccountEmail, "crufixs@gmail.com");
+        try {
+            Transport.send(message);
+        } catch (MessagingException ex) {
+            Logger.getLogger(EmailServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        System.out.println("Message sent successfully");
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    private static Message prepareMessage(Session session, String myAccountEmail, String recepient) {
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(myAccountEmail));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
+            message.setSubject("My first fucking email");
+            message.setText("Hey there, \n Look my Email!");
+            return message;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
