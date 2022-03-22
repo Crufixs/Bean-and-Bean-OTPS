@@ -32,7 +32,7 @@
                     <div class="col-md-6 col-lg-6" style="margin-top: 75px;">
                         <h2>GET IN TOUCH!</h2>
                         <hr class="my-4">
-                        <form action="shop.jsp">
+                        <form method="post" action="Email">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name" placeholder="Your name">
@@ -48,7 +48,6 @@
                             <button class=" btn btn-outline-secondary btn-lg" type="submit">Send</button>
                         </form>
                     </div>
-
                 </div>
             </main>
             <div class="row align-items-center" style="text-align: center; margin-top: 25px;">
