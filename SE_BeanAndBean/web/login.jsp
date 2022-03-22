@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index
-    Created on : May 11, 2021, 2:19:03 PM
-    Author     : Carlo
+    Document   : login2
+    Created on : 03 21, 22, 10:02:39 PM
+    Author     : Marylaine Lumacad
 --%>
 
 <%@page import="java.util.ArrayList"%>
@@ -29,7 +29,7 @@
 
         %>
     </head> 
-    <body class="d-flex flex-column min-vh-100" style="background-color: #F0E7DE;">
+    <body class="d-flex flex-column min-vh-100" style="background-image: url('Images/img-bg.jpg');">
         <!-- HEADER -->
         <%@include file="header.jsp" %>
         <!--        <div class="container">     
@@ -37,35 +37,62 @@
         
                         <div class="modal-content">-->
         <div style="margin-top: 100px;">
-            <form method="POST" action="Login" class="divider-color softEdge" style="
-                  width: 500px;
-                  margin: 20px 20px;">
-<!--                <div class="container softEdge">-->
-                    <div class="modal-header text-center">
-                        <h1 class="modal-title primary-text fw-bold ">Login</h1>
-                    </div>
-                    <div class="modal-body">
-                        <label class="fs-5 form-label primary-text">Username</label>
-                        <input type="text" name="uname" value="${input.username}" class="form-control primary-text" required>
-                        <span style="color:red;"><i>${errors.username}</i></span>
-                        <br>
-                        <label class="fs-5 form-label primary-text">Password</label>
-                        <input type="password" name="psw" value="${input.password}" class="form-control primary-text" required>
-                        <span style="color:red;"><i>${errors.password}</i></span>
-                        <br>
+            <!-- <section class="vh-100" style="background-color: #9A616D;"> -->
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img
+                src="Images/login-bg.jpg"
+                alt="login form"
+                class="img-fluid" style="border-radius: 1rem 0 0 1rem;"
+              />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center" style="height: 385px;">
+              <div class="card-body p-4 p-lg-5 text-black">
 
-                    </div>  
-                    <div class="modal-body text-center">
-                        <div>
-                            <button type="submit" class="btn btn-secondary w-100">Login</button>
-                        </div>
-                        <br>
-                        <div>
-                            Need an account? <a href="register.jsp" style="text-decoration: underline;">Sign up</a>
-                        </div>
-                    </div>
-                </div>
-            </form>
+                <form method="POST" action="Login">
+
+                  <!-- <div class="d-flex align-items-center mb-3 pb-1">
+                    <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                    <span class="h1 fw-bold mb-0"><img src="Images/logo-black.png" width="100" height="100"></span>
+                  </div>
+ -->
+                  <h5 class="fw-normal mt-4 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+
+                  <div class="form-outline mb-3">
+                    <label class="form-label" for="form2Example17">Username</label>
+                    <input type="text" name="uname" value="${input.username}" id="form2Example17" class="form-control form-control-lg" required/>
+                    <span style="color:red;"><i>${errors.username}</i></span>
+                  </div>
+
+
+                  <div class="form-outline mb-3">
+                    <label class="form-label" for="form2Example27">Password</label>
+                    <input type="password" id="form2Example27" name="psw" value="${input.password}" class="form-control form-control-lg" required/>
+                    <span style="color:red;"><i>${errors.password}</i></span>
+                  </div>
+
+                  <div class="pt-1 mb-3">
+                    <button class="btn btn-dark btn-md btn-block" type="submit">Login</button>
+                  </div>
+
+                  <!-- <a class="small text-muted" href="#!">Forgot password?</a> -->
+                  <p class="pb-lg-2" style="color: #000000;">Don't have an account? <a href="register.jsp" style="color: #6f4e37;">Register here</a></p>
+                  <!-- <a href="#!" class="small text-muted">Terms of use.</a>
+                  <a href="#!" class="small text-muted">Privacy policy</a> -->
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- </section> -->
         </div>
         <!--                </div>
                     </div>

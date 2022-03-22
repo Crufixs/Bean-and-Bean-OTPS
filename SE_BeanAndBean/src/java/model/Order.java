@@ -16,6 +16,7 @@ public class Order {
     private List<OrderItem> items;
     private int orderID;
     private int customerID;
+    private String status;
     private double totalPrice;
     private String placed_at;
     private String street;
@@ -33,6 +34,7 @@ public class Order {
         items = new ArrayList<>();
         this.orderID = orderID;
         this.customerID = customerID;
+        this.status = "pending";
         this.totalPrice = totalPrice;
         this.placed_at = getDateTimeNow();
         this.street = street;
@@ -47,28 +49,45 @@ public class Order {
         addOrderToDB();
     }
     
+    public Order(int orderID, int customerID, String status, double totalPrice, String placed_at, String street, String barangay, String city, String region, 
+            String firstName, String lastName, String email, String phoneNumber, Connection con) {
+        
+        items = new ArrayList<>();
+        this.orderID = orderID;
+        this.customerID = customerID;
+        this.status = status;
+        this.totalPrice = totalPrice;
+        this.placed_at = placed_at;
+        this.street = street;
+        this.barangay = barangay;
+        this.city = city;
+        this.region = region;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.con = con;
+    }
+    
     private void addOrderToDB(){
         try {
             System.out.println("IN ADD ORDER TO DB");
             
-            PreparedStatement insert = con.prepareStatement("INSERT INTO orders(customer_id, total_price, placed_at, "
-                    + "street, barangay, city, region, first_name, last_name, email, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement insert = con.prepareStatement("INSERT INTO orders(customer_id, status, total_price, placed_at, "
+                    + "street, barangay, city, region, first_name, last_name, email, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             
-            if(this.customerID != -1)
-                insert.setString(1, this.customerID+"");
-            else
-                insert.setString(1, null);
-            
-            insert.setString(2, this.totalPrice+"");
-            insert.setString(3, this.placed_at+"");
-            insert.setString(4, this.street+"");
-            insert.setString(5, this.barangay+"");
-            insert.setString(6, this.city+"");
-            insert.setString(7, this.region+"");
-            insert.setString(8, this.firstName+"");
-            insert.setString(9, this.lastName+"");
-            insert.setString(10, this.email+"");
-            insert.setString(11, this.phoneNumber+"");
+            insert.setString(1, this.customerID+"");
+            insert.setString(2, this.status+"");
+            insert.setString(3, this.totalPrice+"");
+            insert.setString(4, this.placed_at+"");
+            insert.setString(5, this.street+"");
+            insert.setString(6, this.barangay+"");
+            insert.setString(7, this.city+"");
+            insert.setString(8, this.region+"");
+            insert.setString(9, this.firstName+"");
+            insert.setString(10, this.lastName+"");
+            insert.setString(11, this.email+"");
+            insert.setString(12, this.phoneNumber+"");
             
             
             int affectedRows = insert.executeUpdate();
@@ -86,6 +105,42 @@ public class Order {
         }
     }
     
+    public void cancelOrder(){
+        try{
+            PreparedStatement insert = con.prepareStatement("UPDATE orders SET status = 'cancelled' WHERE order_id = ?");
+            insert.setInt(1, this.orderID);
+            insert.executeUpdate();
+            
+            this.status = "cancelled";
+        }catch(SQLException ex){
+            
+        }
+    }
+    
+    public void processOrder(){
+        try{
+            PreparedStatement insert = con.prepareStatement("UPDATE orders SET status = 'processing' WHERE order_id = ?");
+            insert.setInt(1, this.orderID);
+            insert.executeUpdate();
+            
+            this.status = "processing";
+        }catch(SQLException ex){
+            
+        }
+    }
+    
+    public void completeOrder(){
+        try{
+            PreparedStatement insert = con.prepareStatement("UPDATE orders SET status = 'completed' WHERE order_id = ?");
+            insert.setInt(1, this.orderID);
+            insert.executeUpdate();
+            
+            this.status = "completed";
+        }catch(SQLException ex){
+            
+        }
+    }
+    
     public String getDateTimeNow(){
         ZonedDateTime zonedDateTimeNow = ZonedDateTime.now(ZoneId.of("Asia/Singapore"));
         String year = String.format("%04d", zonedDateTimeNow.getYear());
@@ -100,6 +155,14 @@ public class Order {
     
     public void addItem(OrderItem item){
         items.add(item);
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public List<OrderItem> getItems() {

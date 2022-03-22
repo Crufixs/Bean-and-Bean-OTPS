@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 //import model.AuthenticationException;
 import model.Cart;
+import model.Order;
 //import model.NullValueException;
 import model.Product;
 import model.ProductList;
@@ -111,8 +113,16 @@ public class LoginServlet extends HttpServlet {
                        session.setAttribute("user", user); //We set the User object we created as a Session Attribute (To print the Username & Role)
                        if(role.equals("guest"))
                             response.sendRedirect("success.jsp"); //success page
-                       else if(role.equals("admin"))
+                       else if(role.equals("admin")){
+                           List<Order> orderList = getOrderList();
+//                           List<Order> pendingOrders = new ArrayList<>();
+//                           List<Order> processingOrders = new ArrayList<>();
+//                           List<Order> completedOrders = new ArrayList<>();
+//                           for
+                           session.setAttribute("orderList", orderList);
+                           System.out.println("Order list: " + orderList.size() + " items");
                            response.sendRedirect("admin.jsp");
+                       }
                        
                        return;
                    }
@@ -147,6 +157,42 @@ public class LoginServlet extends HttpServlet {
         
         
         
+    }
+    
+    private List<Order> getOrderList(){
+        List <Order> orderList = new ArrayList<>();
+        
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM orders");
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int orderID = rs.getInt("order_id");
+                int customerID = rs.getInt("customer_id");
+                String status = rs.getString("status");
+                double total_price = rs.getDouble("total_price");
+                String placed_at = rs.getString("placed_at");
+                String street = rs.getString("street");
+                String barangay = rs.getString("barangay");
+                String city = rs.getString("city");
+                String region = rs.getString("region");
+                String first_name = rs.getString("first_name");
+                String last_name = rs.getString("last_name");
+                String email = rs.getString("email");
+                String phone_number = rs.getString("phone_number");
+                
+                Order feedback = new Order(orderID, customerID, status, total_price, placed_at, street, barangay, city, region,
+                first_name, last_name, email, phone_number, con);
+                
+                orderList.add(feedback);
+            }
+            
+            
+        } catch(Exception e){
+            
+        }
+        
+        return orderList;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
