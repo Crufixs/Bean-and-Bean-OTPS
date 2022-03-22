@@ -65,14 +65,14 @@
                   <div class="form-outline mb-3">
                     <label class="form-label" for="form2Example17">Username</label>
                     <input type="text" name="uname" value="${input.username}" id="form2Example17" class="form-control form-control-lg" required/>
-                    <span style="color:red;"><i>${errors.username}</i></span>
+                    <p style="color:red;"><small><i>${errors.password}</small></i></p>
                   </div>
 
 
                   <div class="form-outline mb-3">
                     <label class="form-label" for="form2Example27">Password</label>
                     <input type="password" id="form2Example27" name="psw" value="${input.password}" class="form-control form-control-lg" required/>
-                    <span style="color:red;"><i>${errors.password}</i></span>
+                    <p style="color:red;"><small><i>${errors.password}</small></i></p>
                   </div>
 
                   <div class="pt-1 mb-3">
