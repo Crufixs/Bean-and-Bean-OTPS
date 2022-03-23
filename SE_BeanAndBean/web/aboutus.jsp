@@ -18,19 +18,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="Images/logo-black.png"/>
-    <link rel="stylesheet" href="CSS/aboutus.css">
+    <link rel="stylesheet" href="CSS/aboutus.css?<?php echo time(); ?>">
     <%
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         response.setHeader("Pragma", "no-cache");
         response.setDateHeader("Expires", 0);
-        
+
         List<Feedback> feedbacks = (List) getServletContext().getAttribute("feedbackList");
         int totalComments = feedbacks.size();
 //        Map sortDetail = new HashMap();
 //        sortDetail.put(1, "Most Recent");
 //        sortDetail.put(2, "Ratings");
     %>
-     
+
 </head>
 <body class="d-flex flex-column min-vh-100" style="background-image: url('Images/newBG.png');">
     <!-- HEADER -->
@@ -194,49 +194,51 @@
                             <option value="1" ${1 == selectedID ? 'selected' : ''}>Most Recent</option>
                             <option value="2" ${2 == selectedID ? 'selected' : ''}>Ratings</option>
                         </select>
-<!--                        <select name="quantity" style="display: inline-block;" id="ddlModel">
-                            <option value="AllComments">All</option>
-                            <option value="Iphone">10</option>
-                            <option value="Samsung">25</option>
-                            <option value="Samsung">50</option>
-                            <option value="Samsung">100</option>
-                        </select>-->
+                        <!--                        <select name="quantity" style="display: inline-block;" id="ddlModel">
+                                                    <option value="AllComments">All</option>
+                                                    <option value="Iphone">10</option>
+                                                    <option value="Samsung">25</option>
+                                                    <option value="Samsung">50</option>
+                                                    <option value="Samsung">100</option>
+                                                </select>-->
                     </form>
                 </div>
             </div>
             <div class="row justify-content-between align-middle align-items-center" style="margin-top: 5vh; margin-bottom: 5vh;">
                 <form method="POST" action="Review" class=" row align-middle align-items-center" style="margin: 0;">
                     <input type="hidden" name="requestType" value="comment"/>
-                    <textarea id="" name="comment" rows="4" cols="50" maxlength="500" style="border-radius: 20px; width: 80%; margin-left: 10%;" placeholder="Say something about Bean&Bean"></textarea><br>
+                    <textarea id="" name="comment" rows="4" cols="50" maxlength="500" style="border-radius: 20px; width: 80%; margin-left: 10%; padding: 24px;" placeholder="Say something about Bean&Bean"></textarea><br>
                     <div style="align-items: center; text-align: center;">
-                        <div class="slidecontainer" style="margin-top: 1vh; width: 100%;">
-                            <input type="range" name="starRating" min="1" max="5" value="3" class="slider" id="myRange" style="width: 25%;">
+                       
+                        <div class="slidecontainer">
+                            <input type="range" min="1" max="5" value="3" class="slider" id="myRange" style="margin-bottom: 20px;">
+                            <p>My Rating: <span id="demo"></span> <span> Star(s)</span></p>
                         </div>
-                        <p>My Rating: <span id="demo"></span> <span> Star(s)</span></p>
+
                     </div>
-                    <input class="align-middle w-50" style="display:inline-block; margin-left: 25%; margin-top: 1vh; border-radius: 20px; height: 6vh; background-color: #FFEB3B; font-weight: bold; " type="submit" value="POST COMMENT">
+                    <input class="align-middle w-50" style="display:inline-block; margin-left: 25%; margin-top: 1vh; border-radius: 20px; height: 6vh; background-color: gold; font-weight: bold; " type="submit" value="POST COMMENT">
                 </form>
             </div>
             <ul class="" style="align-content: center; padding: 0; margin: 0">
                 <%for (int y = 1; y <= totalComments; y++) {
-                        Feedback feedback = feedbacks.get(y-1); 
+                        Feedback feedback = feedbacks.get(y - 1);
                 %>
                 <li class="row w-100 justify-content-between" style="background-color: white; margin: 0; margin-bottom: 2vh; padding: 2vh;">
-                    <div class="col-lg-3 col-md-3 col-sm-4" style="align-items: center; align-content: center; padding: 2vh;">
-                        <img src="Images/<%= 1 + (int) Math.floor(Math.random()*19) %>.jpg" alt="username" style="border-radius: 50%; width: 80%;">
+                    <div class="col-lg-3 col-md-3 col-sm-12" style="align-items: center; align-content: center; padding: 2vh;">
+                        <img src="Images/person (<%= 1 + (int) Math.floor(Math.random() * 12)%>).png" alt="username" style="border-radius: 50%; width: 100%;">
                     </div>
-                    <div class="col-lg-9 col-md-9 col-sm-8 lh-md">
+                    <div class="col-lg-9 col-md-9 col-sm-12 lh-md">
                         <br>
                         <H4><%=feedback.getCustomerUsername()%></H4>
-                        <% for (int x = 0; x < feedback.getStarRating(); x++) {%>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="gold" class="bi bi-star-fill" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                            </svg>
+                            <% for (int x = 0; x < feedback.getStarRating(); x++) {%>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="gold" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
                         <%}%>
                         <% for (int x = 0; x < (5 - feedback.getStarRating()); x++) {%>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="gold" class="bi bi-star" viewBox="0 0 16 16">
-                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="gold" class="bi bi-star" viewBox="0 0 16 16">
+                        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                        </svg>
                         <%}%>
                         <br><br>
                         <p><%=feedback.getComment()%></p>
