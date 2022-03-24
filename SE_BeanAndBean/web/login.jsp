@@ -37,19 +37,14 @@
                     <div class="modal-dialog">
         
                         <div class="modal-content">-->
-        <div style="margin-top: 100px;">
+        <div style="margin-top: 82px;">
             <!-- <section class="vh-100" style="background-color: #9A616D;"> -->
-  <div class="container py-5 h-100">
+  <div class="container h-100" style="margin: 10.5vh;">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col col-xl-10">
+      <div class="col col-xl-9">
         <div class="card" style="border-radius: 1rem;">
-          <div class="row g-0">
-            <div class="col-md-6 col-lg-5 d-none d-md-block">
-              <img
-                src="Images/login-bg.jpg"
-                alt="login form"
-                class="img-fluid" style="border-radius: 1rem 0 0 1rem;"
-              />
+          <div class="row g-0" style="min-height: 60vh">
+            <div class="col-md-6 col-lg-5 d-none d-md-block" style="background: url('Images/login-bg.jpg') center center; background-size: cover; border-radius: 1rem 0 0 1rem;">
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center" style="height: 385px;">
               <div class="card-body p-4 p-lg-5 text-black" style="margin-top: 10px;">

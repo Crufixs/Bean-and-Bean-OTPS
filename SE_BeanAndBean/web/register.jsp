@@ -31,7 +31,7 @@
         <%@include file="header.jsp" %>
         <div class="container">
             <div class="py-4" style="margin-top: 100px; text-align: center;">
-                <h1 class="fs-4 fw-bold form-label primary-text"><%= u == null ? "Create Account" : "Edit Account"%></h1>
+                <h1 class="fs-3 fw-bold form-label primary-text"><%= u == null ? "CREATE ACCOUNT" : "EDIT ACCOUNT"%></h1>
                 <hr>
             </div>
             <div class="row rounded py-3 px-4 mx-lg-5 mb-5" style="padding:0!important; background-color: white">

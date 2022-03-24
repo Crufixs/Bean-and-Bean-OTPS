@@ -135,7 +135,7 @@
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active" style="background: url(Images/s3.jpg);min-height:73vh;background-repeat: no-repeat;background-size: cover;background-position: center;">
+                    <div class="carousel-item active" style="background: url(Images/s33.jpg);min-height:65vh;background-repeat: no-repeat;background-size: cover;background-position: center;">
                         <div class="container">
                             <div class="carousel-caption text-start">
                                 <img src="Images/logo-plain.png" style="height: 150px; width: 150px;">
@@ -145,11 +145,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item" style="background: url(Images/o1.jpg);min-height:73vh;background-repeat: no-repeat;background-size: cover;background-position: center;">
+                    <div class="carousel-item" style="background: url(Images/o11.jpg);min-height:65vh;background-repeat: no-repeat;background-size: cover;background-position: center;">
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1>DELIVERY</h1>
-                                <p>Get it delivered straight through your doorstep.</p>
+                                <p style="margin-bottom: 1px;">Get it delivered straight through your doorstep.</p>
                                 <p><i>within Metro Manila only</i></p>
                                 <p><a class="btn btn-lg btn-outline-light" href="shop.jsp">Shop Now</a></p>
                             </div>
