@@ -38,3 +38,17 @@ a:hover {
     background-color: burlywood;
 }
 
+#cartItemIndicatorContainer {
+    position: relative;
+}
+
+#cartItemIndicator {
+    background-color: red;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    padding: 2px 8px;
+    border-radius: 75%;
+    background: red;
+    color: white;
+}

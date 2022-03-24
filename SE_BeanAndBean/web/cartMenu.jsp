@@ -19,7 +19,7 @@
 
                                     if (amountInCart > 0) {
                                 %>
-                                <span id="cartItemIndicator">
+                                <span id="cartItemIndicator" style="background-color: gray;">
                                     <%
                                         out.print(amountInCart);
                                     %>

@@ -1,5 +1,5 @@
 <%-- 
-    Document   : login2
+    Document   : login
     Created on : 03 21, 22, 10:02:39 PM
     Author     : Marylaine Lumacad
 --%>
@@ -61,14 +61,14 @@
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example17">Username</label>
                     <input type="text" name="uname" value="${input.username}" id="form2Example17" class="form-control" required/>
-                    <p style="color:red;"><small><i>${errors.username}</small></i></p>
+                    <p style="color:red;"><small><i>${errors.username}</i></small></p>
                   </div>
 
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example27">Password</label>
                     <input type="password" id="form2Example27" name="psw" value="${input.password}" class="form-control" required/>
-                    <p style="color:red;"><small><i>${errors.password}</small></i></p>
+                    <p style="color:red;"><small><i>${errors.password}</i></small></p>
                   </div>
 
                   <div class="pt-1 mb-4">

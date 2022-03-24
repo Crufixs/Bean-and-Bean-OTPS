@@ -58,6 +58,21 @@ a:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
+#cartItemIndicatorContainer {
+    position: relative;
+}
+
+#cartItemIndicator {
+    background-color: red;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    padding: 2px 8px;
+    border-radius: 75%;
+    background: red;
+    color: white;
+}
+
 /*.card{
     border-radius: 4px;
     background: #fff;

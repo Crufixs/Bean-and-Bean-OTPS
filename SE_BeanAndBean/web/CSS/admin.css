@@ -34,9 +34,17 @@ a:hover {
     max-height: 300px;
     margin-bottom: 10px;
     overflow-y:auto;
-    -webkit-overflow-scrolling: touch;
     padding-right: 0px;
+    -webkit-overflow-scrolling: touch;
 }
+
+/*.list-group {
+    max-height: 300px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+*/
 
 .list-group-item {
     background-color: burlywood;
@@ -44,4 +52,19 @@ a:hover {
 
 button.nav-link.dropdown-toggle {
     background-color: #6f4e37;
+}
+
+#cartItemIndicatorContainer {
+    position: relative;
+}
+
+#cartItemIndicator {
+    background-color: red;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    padding: 2px 8px;
+    border-radius: 75%;
+    background: red;
+    color: white;
 }

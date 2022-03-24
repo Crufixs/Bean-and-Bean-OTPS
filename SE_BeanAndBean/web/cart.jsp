@@ -40,7 +40,7 @@
                     <h2>CHECKOUT FORM</h2>
                     <hr>
                 </div>
-                <div class="row g-5">
+                <div class="row g-5" style="margin-bottom: 50px;">
 
                     <div class="col-md-6 col-lg-5 h-50"  style="background-color: #C19A6B; border-radius: 1vw; margin-bottom: 2vh;">
                         <br>
@@ -203,7 +203,7 @@
 
                             <h4 class="mb-3">Payment</h4>
 
-                            <div class="my-3">
+                            <div>
                                 <div class="form-check">
                                     <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
                                     <label class="form-check-label" for="credit">Cash On Delivery</label>

@@ -66,131 +66,10 @@
     <div class="container">
         <main style="margin-top: 100px;">
             <!-- account details -->
-            <div class="row g-5" style="margin-bottom: 20px;">
-                <div class="col-md-7 col-lg-7 order-md-last">
-                    <h2 style="text-align: center;">Orders</h2>
-                    <hr>
-                    <div class="row align-items-center" style="font-weight: bold; text-align: center; margin-bottom: 12px;">
-                        <%                            int pending = 0;
-                            int processing = 0;
-                            int completed = 0;
-                            for (int i = 0; i < orderList.size(); i++) {
-
-                                if (orderList.get(i).getStatus() == null) {
-                                    break;
-                                } else if (orderList.get(i).getStatus().equals("pending")) {
-                                    pending++;
-                                } else if (orderList.get(i).getStatus().equals("processing")) {
-                                    processing++;
-                                } else if (orderList.get(i).getStatus().equals("completed")) {
-                                    completed++;
-                                }
-                            }
-                        %>
-                        <div class="col">
-                            PENDING
-                            <span class="badge rounded-pill bg-danger"><%out.print(pending);%></span>
-                        </div>
-                        <div class="col">
-                            PROCESSING
-                            <span class="badge rounded-pill bg-warning"><%out.print(processing);%></span>
-                        </div>
-                        <div class="col">
-                            COMPLETED
-                            <span class="badge rounded-pill bg-success"><%out.print(completed);%></span>
-                        </div>
-                    </div>  
-                    <div class="row" style="text-align: center; margin-bottom: 12px;">
-                        <div class="col overflow-auto" id="list-group-border">
-                            <!-- <i>No pending orders.</i> -->
-                            <ul class="list-group" style="width: 200px;">
-                                <%
-                                    for (int i = 0; i < orderList.size(); i++) {
-                                        String status = orderList.get(i).getStatus();
-                                        if (status != null && status.equals("pending")) {
-                                %>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <form method="POST" action="PDFServlet" target="_blank">
-                                        <button class="btn btn-sm fw-bold" type="submit" name="view" value="<%out.print(i);%>">
-                                            Order <%out.print(orderList.get(i).getOrderID()); %>
-                                        </button>
-                                    </form>
-                                    <div>
-                                        <form method="POST" action="ManageOrder">
-                                            <button name="cancel" value="<%out.print(i);%>" type="submit" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                                </svg></button>
-                                            <button name="process" value="<%out.print(i);%>" type="submit" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Pending"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-                                                </svg></button>
-                                        </form>
-                                    </div>
-                                </li>
-                                <%
-                                        }
-                                    }
-                                %>
-                            </ul>
-                        </div>
-                        <div class="col overflow-auto" id="list-group-border">
-                            <!--<i>No processing orders.</i>-->
-                            <ul class="list-group">
-                                <%
-                                    for (int i = 0; i < orderList.size(); i++) {
-                                        String status = orderList.get(i).getStatus();
-                                        if (status != null && status.equals("processing")) {
-                                %>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <!--  <input class="btn btn-sm fw-bold" type="submit" value="Order 234"> -->
-                                    <form method="POST" action="PDFServlet" target="_blank">
-                                        <button class="btn btn-sm fw-bold" type="submit" name="view" value="<%out.print(i);%>">
-                                            Order <%out.print(orderList.get(i).getOrderID()); %>
-                                        </button>
-                                    </form>
-                                    <div>
-                                        <form method="POST" action="ManageOrder">
-                                            <button name="complete" value="<%out.print(i);%>" type="submit" class="btn btn-success btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Processing">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
-                                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                                                </svg></button>
-
-                                        </form>
-                                    </div>
-                                </li>
-                                <%
-                                        }
-                                    }
-                                %>
-                            </ul> 
-                        </div>
-                        <div class="col overflow-auto" id="list-group-border">
-                            <!-- <i>No completed orders.</i> -->
-                            <ul class="list-group">
-                                <%
-                                    for (int i = 0; i < orderList.size(); i++) {
-                                        String status = orderList.get(i).getStatus();
-                                        if (status != null && status.equals("completed")) {
-                                %>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <input class="btn btn-sm fw-bold" type="submit" value="Order 512">
-                                    <!--<span class="badge bg-secondary rounded-pill">14 hrs ago</span>-->
-                                </li>
-                                <%
-                                        }
-                                    }
-                                %>
-                            </ul>
-                        </div>
-                    </div>  
-                    <!-- <hr>-->                    
-<!--                <p><b>Name:</b> <%= u.getFirstName() + " " + u.getLastName()%></p>
-                    <p><b>Email:</b> <%= u.getEmail()%></p>
-                    <p><b>Phone:</b> <%= u.getPhoneNumber()%></p>
-                    <p><b>Address:</b> <%= u.getFullAddress()%></p>
-                    -->
-                </div>
-                <div class="col-md-5 col-lg-5">
-                    <div class="row align-items-center">
+            <div class="row g-5">
+                <div class="float-end text-end">
+                    <!-- <div> -->
+                    <div class="row align-items-center" style="margin-bottom: 25px;">
                         <div class="col">
                             <h2>My Account</h2>
                             <p>Welcome, <%= u.getUsername()%>!</p>
@@ -202,9 +81,8 @@
                             </form>
                         </div> -->
                     </div> 
-                    <br><br>
                     <% if (u.getRole().equalsIgnoreCase("admin")) {%>
-                    <div class="mb-3">
+                    <div>
                         <h5>Bean & Bean Transaction History</h5>
                         <hr>
                         <form method="POST" action="PDFServlet" target="_blank">
@@ -224,6 +102,174 @@
                                         </div>-->
                 </div>
                 <!-- end of pdf -->
+                <div>
+                    <h2 style="text-align: center;">Orders</h2>
+                    <hr>
+                    <div class="row g-5" style="margin-bottom: 25px;">
+                        <%                            int pending = 0;
+                            int processing = 0;
+                            int completed = 0;
+                            for (int i = 0; i < orderList.size(); i++) {
+
+                                if (orderList.get(i).getStatus() == null) {
+                                    break;
+                                } else if (orderList.get(i).getStatus().equals("pending")) {
+                                    pending++;
+                                } else if (orderList.get(i).getStatus().equals("processing")) {
+                                    processing++;
+                                } else if (orderList.get(i).getStatus().equals("completed")) {
+                                    completed++;
+                                }
+                            }
+                        %>
+                        <div class="col-md-3 col-lg-3">
+                            <div class="mb-2 text-center fw-bold">
+                                PENDING
+                                <span class="badge rounded-pill bg-danger"><%out.print(pending);%></span>
+                            </div>
+                            <div class="col overflow-auto" id="list-group-border">
+                                <!-- <i>No pending orders.</i> -->
+                                <ul class="list-group">
+                                    <%
+                                        for (int i = 0; i < orderList.size(); i++) {
+                                            String status = orderList.get(i).getStatus();
+                                            if (status != null && status.equals("pending")) {
+                                    %>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <form method="POST" action="PDFServlet" target="_blank">
+                                            <button class="btn btn-sm fw-bold" type="submit" name="view" value="<%out.print(i);%>">
+                                                Order <%out.print(orderList.get(i).getOrderID()); %>
+                                            </button>
+                                        </form>
+                                        <div>
+                                            <!-- modal codes -->
+                                            <form method="POST" action="ManageOrder">
+                                                <button name="cancel" value="<%out.print(i);%>" type="submit" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="modal" data-bs-placement="right" data-bs-target="#staticBackdrop" title="Cancel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                    </svg></button>
+                                                <!-- modal part -->
+                                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="staticBackdropLabel">Order N</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Are you sure you want to cancel this order?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger">Yes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <!-- end of modal -->
+                                                <button name="process" value="<%out.print(i);%>" type="submit" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Process"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                                    </svg></button>
+                                            </form>
+                                            <!-- end of modal codes -->
+                                        </div>
+                                    </li>
+                                    <%
+                                            }
+                                        }
+                                    %>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3">
+                            <div class="mb-2 text-center fw-bold">
+                                PROCESSING
+                                <span class="badge rounded-pill bg-warning"><%out.print(processing);%></span>
+                            </div>
+                            <div class="col overflow-auto" id="list-group-border">
+                                <!--<i>No processing orders.</i>-->
+                                <ul class="list-group">
+                                    <%
+                                        for (int i = 0; i < orderList.size(); i++) {
+                                            String status = orderList.get(i).getStatus();
+                                            if (status != null && status.equals("processing")) {
+                                    %>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <!--  <input class="btn btn-sm fw-bold" type="submit" value="Order 234"> -->
+                                        <form method="POST" action="PDFServlet" target="_blank">
+                                            <button class="btn btn-sm fw-bold" type="submit" name="view" value="<%out.print(i);%>">
+                                                Order <%out.print(orderList.get(i).getOrderID()); %>
+                                            </button>
+                                        </form>
+                                        <div>
+                                            <form method="POST" action="ManageOrder">
+                                                <button name="cancel" value="<%out.print(i);%>" type="submit" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Cancel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                    </svg></button>
+                                                <button name="complete" value="<%out.print(i);%>" type="submit" class="btn btn-success btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Complete">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                                                    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                                                    </svg></button>
+                                            </form>
+                                        </div>
+                                    </li>
+                                    <%
+                                            }
+                                        }
+                                    %>
+                                </ul> 
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3">
+                            <div class="mb-2 text-center fw-bold">
+                                COMPLETED
+                                <span class="badge rounded-pill bg-success"><%out.print(completed);%></span>
+                            </div>
+                            <div class="col overflow-auto" id="list-group-border">
+                                <!-- <i>No completed orders.</i> -->
+                                <ul class="list-group">
+                                    <%
+                                        for (int i = 0; i < orderList.size(); i++) {
+                                            String status = orderList.get(i).getStatus();
+                                            if (status != null && status.equals("completed")) {
+                                    %>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <form method="POST" action="PDFServlet" target="_blank">
+                                            <button class="btn btn-sm fw-bold" type="submit" name="view" value="<%out.print(i);%>">
+                                                Order <%out.print(orderList.get(i).getOrderID()); %>
+                                            </button>
+                                        </form>
+                                        <!-- <input class="btn btn-sm fw-bold" type="submit" value="Order 512"> -->
+                                        <!--<span class="badge bg-secondary rounded-pill">14 hrs ago</span>-->
+                                    </li>
+                                    <%
+                                            }
+                                        }
+                                    %>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3">
+                            <div class="mb-2 text-center fw-bold">
+                                CANCELED
+                                <span class="badge rounded-pill bg-secondary">0</span>
+                            </div>
+                            <div class="col overflow-auto" id="list-group-border">
+                                <!-- <i>No canceled orders.</i> -->
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center fst-italic" style="background-color: antiquewhite;">
+                                        <input class="btn btn-sm fw-bold" type="submit" value="Order 512">
+                                        <!--<span class="badge bg-secondary rounded-pill">14 hrs ago</span>-->
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <hr>-->                    
+<!--                <p><b>Name:</b> <%= u.getFirstName() + " " + u.getLastName()%></p>
+                    <p><b>Email:</b> <%= u.getEmail()%></p>
+                    <p><b>Phone:</b> <%= u.getPhoneNumber()%></p>
+                    <p><b>Address:</b> <%= u.getFullAddress()%></p>
+                    -->
+                </div>
             </div>
         </main>
     </div>
