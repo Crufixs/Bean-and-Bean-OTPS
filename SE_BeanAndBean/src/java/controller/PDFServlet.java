@@ -1,6 +1,5 @@
 package controller;
 
-
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
@@ -39,552 +38,680 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Order;
 import model.User;
-
+import com.itextpdf.text.Image;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfContentByte;
+import java.io.FileOutputStream;
 
 //@WebServlet(name = "ReportServlet", urlPatterns = {"/Report"})
 public class PDFServlet extends HttpServlet {
+
     Connection con = null;
     String txtHeader;
     String txtFooter;
     int pageCount = 1;
     String dateTime = "";
     User u;
-    
+
     @Override
-    public void init(ServletConfig config) throws ServletException{
+    public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        
+
         con = (Connection) getServletContext().getAttribute("connection");
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("text/html;charset=UTF-8");
-        
+
         //Current user in the session
         HttpSession session = request.getSession();
         u = (User) session.getAttribute("user");
         String userType = u.getRole();
-        
+
         String accountRecord = request.getParameter("type");
         String admin = request.getParameter("view");
-        
+
         //invalid access
-        if(u == null){
+        if (u == null) {
             System.out.println("User Null");
             response.sendRedirect("");
             return;
-        } else if(accountRecord == null && admin == null){
+        } else if (accountRecord == null && admin == null) {
             response.sendRedirect("error404.jsp");
             return;
         }
-        
+
         //valid
-        if(accountRecord != null){ //from getting records
-            if(accountRecord.equalsIgnoreCase("guest") && userType.equals("guest")){
+        if (accountRecord != null) { //from getting records
+            if (accountRecord.equalsIgnoreCase("guest") && userType.equals("guest")) {
                 getCustomerOrders(request, response);
                 return;
-            } else if(accountRecord.equalsIgnoreCase("admin") && u.getRole().equalsIgnoreCase("admin")){
+            } else if (accountRecord.equalsIgnoreCase("admin") && u.getRole().equalsIgnoreCase("admin")) {
                 getAllOrders(request, response);
                 return;
-            } else if(accountRecord.equalsIgnoreCase("receipt")){
+            } else if (accountRecord.equalsIgnoreCase("receipt")) {
                 Order o = (Order) request.getSession().getAttribute("order");
                 getReceipt(o, request, response);
                 return;
             }
-        } else if(admin != null){ //viewing order
-            try{
+        } else if (admin != null) { //viewing order
+            try {
+
                 List<Order> orderList = (List) request.getSession().getAttribute("orderList");
-                System.out.println("+"+admin+"+");
+                System.out.println("+" + admin + "+");
                 int orderID = Integer.parseInt(admin);
                 Order order = orderList.get(orderID);
                 getReceipt(order, request, response);
                 return;
-            } catch(NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("NFE");
                 response.sendRedirect("");
                 return;
-            }  
+            }
         }
         response.sendRedirect("");
     }
-    
+
     protected void getReceipt(Order order, HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss"); 
-        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"); 
-        LocalDateTime now = LocalDateTime.now();  
+            throws ServletException, IOException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
         dateTime = dtf2.format(now);
-        String txtFileName = "receipt"+dtf.format(now) + ".pdf";
-        
+        String txtFileName = "receipt" + dtf.format(now) + ".pdf";
+
         Order o = order;
-        
-        if(o==null){
+
+        if (o == null) {
             System.out.println("NO ORDER");
             response.sendRedirect("");
             return;
         }
-        
-        
+
         PreparedStatement ps;
         boolean valid = true;
         int orderID = o.getOrderID();
-        
-         //header & footer
+
+        //header & footer
         txtHeader = "     BEAN & BEAN: Receipt for Order ID: " + orderID;
-        txtFooter = txtFileName;
-        
-        Font bfBold12 = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, new BaseColor(0,0,0));
-        Font bf12 = new Font(Font.FontFamily.TIMES_ROMAN, 12);
-        Paragraph p = new Paragraph("Customer ID: " + u.getCustomerID() + "\n\n", bfBold12);
-        
-        
-            
+        txtFooter = dateTime;
+
         try {
+
             ByteArrayOutputStream bout = new ByteArrayOutputStream();
-            
-            Document document = new Document(PageSize.A4.rotate(),20, 20, 50, 25);
+
+            Document document = new Document(PageSize.A4.rotate(), 20, 20, 50, 25);
             PdfWriter writer = PdfWriter.getInstance(document, bout);
             HeaderFooterPageEvent event = new HeaderFooterPageEvent();
             writer.setPageEvent(event);
-            
+
             document.open();
+
             
             document.addTitle("Records");
             document.addSubject("Using iText");
             document.addKeywords("Java, PDF, iText");
-            document.addAuthor("Gaite, Lumacad, Minano, Reodica");
-            document.addCreator("Gaite, Lumacad, Minano, Reodica");
             
-            document.add(p);
+            String relativeWebPath = "/fonts/Hypermarket-Bold.ttf";
+            String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+            BaseFont baseFont = BaseFont.createFont(absoluteDiskPath, BaseFont.IDENTITY_H, true);
+            Font receipt = new Font(baseFont, 12);
+            Font receipt2 = new Font(baseFont,15);
             
+            PreparedStatement getDetails = con.prepareStatement("SELECT * FROM orders WHERE order_id=?");
+            getDetails.setString(1, orderID + "");
+            ResultSet orders = getDetails.executeQuery();
+            orders.next();
+            String datePlaced = orders.getString("placed_at");
+            String name = orders.getString("first_name") + " " + orders.getString("last_name");
+            String address = orders.getString("street") + ", " + orders.getString("barangay") + ", " + orders.getString("city") + ", " + orders.getString("region");
+            String phoneNumber = orders.getString("phone_number");
+            String email = orders.getString("email");
+
             //preparing the table for the records
             PdfPTable table = new PdfPTable(3);
             table.setWidthPercentage(90);
             table.setWidths(new int[]{3, 3, 3});
-            
 
-            PdfPCell hcell = new PdfPCell();
+            PdfPCell hcell = new PdfPCell(new Paragraph("Customer: " + name, receipt));
+            hcell.setColspan(2);
+            hcell.setBorder(0);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Paragraph("Ship To: " + address, receipt));
+            hcell.setColspan(3); // colspan 
+            hcell.setBorder(0);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Paragraph("Customer ID: " + u.getCustomerID(), receipt));
+            hcell.setColspan(2); // colspan 
+            hcell.setBorder(0);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Paragraph("Contact Number: " + phoneNumber, receipt));
+            hcell.setColspan(3); // colspan 
+            hcell.setBorder(0);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Paragraph("Email: " + email, receipt));
+            hcell.setColspan(2); // colspan 
+            hcell.setBorder(0);
+            hcell.setPaddingBottom(20);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Paragraph("Date of Order: " + datePlaced, receipt));
+            hcell.setColspan(3); // colspan 
+            hcell.setPaddingBottom(20);
+            hcell.setBorder(0);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Paragraph("Receipt for Order ID: " + o.getOrderID(), receipt2));
+            hcell.setColspan(3); // colspan
+            hcell.setPaddingBottom(10);
+            hcell.setPaddingTop(5);
+            hcell.setBorderWidthBottom(0);
+            hcell.setBorderWidthRight(0);
+            hcell.setBorderWidthLeft(0);
+            hcell.setBorderWidthTop(1);
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
 
             hcell = new PdfPCell();
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
-            
+
             hcell = new PdfPCell();
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
-            
-            
+
+            hcell = new PdfPCell();
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
             int recordCount = 0;
-            
-            if(valid){
-                PreparedStatement getDetails = con.prepareStatement("SELECT * FROM orders WHERE order_id=?");
-                getDetails.setString(1, orderID+"");
-                ResultSet orders = getDetails.executeQuery();
-                orders.next();
-                double totalPrice = orders.getDouble("total_price");
-                String datePlaced = orders.getString("placed_at");
-                String name = orders.getString("first_name") + " " + orders.getString("last_name");
-                String address = orders.getString("street") + ", " + orders.getString("barangay") + ", " + orders.getString("city") + ", " + orders.getString("region");
-                String phoneNumber = orders.getString("phone_number");
-                String email = orders.getString("email");
-
-                document.add(new Paragraph(("Name: " + name), bfBold12));
-                document.add(new Paragraph(("Address: " + address), bfBold12));
-                document.add(new Paragraph(("Phone Number: " + phoneNumber), bfBold12));
-                document.add(new Paragraph(("Email: " + email), bfBold12));
-                document.add(new Paragraph(("Placed At: " + datePlaced), bfBold12));
-                document.add(new Paragraph(("Total Price: " + totalPrice + " PESOS" + "\n\n"), bfBold12));
-            }
 
             PreparedStatement total = con.prepareStatement("SELECT COUNT(*) AS TOTAL FROM order_item WHERE order_id=?");
-            total.setString(1, orderID+"");
+            total.setString(1, orderID + "");
             ResultSet res = total.executeQuery();
             res.next();
             pageCount = res.getInt("TOTAL");
-            
-            if(pageCount == 0)
+
+            if (pageCount == 0) {
                 pageCount = 1;
+            }
 
-            PreparedStatement statement = con.prepareStatement("SELECT * FROM order_item WHERE order_id=?");
-            statement.setString(1, orderID+"");
+            //PreparedStatement statement = con.prepareStatement("SELECT * FROM order_item WHERE order_id=?");
+            PreparedStatement statement = con.prepareStatement("SELECT order_item.ORDER_ID,product.PRODUCT_NAME, order_item.QUANTITY, product.PRODUCT_PRICE FROM order_item LEFT JOIN product ON order_item.PRODUCT_ID = product.PRODUCT_ID WHERE order_id=?");
+            statement.setString(1, orderID + "");
             ResultSet rs = statement.executeQuery();
-            
+
             PdfPCell cell;
+
+            /*cell = new PdfPCell(new Phrase("ORDER_ITEM_ID:", receipt));
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setBorder(0);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);*/
+
+            /*cell = new PdfPCell(new Phrase("PRODUCT_ID:", receipt));
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setBorder(0);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);*/
             
-            cell = new PdfPCell(new Phrase("ORDER_ITEM_ID"));
+            cell = new PdfPCell(new Phrase("PRODUCT_NAME:", receipt));
+            cell.setBorder(0);
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
             
-            cell = new PdfPCell(new Phrase("PRODUCT_ID"));
+            cell = new PdfPCell(new Phrase("QUANTITY:", receipt));
+            cell.setBorder(0);
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+            
+           
+            
+            cell = new PdfPCell(new Phrase("PRICE:", receipt));
+            cell.setBorder(0);
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
 
-            cell = new PdfPCell(new Phrase("QUANTITY"));
-            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            cell.setHorizontalAlignment(Element.ALIGN_LEFT);
-            table.addCell(cell);
-            
-            
-            while(rs.next()){
-
+            while (rs.next()) {
 
                 //Retrieve by column name
-                String orderItemID = rs.getString("ORDER_ITEM_ID");
-                String productID  = rs.getString("product_id");
+                //String orderItemID = rs.getString("ORDER_ITEM_ID");
+                //String productID = rs.getString("product_id");
                 String quantity = rs.getString("quantity");
+                String pname = rs.getString("product_name");
+                String price = rs.getString("product_price");
+
+                /*cell = new PdfPCell(new Phrase(orderItemID, receipt));
+                cell.setBorder(0);
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(cell);*/
+
+                /*cell = new PdfPCell(new Phrase(productID, receipt));
+                cell.setBorder(0);
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(cell);*/
                 
-                cell = new PdfPCell(new Phrase(orderItemID));
-                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Phrase(productID));
-                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                table.addCell(cell);
-
-                cell = new PdfPCell(new Phrase(quantity));
+                cell = new PdfPCell(new Phrase(pname, receipt));
                 cell.setPaddingLeft(5);
+                cell.setBorder(0);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase(quantity, receipt));
+                cell.setPaddingLeft(5);
+                cell.setBorder(0);
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase("P"+Double.toString(Double.parseDouble(price)*Double.parseDouble(quantity)), receipt));
+                cell.setPaddingLeft(5);
+                cell.setBorder(0);
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
                 
                 recordCount++;
-                if(recordCount == 20){
-                   document.add(table);
-                   document.newPage();
-                   table.deleteBodyRows();
-                   recordCount = 0;
+                if (recordCount == 20) {
+                    document.add(table);
+                    document.newPage();
+                    table.deleteBodyRows();
+                    recordCount = 0;
 //                   pageCount++;
                 }
-             }
+            }
             rs.close();
-            
+
+            double totalPrice = orders.getDouble("total_price");
+
+            cell = new PdfPCell(new Phrase("Total Price: ", receipt));
+            cell.setColspan(2); // colspan 
+            cell.setBorderWidthBottom(0);
+            cell.setBorderWidthRight(0);
+            cell.setBorderWidthLeft(0);
+            cell.setBorderWidthTop(1);
+            table.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("P" + totalPrice, receipt));
+            cell.setBorderWidthBottom(0);
+            cell.setBorderWidthRight(0);
+            cell.setBorderWidthLeft(0);
+            cell.setBorderWidthTop(1);
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
             document.add(table);
             document.close();
-            
+
             response.setContentType("application/pdf");
             response.setHeader("Content-Type", "application/pdf");
-            response.setHeader("Content-disposition", "inline; filename="+txtFileName);
-            
+            response.setHeader("Content-disposition", "inline; filename=" + txtFileName);
+
             OutputStream sos = response.getOutputStream();
 
             bout.writeTo(sos);
             sos.flush();
             sos.close();
             bout.close();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    protected void getAllOrders(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss"); 
-        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"); 
-        LocalDateTime now = LocalDateTime.now();  
+
+    protected void getAllOrders(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
         dateTime = dtf2.format(now);
-        String txtFileName = "allOrders"+dtf.format(now) + ".pdf";
-        
+        String txtFileName = "allOrders" + dtf.format(now) + ".pdf";
+
         //header & footer
         txtHeader = "BEAN & BEAN ORDER HISTORY";
-        txtFooter = txtFileName;
-        
-        
-            
+        txtFooter = dateTime;
+
         try {
             ByteArrayOutputStream bout = new ByteArrayOutputStream();
-            
-            Document document = new Document(PageSize.A4.rotate(),20, 20, 50, 25);
+
+            Document document = new Document(PageSize.A4.rotate(), 20, 20, 50, 25);
             PdfWriter writer = PdfWriter.getInstance(document, bout);
             HeaderFooterPageEvent event = new HeaderFooterPageEvent();
             writer.setPageEvent(event);
-            
+
             document.open();
-            
+
             document.addTitle("Records");
             document.addSubject("Using iText");
             document.addKeywords("Java, PDF, iText");
-            document.addAuthor("Gaite, Lumacad, Minano, Reodica");
-            document.addCreator("Gaite, Lumacad, Minano, Reodica");
+
+           
+            
+            String relativeWebPath = "/fonts/BebasNeue.ttf";
+            String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+            BaseFont baseFont = BaseFont.createFont(absoluteDiskPath, BaseFont.IDENTITY_H, true);
+            Font font = new Font(baseFont, 12);
             
             //preparing the table for the records
             PdfPTable table = new PdfPTable(4);
             table.setWidthPercentage(90);
             table.setWidths(new int[]{3, 3, 3, 3});
-            
 
-            PdfPCell hcell = new PdfPCell();
+            PdfPCell hcell = new PdfPCell(new Paragraph("Order History", font));
+            hcell.setColspan(3); // colspan 
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            hcell.setBackgroundColor(new BaseColor(155, 129, 109));
+            table.addCell(hcell);
+
+            hcell = new PdfPCell();
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
 
             hcell = new PdfPCell();
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
-            
+
             hcell = new PdfPCell();
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
-            
+
             hcell = new PdfPCell();
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
-            
+
             int recordCount = 0;
-  
 
             PreparedStatement total = con.prepareStatement("SELECT COUNT(*) AS TOTAL FROM orders");
             ResultSet res = total.executeQuery();
             res.next();
             pageCount = res.getInt("TOTAL");
-            
-            if(pageCount == 0)
+
+            if (pageCount == 0) {
                 pageCount = 1;
+            }
 
             PreparedStatement statement = con.prepareStatement("SELECT * FROM orders");
             ResultSet rs = statement.executeQuery();
-            
+
             PdfPCell cell;
-            
-            cell = new PdfPCell(new Phrase("CUSTOMER_ID"));
-            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(cell);
-            
-            cell = new PdfPCell(new Phrase("ORDER_ID"));
+
+            cell = new PdfPCell(new Phrase("CUSTOMER_ID", font));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
 
-            cell = new PdfPCell(new Phrase("TOTAL PRICE"));
+            cell = new PdfPCell(new Phrase("ORDER_ID", font));
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("TOTAL PRICE", font));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_LEFT);
             table.addCell(cell);
 
-            cell = new PdfPCell(new Phrase("DATE PLACED"));
+            cell = new PdfPCell(new Phrase("DATE PLACED", font));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_LEFT);
             table.addCell(cell);
-            
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 //Retrieve by column name
                 String customerID = rs.getString("customer_id");
-                if(customerID == null)
+                if (customerID == null) {
                     customerID = "n/a";
-                String orderID  = rs.getString("order_id");
+                }
+                String orderID = rs.getString("order_id");
                 double totalPrice = Double.parseDouble(rs.getString("total_price"));
                 String datePlaced = rs.getString("placed_at");
-                
-                cell = new PdfPCell(new Phrase(customerID));
+
+                cell = new PdfPCell(new Phrase(customerID, font));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase(orderID));
+                cell = new PdfPCell(new Phrase(orderID, font));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase(totalPrice+""));
+                cell = new PdfPCell(new Phrase(totalPrice + "", font));
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 table.addCell(cell);
-                
-                cell = new PdfPCell(new Phrase(datePlaced));
+
+                cell = new PdfPCell(new Phrase(datePlaced, font));
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 table.addCell(cell);
-                
+
                 recordCount++;
-                if(recordCount == 20){
-                   document.add(new Paragraph("\n\n\n"));
-                   document.add(table);
-                   document.newPage();
-                   table.deleteBodyRows();
-                   recordCount = 0;
+                if (recordCount == 20) {
+                    document.add(new Paragraph("\n\n\n"));
+                    document.add(table);
+                    document.newPage();
+                    table.deleteBodyRows();
+                    recordCount = 0;
 //                   pageCount++;
                 }
-             }
+            }
             rs.close();
-            
+
             document.add(table);
             document.close();
-            
+
             response.setContentType("application/pdf");
-             response.setHeader("Content-Type", "application/pdf");
-             response.setHeader("Content-disposition", "inline; filename="+txtFileName);
-            
+            response.setHeader("Content-Type", "application/pdf");
+            response.setHeader("Content-disposition", "inline; filename=" + txtFileName);
+
             OutputStream sos = response.getOutputStream();
 
             bout.writeTo(sos);
             sos.flush();
             sos.close();
             bout.close();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     protected void getCustomerOrders(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss"); 
-        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"); 
-        LocalDateTime now = LocalDateTime.now();  
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
         dateTime = dtf2.format(now);
-        String txtFileName = "yourOrderHistory"+dtf.format(now) + ".pdf";
-        
+        String txtFileName = "yourOrderHistory" + dtf.format(now) + ".pdf";
+
         //header & footer
         txtHeader = "ORDER HISTORY FOR " + u.getUsername();
-        txtFooter = txtFileName;
-        
- 
+        txtFooter = dateTime;
+
         try {
             ByteArrayOutputStream bout = new ByteArrayOutputStream();
-            
-            Document document = new Document(PageSize.A4.rotate(),20, 20, 50, 25);
+
+            Document document = new Document(PageSize.A4.rotate(), 20, 20, 50, 25);
             PdfWriter writer = PdfWriter.getInstance(document, bout);
             HeaderFooterPageEvent event = new HeaderFooterPageEvent();
             writer.setPageEvent(event);
-            
+
             document.open();
+
             
             document.addTitle("Records");
             document.addSubject("Using iText");
             document.addKeywords("Java, PDF, iText");
-            document.addAuthor("Gaite, Lumacad, Minano, Reodica");
-            document.addCreator("Gaite, Lumacad, Minano, Reodica");
+
+            
+            
+            String relativeWebPath = "/fonts/BebasNeue.ttf";
+            String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+            BaseFont baseFont = BaseFont.createFont(absoluteDiskPath, BaseFont.IDENTITY_H, true);
+            Font font2 = new Font(baseFont, 12);
             
             //preparing the table for the records
             PdfPTable table = new PdfPTable(3);
             table.setWidthPercentage(90);
             table.setWidths(new int[]{3, 3, 3});
-            
 
-            PdfPCell hcell = new PdfPCell();
+            PdfPCell hcell = new PdfPCell(new Paragraph("Order History of " + u.getFirstName() + " " + u.getLastName(), font2));
+            hcell.setColspan(3); // colspan 
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            hcell.setBackgroundColor(new BaseColor(155, 129, 109));
+            table.addCell(hcell);
+
+            hcell = new PdfPCell();
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
 
             hcell = new PdfPCell();
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
-            
+
             hcell = new PdfPCell();
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
-            
+
             int recordCount = 0;
-  
 
             PreparedStatement total = con.prepareStatement("SELECT COUNT(*) AS TOTAL FROM orders WHERE customer_id=?");
-            total.setString(1, u.getCustomerID()+"");
+            total.setString(1, u.getCustomerID() + "");
             ResultSet res = total.executeQuery();
             res.next();
             pageCount = res.getInt("TOTAL");
-            
-            if(pageCount == 0)
+
+            if (pageCount == 0) {
                 pageCount = 1;
+            }
 
             PreparedStatement statement = con.prepareStatement("SELECT * FROM orders WHERE customer_id=?");
-            statement.setString(1, u.getCustomerID()+"");
+            statement.setString(1, u.getCustomerID() + "");
 
             ResultSet rs = statement.executeQuery();
-            
+
             PdfPCell cell;
-            
-            cell = new PdfPCell(new Phrase("ORDER_ID"));
+
+            cell = new PdfPCell(new Phrase("ORDER_ID", font2));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
 
-            cell = new PdfPCell(new Phrase("TOTAL PRICE"));
+            cell = new PdfPCell(new Phrase("TOTAL PRICE", font2));
             cell.setPaddingLeft(5);
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_LEFT);
             table.addCell(cell);
 
-            cell = new PdfPCell(new Phrase("DATE PLACED"));
+            cell = new PdfPCell(new Phrase("DATE PLACED", font2));
             cell.setPaddingLeft(5);
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_LEFT);
             table.addCell(cell);
-            
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 //Retrieve by column name
-                String orderID  = rs.getString("order_id");
+                String orderID = rs.getString("order_id");
                 double totalPrice = Double.parseDouble(rs.getString("total_price"));
                 String datePlaced = rs.getString("placed_at");
 
-                cell = new PdfPCell(new Phrase(orderID));
+                cell = new PdfPCell(new Phrase(orderID, font2));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase(totalPrice+""));
+                cell = new PdfPCell(new Phrase(totalPrice + "", font2));
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 table.addCell(cell);
-                
-                cell = new PdfPCell(new Phrase(datePlaced));
+
+                cell = new PdfPCell(new Phrase(datePlaced, font2));
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 table.addCell(cell);
-                
+
                 recordCount++;
-                if(recordCount == 20){
-                   document.add(table);
-                   document.newPage();
-                   table.deleteBodyRows();
-                   recordCount = 0;
+                if (recordCount == 20) {
+                    document.add(table);
+                    document.newPage();
+                    table.deleteBodyRows();
+                    recordCount = 0;
 //                   pageCount++;
                 }
-             }
+            }
             rs.close();
-            
+
             document.add(table);
             document.close();
-            
+
             response.setContentType("application/pdf");
-             response.setHeader("Content-Type", "application/pdf");
-             response.setHeader("Content-disposition", "inline; filename="+txtFileName);
-            
+            response.setHeader("Content-Type", "application/pdf");
+            response.setHeader("Content-disposition", "inline; filename=" + txtFileName);
+
             OutputStream sos = response.getOutputStream();
 
             bout.writeTo(sos);
             sos.flush();
             sos.close();
             bout.close();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    //header and footer of the PDF
-    
-    public class HeaderFooterPageEvent extends PdfPageEventHelper {
 
+    //header and footer of the PDF
+    public class HeaderFooterPageEvent extends PdfPageEventHelper {
+        
         public void onStartPage(PdfWriter writer, Document document) {
-            ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase(txtHeader + " - " + dateTime), 160, 550, 0);
+                
+               try {
+                 
+                //Image img = Image.getInstance("C:/Users/Redd Ignacio/Documents/NetBeansProjects/SE_BeanAndBean/SE_BeanAndBean/web/Images/logo-plainblack.png");
+                String relativeWebPath = "/images/logo-plainblack.png";
+                String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+                Image img =  Image.getInstance(absoluteDiskPath);
+                img.scaleToFit(200, 150); 
+                document.add(img);
+            } catch (Exception x) {
+                x.printStackTrace();
+            }
+            ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("BEAN & BEAN COFFEE"), 710, 450, 0);
             //ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Top Right"), 800, 550, 0);
         }
 
         public void onEndPage(PdfWriter writer, Document document) {
-            ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase(txtFooter), 110, 30, 0);
-            ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Page " + document.getPageNumber() + " of " + (int) (Math.ceil(pageCount / 20.0))), 550, 30, 0);
+                try{
+                    String relativeWebPath = "/fonts/BebasNeue.ttf";
+                    String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+                    BaseFont baseFont = BaseFont.createFont(absoluteDiskPath, BaseFont.IDENTITY_H, true);
+                    Font font2 = new Font(baseFont, 12);
+                    ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Generated at: " + txtFooter, font2), 130, 30, 0);
+                    ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Page " + document.getPageNumber() + " of " + (int) (Math.ceil(pageCount / 20.0)),font2), 760, 30, 0);
+
+                }
+                catch(Exception x){
+                    x.printStackTrace();
+                }
+            
         }
 
     }
