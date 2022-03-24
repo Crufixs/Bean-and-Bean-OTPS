@@ -325,7 +325,7 @@ public class PDFServlet extends HttpServlet {
                 table.addCell(cell);
                 
                 recordCount++;
-                if (recordCount == 20) {
+                if (recordCount == 10) {
                     document.add(table);
                     document.newPage();
                     table.deleteBodyRows();
@@ -405,13 +405,18 @@ public class PDFServlet extends HttpServlet {
             BaseFont baseFont = BaseFont.createFont(absoluteDiskPath, BaseFont.IDENTITY_H, true);
             Font font = new Font(baseFont, 12);
             
+            String relativeWebPath2 = "/fonts/BebasNeue.ttf";
+            String absoluteDiskPath2 = getServletContext().getRealPath(relativeWebPath2);
+            BaseFont baseFont2 = BaseFont.createFont(absoluteDiskPath2, BaseFont.IDENTITY_H, true);
+            Font tablehead = new Font(baseFont2, 15);
+            
             //preparing the table for the records
             PdfPTable table = new PdfPTable(4);
             table.setWidthPercentage(90);
             table.setWidths(new int[]{3, 3, 3, 3});
 
-            PdfPCell hcell = new PdfPCell(new Paragraph("Order History", font));
-            hcell.setColspan(3); // colspan 
+            PdfPCell hcell = new PdfPCell(new Paragraph("Order History",tablehead));
+            hcell.setColspan(4); // colspan 
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             hcell.setBackgroundColor(new BaseColor(155, 129, 109));
             table.addCell(hcell);
@@ -460,12 +465,12 @@ public class PDFServlet extends HttpServlet {
 
             cell = new PdfPCell(new Phrase("TOTAL PRICE", font));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
 
             cell = new PdfPCell(new Phrase("DATE PLACED", font));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
 
             while (rs.next()) {
@@ -491,17 +496,17 @@ public class PDFServlet extends HttpServlet {
                 cell = new PdfPCell(new Phrase(totalPrice + "", font));
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
 
                 cell = new PdfPCell(new Phrase(datePlaced, font));
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
 
                 recordCount++;
-                if (recordCount == 20) {
+                if (recordCount == 10) {
                     document.add(new Paragraph("\n\n\n"));
                     document.add(table);
                     document.newPage();
@@ -558,7 +563,7 @@ public class PDFServlet extends HttpServlet {
             document.addTitle("Records");
             document.addSubject("Using iText");
             document.addKeywords("Java, PDF, iText");
-
+             
             
             
             String relativeWebPath = "/fonts/BebasNeue.ttf";
@@ -566,13 +571,20 @@ public class PDFServlet extends HttpServlet {
             BaseFont baseFont = BaseFont.createFont(absoluteDiskPath, BaseFont.IDENTITY_H, true);
             Font font2 = new Font(baseFont, 12);
             
+            String relativeWebPath2 = "/fonts/BebasNeue.ttf";
+            String absoluteDiskPath2 = getServletContext().getRealPath(relativeWebPath2);
+            BaseFont baseFont2 = BaseFont.createFont(absoluteDiskPath2, BaseFont.IDENTITY_H, true);
+            Font tablehead = new Font(baseFont2, 15);
+            
             //preparing the table for the records
             PdfPTable table = new PdfPTable(3);
             table.setWidthPercentage(90);
             table.setWidths(new int[]{3, 3, 3});
 
-            PdfPCell hcell = new PdfPCell(new Paragraph("Order History of " + u.getFirstName() + " " + u.getLastName(), font2));
-            hcell.setColspan(3); // colspan 
+            PdfPCell hcell = new PdfPCell(new Paragraph("Order History of " + u.getFirstName() + " " + u.getLastName(), tablehead));
+            hcell.setColspan(3); // colspan
+            hcell.setPaddingBottom(5);
+            hcell.setPaddingTop(5);
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             hcell.setBackgroundColor(new BaseColor(155, 129, 109));
             table.addCell(hcell);
@@ -616,13 +628,13 @@ public class PDFServlet extends HttpServlet {
             cell = new PdfPCell(new Phrase("TOTAL PRICE", font2));
             cell.setPaddingLeft(5);
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
 
             cell = new PdfPCell(new Phrase("DATE PLACED", font2));
             cell.setPaddingLeft(5);
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
 
             while (rs.next()) {
@@ -636,20 +648,20 @@ public class PDFServlet extends HttpServlet {
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase(totalPrice + "", font2));
+                cell = new PdfPCell(new Phrase("P" + totalPrice + "", font2));
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
 
                 cell = new PdfPCell(new Phrase(datePlaced, font2));
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
 
                 recordCount++;
-                if (recordCount == 20) {
+                if (recordCount == 10) {
                     document.add(table);
                     document.newPage();
                     table.deleteBodyRows();
@@ -685,16 +697,26 @@ public class PDFServlet extends HttpServlet {
                 
                try {
                  
-                //Image img = Image.getInstance("C:/Users/Redd Ignacio/Documents/NetBeansProjects/SE_BeanAndBean/SE_BeanAndBean/web/Images/logo-plainblack.png");
+                //Image img = Image.getInstance("C:/Users/Redd Ignacio/Documents/NetBeansProjects/SE_BeanAndBean/SE_BeanAndBean/web/Images/logo-plainblack(1).png");
                 String relativeWebPath = "/images/logo-plainblack.png";
                 String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
                 Image img =  Image.getInstance(absoluteDiskPath);
-                img.scaleToFit(200, 150); 
+                img.scaleToFit(250, 200); 
                 document.add(img);
+                
+              
+                
+                String relativeWebPath2 = "/fonts/AltmannGrotesk-Bold.ttf";
+                String absoluteDiskPath2 = getServletContext().getRealPath(relativeWebPath2);
+                BaseFont baseFont = BaseFont.createFont(absoluteDiskPath2, BaseFont.IDENTITY_H, true);
+                Font fontheader = new Font(baseFont, 12);
+                
+                //ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("BEAN & BEAN COFFEE", fontheader), 710, 450, 0);
+                
             } catch (Exception x) {
                 x.printStackTrace();
             }
-            ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("BEAN & BEAN COFFEE"), 710, 450, 0);
+            
             //ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Top Right"), 800, 550, 0);
         }
 
@@ -704,8 +726,8 @@ public class PDFServlet extends HttpServlet {
                     String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
                     BaseFont baseFont = BaseFont.createFont(absoluteDiskPath, BaseFont.IDENTITY_H, true);
                     Font font2 = new Font(baseFont, 12);
-                    ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Generated at: " + txtFooter, font2), 130, 30, 0);
-                    ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Page " + document.getPageNumber() + " of " + (int) (Math.ceil(pageCount / 20.0)),font2), 760, 30, 0);
+                    ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Generated at: " + txtFooter, font2), 130, 10, 0);
+                    ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Page " + document.getPageNumber() + " of " + (int) (Math.ceil(pageCount / 20.0)),font2), 760, 10, 0);
 
                 }
                 catch(Exception x){
