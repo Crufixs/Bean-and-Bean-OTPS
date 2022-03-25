@@ -411,12 +411,12 @@ public class PDFServlet extends HttpServlet {
             Font tablehead = new Font(baseFont2, 15);
             
             //preparing the table for the records
-            PdfPTable table = new PdfPTable(4);
+            PdfPTable table = new PdfPTable(6);
             table.setWidthPercentage(90);
-            table.setWidths(new int[]{3, 3, 3, 3});
+            table.setWidths(new int[]{3, 3, 3, 3, 3, 3});
 
-            PdfPCell hcell = new PdfPCell(new Paragraph("Order History",tablehead));
-            hcell.setColspan(4); // colspan 
+            PdfPCell hcell = new PdfPCell(new Paragraph("Past Transactions of Bean & Bean Customers",tablehead));
+            hcell.setColspan(6); // colspan 
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             hcell.setBackgroundColor(new BaseColor(155, 129, 109));
             table.addCell(hcell);
@@ -436,6 +436,14 @@ public class PDFServlet extends HttpServlet {
             hcell = new PdfPCell();
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
+            
+            hcell = new PdfPCell();
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell();
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
 
             int recordCount = 0;
 
@@ -448,17 +456,22 @@ public class PDFServlet extends HttpServlet {
                 pageCount = 1;
             }
 
-            PreparedStatement statement = con.prepareStatement("SELECT * FROM orders");
+            PreparedStatement statement = con.prepareStatement("SELECT orders.customer_id, customer.first_name, customer.last_name, orders.order_id, orders.total_price, orders.placed_at, orders.status FROM orders LEFT JOIN customer ON orders.customer_id = customer.customer_id");
             ResultSet rs = statement.executeQuery();
 
             PdfPCell cell;
 
-            cell = new PdfPCell(new Phrase("CUSTOMER_ID", font));
+            cell = new PdfPCell(new Phrase("CUSTOMER ID", font));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
-
-            cell = new PdfPCell(new Phrase("ORDER_ID", font));
+            
+            cell = new PdfPCell(new Phrase("CUSTOMER NAME", font));
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+            
+            cell = new PdfPCell(new Phrase("ORDER ID", font));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
@@ -468,10 +481,16 @@ public class PDFServlet extends HttpServlet {
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
 
-            cell = new PdfPCell(new Phrase("DATE PLACED", font));
+            cell = new PdfPCell(new Phrase("ORDER PLACED", font));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
+            
+             cell = new PdfPCell(new Phrase("STATUS", font));
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+
 
             while (rs.next()) {
                 //Retrieve by column name
@@ -482,8 +501,16 @@ public class PDFServlet extends HttpServlet {
                 String orderID = rs.getString("order_id");
                 double totalPrice = Double.parseDouble(rs.getString("total_price"));
                 String datePlaced = rs.getString("placed_at");
+                String fname = rs.getString("first_name");
+                String lname = rs.getString("last_name");
+                String status = rs.getString("status");
 
                 cell = new PdfPCell(new Phrase(customerID, font));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(fname + " " + lname, font));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
@@ -504,7 +531,12 @@ public class PDFServlet extends HttpServlet {
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
-
+                
+                cell = new PdfPCell(new Phrase(status, font));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(cell);
+                
                 recordCount++;
                 if (recordCount == 10) {
                     document.add(new Paragraph("\n\n\n"));
@@ -577,12 +609,12 @@ public class PDFServlet extends HttpServlet {
             Font tablehead = new Font(baseFont2, 15);
             
             //preparing the table for the records
-            PdfPTable table = new PdfPTable(3);
+            PdfPTable table = new PdfPTable(4);
             table.setWidthPercentage(90);
-            table.setWidths(new int[]{3, 3, 3});
+            table.setWidths(new int[]{3, 3, 3, 3});
 
             PdfPCell hcell = new PdfPCell(new Paragraph("Order History of " + u.getFirstName() + " " + u.getLastName(), tablehead));
-            hcell.setColspan(3); // colspan
+            hcell.setColspan(4); // colspan
             hcell.setPaddingBottom(5);
             hcell.setPaddingTop(5);
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -600,6 +632,10 @@ public class PDFServlet extends HttpServlet {
             hcell = new PdfPCell();
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
+            
+            hcell = new PdfPCell();
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
 
             int recordCount = 0;
 
@@ -613,7 +649,7 @@ public class PDFServlet extends HttpServlet {
                 pageCount = 1;
             }
 
-            PreparedStatement statement = con.prepareStatement("SELECT * FROM orders WHERE customer_id=?");
+            PreparedStatement statement = con.prepareStatement("SELECT orders.order_id, orders.total_price, orders.placed_at, orders.status FROM orders WHERE customer_id=?");
             statement.setString(1, u.getCustomerID() + "");
 
             ResultSet rs = statement.executeQuery();
@@ -631,18 +667,25 @@ public class PDFServlet extends HttpServlet {
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
 
-            cell = new PdfPCell(new Phrase("DATE PLACED", font2));
+            cell = new PdfPCell(new Phrase("ORDER PLACED", font2));
             cell.setPaddingLeft(5);
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
-
+             
+            cell = new PdfPCell(new Phrase("STATUS", font2));
+            cell.setPaddingLeft(5);
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(cell);
+            
             while (rs.next()) {
                 //Retrieve by column name
                 String orderID = rs.getString("order_id");
                 double totalPrice = Double.parseDouble(rs.getString("total_price"));
                 String datePlaced = rs.getString("placed_at");
-
+                String status = rs.getString ("status");
+                
                 cell = new PdfPCell(new Phrase(orderID, font2));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -655,6 +698,12 @@ public class PDFServlet extends HttpServlet {
                 table.addCell(cell);
 
                 cell = new PdfPCell(new Phrase(datePlaced, font2));
+                cell.setPaddingLeft(5);
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(status, font2));
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
