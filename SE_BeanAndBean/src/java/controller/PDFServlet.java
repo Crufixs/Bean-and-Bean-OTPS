@@ -417,6 +417,8 @@ public class PDFServlet extends HttpServlet {
 
             PdfPCell hcell = new PdfPCell(new Paragraph("Past Transactions of Bean & Bean Customers",tablehead));
             hcell.setColspan(6); // colspan 
+            hcell.setPaddingBottom(5);
+            hcell.setPaddingTop(5);
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             hcell.setBackgroundColor(new BaseColor(155, 129, 109));
             table.addCell(hcell);
@@ -543,6 +545,15 @@ public class PDFServlet extends HttpServlet {
                     document.add(table);
                     document.newPage();
                     table.deleteBodyRows();
+                    
+                    cell = new PdfPCell(new Paragraph("Past Transactions of Bean & Bean Customers",tablehead));
+                    cell.setColspan(6); // colspan 
+                    cell.setPaddingBottom(5);
+                    cell.setPaddingTop(5);
+                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cell.setBackgroundColor(new BaseColor(155, 129, 109));
+                    table.addCell(cell);
+                    
                     recordCount = 0;
 //                   pageCount++;
                 }
@@ -590,8 +601,10 @@ public class PDFServlet extends HttpServlet {
             writer.setPageEvent(event);
 
             document.open();
-
             
+            
+            
+                
             document.addTitle("Records");
             document.addSubject("Using iText");
             document.addKeywords("Java, PDF, iText");
@@ -711,9 +724,19 @@ public class PDFServlet extends HttpServlet {
 
                 recordCount++;
                 if (recordCount == 10) {
+                    
                     document.add(table);
                     document.newPage();
                     table.deleteBodyRows();
+                    
+                    cell = new PdfPCell(new Paragraph("Order History of " + u.getFirstName() + " " + u.getLastName(), tablehead));
+                    cell.setColspan(4); // colspan
+                    cell.setPaddingBottom(5);
+                    cell.setPaddingTop(5);
+                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cell.setBackgroundColor(new BaseColor(155, 129, 109));
+                    table.addCell(cell);
+                    
                     recordCount = 0;
 //                   pageCount++;
                 }
@@ -752,6 +775,7 @@ public class PDFServlet extends HttpServlet {
                 Image img =  Image.getInstance(absoluteDiskPath);
                 img.scaleToFit(250, 200); 
                 document.add(img);
+               
                 
               
                 
@@ -776,7 +800,7 @@ public class PDFServlet extends HttpServlet {
                     BaseFont baseFont = BaseFont.createFont(absoluteDiskPath, BaseFont.IDENTITY_H, true);
                     Font font2 = new Font(baseFont, 12);
                     ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Generated at: " + txtFooter, font2), 130, 10, 0);
-                    ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Page " + document.getPageNumber() + " of " + (int) (Math.ceil(pageCount / 20.0)),font2), 760, 10, 0);
+                    ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Page " + document.getPageNumber() + " of " + (int) (Math.ceil(pageCount / 10.0)),font2), 760, 10, 0);
 
                 }
                 catch(Exception x){
