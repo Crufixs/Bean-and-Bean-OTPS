@@ -249,16 +249,30 @@
                         </div>
                         <div class="col-md-3 col-lg-3">
                             <div class="mb-2 text-center fw-bold">
-                                CANCELED
+                                CANCELLED
                                 <span class="badge rounded-pill bg-secondary">0</span>
                             </div>
                             <div class="col overflow-auto" id="list-group-border">
                                 <!-- <i>No canceled orders.</i> -->
                                 <ul class="list-group">
+                                     <%
+                                        for (int i = 0; i < orderList.size(); i++) {
+                                            String status = orderList.get(i).getStatus();
+                                            if (status != null && status.equals("cancelled")) {
+                                    %>
                                     <li class="list-group-item d-flex justify-content-between align-items-center fst-italic" style="background-color: antiquewhite;">
-                                        <input class="btn btn-sm fw-bold" type="submit" value="Order 512">
+                                        <!--<input class="btn btn-sm fw-bold" type="submit" value="Order 512">-->
                                         <!--<span class="badge bg-secondary rounded-pill">14 hrs ago</span>-->
+                                        <form method="POST" action="PDFServlet" target="_blank">
+                                            <button class="btn btn-sm fw-bold" type="submit" name="view" value="<%out.print(i);%>">
+                                                Order <%out.print(orderList.get(i).getOrderID()); %>
+                                            </button>
+                                        </form>
                                     </li>
+                                    <%
+                                            }
+                                        }
+                                    %>
                                 </ul>
                             </div>
                         </div>
