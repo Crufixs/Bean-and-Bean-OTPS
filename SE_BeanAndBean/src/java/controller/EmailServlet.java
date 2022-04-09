@@ -55,27 +55,40 @@ public class EmailServlet extends HttpServlet {
             }
         });
         
+        String messageContent = request.getParameter("message");
+        String userEmail = request.getParameter("email");
+        String name = request.getParameter("name");
+        
+        if(messageContent.equals("") || userEmail.equals("") || name.equals("")){
+            response.sendRedirect("contactus.jsp");
+            return;
+        }
+        
+        String emailMessage = "Name: " + name + "\nEmail: " + userEmail + "\nMessage: " + messageContent;
+        
         //LAGAY DITO HOST EMAIL
-        Message message = prepareMessage(session, myAccountEmail, "crufixs@gmail.com");
+        Message message = prepareMessage(session, myAccountEmail, "beanandbean.business@gmail.com", emailMessage);
         try {
             Transport.send(message);
         } catch (MessagingException ex) {
             Logger.getLogger(EmailServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        response.sendRedirect("contactus.jsp");
         System.out.println("Message sent successfully");
 
     }
 
-    private static Message prepareMessage(Session session, String myAccountEmail, String recepient) {
+    private static Message prepareMessage(Session session, String myAccountEmail, String recepient, String emailMessage) {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("My first fucking email");
-            message.setText("Hey there, \n Look my Email!");
+            message.setSubject("FEEDBACK");
+            message.setText(emailMessage);
             return message;
         } catch (Exception e) {
+            
             e.printStackTrace();
         }
         return null;

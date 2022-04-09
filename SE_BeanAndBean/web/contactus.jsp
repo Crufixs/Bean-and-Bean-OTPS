@@ -32,15 +32,15 @@
                         <form method="post" action="Email">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Your name">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Your name">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your email">
+                                <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="Your email">
                             </div>
                             <div class="mb-3">
                                 <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" rows="3" placeholder="Your message"></textarea>
+                                <textarea name="message" class="form-control" id="message" rows="3" placeholder="Your message"></textarea>
                             </div>
                             <button class=" btn btn-outline-secondary btn-lg" type="submit">Send</button>
                         </form>
