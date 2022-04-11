@@ -498,11 +498,11 @@
                                                     <button type="button" class="w-100 btn btn-outline-secondary stretched-link" data-bs-toggle="modal" data-bs-target="#<%
                                                         //if (u.getCustomerID() == -1) {
                                                         if (u == null || c == null) {
-                                                            out.print("loginError");
+                                                            out.print("loginError2");
                                                         } else if (c.findCartItem(p.getId()) == null) {
-                                                            out.print("modal" + p.getId());
+                                                            out.print("modal2" + p.getId());
                                                         } else {
-                                                            out.print("error" + p.getId());
+                                                            out.print("error2" + p.getId());
                                                         }
                                                             %>">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
@@ -542,7 +542,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="modal fade" id="error<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="error2<%=p.getId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -558,7 +558,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="modal fade" id="loginError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="loginError2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
