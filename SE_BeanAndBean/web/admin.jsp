@@ -106,9 +106,11 @@
                     <h2 style="text-align: center;">Orders</h2>
                     <hr>
                     <div class="row g-5" style="margin-bottom: 25px;">
-                        <%                            int pending = 0;
+                        <%                            
+                            int pending = 0;
                             int processing = 0;
                             int completed = 0;
+                            int cancelled = 0;
                             for (int i = 0; i < orderList.size(); i++) {
 
                                 if (orderList.get(i).getStatus() == null) {
@@ -119,6 +121,8 @@
                                     processing++;
                                 } else if (orderList.get(i).getStatus().equals("completed")) {
                                     completed++;
+                                } else if (orderList.get(i).getStatus().equals("cancelled")) {
+                                    cancelled++;
                                 }
                             }
                         %>
@@ -128,7 +132,13 @@
                                 <span class="badge rounded-pill bg-danger"><%out.print(pending);%></span>
                             </div>
                             <div class="col overflow-auto" id="list-group-border">
-                                <!-- <i>No pending orders.</i> -->
+                                <% 
+                                if(pending == 0){
+                                %>
+                                 <i>No pending orders.</i> 
+                                 <% 
+                                } else {
+                                %>
                                 <ul class="list-group">
                                     <%
                                         for (int i = 0; i < orderList.size(); i++) {
@@ -175,6 +185,7 @@
                                     <%
                                             }
                                         }
+                                    }
                                     %>
                                 </ul>
                             </div>
@@ -185,6 +196,13 @@
                                 <span class="badge rounded-pill bg-warning"><%out.print(processing);%></span>
                             </div>
                             <div class="col overflow-auto" id="list-group-border">
+                                <% 
+                                if(processing == 0){
+                                %>
+                                 <i>No processing orders.</i> 
+                                 <% 
+                                } else {
+                                %>
                                 <!--<i>No processing orders.</i>-->
                                 <ul class="list-group">
                                     <%
@@ -214,6 +232,7 @@
                                     <%
                                             }
                                         }
+                                    }
                                     %>
                                 </ul> 
                             </div>
@@ -224,6 +243,13 @@
                                 <span class="badge rounded-pill bg-success"><%out.print(completed);%></span>
                             </div>
                             <div class="col overflow-auto" id="list-group-border">
+                                <% 
+                                if(completed == 0){
+                                %>
+                                 <i>No completed orders.</i> 
+                                 <% 
+                                } else {
+                                %>
                                 <!-- <i>No completed orders.</i> -->
                                 <ul class="list-group">
                                     <%
@@ -243,6 +269,7 @@
                                     <%
                                             }
                                         }
+                                    }
                                     %>
                                 </ul>
                             </div>
@@ -250,9 +277,16 @@
                         <div class="col-md-3 col-lg-3">
                             <div class="mb-2 text-center fw-bold">
                                 CANCELLED
-                                <span class="badge rounded-pill bg-secondary">0</span>
+                                <span class="badge rounded-pill bg-secondary"><%out.print(cancelled);%></span>
                             </div>
                             <div class="col overflow-auto" id="list-group-border">
+                                <% 
+                                if(cancelled == 0){
+                                %>
+                                 <i>No canceled orders.</i> 
+                                 <% 
+                                } else {
+                                %>
                                 <!-- <i>No canceled orders.</i> -->
                                 <ul class="list-group">
                                      <%
@@ -272,6 +306,7 @@
                                     <%
                                             }
                                         }
+                                    }
                                     %>
                                 </ul>
                             </div>
