@@ -73,6 +73,14 @@ a:hover {
     color: white;
 }
 
+#login-dropdown .dropdown-toggle::after {
+    content: none;
+}
+
+.modal-open {
+    padding-right: 0px !important;
+}
+
 /*.card{
     border-radius: 4px;
     background: #fff;

@@ -53,7 +53,7 @@
                                 for (CartItem c : cart) {
                             %>
                             <li class="list-group-item <%= myCart.getQuantityInCart() <= 4 ? "w-50" : "w-100"%> justify-content-between lh-md" style="border-radius: 0;">
-                                <img src="Images/f22.jpg" class="card-img-top" alt="..." style="display: <%= myCart.getQuantityInCart() <= 4 ? "block" : "none"%>;">
+                                <img src="Images/g4.jpg" class="card-img-top" alt="..." style="display: <%= myCart.getQuantityInCart() <= 4 ? "block" : "none"%>;">
                                 <div style="margin-top:1.4vh;">
                                     <h6 class="my-0"><%=c.getQuantity()%> <%=c.getProduct().getName()%></h6>
                                 </div>

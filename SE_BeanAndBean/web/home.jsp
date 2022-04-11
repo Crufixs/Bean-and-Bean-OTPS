@@ -172,25 +172,25 @@
                 <!-- Three columns of text below the carousel -->
                 <div class="row" style="text-align: center">
                     <div class="col-lg-4">
-                        <img class="rounded-circle" width="140" height="140" src="Images/arab.jpg">
+                        <img class="rounded-circle" width="140" height="140" src="Images/12.jpg">
                         <div style="border-color:white;border-top-width:1px;margin-left: auto;margin-right: auto;margin-top:10px;margin-bottom:10px;width:100%;max-width:170px;"><hr style="height: 3px;"></div>
                         <h2>Premium Coffee</h2>
                         <p>Made from uniquely flavored beans.</p>
-                        <p><a class="btn btn-secondary" href="shop.jsp#pc">See More &raquo;</a></p>
+                        <p><a class="btn btn-outline-dark" href="shop.jsp#pc">See More &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->
                     <div class="col-lg-4">
-                        <img class="rounded-circle" width="140" height="140" src="Images/brew2.jpg">
+                        <img class="rounded-circle" width="140" height="140" src="Images/21.jpg">
                         <div style="border-color:white;border-top-width:1px;margin-left: auto;margin-right: auto;margin-top:10px;margin-bottom:10px;width:100%;max-width:170px;"><hr style="height: 3px;"></div>
                         <h2>Cold Series</h2>
                         <p>Made from ground coffee with cold water.</p>
-                        <p><a class="btn btn-secondary" href="shop.jsp#cb">See More &raquo;</a></p>
+                        <p><a class="btn btn-outline-dark" href="shop.jsp#cb">See More &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->
                     <div class="col-lg-4">
-                        <img class="rounded-circle" width="140" height="140" src="Images/g3.jpg">
+                        <img class="rounded-circle" width="140" height="140" src="Images/31.jpg">
                         <div style="border-color:white;border-top-width:1px;margin-left: auto;margin-right: auto;margin-top:10px;margin-bottom:10px;width:100%;max-width:170px;"><hr style="height: 3px;"></div>
                         <h2>Coffee Syrups</h2>
                         <p>Flavoring that can be added to hot or cold coffee.</p>
-                        <p><a class="btn btn-secondary" href="shop.jsp#ic">See More &raquo;</a></p>
+                        <p><a class="btn btn-outline-dark" href="shop.jsp#ic">See More &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->
                 </div><!-- /.row -->
                 <hr>
@@ -200,38 +200,120 @@
                         <h1 class="display-5 fw-bold">About us</h1>
                         <hr class="divider-color">
                     </div>  -->
-                    <div class="row row-cols-1 row-cols-lg-2">             
+                    <div class="row row-cols-1 row-cols-lg-2 mb-3">             
                         <div class="col text-center">
-                            <img src="Images/f11.jpg" class="img-fluid rounded mx-auto">
+                            <img src="Images/h1.jpg" class="img-fluid rounded mx-auto">
                         </div>
                         <div class="col p-5 cn my-3">
                             <div class="inner">
                                 <h2 style="text-align:center;">Keep beans airtight and cool</h2>
                                 <p class="lead" style="text-align:center;">Your beans' greatest enemies are air, moisture, heat, and light.<br><br>
-                                    <%
-                                        //if (u.getCustomerID() == -1)
+                                    <%                                        //if (u.getCustomerID() == -1)
                                         System.out.print("HAAAAAAAAY");
                                         if (u == null) {
                                             System.out.print("HELOOOOOOO");
                                     %>
-                                    <a class="btn btn-secondary btn-md" style="text-align:center;" href="register.jsp">Sign Up Now</a>
+                                    <a class="btn btn-outline-dark btn-md" style="text-align:center;" href="register.jsp">Sign Up Now</a>
                                     <% } else {%>
-                                    <a class="btn btn-secondary btn-md" style="text-align:center;" href="success.jsp">My Account</a>
+                                    <a class="btn btn-outline-dark btn-md" style="text-align:center;" href="success.jsp">My Account</a>
                                     <% }%>
                                 </p>
                             </div>
                         </div>                
                     </div>
-                    <div class="row row-cols-1 row-cols-lg-2"> 
+                    <div class="row row-cols-1 row-cols-lg-2 mb-3"> 
                         <div class="col order-lg-2 text-center">    
-                            <img src="Images/f22.jpg" class="img-fluid rounded" >
+                            <img src="Images/f3.jpg" class="img-fluid rounded" >
                         </div>
                         <div class="col order-lg-1 p-5 cn my-3">
                             <div class="inner">
                                 <h2 style="text-align:center;">Buy the right amount</h2>
                                 <p class="lead" style="text-align:center;">Coffee begins to lose freshness almost immediately after roasting.<br><br>
-                                    <a class="btn btn-secondary btn-md" style="text-align:center;" href="aboutus.jsp#gallery">See Gallery</a></p>
+                                    <a class="btn btn-outline-dark btn-md" style="text-align:center;" href="aboutus.jsp#gallery">See Reviews</a></p>
                             </div> 
+                        </div>
+                    </div>
+                    <!-- <div class="row row-cols-1 row-cols-lg-2 mb-3">             
+                        <div class="col text-center">
+                            <img src="Images/f3.jpg" class="img-fluid rounded mx-auto">
+                        </div>
+                        <div class="col p-5 cn my-3">
+                            <div class="inner">
+                                <h2 style="text-align:center;">idk</h2>
+                                <p class="lead" style="text-align:center;">blah blah blah<br><br>
+                                 <a class="btn btn-outline-dark btn-md" style="text-align:center;" href="aboutus.jsp#reviews">See Reviews</a></p>
+                            </div>
+                        </div>                
+                    </div> -->
+                    <hr class="my-5">
+                    <div class="row" data-masonry='{"percentPosition": true }'>
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <div class="card">
+                                <img src="Images/c1.jpg">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <div class="card">
+                                <img src="Images/c5.jpg">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <div class="card">
+                                <img src="Images/c2.jpg">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <div class="card p-3">
+                                <figure class="p-3 mb-0">
+                                    <blockquote class="blockquote">
+                                        <p>"But even a bad cup of coffee is better than no coffee at all."</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer mb-0 text-muted">
+                                        <i>David Lynch</i>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <div class="card p-3 text-center">
+                                <figure class="p-3 mb-0">
+                                    <blockquote class="blockquote">
+                                        <p>"The powers of a man's mind are directly proportional to the quantity of coffee he drinks."</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer mb-0 text-muted">
+                                        <i>Sir James MacKintosh</i>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <div class="card">
+                                <img src="Images/c3.jpg">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <div class="card p-3 text-end">
+                                <figure class="p-3 mb-0">
+                                    <blockquote class="blockquote">
+                                        <p>"It does not matter where you are from or how you feel, there is always peace in a strong cup of coffee."</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer mb-0 text-muted">
+                                        <i>Gabriel Ba</i>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <div class="card p-3">
+                                <figure class="p-3 mb-0">
+                                    <blockquote class="blockquote">
+                                        <p>"Coffee is a language in itself."</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer mb-0 text-muted">
+                                        <i>Jackie Chan</i>
+                                    </figcaption>
+                                </figure>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -239,6 +321,7 @@
         </main>
         <!-- Footer -->
         <%@include file="footer.jsp" %>
+        <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
         <!-- Footer -->
     </body>
     <!-- SOURCE: https://www.darwinbiler.com/jquery-ph-locations/ -->

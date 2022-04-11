@@ -41,3 +41,7 @@ a:hover {
     background: red;
     color: white;
 }
+
+#login-dropdown .dropdown-toggle::after {
+    content: none;
+}

@@ -197,7 +197,7 @@
         <script>
            window.onload = function () {
      // Array of Images
-      var backgroundImg=["Images/bg1.jpg", "Images/bg3.jpg", "Images/bg.jpg"];
+      var backgroundImg=["Images/sp1.jpg", "Images/sp2.jpg", "Images/sp3.jpg"];
 
         setInterval(changeImage, 5000);
        function changeImage() {   

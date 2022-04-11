@@ -161,7 +161,7 @@
                                                                                                                     name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
                                                                         </p>
                                                                     </div>
-                                                                    <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                    <button type="submit" name="action" value="add" class="btn btn-dark" style="background-color: #6b3e2e;">CONTINUE</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -266,7 +266,7 @@
                                                                                                                     name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
                                                                         </p>
                                                                     </div>
-                                                                    <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                    <button type="submit" name="action" value="add" class="btn btn-dark" style="background-color: #6b3e2e;">CONTINUE</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -374,7 +374,7 @@
                                                                                                                     name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
                                                                         </p>
                                                                     </div>
-                                                                    <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                    <button type="submit" name="action" value="add" class="btn btn-dark" style="background-color: #6b3e2e;">CONTINUE</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -481,7 +481,7 @@
                                                                                                                     name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
                                                                         </p>
                                                                     </div>
-                                                                    <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                    <button type="submit" name="action" value="add" class="btn btn-dark" style="background-color: #6b3e2e;">CONTINUE</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -587,7 +587,7 @@
                                                                                                                     name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
                                                                         </p>
                                                                     </div>
-                                                                    <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                    <button type="submit" name="action" value="add" class="btn btn-dark" style="background-color: #6b3e2e;">CONTINUE</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -688,7 +688,7 @@
                                                                                                                         name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
                                                                             </p>
                                                                         </div>
-                                                                        <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                        <button type="submit" name="action" value="add" class="btn btn-dark" style="background-color: #6b3e2e;">CONTINUE</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -789,7 +789,7 @@
                                                                                                                         name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
                                                                             </p>
                                                                         </div>
-                                                                        <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                        <button type="submit" name="action" value="add" class="btn btn-dark" style="background-color: #6b3e2e;">CONTINUE</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -892,7 +892,7 @@
                                                                                                                         name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
                                                                             </p>
                                                                         </div>
-                                                                        <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                        <button type="submit" name="action" value="add" class="btn btn-dark" style="background-color: #6b3e2e;">CONTINUE</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -995,7 +995,7 @@
                                                                                                                         name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
                                                                             </p>
                                                                         </div>
-                                                                        <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                        <button type="submit" name="action" value="add" class="btn btn-dark" style="background-color: #6b3e2e;">CONTINUE</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1098,7 +1098,7 @@
                                                                                                                         name="price" value="<%=p.getPrice()%>" style="text-align: center; pointer-events:none;"/>
                                                                             </p>
                                                                         </div>
-                                                                        <button type="submit" name="action" value="add" class="btn btn-primary" style="background-color: #6b3e2e;">CONTINUE</button>
+                                                                        <button type="submit" name="action" value="add" class="btn btn-dark" style="background-color: #6b3e2e;">CONTINUE</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
