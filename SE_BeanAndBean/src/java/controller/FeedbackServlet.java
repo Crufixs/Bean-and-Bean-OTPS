@@ -93,7 +93,7 @@ public class FeedbackServlet extends HttpServlet {
             Feedback.addFeedbackToDB(u.getCustomerID(), comment, starRating);
             feedbacks = Feedback.getFeedbackListFromDB();
 
-            context.setAttribute("feedbacks", feedbacks);
+            context.setAttribute("feedbackList", feedbacks);
 
             response.sendRedirect("aboutus.jsp");
             return;

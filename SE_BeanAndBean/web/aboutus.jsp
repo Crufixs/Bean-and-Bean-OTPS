@@ -212,7 +212,7 @@
                     <div style="align-items: center; text-align: center;">
                        
                         <div class="slidecontainer">
-                            <input type="range" min="1" max="5" value="3" class="slider" id="myRange" style="margin-bottom: 20px;">
+                            <input name ="starRating" type="range" min="1" max="5" value="3" class="slider" id="myRange" style="margin-bottom: 20px;">
                             <p>My Rating: <span id="demo"></span> <span> Star(s)</span></p>
                         </div>
 
