@@ -1,3 +1,9 @@
+
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display">
+</head>
+
 <footer class="page-footer font-small blue pt-4 accent-color mt-auto text-white">
     <style>
         a {
@@ -16,7 +22,7 @@
             <div class="col-md-4 mt-md-0 mt-3">
                 <!-- Content -->
                 <a href="home.jsp"><img src="Images/logo-plain.png" alt="logo" width="100" height="100"></a>
-                <h5 class="text-white" style="padding: 10px;">Bean & Bean</h5>
+                <h5 class="text-white" style="padding: 10px; font-family: Playfair Display">Bean & Bean</h5>
             </div>
             <!-- Grid column -->
             <hr class="clearfix w-100 d-md-none">
@@ -105,8 +111,8 @@
         $('#login-dropdown-menu').removeClass('show')
     });
 
-    $("button").click(function(){
-    $("button").removeClass("active");
-    $(this).addClass("active");
+    $("button").click(function () {
+        $("button").removeClass("active");
+        $(this).addClass("active");
     });
 </script>

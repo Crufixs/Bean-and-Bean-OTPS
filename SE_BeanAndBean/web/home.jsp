@@ -14,6 +14,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
         <link rel="shortcut icon" type="image/png" href="Images/logo-black.png"/>
         <link rel="stylesheet" type="text/css" href = "CSS/webcss.css?<?php echo time(); ?>"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
@@ -55,7 +56,7 @@
                     <img src="Images/logo-plain.png" alt="logo" width="30" height="24" class="d-inline-block align-text-top"><span class="fs-4 text-white">Bean&Bean</span></a> -->
                     <a href="home.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                         <img src="Images/logo-plain.png" width="50" height="50">
-                        &nbsp;<span class="fs-4 text-white">Bean & Bean</span></a>
+                        &nbsp;<span class="fs-4 text-white mt-3" style="font-family: Playfair Display">Bean & Bean</span></a>
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -137,9 +138,9 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active" style="background: url(Images/s33.jpg);min-height:65vh;background-repeat: no-repeat;background-size: cover;background-position: center;">
                         <div class="container">
-                            <div class="carousel-caption text-start">
-                                <img src="Images/logo-plain.png" style="height: 150px; width: 150px;">
-                                <h1>Bean & Bean</h1>
+                            <div class="carousel-caption text-start" style="margin-bottom: 6.7vh;">
+                                <!-- <img src="Images/logo-plain.png" style="height: 150px; width:150px"> -->
+                                <h1 style="font-family: Playfair Display; font-size: ">Bean & Bean</h1>
                                 <p>Locally sourced coffee. PH</p>
                                 <p><a class="btn btn-lg btn-outline-light" href="aboutus.jsp">Read More</a></p>
                             </div>
@@ -174,7 +175,7 @@
                     <div class="col-lg-4">
                         <img class="rounded-circle" width="140" height="140" src="Images/12.jpg">
                         <div style="border-color:white;border-top-width:1px;margin-left: auto;margin-right: auto;margin-top:10px;margin-bottom:10px;width:100%;max-width:170px;"><hr style="height: 3px;"></div>
-                        <h2>Premium Coffee</h2>
+                        <h2 >Premium Coffee</h2>
                         <p>Made from uniquely flavored beans.</p>
                         <p><a class="btn btn-outline-dark" href="shop.jsp#pc">See More &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->

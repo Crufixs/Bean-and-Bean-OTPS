@@ -195,13 +195,6 @@
                             <option value="1" ${1 == selectedID ? 'selected' : ''}>Most Recent</option>
                             <option value="2" ${2 == selectedID ? 'selected' : ''}>Ratings</option>
                         </select>
-                        <!--                        <select name="quantity" style="display: inline-block;" id="ddlModel">
-                                                    <option value="AllComments">All</option>
-                                                    <option value="Iphone">10</option>
-                                                    <option value="Samsung">25</option>
-                                                    <option value="Samsung">50</option>
-                                                    <option value="Samsung">100</option>
-                                                </select>-->
                     </form>
                 </div>
             </div>

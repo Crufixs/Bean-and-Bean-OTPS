@@ -1,6 +1,9 @@
 
 <%@page import="model.User"%>
 <%@page import="model.Cart"%>
+        <head>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display">
+        </head>
         <header>
             <!-- <style>
               .banner-image {
@@ -15,7 +18,7 @@
                     <img src="Images/logo-plain.png" alt="logo" width="30" height="24" class="d-inline-block align-text-top"><span class="fs-4 text-white">Bean&Bean</span></a> -->
                     <a href="home.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                         <img src="Images/logo-plain.png" width="50" height="50">
-                        &nbsp;<span class="fs-4 text-white">Bean & Bean</span></a>
+                        &nbsp;<span class="fs-4 text-white mt-3" style="font-family: Playfair Display">Bean & Bean</span></a>
                     <button
                         class="navbar-toggler"
                         type="button"
