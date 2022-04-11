@@ -54,7 +54,6 @@ public class CartServlet extends HttpServlet {
         return;
     }
     
-    
     protected void addToCart(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -63,7 +62,7 @@ public class CartServlet extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         System.out.println("QUANTITY: " + quantity);
 //        CartItem cartItem = c.findCartItem(id);
-        
+      
         if(((ProductList)getServletContext().getAttribute("productList")).findProduct(id) == null){
             response.sendRedirect("cart.jsp");
             return;

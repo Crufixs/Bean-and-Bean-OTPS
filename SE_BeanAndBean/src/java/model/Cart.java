@@ -108,10 +108,9 @@ public class Cart {
 
         if (c != null) { //the product is already in the cart
             c.addQuantity(cartItemQuantity);
-//            c.setCartItemPrice(price*cartItemQuantity);
-//            cartItemQuantity += c.getQuantity();
+            //c.setCartItemPrice(price*cartItemQuantity);
+            //cartItemQuantity += c.getQuantity();
             
-
             try {
                 PreparedStatement select = con.prepareStatement("SELECT * FROM cart_item WHERE cart_id=? AND product_id=?");
                 select.setString(1, this.cart_id + "");
