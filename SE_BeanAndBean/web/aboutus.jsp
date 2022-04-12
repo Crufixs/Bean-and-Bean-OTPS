@@ -192,7 +192,7 @@
                         <input type="hidden" name="requestType" value="sort"/>
                         <select name="sort" style="display: inline-block;" id="ddlModel" onchange="this.form.submit()">
                             <!--<option value="AllComments">Most Relevant</option>-->
-                            <option value="1" ${1 == selectedID ? 'selected' : ''}>Most Recent</option>
+                            <option value="1" ${1 == selectedID ? 'selected' : ''}>Oldest</option>
                             <option value="2" ${2 == selectedID ? 'selected' : ''}>Ratings</option>
                         </select>
                     </form>
