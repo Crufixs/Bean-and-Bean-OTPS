@@ -198,30 +198,32 @@
                     </form>
                 </div>
             </div>
-            <div class="row justify-content-between align-middle align-items-center" style="margin-top: 5vh; margin-bottom: 5vh;">
-                <form method="POST" action="Review" class=" row align-middle align-items-center" style="margin: 0;">
+            <div class="row justify-content-between align-middle align-items-center" style="margin:0.1vw; margin-top: 5vh; margin-bottom: 5vh; border-radius: 20px;  background-color: white; padding-top: 13px; padding-bottom: 13px;">
+                <form class="row" method="POST" action="Review" class=" row align-middle align-items-center" style="margin: 0;">
                     <input type="hidden" name="requestType" value="comment"/>
-                    <textarea id="" name="comment" rows="4" cols="50" maxlength="500" style="border-radius: 20px; width: 80%; margin-left: 10%; padding: 24px;" placeholder="Say something about Bean&Bean"></textarea><br>
-                    <div style="align-items: center; text-align: center;">
+                    <textarea class="col-8" id="" name="comment" rows="6" cols="50" maxlength="500" style="border-radius: 20px; margin: 0;" placeholder="Say something about Bean&Bean"></textarea><br>
+                    <div class="row justify-content-between align-middle align-items-center col-4" style="padding-left: 3.5vw;">
+                    <div class="col-lg-11 col-md-11 col-sm-5" style="align-items: center; text-align: center;">
                        
                         <div class="slidecontainer">
-                            <input name ="starRating" type="range" min="1" max="5" value="3" class="slider" id="myRange" style="margin-bottom: 20px;">
-                            <p>My Rating: <span id="demo"></span> <span> Star(s)</span></p>
+                            <input name ="starRating" type="range" min="1" max="5" value="3" class="slider" id="myRange" style="margin:0; margin-top: 3vh;">
+                            <p style="margin-top: 2vh;">My Rating: <span id="demo"></span> <span> Star(s)</span></p>
                         </div>
 
                     </div>
-                    <input class="align-middle w-50" style="display:inline-block; margin-left: 25%; margin-top: 1vh; border-radius: 20px; height: 6vh; background-color: gold; font-weight: bold; " type="submit" value="POST COMMENT">
+                    <input class="col-lg-11 col-md-11 col-sm-5" style="border-radius: 20px; height: 6vh; background-color: gold; font-weight: bold; " type="submit" value="POST COMMENT">
+                    </div>
                 </form>
             </div>
-            <ul class="" style="align-content: center; padding: 0; margin: 0">
+            <ul class="d-flex flex-row flex-wrap" style="align-content: center; padding: 0; margin: 0">
                 <%for (int y = 1; y <= totalComments; y++) {
                         Feedback feedback = feedbacks.get(y - 1);
                 %>
-                <li class="row w-100 justify-content-between" style="background-color: white; margin: 0; margin-bottom: 2vh; padding: 2vh;">
-                    <div class="col-lg-3 col-md-3 col-sm-12" style="align-items: center; align-content: center; padding: 2vh;">
+                <li class="row justify-content-between" style="background-color: white; margin: 1%; border-radius: 20px; width: 48%;">
+                    <div class="col-lg-4 col-md-5 col-sm-5" style="align-items: center; align-content: center; padding: 2vh;">
                         <img src="Images/person (<%= 1 + (int) Math.floor(Math.random() * 12)%>).png" alt="username" style="border-radius: 50%; width: 100%;">
                     </div>
-                    <div class="col-lg-9 col-md-9 col-sm-12 lh-md">
+                    <div class="col-lg-8 col-md-7 col-sm-7 lh-md">
                         <br>
                         <H4><%=feedback.getCustomerUsername()%></H4>
                             <% for (int x = 0; x < feedback.getStarRating(); x++) {%>

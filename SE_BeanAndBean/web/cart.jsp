@@ -1,4 +1,4 @@
-
+ 
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.User"%>
 <%@page import="model.Cart"%>
@@ -194,10 +194,6 @@
                                                   </div>-->
                                 </div>
                             </div>
-
-                            <hr class="my-4">
-
-                            <input class="form-control" type="text" placeholder="Note: e.g. sugar level 25%">
 
                             <hr class="my-4">
 

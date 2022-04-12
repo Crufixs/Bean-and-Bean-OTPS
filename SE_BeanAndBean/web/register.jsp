@@ -197,11 +197,11 @@
         <script>
            window.onload = function () {
      // Array of Images
-      var backgroundImg=["Images/sp1.jpg", "Images/sp2.jpg", "Images/sp3.jpg"];
+      var backgroundImg=["Images/r1.png", "Images/r2.png", "Images/r3.png", "Images/r4.png"];
 
         setInterval(changeImage, 5000);
        function changeImage() {   
-        var i = Math.floor((Math.random() * 3));
+        var i = Math.floor((Math.random() * 4));
 
         document.getElementById("secondCol").style.background = "url('"+backgroundImg[i]+"') no-repeat center center";
         document.getElementById("secondCol").style.backgroundSize = "cover";
