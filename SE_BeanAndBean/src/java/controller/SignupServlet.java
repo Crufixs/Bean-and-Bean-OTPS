@@ -89,15 +89,19 @@ public class SignupServlet extends HttpServlet {
                 switch (state) {
                     case Signup:
                         updateDb = initNewAccount();
-                        break;
+                        int affectedRows = updateDb.executeUpdate();
+                        System.out.println(affectedRows);
+                        response.sendRedirect("login.jsp");
+                        return;
                     case Edit:
                         updateDb = editAccount(u.getCustomerID());
                         break;
                 }
                 int affectedRows = updateDb.executeUpdate();
+                System.out.println(affectedRows);
                 //UPDATING USER 
                 PreparedStatement getUser = con.prepareStatement("SELECT * FROM customer WHERE customer_id=?");
-                getUser.setString(1, ""+u.getCustomerID());
+                getUser.setString(1, "" + u.getCustomerID());
                 ResultSet rs = getUser.executeQuery();
 
                 if (rs.next()) {

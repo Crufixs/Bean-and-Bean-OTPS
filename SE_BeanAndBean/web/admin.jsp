@@ -153,10 +153,19 @@
                                         </form>
                                          <div> 
                                              <!--modal codes--> 
-                                             <form method="POST" action="ManageOrder">
+<!--                                             <form method="POST" action="ManageOrder">
                                                 <button name="cancel" value="<%out.print(i);%>" type="submit" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="modal" data-bs-placement="right" data-bs-target="#staticBackdrop" title="Cancel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                                                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                                    </svg></button> 
+                                                    </svg></button> -->
+
+                                        <form method="POST" action="ManageOrder">
+                                                <button name="cancel" value="<%out.print(i);%>" type="submit" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="modal" data-bs-placement="right" data-bs-target="#staticBackdrop" title="Cancel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                    </svg></button>
+                                                <button name="process" value="<%out.print(i);%>" type="submit" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Process"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                                    </svg></button>
+                                            </form>
                                          </div> 
                                     </li>
                                     <%
