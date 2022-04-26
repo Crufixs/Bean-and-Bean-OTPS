@@ -27,7 +27,13 @@
             List<Product> products = (List) getServletContext().getAttribute("products");
 
             User u = (User) session.getAttribute("user");
-            System.out.print(u == null ? "ksjdflsdfsdfsdfsdfsdfkjdfgdfgsfsadasdasdlk" : "mmdfkjdksdsdfsdfsdfsdfsdfsdfsffdfsfm");
+//            System.out.print(u == null ? "ksjdflsdfsdfsdfsdfsdfkjdfgdfgsfsadasdasdlk" : "mmdfkjdksdsdfsdfsdfsdfsdfsdfsffdfsfm");
+            if (u != null) {
+                if(u.getRole().equalsIgnoreCase("admin")){
+                    response.sendRedirect("admin.jsp");
+                    return;
+                }
+            }
 //            out.print("TESTING LANG");
 //            if (u == null) {
 ////                System.out.print("HUYYYUYUYUYUYUYUYU");

@@ -19,9 +19,11 @@
             List<Product> products = (List) getServletContext().getAttribute("products");
             Cart c = (Cart) session.getAttribute("cart");
             User u = (User) session.getAttribute("user");
-            if (u == null) {
-//                response.sendRedirect("home.jsp");
-//                return;
+            if (u != null) {
+                if(u.getRole().equalsIgnoreCase("admin")){
+                    response.sendRedirect("admin.jsp");
+                    return;
+                }
             }
         %>
         <script>

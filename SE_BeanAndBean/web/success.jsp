@@ -28,6 +28,9 @@
             response.sendRedirect("login.jsp");
             return;
 
+        } else if(u.getRole().equalsIgnoreCase("admin")){
+                response.sendRedirect("admin.jsp");
+            return;
         }
 //        else if (u.getCustomerID() == -1) {
 //            response.sendRedirect("login.jsp");

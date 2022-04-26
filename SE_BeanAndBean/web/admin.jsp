@@ -48,7 +48,7 @@
             <div class="container">
                 <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <img src="Images/logo-plain.png" width="50" height="50">
-                    &nbsp;<span class="fs-4">Bean & Bean</span></a>
+                    &nbsp;<span class="fs-4 text-white mt-3" style="font-family: Playfair Display">Bean & Bean</span></a>
                 <div class="col">
                     <form method="POST" action="Logout" style="float: right;">
                         <button class="btn btn-outline-light btn-sm" type="submit">Logout <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">

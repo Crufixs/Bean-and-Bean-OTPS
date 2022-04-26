@@ -22,6 +22,15 @@
             response.setHeader("Pragma", "no-cache");
             response.setDateHeader("Expires", 0);
             User u = (User) session.getAttribute("user");
+            
+            if (u != null) {
+                if(u.getRole().equalsIgnoreCase("admin"))
+                    response.sendRedirect("admin.jsp");
+                else if(u.getRole().equalsIgnoreCase("guest"))
+                    response.sendRedirect("home.jsp");
+                return;
+            }
+            
             Map<String, String> e = (Map) request.getAttribute("errors");
 
         %>

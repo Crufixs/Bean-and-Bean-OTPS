@@ -24,7 +24,10 @@
 
             User u = (User) session.getAttribute("user");
             if (u != null) {
-                response.sendRedirect("success.jsp");
+                if(u.getRole().equalsIgnoreCase("guest"))
+                    response.sendRedirect("success.jsp");
+                else if(u.getRole().equalsIgnoreCase("admin"))
+                    response.sendRedirect("admin.jsp");
                 return;
             }
 

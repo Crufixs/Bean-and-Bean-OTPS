@@ -26,6 +26,14 @@
 
         List<Feedback> feedbacks = (List) getServletContext().getAttribute("feedbackList");
         int totalComments = feedbacks.size();
+        
+        User u = (User) session.getAttribute("user");
+        if (u != null) {
+            if(u.getRole().equalsIgnoreCase("admin")){
+                response.sendRedirect("admin.jsp");
+                return;
+            }
+        }
 //        Map sortDetail = new HashMap();
 //        sortDetail.put(1, "Most Recent");
 //        sortDetail.put(2, "Ratings");

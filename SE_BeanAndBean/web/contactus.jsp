@@ -17,6 +17,14 @@
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma", "no-cache");
             response.setDateHeader("Expires", 0);
+            
+        User u = (User) session.getAttribute("user");
+        if (u != null) {
+            if(u.getRole().equalsIgnoreCase("admin")){
+                response.sendRedirect("admin.jsp");
+                return;
+            }
+        }
         %>
     </head>
     <body class="d-flex flex-column min-vh-100" style="background-image: url('Images/newBG.png');">

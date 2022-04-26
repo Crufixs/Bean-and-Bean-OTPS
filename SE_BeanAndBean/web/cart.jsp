@@ -24,6 +24,9 @@
             if (myCart == null || u == null) {
                 response.sendRedirect("home.jsp");
                 return;
+            } else if(u.getRole().equalsIgnoreCase("admin")){
+                response.sendRedirect("admin.jsp");
+                return;
             }
             List<CartItem> cart = myCart.getCart();
 //                User u = (User) session.getAttribute("user");
