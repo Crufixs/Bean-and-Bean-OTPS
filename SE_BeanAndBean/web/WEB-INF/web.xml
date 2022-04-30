@@ -71,6 +71,14 @@
         <servlet-name>ManageOrderServlet</servlet-name>
         <servlet-class>controller.ManageOrderServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SendVerificationServlet</servlet-name>
+        <servlet-class>controller.SendVerificationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerifyCodeServlet</servlet-name>
+        <servlet-class>controller.VerifyCodeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/Logout</url-pattern>
@@ -110,6 +118,14 @@
     <servlet-mapping>
         <servlet-name>ManageOrderServlet</servlet-name>
         <url-pattern>/ManageOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendVerificationServlet</servlet-name>
+        <url-pattern>/SendVerificationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerifyCodeServlet</servlet-name>
+        <url-pattern>/VerifyCodeServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -6,6 +6,7 @@ public class User
 {  
     private String username,password,role,firstName,lastName,email, phoneNumber, street, barangay, city, region; 
     private int customerID;
+    private boolean isVerified;
     private String fullAddress;
 
 //    public User() { //guest, no account
@@ -138,4 +139,13 @@ public class User
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    
+    public boolean getIsVerified() {
+        return isVerified;
+    }
+    
+    public void setIsVerified(boolean isVerified) {
+        this.isVerified = isVerified;
+    }
+    
 }  
