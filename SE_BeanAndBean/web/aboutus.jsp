@@ -247,6 +247,8 @@
                         <%}%>
                         <br><br>
                         <p><%=feedback.getComment()%></p>
+                        <br>
+                        <p><em><%=feedback.getPlacedAt().split(" ")[0]%></em></p>
                     </div>
                 </li>
                 <%}%>

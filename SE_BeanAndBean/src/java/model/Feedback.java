@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -25,6 +27,7 @@ public class Feedback {
     private int customerID;
     private String customerUsername;
     private String comment;
+    private String placed_at;
     private int starRating;
     private static Connection con;
 //    private static ArrayList<Feedback> feedbackList;
@@ -37,9 +40,19 @@ public class Feedback {
 ////        this.customerUsername = getCustomerUsernameFromDB();
 //    }
     
-    public Feedback(int feedbackID, int customerID, String comment, int starRating) {
+//    public Feedback(int feedbackID, int customerID, String comment, int starRating) {
+//        this.feedbackID = feedbackID;
+//        this.customerID = customerID;
+//        this.placed_at = getDateTimeNow();
+//        this.comment = comment;
+//        this.starRating = starRating;
+//        this.customerUsername = getCustomerUsernameFromDB();
+//    }
+    
+    public Feedback(int feedbackID, int customerID, String comment, int starRating, String placed_at) {
         this.feedbackID = feedbackID;
         this.customerID = customerID;
+        this.placed_at = placed_at;
         this.comment = comment;
         this.starRating = starRating;
         this.customerUsername = getCustomerUsernameFromDB();
@@ -72,11 +85,12 @@ public class Feedback {
     public static void addFeedbackToDB(int customerID, String comment, int starRating){
                 try{
             PreparedStatement insert = 
-                    con.prepareStatement("INSERT INTO feedback(customer_id, comment, star_rating) VALUES (?, ?, ?)");
+                    con.prepareStatement("INSERT INTO feedback(customer_id, comment, star_rating, placed_at) VALUES (?, ?, ?, ?)");
             
             insert.setString(1, customerID+"");
             insert.setString(2, comment);
             insert.setString(3, starRating+"");
+            insert.setString(4, getDateTimeNow());
             
             int affectedRows = insert.executeUpdate();
 
@@ -91,6 +105,7 @@ public class Feedback {
         int customerID;
         String comment;
         int starRating;
+        String placed_at;
         String customerUsername;
         ArrayList<Feedback> feedbackList = new ArrayList<>();
         
@@ -103,6 +118,7 @@ public class Feedback {
                 customerID = rs.getInt("customer_id");
                 comment = rs.getString("comment");
                 starRating = rs.getInt("star_rating");
+                placed_at = rs.getString("placed_at");
                 
 //                PreparedStatement prep = con.prepareStatement("SELECT * FROM customer WHERE customer_id=?");
 //                prep.setString(1, customerID + "");
@@ -111,7 +127,7 @@ public class Feedback {
 //                res.next();
 //                 customerUsername = res.getString("username");
                 
-                Feedback feedback = new Feedback(feedbackID, customerID, comment, starRating);
+                Feedback feedback = new Feedback(feedbackID, customerID, comment, starRating, placed_at);
                 
                 feedbackList.add(feedback);
             }
@@ -162,12 +178,23 @@ public class Feedback {
           //descending order
         }
     };
+    
+    public static String getDateTimeNow(){
+        ZonedDateTime zonedDateTimeNow = ZonedDateTime.now(ZoneId.of("Asia/Singapore"));
+        String year = String.format("%04d", zonedDateTimeNow.getYear());
+        String month = String.format("%02d", zonedDateTimeNow.getMonthValue());
+        String day = String.format("%02d", zonedDateTimeNow.getDayOfMonth());
+        String hour = String.format("%02d", zonedDateTimeNow.getHour());
+        String minute = String.format("%02d", zonedDateTimeNow.getMinute());
+        String second = String.format("%02d", zonedDateTimeNow.getSecond());
+        String dateTime = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+        return dateTime;
+    }
 
     public String getCustomerUsername() {
         return customerUsername;
     }
     
-
     public int getCustomerID() {
         return customerID;
     }
@@ -194,6 +221,10 @@ public class Feedback {
 
     public void setStarRating(int starRating) {
         this.starRating = starRating;
+    }
+    
+    public String getPlacedAt() {
+        return this.placed_at;
     }
 
     public static void setCon(Connection con) {
