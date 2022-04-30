@@ -109,7 +109,7 @@
                         <!--<br>-->
                         <% if (request.getSession().getAttribute("order") != null) {%>
                         <form method="POST" action="PDFServlet" target="_blank">
-                            <button class="w-100 btn btn-secondary btn-lg" type="submit">Get Receipt</button>
+                            <button class="w-100 btn btn-secondary btn-lg" type="submit">Get Order Details</button>
                             <input type="hidden" name="type" value="receipt">
                         </form>
                         <% }%>

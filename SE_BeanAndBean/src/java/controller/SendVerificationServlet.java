@@ -107,8 +107,9 @@ public class SendVerificationServlet extends HttpServlet {
             mess.setSubject("User Email Verification");
             
             Security s = new Security();
-            String encryptedEmail = s.encrypt(user.getEmail());
-            String encryptedCode = s.encrypt(verificationCode);
+            String encryptedEmail = user.getEmail();
+            System.out.println("encryptedEmail = " + encryptedEmail);
+            String encryptedCode = verificationCode;
             //set message text
             String link = "http://localhost:8080/SE_BeanAndBean/"
                     + "VerifyCodeServlet?key1=" + encryptedEmail + "&key2=" + encryptedCode;

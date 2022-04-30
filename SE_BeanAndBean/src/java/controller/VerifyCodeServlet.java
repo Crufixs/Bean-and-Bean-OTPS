@@ -39,11 +39,13 @@ public class VerifyCodeServlet extends HttpServlet {
             Security s = new Security();
             HttpSession session = request.getSession();
             Connection con = (Connection) getServletContext().getAttribute("connection");
-            String email = s.decrypt(request.getParameter("key1"));
-            String code = s.decrypt(request.getParameter("key2"));
+            System.out.println(request.getParameter("key1"));
+            String email = request.getParameter("key1");
+            String code = request.getParameter("key2");
             
             User user = (User) session.getAttribute("user");
             String sessionCode = (String) session.getAttribute(email);
+            System.out.println(sessionCode);
             if(code.equals(sessionCode)){
                 //UDDATE DB
                 try {
@@ -57,9 +59,11 @@ public class VerifyCodeServlet extends HttpServlet {
                 
             } else if (sessionCode == null || sessionCode == "") {
                 out.println("Session has timed out");
+                
             } else {
                 out.println("Incorrect verification code");
             }
+            response.sendRedirect("success.jsp");
             
         }
     }
