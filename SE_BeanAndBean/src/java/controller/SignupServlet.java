@@ -117,7 +117,13 @@ public class SignupServlet extends HttpServlet {
                     String region = rs.getString("region");
                     String password = rs.getString("password");
                     String username = rs.getString("username");
-                    User userUpdated = new User(customerID, username, password, role, firstName, lastName, email, phoneNumber, street, barangay, city, region);
+                    String isVerified = rs.getString("isverified");
+                    boolean isVerifiedBool = false;
+                    if(isVerified.equalsIgnoreCase("t")) {
+                        isVerifiedBool = true;
+                    }
+                    
+                    User userUpdated = new User(customerID, username, password, role, firstName, lastName, email, phoneNumber, street, barangay, city, region, isVerifiedBool);
                     HttpSession session = request.getSession();
                     request.getSession().removeAttribute("user");
                     session.setAttribute("user", userUpdated); 
@@ -137,7 +143,7 @@ public class SignupServlet extends HttpServlet {
         PreparedStatement createUser = null;
         try {
             createUser = con.prepareStatement("INSERT INTO CUSTOMER (username, password, first_name, last_name, email, phone_number, "
-                    + "street, barangay, city, region, account_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    + "street, barangay, city, region, account_type, isverified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             createUser.setString(1, inputUsername);
             createUser.setString(2, encryptedPsw);
             createUser.setString(3, inputFirstName);
@@ -149,6 +155,7 @@ public class SignupServlet extends HttpServlet {
             createUser.setString(9, city);
             createUser.setString(10, region);
             createUser.setString(11, "guest");
+            createUser.setString(12, "f");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -160,7 +167,7 @@ public class SignupServlet extends HttpServlet {
         PreparedStatement editUser = null;
         try {
             editUser = con.prepareStatement("UPDATE CUSTOMER SET username = ?,password = ?,first_name = ?, last_name = ?, "
-                    + "email = ?, phone_number = ?, street = ?, barangay = ?, city = ?, region = ?, account_type = ? WHERE customer_id = " + customer_id);
+                    + "email = ?, phone_number = ?, street = ?, barangay = ?, city = ?, region = ? WHERE customer_id = " + customer_id);
             editUser.setString(1, inputUsername);
             editUser.setString(2, encryptedPsw);
             editUser.setString(3, inputFirstName);
@@ -171,7 +178,6 @@ public class SignupServlet extends HttpServlet {
             editUser.setString(8, barangay);
             editUser.setString(9, city);
             editUser.setString(10, region);
-            editUser.setString(11, "guest");
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -26,7 +26,7 @@ public class User
 //    }
     
     public User(int customerID, String username, String password, String role, String firstName, String lastName, String email, String phoneNumber, 
-            String street, String barangay, String city, String region) { //with account
+            String street, String barangay, String city, String region, boolean isVerified) { //with account
         this.username = username;
         this.password = password;
         this.role = role;
@@ -40,6 +40,7 @@ public class User
         this.region = region;
         this.customerID = customerID;
         this.fullAddress = street + ", " + barangay + ", " + city + ", " + region;
+        this.isVerified = isVerified;
     }
 
     public String getFullAddress() {

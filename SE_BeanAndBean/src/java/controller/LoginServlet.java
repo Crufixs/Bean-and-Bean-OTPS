@@ -48,7 +48,8 @@ public class LoginServlet extends HttpServlet {
         //Input from the Log in form
         String inputUsername=request.getParameter("uname");
         String inputPassword = request.getParameter("psw");
-        
+        System.out.println("inputUsername = " + inputUsername);
+        System.out.println("inputPassword = " + inputPassword);
         //invalid access
         if(inputUsername == null || inputPassword  == null){
             response.sendRedirect("error404.jsp");
@@ -76,36 +77,35 @@ public class LoginServlet extends HttpServlet {
                ps.setString(1, inputUsername);
                ResultSet rs = ps.executeQuery();
                
+               
                //Checks if the inputted username matches a record in the UserDB
                //rs.next() returns true if the ResultSet finds a record
                if(rs.next()){
                    unameMatch = true;
                    String password = rs.getString("password"); //Returns the corresponding password of the given username
-                   
+                   System.out.println("realpassword = " + s.decrypt(password));
                    if(password.equals(inputPassword)){ //Checks if the returned password matches the user input
                        passMatch = true;
                        
                        int customerID = Integer.parseInt(rs.getString("customer_id"));
                        
                        String role = rs.getString("account_type"); //Returns the corresponding role of the given username
-                       
                        String firstName = rs.getString("first_name");
-                       
                        String lastName = rs.getString("last_name");
-                       
                        String email = rs.getString("email");
-                       
-                       String phoneNumber = rs.getString("phone_number");
-                       
+                       String phoneNumber = rs.getString("phone_number");                
                        String street = rs.getString("street");
                        String barangay = rs.getString("barangay");
                        String city = rs.getString("city");
                        String region = rs.getString("region");
-                       
+                       String isVeriifed = rs.getString("isverified");
+                       boolean isVerifiedBool = false;
+                       if (isVeriifed.equalsIgnoreCase("t")) {
+                           isVerifiedBool = true;
+                       }
                        //int customerID, String username, String password, String role, String firstName, String lastName, String email, String phoneNumber, 
                        //String street, String barangay, String city, String province, String region, String accountType
-                       
-                       user = new User(customerID, inputUsername, password, role, firstName, lastName, email, phoneNumber, street, barangay, city, region);
+                       user = new User(customerID, inputUsername, password, role, firstName, lastName, email, phoneNumber, street, barangay, city, region, isVerifiedBool);
                        
                        Cart c = new Cart(customerID);
                        
