@@ -86,7 +86,7 @@
                         <h5>Bean & Bean Transaction History</h5>
                         <hr>
                         <form method="POST" action="PDFServlet" target="_blank">
-                            <button class="btn btn-outline-secondary btn-md" type="submit">Get Records</button>
+                            <button class="btn btn-outline-dark btn-md" type="submit">Get Records</button>
                             <input type="hidden" name="type" value="admin">
                         </form>
                     </div>
@@ -152,17 +152,39 @@
                                             </button>
                                         </form>
                                          <div> 
-                                             <!--modal codes--> 
-<!--                                             <form method="POST" action="ManageOrder">
+                                             <!-- modal codes -->
+                                            <!-- <form method="POST" action="ManageOrder">
                                                 <button name="cancel" value="<%out.print(i);%>" type="submit" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="modal" data-bs-placement="right" data-bs-target="#staticBackdrop" title="Cancel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                                                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                                                     </svg></button> -->
-
-                                        <form method="POST" action="ManageOrder">
-                                                <button name="cancel" value="<%out.print(i);%>" type="submit" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="modal" data-bs-placement="right" data-bs-target="#staticBackdrop" title="Cancel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                <!-- modal part -->
+                                                    <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="staticBackdropLabel">Order N</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Are you sure you want to cancel this order?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-danger">Yes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                <!-- end of modal -->
+                                                <!-- <button name="process" value="<%out.print(i);%>" type="submit" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Process"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                                    </svg></button>
+                                            </form> -->
+                                            <!-- end of modal codes -->
+                                            <form method="POST" action="ManageOrder">
+                                                <button data-id="<%out.print(orderList.get(i).getOrderID()); %>" name="cancel" value="<%out.print(i);%>"  type="button" class="btn btn-danger btn-sm rounded-pill order-action-button" data-bs-toggle="modal" data-bs-placement="right" data-bs-target="#staticBackdrop" title="Cancel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                                                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                                                     </svg></button>
-                                                <button name="process" value="<%out.print(i);%>" type="submit" class="btn btn-warning btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Process"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                                <button data-id="<%out.print(orderList.get(i).getOrderID()); %>" name="process" value="<%out.print(i);%>" type="button" class="btn btn-warning btn-sm rounded-pill order-action-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-placement="right" title="Process"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                                                     </svg></button>
                                             </form>
@@ -206,10 +228,10 @@
                                         </form>
                                         <div>
                                             <form method="POST" action="ManageOrder">
-                                                <button name="cancel" value="<%out.print(i);%>" type="submit" class="btn btn-danger btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Cancel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                <button data-id="<%out.print(orderList.get(i).getOrderID()); %>" name="cancel" value="<%out.print(i);%>" type="button" class="btn btn-danger btn-sm rounded-pill order-action-button" data-bs-toggle="modal" data-bs-placement="right" data-bs-target="#staticBackdrop" title="Cancel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                                                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                                                     </svg></button>
-                                                <button name="complete" value="<%out.print(i);%>" type="submit" class="btn btn-success btn-sm rounded-pill" data-bs-toggle="tooltip" data-bs-placement="right" title="Complete">
+                                                <button data-id="<%out.print(orderList.get(i).getOrderID()); %>" name="complete" value="<%out.print(i);%>" type="button" class="btn btn-success btn-sm rounded-pill order-action-button" data-bs-toggle="modal" data-bs-placement="right" data-bs-target="#staticBackdrop" title="Complete">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
                                                     <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                                                     </svg></button>
@@ -312,5 +334,86 @@
     <!-- Footer -->
     <%--<%@include file="footer.jsp" %>--%>
     <!-- Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-id="confirm-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Order N</h5>
+                    <button onclick="confirmNo()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to cancel this order?
+                </div>
+                <div class="modal-footer">
+                    <button onclick="confirmYes()" type="button" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of modal -->
+    <!-- modal function -->
+    <script type="text/javascript" defer>
+        // let modal = new bootstrap.Modal(document.querySelector('[data-id="confirm-modal"]'))
+
+        let buttons = document.querySelectorAll('.order-action-button')
+        for (let button of buttons) {
+            button.addEventListener('click', function(event) {
+                let form = this.parentElement
+                let name = this.name
+                let value = this.value
+                let orderId = this.getAttribute('data-id')
+                window.currentForm = form
+                window.formParams = {name, value}
+                changeModalTitle(name, value, orderId)
+                changeModalBody(name, value, orderId)
+            })
+        }
+
+        function changeModalTitle(name, value, orderId) {
+            let message = "Order " + orderId
+
+            // assign here
+            let modalTitle = document.querySelector('[data-id="confirm-modal"] .modal-title')
+            modalTitle.innerText = message
+        }
+
+        function changeModalBody(name, value, orderId) {
+            let messages = {
+                process: 'Are you sure you want to process this order?',
+                cancel: 'Are you sure you want to cancel this order?',
+                complete: 'Are you sure you want to complete this order?',
+            }
+
+            // assign here
+            let modalBody = document.querySelector('[data-id="confirm-modal"] .modal-body')
+            let message = messages[name]
+            modalBody.innerText = message
+        }
+
+        function confirmNo() {
+            window.currentForm = null
+            window.formParams = null
+        }
+        function confirmYes() {
+            let form = window.currentForm
+            let formParams = window.formParams
+            if (form && formParams) {
+                let input = document.createElement('input')
+                input.setAttribute('name', formParams.name)
+                input.setAttribute('value', formParams.value)
+                input.setAttribute('type', 'hidden')
+                form.appendChild(input)
+
+                form.submit()
+            }
+        }
+    </script>
+    <!-- end of modal function -->
 </body>
 </html>
+   

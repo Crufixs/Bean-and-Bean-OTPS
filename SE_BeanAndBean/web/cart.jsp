@@ -1,4 +1,4 @@
- 
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.User"%>
 <%@page import="model.Cart"%>
@@ -24,7 +24,7 @@
             if (myCart == null || u == null) {
                 response.sendRedirect("home.jsp");
                 return;
-            } else if(u.getRole().equalsIgnoreCase("admin")){
+            } else if (u.getRole().equalsIgnoreCase("admin")) {
                 response.sendRedirect("admin.jsp");
                 return;
             }
@@ -43,7 +43,7 @@
                     <h2>CHECKOUT FORM</h2>
                     <hr>
                 </div>
-                <div class="row g-5" style="margin-bottom: 50px;">
+                <div class="row g-5" style="margin-bottom: 25px;">
 
                     <div class="col-md-6 col-lg-5 h-50"  style="background-color: #C19A6B; border-radius: 1vw; margin-bottom: 2vh;">
                         <br>
@@ -84,7 +84,7 @@
                                             </svg>
                                         </button>
                                     </form>
-                                    
+
                                 </div>
 
                                 <!--                                    REMOVE BUTTON-->
@@ -101,7 +101,7 @@
                                 <strong>&#8369;<%=myCart.getTotalPrice()%></strong>
                             </li>
                         </ul>
-                            
+
                         <!--<br>-->
                         <p><i>Note: Shipping fee is shouldered by the buyer.</i></p>
                         <!--<input class="form-control" type="text" pattern="^[0-9]*$" placeholder="Change for (PHP):">-->
@@ -109,7 +109,11 @@
                         <!--<br>-->
                         <% if (request.getSession().getAttribute("order") != null) {%>
                         <form method="POST" action="PDFServlet" target="_blank">
-                            <button class="w-100 btn btn-secondary btn-lg" type="submit">Get Order Details</button>
+                            <button class="w-100 btn btn-secondary btn-md" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                </svg>&nbsp;&nbsp;Get Order Details</button>
                             <input type="hidden" name="type" value="receipt">
                         </form>
                         <% }%>
@@ -209,7 +213,7 @@
                                 </div>
                                 <br>
                             </div>
-                            <button class="w-100 btn btn-secondary btn-lg" type="submit"><svg style="width: 30px; height: 30px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <button class="w-100 btn btn-secondary btn-md" type="submit"><svg style="width: 25px; height: 25px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                                 </svg>&nbsp;&nbsp;Place Order</button>
                             <br>

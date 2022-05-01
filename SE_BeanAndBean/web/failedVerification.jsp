@@ -1,7 +1,7 @@
 <%-- 
-    Document   : verificationPage
-    Created on : Apr 30, 2022, 4:02:19 PM
-    Author     : Carlo
+    Document   : failedVerification
+    Created on : 05 1, 22, 10:48:43 PM
+    Author     : Marylaine Lumacad
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Verify Page</title>
+        <title>Verification Failed</title>
     </head>
     <body>
-        <span>We already sent a verification code to your email.</span>
+        <span>Verification not successful.</span>
         <br><br>
         <a href="home.jsp">Return to Home</a>
     </body>

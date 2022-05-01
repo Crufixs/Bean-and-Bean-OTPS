@@ -59,7 +59,7 @@ public class SendVerificationServlet extends HttpServlet {
             if (test) {
                 response.sendRedirect("verificationPage.jsp");
             } else {
-                out.println("Failed to send verification email");
+                response.sendRedirect("failedVerification.jsp");               
             }
 
         }

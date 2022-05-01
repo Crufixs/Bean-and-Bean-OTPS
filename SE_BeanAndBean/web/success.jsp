@@ -92,7 +92,7 @@
                         <h5>Bean&Bean Transaction History</h5>
                         <hr>
                         <form method="POST" action="PDFServlet" target="_blank">
-                            <button class="btn btn-outline-secondary btn-md" type="submit">Get Records</button>
+                            <button class="btn btn-outline-dark btn-md" type="submit">Get Records</button>
                             <input type="hidden" name="type" value="admin">
                         </form>
                     </div>
@@ -101,9 +101,9 @@
                     <div class="mb-3">
                         <hr>
                         <h5>Order History</h5>
-                        <p>Shows all the products you've bought in the past</p>
+                        <p><small><i>This shows all the products you have bought in the past.</i></small></p>
                         <form method="POST" action="PDFServlet" target="_blank">
-                            <button class="btn btn-outline-secondary btn-md" type="submit">Get Records</button>
+                            <button class="btn btn-outline-dark btn-md" type="submit">Get Records</button>
                             <input type="hidden" name="type" value="guest">
                         </form>
                     </div>
@@ -111,10 +111,10 @@
                     
                     <div class="mb-3">
                         <hr>
-                        <h5>You haven't verified your account</h5>
-                        <p>In order to order and comment a review, you must first verify your email</p>
+                        <h5>Your account is not yet verified!</h5>
+                        <p><small><i>To order and comment a review, you must first verify your email.</i></small></p>
                         <form method="POST" action="SendVerificationServlet">
-                            <button class="btn btn-outline-secondary btn-md" type="submit">Send Email Verification</button>
+                            <button class="btn btn-outline-dark btn-md" type="submit">Send Email Verification</button>
                         </form>
                     </div>
                     <%} 
@@ -225,7 +225,7 @@
                             <input type="hidden" name="state" value="edit">
                             <div class="col-3"></div>
                             <div class="col-9">
-                            <button id="editAccountButton"class="btn btn-outline-secondary btn-md" onclick="enableAll()"type="submit" style="margin-top: 10px; float: right;" disabled>Save Changes</button></div>
+                            <button id="editAccountButton"class="btn btn-outline-dark btn-md" onclick="enableAll()"type="submit" style="margin-top: 10px; float: right;" disabled>Save Changes</button></div>
                         </div>
                     </form>
                 </div>
