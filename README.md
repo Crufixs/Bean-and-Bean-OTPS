@@ -5,4 +5,4 @@ The system not only aims to make life easier for customers, but also seeks the o
 
 ## Pictures of the Website Application
 *  The landing page
-<img src="https://drive.google.com/file/d/1l8UHW2-RvLsEErIb7tHYYO1Jhn82cqmi/view?usp=sharing">
+<img src="https://drive.google.com/uc?id=1l8UHW2-RvLsEErIb7tHYYO1Jhn82cqmi">
