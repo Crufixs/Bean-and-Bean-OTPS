@@ -1,5 +1,5 @@
 <p align="center">
-<img src="BeanAndBean_Images/logo-white.png" width="200" title="Landing Page" style="border-radius:50%">
+<img src="BeanAndBean_Images/logo-white.png" width="200" title="Landing Page">
 </p>
 
 # Bean&Bean: Online Transaction Processing System
@@ -28,4 +28,4 @@ The system not only aims to make life easier for customers, but also seeks the o
 <img src="BeanAndBean_Images/Login.png" width="800" title="Login Page">
 
 ## Video Demonstration
-Since our website application needs a database and host in order to be deployed, our group has made a video demonstration of our website in order to further showcase our website. The video can be accessed through this <a href="">link</a>.
+Since our website application needs a database and host in order to be deployed, our group has made a video demonstration of our website in order to further showcase our website. The video can be accessed through this <a href="https://drive.google.com/file/d/1-GZYXf_j1ccDvGFqKzVwp02NSzhjrihb/view?usp=sharing">link</a>.
