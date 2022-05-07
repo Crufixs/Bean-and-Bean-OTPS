@@ -1,5 +1,5 @@
 <p align="center">
-<img src="BeanAndBean_Images/logo-white.png" width="400" title="Landing Page" style="border-radius:50%">
+<img src="BeanAndBean_Images/logo-white.png" width="200" title="Landing Page" style="border-radius:50%">
 </p>
 
 # Bean&Bean: Online Transaction Processing System
