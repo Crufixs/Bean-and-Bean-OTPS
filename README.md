@@ -1,0 +1,3 @@
+# Bean & Bean: Online Transaction Processing System
+
+The purpose of this project is to build an Online Transaction Processing System (OTPS) through a web application for Bean&Bean. The said system will be used to manage product orders from customers to ease business transactions. OTPS will be used as a substitute for typical social platforms used as means of selling, buying, and ordering. Moreover, the system also aims to lessen, if not eliminate, the problems that the customers may face in ordering through social media platforms. A user-friendly web application will be developed to implement OTPS. Through this, the customers will be able to view the available products of Bean&Bean, order their desired coffee products, and track their placed orders. 
