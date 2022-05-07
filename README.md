@@ -7,9 +7,18 @@ This repository is a project my group and I did for our course Software Engineer
 
 The system not only aims to make life easier for customers, but also seeks the owner’s and staffs’ comfort and satisfaction. Through the use of this system, the business personnel will be able to easily display their available products with their corresponding details without worrying about the updating of product information in each of their platforms. Additionally, all order records will be stored in a database as a substitute for the conventional way of storing information in a physical notebook or leaving them in a social media chatbox. Not only does this feature aim to make tasks easier for the owner, but also to provide a more secure storage of records. More features of the system will be discussed in the following sections.
 
+##Implementation
+This project was mainly implemented using the java programming language. The group used NetBeans 8.2 as an IDE and hosted the project on the GlassFish Server 4.1.1 using Java EE 5. The pages were built using Java Servlet Pages and styled using CSS. SQL was used in order to set up the database of the system. The web application made use of the following libraries:
+*  commons-codec-1.9
+*  derbyclient
+*  itextpdf-5.5.9
+*  mysql-connector-java-5.1.34
+*  simplecaptcha-1.2.1
+ 
 ## Features
 *  Within the Bean&Bean website application, users can navigate through the site and see all the information and available products from the Bean & Bean company
 *  Before users can order a product, they must first Log-in as customer to the website using a signed up account that has already completed the email verification process
+*  In order to sign up a customer account the user needs to input their information, answer the captcha correctly, and verify their email.
 *  When the customers order through the website, they can get a proof-of-order per each order as a pdf file. They can also get their order history in the same format.
 *  Customers can also write a review on the Bean & Bean company throuh the About us page
 *  The Bean&Bean company is notified for every activity that goes through the website. The website application does this by emailing every order placed and every review made to the Bean&Bean company email
