@@ -5,13 +5,13 @@ The system not only aims to make life easier for customers, but also seeks the o
 
 ## Pictures of the Website Application
 *  The Landing page
-<img src="BeanAndBean_Images/Landing_Page.png" width="200" title="Landing Page">
+<img src="BeanAndBean_Images/Landing_Page.png" width="800" title="Landing Page">
 
 *  The Shop page
-<img src="BeanAndBean_Images/Landing_Page.png" width="200" title="Shop Page">
+<img src="BeanAndBean_Images/Shop.png" width="800" title="Shop Page">
 
 *  The Contact Us page
-<img src="BeanAndBean_Images/Landing_Page.png" width="200" title="Contact Us Page">
+<img src="BeanAndBean_Images/Contact_Us.png" width="800" title="Contact Us Page">
 
 *  The Login page
-<img src="BeanAndBean_Images/Landing_Page.png" width="200" title="Login Page">
+<img src="BeanAndBean_Images/Login.png" width="800" title="Login Page">
