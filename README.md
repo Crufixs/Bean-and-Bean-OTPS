@@ -38,6 +38,3 @@ This project was mainly implemented using the java programming language. The gro
 
 *  The Login page
 <img src="BeanAndBean_Images/Login.png" width="800" title="Login Page">
-
-## Video Demonstration
-Since our website application needs a database and host in order to be deployed, our group has made a video demonstration of our website in order to further showcase our website. The video can be accessed through this <a href="https://drive.google.com/file/d/1-GZYXf_j1ccDvGFqKzVwp02NSzhjrihb/view?usp=sharing">link</a>.
