@@ -5,7 +5,12 @@
 # Bean&Bean: Online Transaction Processing System
 This repository is a project my group and I did for our course Software Engineering 1 & 2. The purpose of this project is to build an Online Transaction Processing System (OTPS) through a web application for our client, Bean&Bean. The said system will be used to manage product orders from customers to ease business transactions. OTPS will be used as a substitute for typical social platforms used as means of selling, buying, and ordering. Moreover, the system also aims to lessen, if not eliminate, the problems that the customers may face in ordering through social media platforms. A user-friendly web application will be developed to implement OTPS. Through this, the customers will be able to view the available products of Bean&Bean, order their desired coffee products, and track their placed orders. 
 
-The system not only aims to make life easier for customers, but also seeks the owner’s and staffs’ comfort and satisfaction. Through the use of this system, the business personnel will be able to easily display their available products with their corresponding details without worrying about the updating of product information in each of their platforms. Additionally, all order records will be stored in a database as a substitute for the conventional way of storing information in a physical notebook or leaving them in a social media chatbox. Not only does this feature aim to make tasks easier for the owner, but also to provide a more secure storage of records. More features of the system will be discussed in the following sections.
+## Contribution
+For this project, I'd consider myself as a major contributor to the programming aspect of this website. As such of my contributions to the projects are:
+*  The validation for logging in and signing up for an account
+*  Utilizing the database to implement a cart system
+*  Popup messages in the Shop page
+*  Front-end design of Shop and Home page
 
 ## Demonstration
 For demonstration, the website was hosted using Heroku's free website hosting which can be accessed through this <a href="https://bean-and-bean.herokuapp.com/home.jsp">link</a>. Although the website is functional, there may still be bugs which resulted from changing the codes for the website hosting. 
