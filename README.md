@@ -8,9 +8,10 @@ This repository is a project my group and I did for our course Software Engineer
 ## Contribution
 For this project, I'd consider myself as a major contributor to the programming aspect of this website. As such of my contributions to the projects are:
 *  The validation for logging in and signing up for an account
-*  Utilizing the database to implement a cart system
+*  Utilizing a database to implement a cart system
 *  Popup messages in the Shop page
 *  Front-end design of Shop and Home page
+*  Error pages, messages, and popups.
 
 ## Demonstration
 For demonstration, the website was hosted using Heroku's free website hosting which can be accessed through this <a href="https://bean-and-bean.herokuapp.com/home.jsp">link</a>. Although the website is functional, there may still be bugs which resulted from changing the codes for the website hosting. 
