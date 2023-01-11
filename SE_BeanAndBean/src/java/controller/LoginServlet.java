@@ -71,17 +71,20 @@ public class LoginServlet extends HttpServlet {
         
         try{
             if(con != null){
-               
                //PreparedStatement to avoid SQLInjection
+               System.out.println("b4" + inputUsername);
                PreparedStatement ps = con.prepareStatement("SELECT * FROM customer WHERE username=?");
+               System.out.println("after" + inputUsername);
                ps.setString(1, inputUsername);
+               //PreparedStatement ps = con.prepareStatement("SELECT * FROM customer");
                ResultSet rs = ps.executeQuery();
-               
                
                //Checks if the inputted username matches a record in the UserDB
                //rs.next() returns true if the ResultSet finds a record
                if(rs.next()){
                    unameMatch = true;
+                   String uname = rs.getString("username"); //Returns the corresponding password of the given username
+                   System.out.println("realuname = " + uname);
                    String password = rs.getString("password"); //Returns the corresponding password of the given username
                    System.out.println("realpassword = " + s.decrypt(password));
                    if(password.equals(inputPassword)){ //Checks if the returned password matches the user input
@@ -134,7 +137,6 @@ public class LoginServlet extends HttpServlet {
                
                Map<String, String> errors = new HashMap<>();
                Map<String, String> previousInput = new HashMap<>();
-               
                
                if(!unameMatch){ //Error 1 - Username not found
                    errors.put("username", "Username not found");

@@ -1,5 +1,5 @@
-
 package controller;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,45 +16,44 @@ import model.Feedback;
 import model.Product;
 import model.ProductList;
 import model.User;
-public class JDBCContextListener implements ServletContextListener{
-    
+
+public class JDBCContextListener implements ServletContextListener {
+
     ServletContext context;
     Connection con;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         context = sce.getServletContext();
-        try{
-//            System.out.print("HELLo");
+        try {
+            System.out.print("INSIDE JDBCONTEXT LISTENER");
+            System.out.print("B4 CLASSNAME: " + context.getInitParameter("jdbcClassName"));
             Class.forName(context.getInitParameter("jdbcClassName"));
-            
+            System.out.print("AFTER CLASSNAME: " + context.getInitParameter("jdbcClassName"));
             String dbUsername = context.getInitParameter("dbUsername");
             String dbPassword = context.getInitParameter("dbPassword");
-            
-            
+
             //Setting up the URL by getting the init parameters from the web.xml
             StringBuffer URL = new StringBuffer(context.getInitParameter("jdbcDriverURL"))
-                                .append("://")
-                                .append(context.getInitParameter("dbHostName"))
-                                .append(":")
-                                .append(context.getInitParameter("dbPort"))
-                                .append("/")
-                                .append(context.getInitParameter("dbName"));
-            
+                    .append("://")
+                    .append(context.getInitParameter("dbHostName"))
+                    .append(":")
+                    .append(context.getInitParameter("dbPort"))
+                    .append("/")
+                    .append(context.getInitParameter("dbName"));
+
             con = DriverManager.getConnection(URL.toString(), dbUsername, dbPassword);
             context.setAttribute("connection", con);
-            
+
             ProductList pm = new ProductList(con);
             List<Product> products = pm.getProducts();
             context.setAttribute("productList", pm);
             context.setAttribute("products", products);
-            
-//            User u = new User();
 
+//            User u = new User();
             Cart.setCon(con);
             Cart.setProductList(pm);
-            
-            
+
             Feedback.setCon(con);
             ArrayList<Feedback> feedbackList = Feedback.getFeedbackListFromDB();
 //            ArrayList<Feedback> feedbackList = new ArrayList<>();
@@ -62,22 +61,19 @@ public class JDBCContextListener implements ServletContextListener{
 //            FeedbackList fm = new FeedbackList(con);
 //            List<Feedback> feedbackList = fm.getFeedbacks();
             context.setAttribute("feedbackList", feedbackList);
-            
-            
-            
+
 //            Cart c = new Cart();
-            
 //            context.setAttribute("guestUser", u);
 //            context.setAttribute("guestCart", c);
-            
-            
-        } catch (ClassNotFoundException e){
-            
-        } catch (SQLException e){
-            
+            System.out.print("DONE JDBCONTEXT LISTENER");
+
+        } catch (ClassNotFoundException e) {
+            System.out.print("CLASS NOT FOUND JDBCONTEXT LISTENER");
+        } catch (SQLException e) {
+            System.out.print("SQL ERROR JDBCONTEXT LISTENER");
         }
     }
-    
+
 //    public ArrayList<Feedback> getFeedbackListFromDB(){
 //        int customerID;
 //        String comment;
@@ -111,16 +107,15 @@ public class JDBCContextListener implements ServletContextListener{
 //        
 //        return feedbackList;
 //    }
-
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         System.out.println("Context destroyed.");
-        
+
         try {
             con.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
-    
+
 }

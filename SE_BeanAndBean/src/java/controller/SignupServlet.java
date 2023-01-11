@@ -188,7 +188,7 @@ public class SignupServlet extends HttpServlet {
         Security s = new Security();
         Map<String, String> previousInput = new HashMap<>();
         HttpSession session = request.getSession();
-        inputUsername = request.getParameter("uname");
+        inputUsername = request.getParameter("uname").toLowerCase();
         inputPassword = request.getParameter("psw");
         inputConfirmPassword = request.getParameter("confirmPsw");
         inputFirstName = request.getParameter("firstName").trim();
