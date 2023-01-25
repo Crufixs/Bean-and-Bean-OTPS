@@ -5,9 +5,6 @@
 # Bean&Bean: Online Transaction Processing System
 This repository is a project my group and I did for our course Software Engineering 1 & 2. The purpose of this project is to build an Online Transaction Processing System (OTPS) through a web application for our client, Bean&Bean. The said system will be used to manage product orders from customers to ease business transactions. OTPS will be used as a substitute for typical social platforms used as means of selling, buying, and ordering. Moreover, the system also aims to lessen, if not eliminate, the problems that the customers may face in ordering through social media platforms. A user-friendly web application will be developed to implement OTPS. Through this, the customers will be able to view the available products of Bean&Bean, order their desired coffee products, and track their placed orders. 
 
-## Demonstration
-For demonstration, the website was hosted using Heroku's free website hosting which can be accessed through this <a href="https://bean-and-bean.herokuapp.com/home.jsp">link</a>. Although the website is functional, there may still be bugs which resulted from changing the codes for the website hosting. 
-
 ## Implementation
 This project was mainly implemented using the java programming language. The group used NetBeans 8.2 as an IDE and hosted the project on the GlassFish Server 4.1.1 using Java EE 5. The pages were built using Java Servlet Pages and styled using CSS. SQL was used in order to set up the database of the system. The web application made use of the following libraries:
 *  commons-codec-1.9
