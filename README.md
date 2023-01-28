@@ -12,7 +12,9 @@ This project was mainly implemented using the java programming language. The gro
 *  itextpdf-5.5.9
 *  mysql-connector-java-5.1.34
 *  simplecaptcha-1.2.1
-However upon hosting the website on a domain, the group converted the project into a maven project, which used Apache Tomcat 8.5 as its container. The group also migrated the database from MySQL to PostgreSQL, since we decided to use ElephantSQL as a dedicated database server. The resulting domain for the website can be found in here: <a href=https://bean-and-bean.herokuapp.com/"> https://bean-and-bean.herokuapp.com/ </a>
+
+However upon hosting the website on Heroku, the group converted the project into a maven project, which used Apache Tomcat 8.5 as its container. The group also migrated the database from MySQL to PostgreSQL, since we decided to use ElephantSQL as a dedicated database server. The resulting domain for the website can be found in here: 
+*  <a href="https://bean-and-bean.herokuapp.com/"> https://bean-and-bean.herokuapp.com/ </a>
 
 Please be noted that the products within the webiste are actual products from the Bean & Bean Coffee. However the client didn't provide the complete images of the product, so the group decided to use dummy pictures for the products.
  
